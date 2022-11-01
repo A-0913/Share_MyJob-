@@ -1,24 +1,36 @@
-# README
+# <Share👀MyJob!>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+職業について知りたい人と教えてくれる人が
+気軽にかつダイレクトにやりとりできる就活コミュニティサイトです。
+職業ごとのページを分け、さらにその中にテーマごとにグループチャットを設けることで、
+気になることだけをストレートに質問できる場所を提供します。
 
-Things you may want to cover:
+### サイトテーマ
+就活コミュニティサイト
 
-* Ruby version
+### テーマを選んだ理由
+自分自身がこのDMMWEBCAMPへ入るか悩んでいた時期に、
+SEという仕事について実際に働く方のお話を聞きたかったため
 
-* System dependencies
+### ターゲットユーザ
+* 転職活動をしようか悩んでいる人
+* 気になっている職業があり、「リアルな声」が聞きたい人
 
-* Configuration
+### 主な利用シーン
+* 本格的に就職活動へ動き出す前の情報収集のツールとして
+* 気になる職業について、知りたい情報の範囲や対象が特定している場合など
 
-* Database creation
+## 設計書
+<...>
 
-* Database initialization
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
