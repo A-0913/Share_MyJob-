@@ -7,7 +7,10 @@
        <%= image_tag @member.get_profile_image(200,200) %>
     </div>
     <div class="col-sm-8">
-      <h4>登録情報</h4><h5 class="mx-5"><%#= link_to "編集する" , members_info_edit_path, class: 'btn btn-success' %></h5>
+      <div class="row">
+        <h4>登録情報</h4>
+        <h5 class="mx-5"><%= link_to "編集する" , edit_member_path(@member), class: 'btn btn-success' %></h5>
+      </div>
       <div class="table-responsive table-hover">
         <table class="table table-bordered">
           <tr>
@@ -19,16 +22,21 @@
             <td class="table-active"><%= @member.nickname %></td>
           </tr>
           <tr>
-            <th class="table-active rowspan="3"">紹介文</th>
-            <td class="table-active rowspan="3""><%= @member.introduction %></td>
+            <th class="table-active">紹介文</th>
+            <td class="table-active"><%= @member.introduction %></td>
           </tr>
           <tr>
             <th class="table-active">所属</th>
             <td class="table-active"><%= @member.belong %></td>
           </tr>
         </table>
-       </div>
+      </div>
+      <div class="row mt-4">
+        <h5>投稿職業一覧　</h5><h5 class="mx-5"><%#= link_to "一覧を見る" , edit_member_path(@member), class: 'btn btn-primary' %></h5>
+        <h5>投稿テーマ一覧</h5><h5 class="mx-5"><%#= link_to "一覧を見る" , edit_member_path(@member), class: 'btn btn-primary' %></h5>
+      </div>
     </div>
+
   </div>
 
 </div>
