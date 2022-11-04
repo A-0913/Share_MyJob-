@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row py-4">
+    <h3>マイページ</h3>
+  </div>
+  <div class="row">
+    <div class="d-flex align-items-center col-sm-3 ">
+       <%= image_tag @member.get_profile_image(200,200) %>
+    </div>
+    <div class="col-sm-8">
+      <div class="row">
+        <h4>登録情報</h4>
+        <% if admin_signed_in? %>
+        <h5 class="mx-5"><%= link_to "編集する" , edit_admin_member_path(@member), class: 'btn btn-success' %></h5>
+        <% end %>
+      </div>
+      <div class="table-responsive table-hover">
+        <table class="table table-bordered">
+          <tr>
+            <th class="table-light">会員id</th>
+            <td class="table-light"><%= @member.id %></td>
+          </tr>
+          <tr>
+            <th class="table-light">氏名</th>
+            <td class="table-light"><%= @member.last_name %><%= "　" %><%=@member.first_name %></td>
+          </tr>
+          <tr>
+          <tr>
+            <th class="table-light">メールアドレス</th>
+            <td class="table-light"><%= @member.email %></td>
+          </tr>
+          <tr>
+            <th class="table-light">ニックネーム</th>
+            <td class="table-light"><%= @member.nickname %></td>
+          </tr>
+          <tr>
+            <th class="table-light">紹介文</th>
+            <td class="table-light"><%= @member.introduction %></td>
+          </tr>
+          <tr>
+            <th class="table-light">所属</th>
+            <td class="table-light"><%= @member.belong %></td>
+          </tr>
+          <tr>
+            <th class="table-light">会員ステータス</th>
+            <td class="table-light">
+              <% if @member.is_deleted == false %>
+                <div class="text-success font-weight-bold">有効</div>
+              <% else %>
+                <div class="text-danger font-weight-bold">退会</div>
+              <% end %>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+      <div class="row my-4">
+        <h5>投稿職業一覧　</h5><h5 class="mx-5"><%= link_to "一覧を見る" , edit_admin_member_path(@member), class: 'btn btn-primary' %></h5>
+        <h5>投稿テーマ一覧</h5><h5 class="mx-5"><%= link_to "一覧を見る" , edit_admin_member_path(@member), class: 'btn btn-primary' %></h5>
+      </div>
+    </div>
+
+  </div>
+
+</div>

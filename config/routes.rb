@@ -19,8 +19,12 @@ Rails.application.routes.draw do
   get 'members/confirm'=> 'public/members#confirm'
   patch 'members/withdraw'=> 'public/members#withdraw'
 
+  namespace :admin do
+    resources :members, only: [:update, :edit, :show, :index]
+  end
+
   scope module: :public do
-    resources :members
+    resources :members, only: [:update, :edit, :show]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

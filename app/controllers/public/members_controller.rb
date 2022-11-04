@@ -8,7 +8,7 @@ class Public::MembersController < ApplicationController
   end
 
   def update
-    @member = current_member
+    @member = Member.find(params[:id])
     if @member.update(update_params)
        flash[:notice] = "更新が成功しました!"
        redirect_to member_path(@member)
@@ -31,6 +31,6 @@ class Public::MembersController < ApplicationController
 
   private
     def update_params
-      params.require(:member).permit(:last_name, :first_name, :nickname, :introduction, :belong ,:profile_image)
+      params.require(:member).permit(:last_name, :first_name, :nickname, :introduction, :belong ,:profile_image, :email)
     end
 end
