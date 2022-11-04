@@ -49,9 +49,9 @@
                   <%# end %>
                 </li>
                 <li class="nav-item mx-3">
-                  <%#= link_to members_my_page_path(current_member), class: 'nav-link text-dark' do %>
+                  <%= link_to admin_members_index_path, class: 'nav-link text-dark' do %>
                     <i class="fa-solid fa-star">会員一覧</i>
-                  <%# end %>
+                  <% end %>
                 </li>
                 <li class="nav-item mx-3">
                   <%= link_to destroy_admin_session_path, class: 'nav-link text-dark' , method: :delete do %>

@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'members/index'
-    get 'members/show'
-    get 'members/edit'
-  end
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
@@ -23,6 +18,12 @@ Rails.application.routes.draw do
   get 'admin'=> 'admin/homes#top'
   get 'members/confirm'=> 'public/members#confirm'
   patch 'members/withdraw'=> 'public/members#withdraw'
+
+  namespace :admin do
+    get 'members/index'
+    get 'members/show'
+    get 'members/edit'
+  end
 
   scope module: :public do
     resources :members
