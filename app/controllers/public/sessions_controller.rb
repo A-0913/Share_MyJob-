@@ -18,6 +18,12 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  def new_guest
+    member = Member.guest
+    sign_in member   # ユーザーをログインさせる
+    redirect_to root_path, notice: 'ゲストとしてログインしました。'
+  end
+
   def after_sign_in_path_for(resource)
     root_path
   end
@@ -26,11 +32,7 @@ class Public::SessionsController < Devise::SessionsController
     root_path
   end
 
-  def new_guest
-    member = Member.guest
-    sign_in member   # ユーザーをログインさせる
-    redirect_to root_path, notice: 'ゲストとしてログインしました。'
-  end
+
 
   # protected
 
