@@ -25,9 +25,9 @@
               <!--顧客ログイン時-->
               <% if member_signed_in? %>
                 <li class="nav-item mx-3">
-                  <%#= link_to members_my_page_path(current_member), class: 'nav-link text-dark' do %>
+                  <%= link_to about_path, class: 'nav-link text-dark' do %>
                     <i class="fa-regular fa-comments">サイト概要</i>
-                  <%# end %>
+                  <% end %>
                 </li>
                 <li class="nav-item mx-3">
                   <%#= link_to members_my_page_path(current_member), class: 'nav-link text-dark' do %>
@@ -35,9 +35,9 @@
                   <%# end %>
                 </li>
                 <li class="nav-item mx-3">
-                  <%#= link_to destroy_admin_session_path, class: 'nav-link text-dark' , method: :delete do %>
+                  <%= link_to destroy_admin_session_path, class: 'nav-link text-dark' , method: :delete do %>
                   <i class="fa-solid fa-right-from-bracket">ログアウト</i>
-                  <%# end %>
+                  <% end %>
                 </li>
                 <form class="d-flex">
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -65,9 +65,9 @@
               <!--顧客・管理者ログアウト時-->
               <% else %>
                 <li class="nav-item mx-3">
-                  <%#= link_to members_my_page_path(current_member), class: 'nav-link text-dark' do %>
+                  <%= link_to about_path, class: 'nav-link text-dark' do %>
                     <i class="fa-regular fa-comments">サイト概要</i>
-                  <%# end %>
+                  <% end %>
                 </li>
                 <li class="nav-item mx-3">
                   <%= link_to  new_member_registration_path, class: 'nav-link text-dark' do %>
@@ -80,8 +80,8 @@
                   <% end %>
                 </li>
                 <li class="nav-item mx-3">
-                  <%= link_to  new_member_session_path, class: 'nav-link text-dark' do %>
-                  <i class="fa-solid fa-door-open">ゲストログイン</i>
+                  <%= link_to  members_guest_sign_in_path, method: :post, class: 'nav-link text-dark' do %>
+                  <i class="fa-solid fa-door-open">ゲストログイン（閲覧用）</i>
                   <% end %>
                 </li>
               <% end %>
