@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   root to: "public/homes#top"
   get 'about'=> 'public/homes#about'
   get 'admin'=> 'admin/homes#top'
+  get 'members/confirm'=> 'public/members#confirm'
+  patch 'members/withdraw'=> 'public/members#withdraw'
 
   scope module: :public do
     resources :members

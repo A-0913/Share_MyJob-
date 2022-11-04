@@ -35,7 +35,7 @@
 
         <div class="form-group row">
           <%= f.label :"紹介文", class: "col-sm-3 col-form-label" %>
-          <%= f.text_field :introduction,  class: "col-lg-5" %>
+          <%= f.text_area :introduction,  class: "col-lg-5" %>
         </div>
 
         <div class="form-group row">
@@ -52,7 +52,9 @@
     <div class = "row mt-4">
       <h4>すでに登録済みの方</h4>
     </div>
+    <div class = "row pb-4">
       <%= link_to "こちら ", new_member_session_path %>からログインしてください。
+    </div>
 
 
 <%#= render "public/shared/links" %>
