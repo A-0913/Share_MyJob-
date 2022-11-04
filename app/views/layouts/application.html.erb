@@ -11,6 +11,91 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">
+            <%= image_tag 'logo.jpg', class: 'logo' %>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav me-auto">
+              <!--顧客ログイン時-->
+              <% if member_signed_in? %>
+                <li class="nav-item mx-3">
+                  <%#= link_to members_my_page_path(current_member), class: 'nav-link text-dark' do %>
+                    <i class="fa-regular fa-comments">サイト概要</i>
+                  <%# end %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%#= link_to members_my_page_path(current_member), class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-user-gear">マイページ</i>
+                  <%# end %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%#= link_to destroy_admin_session_path, class: 'nav-link text-dark' , method: :delete do %>
+                  <i class="fa-solid fa-right-from-bracket">ログアウト</i>
+                  <%# end %>
+                </li>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+
+              <!--管理者ログイン時-->
+              <%# elsif admin_signed_in? %>
+                <!--<li class="nav-item mx-3">-->
+                  <%#= link_to members_my_page_path(current_member), class: 'nav-link text-dark' do %>
+                <!--    <i class="fa-solid fa-star">職業一覧</i>-->
+                  <%# end %>
+                <!--</li>-->
+                <!--<li class="nav-item mx-3">-->
+                  <%#= link_to members_my_page_path(current_member), class: 'nav-link text-dark' do %>
+                <!--    <i class="fa-solid fa-star">会員一覧</i>-->
+                  <%# end %>
+                <!--</li>-->
+                <!--<li class="nav-item mx-3">-->
+                  <%#= link_to members_my_page_path(current_member), class: 'nav-link text-dark' do %>
+                <!--    <i class="fa-solid fa-right-from-bracket">ログアウト</i>-->
+                  <%# end %>
+                <!--</li>-->
+
+              <!--顧客・管理者ログアウト時-->
+              <% else %>
+                <li class="nav-item mx-3">
+                  <%#= link_to members_my_page_path(current_member), class: 'nav-link text-dark' do %>
+                    <i class="fa-regular fa-comments">サイト概要</i>
+                  <%# end %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to  new_member_registration_path, class: 'nav-link text-dark' do %>
+                  <i class="fa-solid fa-user-plus">新規登録</i>
+                  <% end %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to  new_member_session_path, class: 'nav-link text-dark' do %>
+                  <i class="fa-solid fa-right-to-bracket">ログイン</i>
+                  <% end %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to  new_member_session_path, class: 'nav-link text-dark' do %>
+                  <i class="fa-solid fa-door-open">ゲストログイン</i>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <%= flash[:notice] %>
+      <%= yield %>
+    </main>
+    <footer class="p-3">
+      <p class="text-center">© 2022,Share MyJob, © 2022 Japan</p>
+    </footer>
   </body>
 </html>

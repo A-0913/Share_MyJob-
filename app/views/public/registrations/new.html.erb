@@ -14,6 +14,11 @@
         </div>
 
         <div class="form-group row">
+          <%= f.label :"ニックネーム", class: "col-sm-3  col-form-label" %>
+          <%= f.text_field :nickname, autofocus: true, class: "col-lg-2" %>
+        </div>
+
+        <div class="form-group row">
           <%= f.label :"メールアドレス", class: "col-sm-3  col-form-label" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-lg-3" %>
         </div>
@@ -30,7 +35,7 @@
 
         <div class="form-group row">
           <%= f.label :"紹介文", class: "col-sm-3 col-form-label" %>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-lg-5" %>
+          <%= f.text_field :introduction,  class: "col-lg-5" %>
         </div>
 
         <div class="form-group row">

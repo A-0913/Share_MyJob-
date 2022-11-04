@@ -10,7 +10,7 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
       t.string :last_name, null:false
       t.string :first_name, null:false
       t.string :nickname, null:false
-      t.string :introduction, null:false
+      t.string :introduction
       t.string :belong, null:false
       t.boolean :is_deleted, null:false, default:false
 

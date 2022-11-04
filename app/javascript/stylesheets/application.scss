@@ -1,2 +1,17 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+header{
+  background-color: #99C3ED;
+}
+
+main{
+  min-height: calc(100vh - 200px - 60px);
+  background-color: #D9E5FF;
+}
+
+footer{
+  background-color: #99C3ED;
+  height: 60px;
+  width: 100%;
+}

@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2022_11_03_131057) do
     t.string "last_name", null: false
     t.string "first_name", null: false
     t.string "nickname", null: false
-    t.string "introduction", null: false
+    t.string "introduction"
     t.string "belong", null: false
     t.boolean "is_deleted", default: false, null: false
     t.string "reset_password_token"
