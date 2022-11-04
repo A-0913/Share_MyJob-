@@ -42,22 +42,22 @@
 
 
               <!--管理者ログイン時-->
-              <%# elsif admin_signed_in? %>
-                <!--<li class="nav-item mx-3">-->
+              <% elsif admin_signed_in? %>
+                <li class="nav-item mx-3">
                   <%#= link_to members_my_page_path(current_member), class: 'nav-link text-dark' do %>
-                <!--    <i class="fa-solid fa-star">職業一覧</i>-->
+                    <i class="fa-solid fa-star">職業一覧</i>
                   <%# end %>
-                <!--</li>-->
-                <!--<li class="nav-item mx-3">-->
+                </li>
+                <li class="nav-item mx-3">
                   <%#= link_to members_my_page_path(current_member), class: 'nav-link text-dark' do %>
-                <!--    <i class="fa-solid fa-star">会員一覧</i>-->
+                    <i class="fa-solid fa-star">会員一覧</i>
                   <%# end %>
-                <!--</li>-->
-                <!--<li class="nav-item mx-3">-->
-                  <%#= link_to members_my_page_path(current_member), class: 'nav-link text-dark' do %>
-                <!--    <i class="fa-solid fa-right-from-bracket">ログアウト</i>-->
-                  <%# end %>
-                <!--</li>-->
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to destroy_admin_session_path, class: 'nav-link text-dark' , method: :delete do %>
+                    <i class="fa-solid fa-right-from-bracket">ログアウト</i>
+                  <% end %>
+                </li>
 
               <!--顧客・管理者ログアウト時-->
               <% else %>
@@ -93,7 +93,7 @@
       <%= yield %>
     </main>
     <footer class="p-3">
-      <p class="text-center">© 2022,Share MyJob, © 2022 Japan</p>
+      <div class="text-center">© 2022,Share MyJob, © 2022 Japan</div>
     </footer>
   </body>
 </html>
