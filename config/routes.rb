@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'members/show'
-    get 'members/edit'
-    get 'members/confirm'
-  end
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
@@ -21,6 +16,10 @@ Rails.application.routes.draw do
   root to: "public/homes#top"
   get 'about'=> 'public/homes#about'
   get 'admin'=> 'admin/homes#top'
+
+  scope module: :public do
+    resources :members
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
