@@ -40,7 +40,7 @@
 
         <div class="form-group row">
           <%= f.label :belong, '所属', class: "col-sm-3 col-form-label" %>
-          <%= f.select :belong, {'大企業': 1, '中小企業': 2, '小規模企業者': 3, '学生': 4, '就職活動中': 5, '転職を考え中': 6}, { include_blank: '選択してください'}, { class: 'form-control col-lg-3' , required: true } %>
+          <%= f.select :belong, {"大企業": "大企業", "中小企業": "中小企業", "小規模企業者": "小規模企業者", "学生": "学生", "就職活動中": "就職活動中", "転職を検討中": "転職を検討中"}, { include_blank: '選択してください'}, { class: 'form-control col-lg-3' , required: true } %>
         </div>
 
         <div class="actions">

@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :members
+    resources :members, only: [:update, :edit, :show]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
