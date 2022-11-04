@@ -1,9 +1,18 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+#wrapper{
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+}
+
+
 header{
   background-color: #99C3ED;
 }
+
+
 
 main{
   min-height: calc(100vh - 200px - 60px);
