@@ -16,8 +16,8 @@
       <% @members.each do |member| %>
         <tr>
           <td class="table-light"><%= member.id %></td>
-          <td class="table-light"><%= member.last_name+"　"+member.first_name %>
-            <%#= link_to member.last_name+member.first_name , admin_member_path(member) %>
+          <td class="table-light">
+            <%= link_to member.last_name+member.first_name , admin_member_path(member) %>
           </td>
           <td class="table-light"><%= member.nickname %></td>
           <td class="table-light"><%= member.email %></td>
@@ -25,11 +25,14 @@
                 <% if member.is_deleted == false %>
                   <p class="text-success font-weight-bold">有効</p>
                 <% else %>
-                  <p class="text-secondary font-weight-bold">退会</p>
+                  <p class="text-danger font-weight-bold">退会</p>
                 <% end %>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
+  <div class="row justify-content-center">
+  <%= paginate @members %>
+  </div>
 </div>

@@ -20,9 +20,7 @@ Rails.application.routes.draw do
   patch 'members/withdraw'=> 'public/members#withdraw'
 
   namespace :admin do
-    get 'members/index'
-    get 'members/show'
-    get 'members/edit'
+    resources :members, only: [:update, :edit, :show, :index]
   end
 
   scope module: :public do
