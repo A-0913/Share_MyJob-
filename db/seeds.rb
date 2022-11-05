@@ -105,6 +105,7 @@ Genre.create!(
 Theme.create!(
   id:1,
   name:'どんな仕事をしてる？',
+  reason:'初期設定',
   is_published:true,
   is_checked:true
 )
@@ -112,6 +113,7 @@ Theme.create!(
 Theme.create!(
   id:2,
   name:'どんな働き方がある？',
+  reason:'初期設定',
   is_published:true,
   is_checked:true
 )
@@ -119,6 +121,7 @@ Theme.create!(
 Theme.create!(
   id:3,
   name:'どんな人が向いてると思う？',
+  reason:'初期設定',
   is_published:true,
   is_checked:true
 )
@@ -126,6 +129,7 @@ Theme.create!(
 Theme.create!(
   id:4,
   name:'何が大変？',
+  reason:'初期設定',
   is_published:true,
   is_checked:true
 )
@@ -133,6 +137,7 @@ Theme.create!(
 Theme.create!(
   id:5,
   name:'お給料はどのくらい？',
+  reason:'初期設定',
   is_published:true,
   is_checked:true
 )

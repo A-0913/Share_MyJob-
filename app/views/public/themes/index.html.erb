@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-      <div class="top-genres mt-4">ジャンル検索欄
+      <div class="mt-4">ジャンル検索欄
       <%#= render 'admin/genres/genre_sidebar', genres: @genres%>
       </div>
     </div>
@@ -34,7 +34,7 @@
               <tr align="center">
                 <td class="bg-white"><%= theme.name %></td>
                 <td class="bg-white"><%= link_to "みんなの情報を見る" , theme_path(theme) %></td>
-                <td class="bg-white">👀<%#= theme.interests.count %></td>
+                <td class="bg-white"><%= theme.interest %></td>
               </tr>
             <% end %>
           </tbody>
