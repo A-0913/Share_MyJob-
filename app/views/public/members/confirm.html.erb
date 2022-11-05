@@ -8,6 +8,6 @@
 
   <div class="row justify-content-center mt-4">
       <%= link_to "退会する", members_withdraw_path, method: :patch, data: { confirm: "本当に退会しますか？" }, class: 'btn btn-danger col-lg-2' %>
-      <%= link_to "退会しない" , members_path(@member), class: 'btn btn-success col-lg-2 offset-1' %>
+      <%= link_to "退会しない" , member_path(@member), class: 'btn btn-success col-lg-2 offset-1' %>
   </div>
  </div>
