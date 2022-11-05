@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :members, only: [:update, :edit, :show]
+    resources :themes, only: [:new, :create, :index, :show]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

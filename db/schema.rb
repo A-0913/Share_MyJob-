@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2022_11_05_011938) do
   end
 
   create_table "themes", force: :cascade do |t|
-    t.integer "job_id", null: false
+    t.integer "job_id"
     t.string "name", null: false
     t.string "interest"
     t.boolean "is_published", default: false, null: false

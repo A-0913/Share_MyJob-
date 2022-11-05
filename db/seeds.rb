@@ -101,3 +101,38 @@ Genre.create!(
   id:14,
   name:'その他'
 )
+
+Theme.create!(
+  id:1,
+  name:'どんな仕事をしてる？',
+  is_published:true,
+  is_checked:true
+)
+
+Theme.create!(
+  id:2,
+  name:'どんな働き方がある？',
+  is_published:true,
+  is_checked:true
+)
+
+Theme.create!(
+  id:3,
+  name:'どんな人が向いてると思う？',
+  is_published:true,
+  is_checked:true
+)
+
+Theme.create!(
+  id:4,
+  name:'何が大変？',
+  is_published:true,
+  is_checked:true
+)
+
+Theme.create!(
+  id:5,
+  name:'お給料はどのくらい？',
+  is_published:true,
+  is_checked:true
+)

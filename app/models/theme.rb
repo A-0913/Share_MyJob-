@@ -1,3 +1,3 @@
 class Theme < ApplicationRecord
-  validates :last_name, presence: true
+  validates :name, presence: true
 end
