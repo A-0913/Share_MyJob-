@@ -1,8 +1,46 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <div class="top-genres mt-4">
-      <%= render 'admin/genres/genre_sidebar', genres: @genres%>
+    <div class="col-sm-3">
+      <div class="top-genres mt-4">ジャンル検索欄
+      <%#= render 'admin/genres/genre_sidebar', genres: @genres%>
       </div>
     </div>
-    <div class="col-md-9 ">
+    <div class="col-sm-9">
+      <div class="row pt-4 pb-4">
+        <table  border="1" width="50%" >
+          <thead>
+            <tr align="center">
+              <th class="bg-primary text-white">職業名</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr align="center">
+              <td class="bg-white"><%#= @job.name %>***</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row pt-2 pb-4">
+        <table  border="1"  rules=rows width="80%" >
+          <thead>
+            <tr align="center">
+              <th width="50%" class="bg-primary text-white" >テーマ</th>
+              <th width="30%"class="bg-primary text-white"></th>
+              <th width="20%" class="bg-primary text-white">関心度</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @themes.each do |theme| %>
+              <tr align="center">
+                <td class="bg-white"><%= theme.name %></td>
+                <td class="bg-white"><%= link_to "みんなの情報を見る" , theme_path(theme) %></td>
+                <td class="bg-white">👀<%#= theme.interests.count %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="row my-4 ">
+        <%= link_to "テーマを追加する" , new_theme_path, class: 'btn btn-success col-sm-4' %>
+      </div>
+    </div>
