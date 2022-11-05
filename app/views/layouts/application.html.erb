@@ -44,13 +44,18 @@
               <!--管理者ログイン時-->
               <% elsif admin_signed_in? %>
                 <li class="nav-item mx-3">
+                  <%= link_to admin_members_path, class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-star">会員一覧</i>
+                  <% end %>
+                </li>
+                <li class="nav-item mx-3">
                   <%#= link_to members_my_page_path(current_member), class: 'nav-link text-dark' do %>
                     <i class="fa-solid fa-star">職業一覧</i>
                   <%# end %>
                 </li>
                 <li class="nav-item mx-3">
-                  <%= link_to admin_members_path, class: 'nav-link text-dark' do %>
-                    <i class="fa-solid fa-star">会員一覧</i>
+                  <%= link_to admin_genres_path, class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-star">ジャンル一覧</i>
                   <% end %>
                 </li>
                 <li class="nav-item mx-3">
