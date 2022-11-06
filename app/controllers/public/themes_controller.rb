@@ -9,7 +9,7 @@ class Public::ThemesController < ApplicationController
     @theme = Theme.find(params[:id])
     @theme.update(interest: @theme.interest + 1)
     #@job = Job.find(params[:id])
-    #@theme_comment = Comment.new
+    #@comment = Comment.new
 
   end
 
