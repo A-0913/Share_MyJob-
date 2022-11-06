@@ -15,7 +15,7 @@
           </thead>
           <tbody>
             <tr align="center">
-              <td class="bg-white"><%#= @job.name %>***</td>
+              <td class="bg-white"><%= @job.name %></td>
             </tr>
           </tbody>
         </table>
@@ -33,7 +33,7 @@
             <% @themes.each do |theme| %>
               <tr align="center">
                 <td class="bg-white"><%= theme.name %></td>
-                <td class="bg-white"><%= link_to "みんなの情報を見る" , theme_path(theme) %></td>
+                <td class="bg-white"><%= link_to "みんなの情報を見る" , job_theme_path(@job,theme) %></td>
                 <td class="bg-white"><%= theme.interest %></td>
               </tr>
             <% end %>
@@ -41,6 +41,6 @@
         </table>
       </div>
       <div class="row my-4 ">
-        <%= link_to "テーマを追加する" , new_theme_path, class: 'btn btn-success col-sm-4' %>
+        <%= link_to "テーマを追加する" , new_job_theme_path(@job), class: 'btn btn-success col-sm-4' %>
       </div>
     </div>

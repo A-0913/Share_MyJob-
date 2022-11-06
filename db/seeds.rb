@@ -102,6 +102,36 @@ Genre.create!(
   name:'その他'
 )
 
+Job.create!(
+  id:1,
+  member_id:1,
+  genre_id:2,
+  name:'会計士',
+  reason:'初期設定',
+  is_published:true,
+  is_checked:true
+)
+
+Job.create!(
+  id:2,
+  member_id:2,
+  genre_id:12,
+  name:'システムエンジニア',
+  reason:'初期設定',
+  is_published:true,
+  is_checked:true
+)
+
+Job.create!(
+  id:3,
+  member_id:1,
+  genre_id:4,
+  name:'銀行員',
+  reason:'既存の職業になかったため',
+  is_published:false,
+  is_checked:false
+)
+
 Theme.create!(
   id:1,
   member_id:1,
@@ -145,4 +175,63 @@ Theme.create!(
   reason:'初期設定',
   is_published:true,
   is_checked:true
+)
+
+Theme.create!(
+  id:6,
+  member_id:1,
+  name:'残業ははどのくらい？',
+  reason:'初期設定',
+  is_published:false,
+  is_checked:false
+)
+
+ThemeInJob.create!(
+  job_id: 1,
+  theme_id: 1
+)
+
+ThemeInJob.create!(
+  job_id: 1,
+  theme_id: 2
+)
+
+ThemeInJob.create!(
+  job_id: 1,
+  theme_id: 3
+)
+
+ThemeInJob.create!(
+  job_id: 1,
+  theme_id: 4
+)
+
+ThemeInJob.create!(
+  job_id: 1,
+  theme_id: 5
+)
+
+ThemeInJob.create!(
+  job_id: 2,
+  theme_id: 1
+)
+
+ThemeInJob.create!(
+  job_id: 2,
+  theme_id: 2
+)
+
+ThemeInJob.create!(
+  job_id: 2,
+  theme_id: 3
+)
+
+ThemeInJob.create!(
+  job_id: 2,
+  theme_id: 4
+)
+
+ThemeInJob.create!(
+  job_id: 2,
+  theme_id: 5
 )
