@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="mt-4">ジャンル検索欄
+      <%#= render 'admin/genres/genre_sidebar', genres: @genres%>
+      </div>
+    </div>
+    <div class="col-sm-9 py-4">
+      <table  border="1" width="80%"  >
+        <thead>
+          <tr align="center">
+            <th class="bg-primary text-white"><%#= @job.name %>***</th>
+          </tr>
+        </thead>
+      </table>
+      <table  border="1" width="80%" >
+        <thead>
+          <tr align="center">
+            <th class="bg-white text-black"><%#= @job.name %>***</th>
+          </tr>
+        </thead>
+      </table>
+      <div class="row">
+        <!--コメントは部分テンプレートで！-->
+        <%#= render 'public/comments/comments', theme: @theme %>
+      </div>
+      <div class="row">
+        <!--コメントは部分テンプレートで！-->
+        <%#= render 'public/comments/form', theme: @theme, comment: @comment %>
+      </div>
+    </div>
+  </div>
+</div>

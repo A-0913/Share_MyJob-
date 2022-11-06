@@ -10,7 +10,7 @@
       <div class="row">
         <h4>登録情報</h4>
         <!--ゲストログインが編集画面にいけないようにするにはどうすればいいか-->
-        <% if @member == current_member %>
+        <% if @member.email != 'guest@example.com' %>
         <h5 class="mx-5"><%= link_to "編集する" , edit_member_path(@member), class: 'btn btn-success' %></h5>
         <% end %>
       </div>
