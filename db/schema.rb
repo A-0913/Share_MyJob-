@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_05_011938) do
+ActiveRecord::Schema.define(version: 2022_11_06_064611) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(version: 2022_11_05_011938) do
   end
 
   create_table "themes", force: :cascade do |t|
-    t.integer "job_id"
     t.string "name", null: false
     t.string "reason", null: false
     t.integer "interest", default: 0, null: false
@@ -85,6 +84,7 @@ ActiveRecord::Schema.define(version: 2022_11_05_011938) do
     t.boolean "is_checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "member_id", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
