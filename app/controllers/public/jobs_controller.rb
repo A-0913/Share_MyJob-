@@ -22,7 +22,7 @@ class Public::JobsController < ApplicationController
     @job.themes = @themes
       if @job.save
         flash[:notice] = "職業が申請されました。承認がおりると、職業一覧に表示されます。しばらくお待ちください。"
-        redirect_to job_path(@job)
+        redirect_to jobs_path
       else
       byebug
         flash[:notice] = "職業の申請ができませんでした。申請内容をご確認ください。"
