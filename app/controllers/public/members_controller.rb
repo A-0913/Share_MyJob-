@@ -19,12 +19,12 @@ class Public::MembersController < ApplicationController
 
   def member_jobs
     @member = Member.find(params[:id])
-    @jobs = @member.jobs.page(params[:page]).per(10)
+    @jobs = @member.jobs.order("created_at DESC").page(params[:page]).per(10)
   end
 
   def member_themes
     @member = Member.find(params[:id])
-    @themes = @member.themes.page(params[:page]).per(10)
+    @themes = @member.themes.order("created_at DESC").page(params[:page]).per(10)
   end
 
   def confirm
