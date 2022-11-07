@@ -6,7 +6,6 @@
     <table class="table table-hover table-bordered py-4">
       <thead>
           <tr>
-            <!--<th class="table-dark text-light">職業</th>-->
             <th class="table-dark text-light">テーマ内容</th>
             <th class="table-dark text-light">投稿者</th>
             <th class="table-dark text-light">追加理由</th>
@@ -18,11 +17,6 @@
       <tbody>
         <% @themes.each do |theme| %>
           <tr>
-            <!--<td class="table-light">-->
-            <!--  <%# theme.jobs.each do |job| %>-->
-            <!--    <%#= job.name %>,-->
-            <!--  <%# end %>-->
-            <!--</td>-->
             <td class="table-light"><%= theme.name %></td>
             <td class="table-light"><%= theme.member.nickname %></td>
             <td class="table-light"><%= theme.reason %></td>
