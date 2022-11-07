@@ -21,18 +21,18 @@
           <td class="table-light"><%= job.name %></td>
           <td class="table-light"><%= job.reason %></td>
           <td class="table-light">
-                <% if job.is_published == false %>
-                  <p class="text-danger font-weight-bold">非公開</p>
-                <% else %>
-                  <p class="text-success font-weight-bold">公開</p>
-                <% end %>
+            <% if job.is_published == false %>
+              <p class="text-danger font-weight-bold">非公開</p>
+            <% else %>
+              <p class="text-success font-weight-bold">公開</p>
+            <% end %>
           </td>
           <td class="table-light">
-                <% if job.is_checked == false %>
-                  <p class="text-success font-weight-bold">未確認</p>
-                <% else %>
-                  <p class="text-success font-weight-bold">確認済み</p>
-                <% end %>
+            <% if job.is_checked == false %>
+              <p class="text-success font-weight-bold">未確認</p>
+            <% else %>
+              <p class="text-success font-weight-bold">確認済み</p>
+            <% end %>
           </td>
         </tr>
       <% end %>

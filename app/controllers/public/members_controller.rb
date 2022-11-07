@@ -24,7 +24,7 @@ class Public::MembersController < ApplicationController
 
   def member_themes
     @member = Member.find(params[:id])
-
+    @themes = @member.themes.page(params[:page]).per(10)
   end
 
   def confirm
