@@ -1,14 +1,16 @@
 class Public::JobsController < ApplicationController
-
+  before_action :authenticate_member!
 
   def index
     @jobs = Job.where(is_published: true)
+    @member = current_member
   end
 
   def show
     @job = Job.find(params[:id])
     @themes = @job.themes.where(is_published: true)
     @job.update(interest: @job.interest + 1)
+    @member = current_member
   end
 
 

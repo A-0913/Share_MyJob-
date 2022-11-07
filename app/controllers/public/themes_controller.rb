@@ -1,5 +1,5 @@
 class Public::ThemesController < ApplicationController
-
+before_action :authenticate_member!
 
   def show
     @theme = Theme.find(params[:id])
