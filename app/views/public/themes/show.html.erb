@@ -9,14 +9,14 @@
       <table  border="1" width="80%"  >
         <thead>
           <tr align="center">
-            <th class="bg-primary text-white"><%#= @job.name %>***</th>
+            <th class="bg-primary text-white"><%= @job.name %></th>
           </tr>
         </thead>
       </table>
       <table  border="1" width="80%" >
         <thead>
           <tr align="center">
-            <th class="bg-white text-black"><%#= @job.name %>***</th>
+            <th class="bg-white text-black"><%= @theme.name %></th>
           </tr>
         </thead>
       </table>
@@ -27,6 +27,12 @@
       <div class="row">
         <!--コメントは部分テンプレートで！-->
         <%#= render 'public/comments/form', theme: @theme, comment: @comment %>
+      </div>
+
+      <div class="row pb-4">
+        <div class="w-75">
+          <%= link_to "テーマ一覧へ戻る" , job_path(@job), class: 'btn btn-primary offset-3 col-sm-5' %>
+        </div>
       </div>
     </div>
   </div>

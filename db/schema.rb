@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_06_064611) do
+ActiveRecord::Schema.define(version: 2022_11_06_072100) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -58,6 +58,18 @@ ActiveRecord::Schema.define(version: 2022_11_06_064611) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "jobs", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.integer "genre_id", null: false
+    t.string "name", null: false
+    t.string "reason", null: false
+    t.integer "interest", default: 0, null: false
+    t.boolean "is_published", default: false, null: false
+    t.boolean "is_checked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "members", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -74,6 +86,13 @@ ActiveRecord::Schema.define(version: 2022_11_06_064611) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
+  end
+
+  create_table "theme_in_jobs", force: :cascade do |t|
+    t.integer "job_id", null: false
+    t.integer "theme_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "themes", force: :cascade do |t|

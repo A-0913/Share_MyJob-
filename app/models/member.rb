@@ -11,6 +11,11 @@ class Member < ApplicationRecord
 
   has_one_attached :profile_image
 
+  has_many :jobs, dependent: :destroy
+  has_many :themes, dependent: :destroy
+
+
+
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/No_image.png')

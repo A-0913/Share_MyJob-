@@ -1,26 +1,25 @@
 class Public::ThemesController < ApplicationController
-
-  def index
-    @themes = Theme.all
-    #@job = Job.find(params[:id])
-  end
+before_action :authenticate_member!
 
   def show
     @theme = Theme.find(params[:id])
     @theme.update(interest: @theme.interest + 1)
-    #@job = Job.find(params[:id])
+    @job = Job.find(params[:job_id])
     #@comment = Comment.new
-
   end
 
   def new
+    @job = Job.find(params[:job_id])
   end
 
   def create
     @theme = Theme.new(theme_params)
+    @theme.member_id = current_member.id
+    @job = Job.find(params[:job_id])
+    @theme.jobs = [@job]
     if @theme.save
       flash[:notice] = "テーマが申請されました。承認がおりると、テーマ一覧に表示されます。しばらくお待ちください。"
-      redirect_to themes_path
+      redirect_to job_path(@job)
     else
       flash[:notice] = "テーマの申請ができませんでした。申請内容をご確認ください。"
       render 'new'

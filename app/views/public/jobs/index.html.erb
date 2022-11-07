@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="mt-4">ジャンル検索欄
+      <%#= render 'admin/genres/genre_sidebar', genres: @genres%>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <div class="row py-4">
+        <table  border="1"  rules=rows width="80%" >
+          <thead>
+            <tr align="center">
+              <th width="50%" class="bg-primary text-white" >職業名</th>
+              <th width="20%" class="bg-primary text-white">関心度</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @jobs.each do |job| %>
+              <tr align="center">
+                <td class="bg-white"><%= link_to job.name, job_path(job) %></td>
+                <td class="bg-white"><%= job.interest %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="row my-4 ">
+        <% if @member.email != 'guest@example.com' %>
+          <%= link_to "職業を追加する" , new_job_path, class: 'btn btn-success col-sm-4' %>
+        <% end %>  
+      </div>
+    </div>
+  </div>
+</div>
