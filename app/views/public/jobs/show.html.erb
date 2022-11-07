@@ -34,7 +34,8 @@
               <tr align="center">
                 <td class="bg-white"><%= theme.name %></td>
                 <td class="bg-white"><%= link_to "みんなの情報を見る" , job_theme_path(@job,theme) %></td>
-                <td class="bg-white"><%= theme.interest %></td>
+                <!--<td class="bg-white"><%#= @job.theme_in_jobs.find_by(theme_id: theme.id).interest %></td>-->
+                <td class="bg-white"><%= ThemeInJob.find_by(job_id: @job.id, theme_id: theme.id).interest %></td>
               </tr>
             <% end %>
           </tbody>
