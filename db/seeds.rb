@@ -235,3 +235,28 @@ ThemeInJob.create!(
   job_id: 2,
   theme_id: 5
 )
+
+ThemeInJob.create!(
+  job_id: 3,
+  theme_id: 1
+)
+
+ThemeInJob.create!(
+  job_id: 3,
+  theme_id: 2
+)
+
+ThemeInJob.create!(
+  job_id: 3,
+  theme_id: 3
+)
+
+ThemeInJob.create!(
+  job_id: 3,
+  theme_id: 4
+)
+
+ThemeInJob.create!(
+  job_id: 3,
+  theme_id: 5
+)
