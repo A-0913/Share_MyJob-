@@ -30,6 +30,11 @@
                   <% end %>
                 </li>
                 <li class="nav-item mx-3">
+                  <%= link_to jobs_path, class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-star">職業一覧</i>
+                  <% end %>
+                </li>
+                <li class="nav-item mx-3">
                   <%= link_to member_path(current_member), class: 'nav-link text-dark' do %>
                     <i class="fa-solid fa-user-gear">マイページ</i>
                   <% end %>
@@ -49,9 +54,9 @@
                   <% end %>
                 </li>
                 <li class="nav-item mx-3">
-                  <%#= link_to members_my_page_path(current_member), class: 'nav-link text-dark' do %>
+                  <%= link_to admin_jobs_path, class: 'nav-link text-dark' do %>
                     <i class="fa-solid fa-star">職業一覧</i>
-                  <%# end %>
+                  <% end %>
                 </li>
                 <li class="nav-item mx-3">
                   <%= link_to admin_genres_path, class: 'nav-link text-dark' do %>
@@ -98,7 +103,16 @@
       <%= yield %>
     </main>
     <footer class="p-3">
-      <div class="text-center">© 2022,Share MyJob, © 2022 Japan</div>
+      <div class = "row">
+        <div class="col-sm-1">
+          <% unless admin_signed_in? %>
+            <%= link_to  new_admin_session_path, class: 'nav-link text-dark' do %>
+              <i class="fa-solid fa-key"></i>
+             <% end %>
+          <% end %>
+        </div>
+        <div class="text-center col-sm-11">© 2022,Share MyJob, © 2022 Japan</div>
+      </div>
     </footer>
   </body>
 </html>

@@ -79,28 +79,24 @@ Genre.create!(
 
 Genre.create!(
   id:10,
-  name:'鉱業'
-)
-
-Genre.create!(
-  id:11,
   name:'医療・福祉'
 )
 
 Genre.create!(
-  id:12,
+  id:11,
   name:'情報通信'
 )
 
 Genre.create!(
-  id:13,
+  id:12,
   name:'教育'
 )
 
 Genre.create!(
-  id:14,
+  id:13,
   name:'その他'
 )
+
 
 Job.create!(
   id:1,
@@ -233,5 +229,30 @@ ThemeInJob.create!(
 
 ThemeInJob.create!(
   job_id: 2,
+  theme_id: 5
+)
+
+ThemeInJob.create!(
+  job_id: 3,
+  theme_id: 1
+)
+
+ThemeInJob.create!(
+  job_id: 3,
+  theme_id: 2
+)
+
+ThemeInJob.create!(
+  job_id: 3,
+  theme_id: 3
+)
+
+ThemeInJob.create!(
+  job_id: 3,
+  theme_id: 4
+)
+
+ThemeInJob.create!(
+  job_id: 3,
   theme_id: 5
 )

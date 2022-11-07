@@ -1,0 +1,46 @@
+  <div class = "container">
+    <div class = "row py-4">
+      <h3>職業一覧</h3>
+    </div>
+
+    <table class="table table-hover table-bordered ">
+      <thead class="thead-dark">
+        <tr>
+          <th class="header">職業id</th>
+          <th class="header">ジャンル</th>
+          <th class="header">職業名</th>
+          <th class="header">投稿者</th>
+          <th class="header">表示ステータス</th>
+          <th class="header">確認ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @jobs.each do |job| %>
+          <tr>
+            <td class="table-light"><%= job.id %></td>
+            <td class="table-light"><%= job.genre.name %></td>
+            <td class="table-light">
+              <%= link_to job.name , admin_job_path(job) %>
+            </td>
+            <td class="table-light">
+              <%= link_to job.member.nickname , member_path(job.member) %>
+            </td>
+            <td class="table-light">
+              <% if job.is_published == false %>
+                <p class="text-danger font-weight-bold">未公開</p>
+              <% else %>
+                <p class="text-success font-weight-bold">未公開</p>
+              <% end %>
+            </td>
+            <td class="table-light">
+              <% if job.is_checked == false %>
+                <p class="text-danger font-weight-bold">未確認</p>
+              <% else %>
+                <p class="text-success font-weight-bold">確認済み</p>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
