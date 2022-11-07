@@ -2,9 +2,10 @@ class Public::ThemesController < ApplicationController
 before_action :authenticate_member!
 
   def show
-    @theme = Theme.find(params[:id])
-    @theme.update(interest: @theme.interest + 1)
     @job = Job.find(params[:job_id])
+    @theme = @job.themes.find(params[:id])
+    @theme_job = ThemeInJob.find_by(job_id: @job.id, themes: @theme.id)
+    @theme_job.update(interest: @theme_job.interest+1)
     #@comment = Comment.new
   end
 

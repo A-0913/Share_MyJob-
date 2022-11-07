@@ -1,0 +1,48 @@
+  <div class = "container">
+    <div class = "row py-4">
+      <h3>テーマ一覧（<%= @job.name%>）</h3>
+    </div>
+
+    <table class="table table-hover table-bordered py-4">
+      <thead>
+          <tr>
+            <th class="table-dark text-light">テーマ内容</th>
+            <th class="table-dark text-light">投稿者</th>
+            <th class="table-dark text-light">追加理由</th>
+            <th class="table-dark text-light">表示ステータス</th>
+            <th class="table-dark text-light">確認ステータス</th>
+            <th class="table-dark text-light"></th> </th>
+          </tr>
+      </thead>
+      <tbody>
+        <% @themes.each do |theme| %>
+          <tr>
+            <td class="table-light"><%= theme.name %></td>
+            <td class="table-light"><%= theme.member.nickname %></td>
+            <td class="table-light"><%= theme.reason %></td>
+            <td class="table-light">
+              <% if theme.is_published == false %>
+                <div class="text-danger font-weight-bold">未公開</div>
+              <% else %>
+                <div class="text-success font-weight-bold">公開</div>
+              <% end %>
+            </td>
+            <td class="table-light">
+              <% if theme.is_checked == false %>
+                <div class="text-danger font-weight-bold">未確認</div>
+              <% else %>
+                <div class="text-success font-weight-bold">確認済み</div>
+              <% end %>
+            </td>
+            <td class="table-light" nowrap>
+              <%= link_to "編集する" , edit_admin_theme_path(theme), class: 'btn btn-success' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="row py-4 ">
+      <%= link_to "職業一覧へ戻る" , admin_themes_path, class: 'btn btn-primary offset-1 col-sm-4' %>
+    </div>
+
+  </div>
