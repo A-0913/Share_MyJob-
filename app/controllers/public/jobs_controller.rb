@@ -8,7 +8,7 @@ class Public::JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     @themes = @job.themes.where(is_published: true)
-    #@job.update(interest: job.interest + 1)
+    @job.update(interest: @job.interest + 1)
   end
 
 
