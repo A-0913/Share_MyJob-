@@ -8,6 +8,7 @@ class Admin::MembersController < ApplicationController
     @member = Member.find(params[:id])
   end
 
+
   def edit
     @member = Member.find(params[:id])
   end
@@ -20,6 +21,16 @@ class Admin::MembersController < ApplicationController
       else
          render :edit
       end
+  end
+
+  def member_jobs
+    @member = Member.find(params[:id])
+    @jobs = @member.jobs.order("created_at DESC").page(params[:page]).per(10)
+  end
+
+  def member_themes
+    @member = Member.find(params[:id])
+    @themes = @member.themes.order("created_at DESC").page(params[:page]).per(10)
   end
 
   private

@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   get 'admin'=> 'admin/homes#top'
   get 'members/confirm'=> 'public/members#confirm'
   patch 'members/withdraw'=> 'public/members#withdraw'
+  get 'members/:id/member_jobs', to: 'public/members#member_jobs' ,as: 'member_jobs'
+  get 'members/:id/member_themes', to: 'public/members#member_themes' ,as: 'member_themes'
+  get 'admin/:id/member_themes', to: 'admin/members#member_jobs' ,as: 'admin_member_jobs'
+  get 'admin/:id/member_themes', to: 'admin/members#member_themes' ,as: 'admin_member_themes'
 
   namespace :admin do
     resources :members, only: [:update, :edit, :show, :index]
