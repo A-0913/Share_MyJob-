@@ -4,9 +4,9 @@ class Admin::ThemesController < ApplicationController
   end
 
   def show
-    @Job = Job.find(params[:id])
-    # @themes = @job.themes.all
-    # @theme = Theme.where(job_id: @Job)
+    @job = Job.find(params[:id])
+    # byebug
+    @themes = @job.themes.order("updated_at DESC")
   end
 
   def edit
