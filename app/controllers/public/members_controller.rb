@@ -17,6 +17,16 @@ class Public::MembersController < ApplicationController
     end
   end
 
+  def member_jobs
+    @member = Member.find(params[:id])
+    @jobs = @member.jobs.page(params[:page]).per(10)
+  end
+
+  def member_themes
+    @member = Member.find(params[:id])
+
+  end
+
   def confirm
     @member = current_member
   end
