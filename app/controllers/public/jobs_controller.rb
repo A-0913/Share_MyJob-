@@ -2,8 +2,15 @@ class Public::JobsController < ApplicationController
   before_action :authenticate_member!
 
   def index
-    @jobs = Job.where(is_published: true)
-    @member = current_member
+    @genres = Genre.all
+    if params[:genre_id]
+      @member = current_member
+      @genre = Genre.find(params[:genre_id])
+      @jobs = @genre.jobs
+    else
+      @jobs = Job.where(is_published: true)
+      @member = current_member
+    end
   end
 
   def show
