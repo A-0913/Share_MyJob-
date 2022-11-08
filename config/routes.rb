@@ -34,7 +34,9 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :members, only: [:update, :edit, :show]
     resources :jobs, only: [:new, :create, :index, :show] do
-      resources :themes, only: [:new, :create, :show]
+      resources :themes, only: [:new, :create, :show] do
+         resources :post_comments, only: [:create, :destroy]
+      end
     end
   end
 
