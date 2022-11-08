@@ -1,0 +1,25 @@
+ <div class="container">
+  <div class="row py-4">
+    <table>
+      <tbody>
+        <% theme.theme_comments.each do |theme_comment| %>
+        <tr>
+          <td>
+            <%= link_to member_path(theme_comment) do %>
+              <%= image_tag theme_comment.member.get_profile_image(100,100) %>
+              <%= theme_comment.member.name %>
+              <%= theme_comment.member.belong %>
+            <% end %>
+          </td>
+          <td><%= theme_comment.comment %></td>
+          <td>
+            <% if theme_comment.member == current_member %>
+              <%= link_to 'Destroy', theme_theme_comment_path(theme_comment.theme,theme_comment), method: :delete, remote: true,  data: { confirm: '本当に消しますか？' },  class: "btn btn-sm btn-danger pull-right"%>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

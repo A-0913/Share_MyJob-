@@ -20,13 +20,43 @@
           </tr>
         </thead>
       </table>
-      <div class="row">
-        <!--コメントは部分テンプレートで！-->
-        <%#= render 'public/comments/comments', theme: @theme %>
+       <div class="row py-4">
+        <table style="width: 80%" class=" pb-4">
+          <tbody>
+            <% @comments.each do |comment| %>
+            <tr>
+              <td style="width: 20%" >
+                <%= image_tag comment.member.get_profile_image(70,70) %>
+              </td>
+              <td rowspan="2" bgcolor="white" style="width: 60%"><%= comment.comment %></td>
+              <td>
+                <% if comment.member == current_member %>
+                  <%= link_to 'Destroy', job_theme_comment_path(@job ,@theme ,@post_comment), method: :delete, remote: true,  data: { confirm: '本当に消しますか？' },  class: "btn btn-sm btn-danger pull-right"%>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 20%">
+                <%= link_to member_path(comment.member) do %>
+                  <%= comment.member.nickname %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
+        <!--コメント一覧は部分テンプレートで！-->
+        <%#= render 'public/comments/comments', theme: @theme %>
       <div class="row">
-        <!--コメントは部分テンプレートで！-->
+        <div class="w-75">
+        <%= form_with model: [@theme, @comment], url:job_theme_comments_path(@job,@theme), local: false do |f| %>
+          <%= f.text_area :comment, rows: '5', placeholder: "コメントをこちらに",  class: "col-sm-6" %>
+          <%= f.submit "送信" ,  class: "col-sm-2"%>
+        <% end %>
+        <!--コメントフォームは部分テンプレートで！-->
         <%#= render 'public/comments/form', theme: @theme, comment: @comment %>
+        </div>
       </div>
 
       <div class="row py-4">
