@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <h3  class="py-3">職業の中から "<%= @word %>"を検索した結果</h3>
+
+  </div>
+  <div class="row">
+    <table class="table table-hover table-inverse">
+      <tbody>
+          <tr class="bg-primary text-white">
+            <th>ヒットした職業名</th>
+            <th>リンク先</th>
+          </tr>
+          <tr>
+            <% @jobs.each do |job| %>
+            <td class="bg-light"><%= job.name %></td>
+            <td class="bg-light"><%= link_to 'テーマ一覧へ移動する', job_path(job)  %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

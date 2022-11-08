@@ -12,6 +12,7 @@
           <th class="header">投稿者</th>
           <th class="header">表示ステータス</th>
           <th class="header">確認ステータス</th>
+          <th class="header">リンク先</th>
         </tr>
       </thead>
       <tbody>
@@ -37,6 +38,13 @@
                 <p class="text-danger font-weight-bold">未確認</p>
               <% else %>
                 <p class="text-success font-weight-bold">確認済み</p>
+              <% end %>
+            </td>
+            <td class="table-light">
+              <% if job.is_published == true %>
+                <%= link_to "テーマ一覧へ進む" , job_path(job) %>
+              <% else %>
+                <p class="text-danger font-weight-bold">未公開です</p>
               <% end %>
             </td>
           </tr>

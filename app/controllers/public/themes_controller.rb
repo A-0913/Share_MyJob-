@@ -6,7 +6,8 @@ before_action :authenticate_member!
     @theme = @job.themes.find(params[:id])
     @theme_job = ThemeInJob.find_by(job_id: @job.id, themes: @theme.id)
     @theme_job.update(interest: @theme_job.interest+1)
-    #@comment = Comment.new
+    @comment = Comment.new
+    @comments = Comment.where(theme_id: @theme.id).where(job_id: @job.id)
   end
 
   def new
@@ -26,6 +27,9 @@ before_action :authenticate_member!
       render 'new'
     end
   end
+
+
+
 
   private
     def theme_params

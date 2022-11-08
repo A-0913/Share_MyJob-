@@ -20,8 +20,9 @@ Rails.application.routes.draw do
   patch 'members/withdraw'=> 'public/members#withdraw'
   get 'members/:id/member_jobs', to: 'public/members#member_jobs' ,as: 'member_jobs'
   get 'members/:id/member_themes', to: 'public/members#member_themes' ,as: 'member_themes'
-  get 'admin/:id/member_themes', to: 'admin/members#member_jobs' ,as: 'admin_member_jobs'
+  get 'admin/:id/member_jobs', to: 'admin/members#member_jobs' ,as: 'admin_member_jobs'
   get 'admin/:id/member_themes', to: 'admin/members#member_themes' ,as: 'admin_member_themes'
+  get "search" => "public/searches#search"
 
   namespace :admin do
     resources :members, only: [:update, :edit, :show, :index]
@@ -34,7 +35,9 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :members, only: [:update, :edit, :show]
     resources :jobs, only: [:new, :create, :index, :show] do
-      resources :themes, only: [:new, :create, :show]
+      resources :themes, only: [:new, :create, :show] do
+         resources :comments, only: [:create, :destroy]
+      end
     end
   end
 

@@ -13,6 +13,7 @@ class Member < ApplicationRecord
 
   has_many :jobs, dependent: :destroy
   has_many :themes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
 
 

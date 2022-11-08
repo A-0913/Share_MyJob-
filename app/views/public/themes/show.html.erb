@@ -1,39 +1,61 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-3">
-      <div class="mt-4">ジャンル検索欄
-      <%#= render 'admin/genres/genre_sidebar', genres: @genres%>
-      </div>
+  <div class="row justify-content-center py-4 ">
+    <table  border="1" width="80%"  >
+      <thead>
+        <tr align="center">
+          <th class="bg-primary text-white"><%= @job.name %></th>
+        </tr>
+      </thead>
+    </table>
+    <table  border="1" width="80%" >
+      <thead>
+        <tr align="center">
+          <th class="bg-white text-black"><%= @theme.name %></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="row justify-content-center py-4">
+    <table style="width: 80% " class=" pb-4">
+      <tbody>
+        <% @comments.each do |comment| %>
+        <tr>
+          <td style="width: 20%" >
+            <%= image_tag comment.member.get_profile_image(70,70) %>
+          </td>
+          <td class="comment-all"><%= comment.comment %></td>
+          <td class="button-area w-70">
+            <% if comment.member == current_member || admin_sign_in? %>
+              <%= link_to 'Destroy', job_theme_comment_path(@job ,@theme ,comment), method: :delete, remote: true,  data: { confirm: '本当に消しますか？' },  class: "btn btn-sm btn-danger pull-right"%>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td style="width: 20%">
+            <%= link_to member_path(comment.member) do %>
+              <%= comment.member.nickname %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+    <!--コメント一覧は部分テンプレートで！-->
+    <%#= render 'public/comments/comments', theme: @theme %>
+  <div class="row justify-content-center">
+    <div class="w-80" >
+      <%= form_with model: [@theme, @comment], url:job_theme_comments_path(@job,@theme), local: false do |f| %>
+        コメント入力フォーム<br>
+        <%= f.text_area :comment, rows: '3', cols: '70',placeholder: "コメントをこちらに" %>
+        <%= f.submit "送信" ,  class: "col-sm-5"%>
+      <% end %>
+      <!--コメントフォームは部分テンプレートで！-->
+      <%#= render 'public/comments/form', theme: @theme, comment: @comment %>
     </div>
-    <div class="col-sm-9 py-4">
-      <table  border="1" width="80%"  >
-        <thead>
-          <tr align="center">
-            <th class="bg-primary text-white"><%= @job.name %></th>
-          </tr>
-        </thead>
-      </table>
-      <table  border="1" width="80%" >
-        <thead>
-          <tr align="center">
-            <th class="bg-white text-black"><%= @theme.name %></th>
-          </tr>
-        </thead>
-      </table>
-      <div class="row">
-        <!--コメントは部分テンプレートで！-->
-        <%#= render 'public/comments/comments', theme: @theme %>
-      </div>
-      <div class="row">
-        <!--コメントは部分テンプレートで！-->
-        <%#= render 'public/comments/form', theme: @theme, comment: @comment %>
-      </div>
+  </div>
 
-      <div class="row py-4">
-        <div class="w-75">
-          <%= link_to "テーマ一覧へ戻る" , job_path(@job), class: 'btn btn-primary offset-3 col-sm-5' %>
-        </div>
-      </div>
-    </div>
+  <div class="row justify-content-center py-4">
+      <%= link_to "テーマ一覧へ戻る" , job_path(@job), class: 'btn btn-primary col-sm-5' %>
   </div>
 </div>
