@@ -6,4 +6,5 @@ class Theme < ApplicationRecord
 
   validates :name, presence: true
   validates :reason, presence: true
+
 end

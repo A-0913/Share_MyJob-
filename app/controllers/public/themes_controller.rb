@@ -7,8 +7,9 @@ before_action :authenticate_member!
     @theme_job = ThemeInJob.find_by(job_id: @job.id, themes: @theme.id)
     @theme_job.update(interest: @theme_job.interest+1)
     @comment = Comment.new
-    @comments = @theme.comments
-    @post_comment = Comment.find_by(theme_id: @theme.id)#show画面の34行目の記述が上手くできない
+    #binding.pry
+    @comments = Comment.where(theme_id: @theme.id).where(job_id: @job.id)
+    #@post_comment = Comment.find_by(theme_id: @theme.id)#show画面の34行目の記述が上手くできない
   end
 
   def new

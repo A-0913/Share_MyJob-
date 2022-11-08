@@ -2,7 +2,11 @@
   <div class="row">
     <div class="col-sm-3">
       <div class="mt-4">
-      <%= render 'admin/genres/genre_sidebar', genres: @genres%>
+        <%#= render 'public/searches/search' %>
+        <%= render partial: 'public/searches/serach' %>
+      </div>
+      <div class="mt-4">
+        <%= render 'admin/genres/genre_sidebar', genres: @genres%>
       </div>
     </div>
     <div class="col-sm-9">
