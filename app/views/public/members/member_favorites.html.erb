@@ -1,0 +1,28 @@
+<div class = "container">
+  <div class = "row py-4">
+    <h3><%= @member.nickname %>さんの参考になったコメント</h3>
+  </div>
+  <table class="table table-hover table-bordered ">
+    <thead class="thead-dark">
+      <tr>
+        <!--<th class="header">職業名</th>-->
+        <th class="header">テーマ</th>
+        <th class="header">コメント</th>
+        <th class="header">コメント投稿者</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @favorite_comments.each do |comment| %>
+        <tr>
+          <!--<td class="table-light"><%#= comment.theme.job.name %></td>-->
+          <td class="table-light"><%= comment.theme.name %></td>
+          <td class="table-light"><%= comment.comment %></td>
+          <td class="table-light"><%= comment.member.nickname %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <!--<div class="row justify-content-center">-->
+  <!--<%#= paginate @favorite_comments %>-->
+  <!--</div>-->
+</div>
