@@ -26,8 +26,21 @@
           <td class="comment-all"><%= comment.comment %></td>
           <td class="button-area w-70">
             <% if comment.member == current_member || admin_sign_in? %>
-              <%= link_to 'Destroy', job_theme_comment_path(@job ,@theme ,comment), method: :delete, remote: true,  data: { confirm: '本当に消しますか？' },  class: "btn btn-sm btn-danger pull-right"%>
+              <%= link_to '削除', job_theme_comment_path(@job ,@theme ,comment), method: :delete, remote: true,  data: { confirm: '本当に消しますか？' },  class: "btn btn-sm btn-danger"%>
             <% end %>
+            <% if comment.favorited_by?(current_member) %>
+              <p>
+                <%= link_to  job_theme_comment_favorites_path(@job, @theme, comment), method: :delete do%>
+                参考になった<%= comment.favorites.count %>
+                <% end %>
+            <% else %>
+              <p>
+                <%= link_to  job_theme_comment_favorites_path(@job, @theme, comment), method: :post   do %>
+                参考になった<%= comment.favorites.count %>
+                <% end %>
+              </p>
+            <% end %>
+              </p>
           </td>
         </tr>
         <tr>
