@@ -27,6 +27,17 @@ Member.create!(
   belong:'転職を考え中',
 )
 
+Member.create!(
+  id:3,
+  last_name:'ゲスト',
+  first_name:'ログイン',
+  nickname:'guest',
+  introduction:'ゲストとしてログイン。',
+  email:'guest@example.com',
+  password:'guest_login',
+  belong:'転職を考え中',
+)
+
 Admin.create!(
   email:'admin@admin.jp',
   password:'password'
@@ -130,7 +141,7 @@ Job.create!(
 
 Theme.create!(
   id:1,
-  member_id:1,
+  member_id:3,
   name:'どんな仕事をしてる？',
   reason:'初期設定',
   is_published:true,
@@ -139,7 +150,7 @@ Theme.create!(
 
 Theme.create!(
   id:2,
-  member_id:1,
+  member_id:3,
   name:'どんな働き方がある？',
   reason:'初期設定',
   is_published:true,
@@ -148,7 +159,7 @@ Theme.create!(
 
 Theme.create!(
   id:3,
-  member_id:1,
+  member_id:3,
   name:'どんな人が向いてると思う？',
   reason:'初期設定',
   is_published:true,
@@ -157,7 +168,7 @@ Theme.create!(
 
 Theme.create!(
   id:4,
-  member_id:1,
+  member_id:3,
   name:'何が大変？',
   reason:'初期設定',
   is_published:true,
@@ -166,21 +177,13 @@ Theme.create!(
 
 Theme.create!(
   id:5,
-  member_id:1,
+  member_id:3,
   name:'お給料はどのくらい？',
   reason:'初期設定',
   is_published:true,
   is_checked:true
 )
 
-Theme.create!(
-  id:6,
-  member_id:1,
-  name:'残業ははどのくらい？',
-  reason:'初期設定',
-  is_published:false,
-  is_checked:false
-)
 
 ThemeInJob.create!(
   job_id: 1,

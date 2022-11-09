@@ -1,5 +1,5 @@
 class Public::JobsController < ApplicationController
-  before_action :authenticate_member!
+  before_action :authenticate_any!
 
   def index
     @genres = Genre.all

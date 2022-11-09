@@ -6,6 +6,7 @@
     <thead class="thead-dark">
       <tr>
         <th class="header">投稿日</th>
+        <th class="header">職業名</th>
         <th class="header">テーマ名</th>
         <th class="header">追加理由</th>
         <th class="header">公開/非公開</th>
@@ -16,6 +17,7 @@
       <% @themes.each do |theme| %>
         <tr>
           <td class="table-light"><%= theme.created_at.strftime('%Y/%m/%d') %></td>
+          <td class="table-light"><%= theme.jobs.first.name %></td>
           <td class="table-light"><%= theme.name %></td>
           <td class="table-light"><%= theme.reason %></td>
           <td class="table-light">

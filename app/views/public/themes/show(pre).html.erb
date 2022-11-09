@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row justify-content-center py-4 ">
+    <table  border="1" width="90%"  >
+      <thead>
+        <tr align="center">
+          <th class="bg-primary text-white"><%= @job.name %></th>
+        </tr>
+      </thead>
+    </table>
+    <table  border="1" width="90%" >
+      <thead>
+        <tr align="center">
+          <th class="bg-white text-black"><%= @theme.name %></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="row justify-content-center py-4">
+    <table style="width: 80% " class=" pb-4">
+      <tbody>
+        <% @comments.each do |comment| %>
+        <tr>
+          <td style="width: 10%">
+            <%= image_tag comment.member.get_profile_image(70,70) %>
+          </td>
+          <td style="width: 55%" class="comment-all"><%= comment.comment %></td>
+          <td>
+            <% if comment.member == current_member || admin_signed_in? %>
+              <%= link_to '削除する', job_theme_comment_path(@job ,@theme ,comment), method: :delete, remote: true,  data: { confirm: '本当に消しますか？' },  class: "btn btn-sm btn-danger "%>
+            <% end %>
+          </td>
+          <td>
+            <div id="comment_<%= comment.id %>">
+              <%= render partial: 'public/favorites/favorite', locals:{job: @job, theme: @theme, comment: comment} %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="width: 10%" class="text-center">
+            <%= link_to member_path(comment.member) do %>
+              <%= comment.member.nickname %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+    <!--コメント一覧は部分テンプレートで！-->
+    <%#= render 'public/comments/comments', theme: @theme %>
+  <div class="row justify-content-center">
+    <div class="w-80" >
+      <%= form_with model: [@theme, @comment], url:job_theme_comments_path(@job,@theme), local: false do |f| %>
+        コメント入力フォーム<br>
+        <%= f.text_area :comment, rows: '3', cols: '70',placeholder: "コメントをこちらに" %>
+        <%= f.submit "送信" ,  class: "col-sm-5"%>
+      <% end %>
+      <!--コメントフォームは部分テンプレートで！-->
+      <%#= render 'public/comments/form', theme: @theme, comment: @comment %>
+    </div>
+  </div>
+
+  <div class="row justify-content-center py-4">
+      <%= link_to "テーマ一覧へ戻る" , job_path(@job), class: 'btn btn-primary col-sm-5' %>
+  </div>
+</div>

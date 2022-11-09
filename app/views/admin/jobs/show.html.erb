@@ -24,7 +24,7 @@
         </tr>
         <tr>
           <th width="30%" class="table-dark text-light">投稿者</th>
-          <td class="table-light"><%= link_to @job.member.nickname , member_path(@job.member) %></td>
+          <td class="table-light"><%= link_to @job.member.nickname , admin_member_path(@job.member) %></td>
         </tr>
         <tr>
           <th width="30%" class="table-dark text-light">表示ステータス</th>

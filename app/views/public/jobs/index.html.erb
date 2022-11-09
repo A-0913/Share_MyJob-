@@ -29,8 +29,10 @@
         </table>
       </div>
       <div class="row justify-content-center py-4 ">
-        <% if @member.email != 'guest@example.com' %>
-          <%= link_to "職業を追加する" , new_job_path, class: 'btn btn-success col-sm-4' %>
+        <% unless admin_signed_in? %>
+          <% if @member.email != 'guest@example.com' %>
+            <%= link_to "職業を追加する" , new_job_path, class: 'btn btn-success col-sm-4' %>
+          <% end %>
         <% end %>
       </div>
     </div>

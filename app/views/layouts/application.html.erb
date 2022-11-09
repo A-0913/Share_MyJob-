@@ -40,6 +40,11 @@
                   <% end %>
                 </li>
                 <li class="nav-item mx-3">
+                  <%= link_to member_favorites_path(current_member), class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-paperclip">参考になった一覧</i>
+                  <% end %>
+                </li>
+                <li class="nav-item mx-3">
                   <%= link_to destroy_member_session_path, class: 'nav-link text-dark' , method: :delete do %>
                   <i class="fa-solid fa-right-from-bracket">ログアウト</i>
                   <% end %>
