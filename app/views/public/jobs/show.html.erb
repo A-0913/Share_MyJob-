@@ -35,8 +35,10 @@
         </table>
       </div>
       <div class="row my-4 justify-content-center">
-        <% if @member.email != 'guest@example.com' %>
-          <%= link_to "テーマを追加する" , new_job_theme_path(@job), class: 'btn btn-success col-sm-4' %>
+        <% unless admin_signed_in? %>
+          <% if @member.email != 'guest@example.com' %>
+            <%= link_to "テーマを追加する" , new_job_theme_path(@job), class: 'btn btn-success col-sm-4' %>
+          <% end %>
         <% end %>
         <%= link_to "職業一覧へ戻る" , jobs_path, class: 'btn btn-primary offset-1 col-sm-4' %>
       </div>

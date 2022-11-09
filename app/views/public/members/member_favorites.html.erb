@@ -5,7 +5,7 @@
   <table class="table table-hover table-bordered ">
     <thead class="thead-dark">
       <tr>
-        <!--<th class="header">職業名</th>-->
+        <th class="header">職業名</th>
         <th class="header">テーマ</th>
         <th class="header">コメント</th>
         <th class="header">コメント投稿者</th>
@@ -14,7 +14,7 @@
     <tbody>
       <% @favorite_comments.each do |comment| %>
         <tr>
-          <!--<td class="table-light"><%#= comment.theme.job.name %></td>-->
+          <td class="table-light"><%= comment.job.name %></td>
           <td class="table-light"><%= comment.theme.name %></td>
           <td class="table-light"><%= comment.comment %></td>
           <td class="table-light"><%= comment.member.nickname %></td>

@@ -1,5 +1,5 @@
 class Public::ThemesController < ApplicationController
-before_action :authenticate_member!
+before_action :authenticate_any!
 
   def show
     @job = Job.find(params[:job_id])

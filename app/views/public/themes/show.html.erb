@@ -25,20 +25,14 @@
           </td>
           <td style="width: 55%" class="comment-all"><%= comment.comment %></td>
           <td>
-            <% if comment.member == current_member || admin_sign_in? %>
+            <% if comment.member == current_member || admin_signed_in? %>
               <%= link_to '削除する', job_theme_comment_path(@job ,@theme ,comment), method: :delete, remote: true,  data: { confirm: '本当に消しますか？' },  class: "btn btn-sm btn-danger "%>
             <% end %>
           </td>
           <td>
-            <% if comment.favorited_by?(current_member) %>
-                <%= link_to  job_theme_comment_favorites_path(@job, @theme, comment), class: "btn btn-info", method: :delete do%>
-                Thanks!<i class="far fa-thumbs-up"></i><%= comment.favorites.count %>
-                <% end %>
-            <% else %>
-                <%= link_to  job_theme_comment_favorites_path(@job, @theme, comment), class: "btn btn-secondary",  method: :post   do %>
-                Thanks!<i class="far fa-thumbs-up"></i><%= comment.favorites.count %>
-                <% end %>
-            <% end %>
+            <div id="comment_<%= comment.id %>">
+              <%= render partial: 'public/favorites/favorite', locals:{job: @job, theme: @theme, comment: comment} %>
+            </div>
           </td>
         </tr>
         <tr>

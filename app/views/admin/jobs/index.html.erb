@@ -24,7 +24,7 @@
               <%= link_to job.name , admin_job_path(job) %>
             </td>
             <td class="table-light">
-              <%= link_to job.member.nickname , member_path(job.member) %>
+              <%= link_to job.member.nickname , admin_member_path(job.member) %>
             </td>
             <td class="table-light">
               <% if job.is_published == false %>

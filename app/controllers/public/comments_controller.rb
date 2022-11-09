@@ -1,5 +1,5 @@
 class Public::CommentsController < ApplicationController
-before_action :authenticate_member!
+before_action :authenticate_any!
 
   def create
     job = Job.find(params[:job_id])
