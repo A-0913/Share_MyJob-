@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'admin/:id/member_jobs', to: 'admin/members#member_jobs' ,as: 'admin_member_jobs'
   get 'admin/:id/member_themes', to: 'admin/members#member_themes' ,as: 'admin_member_themes'
   get "search" => "public/searches#search"
+  get 'members/:id/member_favorites', to: 'public/members#member_favorites' ,as: 'member_favorites'
 
   namespace :admin do
     resources :members, only: [:update, :edit, :show, :index]

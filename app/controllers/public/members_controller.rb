@@ -29,6 +29,12 @@ class Public::MembersController < ApplicationController
       @themes = @member.themes.order("created_at DESC").page(params[:page]).per(10)
     end
 
+    def member_favorites
+      @member = Member.find(params[:id])
+      favorites= Favorite.where(member_id: @member.id).pluck(:comment_id)
+      @favorite_comments = Comment.find(favorites)
+    end
+
     def confirm
       @member = current_member
     end
