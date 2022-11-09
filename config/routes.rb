@@ -36,7 +36,9 @@ Rails.application.routes.draw do
     resources :members, only: [:update, :edit, :show]
     resources :jobs, only: [:new, :create, :index, :show] do
       resources :themes, only: [:new, :create, :show] do
-         resources :comments, only: [:create, :destroy]
+         resources :comments, only: [:create, :destroy] do
+           resource :favorites, only: [:create, :destroy]
+         end
       end
     end
   end
