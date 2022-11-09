@@ -18,7 +18,7 @@
         <% @themes.each do |theme| %>
           <tr>
             <td class="table-light"><%= theme.name %></td>
-            <td class="table-light"><%= theme.member.nickname %></td>
+            <td class="table-light"><%= link_to theme.member.nickname , admin_member_path(theme.member) %></td>
             <td class="table-light"><%= theme.reason %></td>
             <td class="table-light">
               <% if theme.is_published == false %>
