@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row justify-content-center py-4 ">
-    <table  border="1" width="80%"  >
+    <table  border="1" width="90%"  >
       <thead>
         <tr align="center">
           <th class="bg-primary text-white"><%= @job.name %></th>
         </tr>
       </thead>
     </table>
-    <table  border="1" width="80%" >
+    <table  border="1" width="90%" >
       <thead>
         <tr align="center">
           <th class="bg-white text-black"><%= @theme.name %></th>
@@ -20,31 +20,29 @@
       <tbody>
         <% @comments.each do |comment| %>
         <tr>
-          <td style="width: 20%" >
+          <td style="width: 10%">
             <%= image_tag comment.member.get_profile_image(70,70) %>
           </td>
-          <td class="comment-all"><%= comment.comment %></td>
-          <td class="button-area w-70">
+          <td style="width: 55%" class="comment-all"><%= comment.comment %></td>
+          <td>
             <% if comment.member == current_member || admin_sign_in? %>
-              <%= link_to '削除', job_theme_comment_path(@job ,@theme ,comment), method: :delete, remote: true,  data: { confirm: '本当に消しますか？' },  class: "btn btn-sm btn-danger"%>
+              <%= link_to '削除する', job_theme_comment_path(@job ,@theme ,comment), method: :delete, remote: true,  data: { confirm: '本当に消しますか？' },  class: "btn btn-sm btn-danger "%>
             <% end %>
+          </td>
+          <td>
             <% if comment.favorited_by?(current_member) %>
-              <p>
-                <%= link_to  job_theme_comment_favorites_path(@job, @theme, comment), method: :delete do%>
-                参考になった<%= comment.favorites.count %>
+                <%= link_to  job_theme_comment_favorites_path(@job, @theme, comment), class: "btn btn-info", method: :delete do%>
+                Thanks!<i class="far fa-thumbs-up"></i><%= comment.favorites.count %>
                 <% end %>
             <% else %>
-              <p>
-                <%= link_to  job_theme_comment_favorites_path(@job, @theme, comment), method: :post   do %>
-                参考になった<%= comment.favorites.count %>
+                <%= link_to  job_theme_comment_favorites_path(@job, @theme, comment), class: "btn btn-secondary",  method: :post   do %>
+                Thanks!<i class="far fa-thumbs-up"></i><%= comment.favorites.count %>
                 <% end %>
-              </p>
             <% end %>
-              </p>
           </td>
         </tr>
         <tr>
-          <td style="width: 20%">
+          <td style="width: 10%" class="text-center">
             <%= link_to member_path(comment.member) do %>
               <%= comment.member.nickname %>
             <% end %>
