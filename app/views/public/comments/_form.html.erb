@@ -1,0 +1,7 @@
+<% if current_member.email != 'guest@example.com' || admin_signed_in? %>
+  <%= form_with model: [theme, comment], url: job_theme_comments_path(job,theme), local: false do |f| %>
+  コメント入力フォーム<br>
+  <%= f.text_area :comment, rows: '3', cols: '70',placeholder: "コメントをこちらに" %>
+  <%= f.submit "送信" ,  class: "col-sm-5 "%>
+  <% end %>
+<% end %>

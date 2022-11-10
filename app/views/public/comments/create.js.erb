@@ -1,0 +1,2 @@
+$('#comments_area').append("<div id='comments_area_<%=@comment.id%>'><%= j(render partial: 'public/comments/comments', locals: {job: @job, theme: @theme, comment: @comment}) %></div>");
+$("textarea").val('');
