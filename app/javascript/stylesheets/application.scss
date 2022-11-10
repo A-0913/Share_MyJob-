@@ -9,18 +9,25 @@
 
 
 header{
+  height: 100px;
   background-color: #99C3ED;
 }
 
 
 
-main{
-  min-height: calc(100vh - 200px - 60px);
+// main{
+//   // min-height: calc(100vh - 200px - 60px);
+//   background-color: #D9E5FF;
+// }
+
+body{
   background-color: #D9E5FF;
 }
 
 
 footer{
+  position: absolute;
+  bottom: 0;
   background-color: #99C3ED;
   height: 60px;
   width: 100%;
