@@ -1,0 +1,3 @@
+<% if comment.member == current_member || admin_signed_in? %>
+  <%= link_to '削除する', job_theme_comment_path(@job ,@theme ,comment), method: :delete, remote: true,  data: { confirm: '本当に消しますか？' },  class: "btn btn-sm btn-danger "%>
+<% end %>

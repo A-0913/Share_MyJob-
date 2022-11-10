@@ -1,25 +1,32 @@
- <div class="container">
-  <div class="row py-4">
-    <table>
-      <tbody>
-        <% theme.theme_comments.each do |theme_comment| %>
-        <tr>
-          <td>
-            <%= link_to member_path(theme_comment) do %>
-              <%= image_tag theme_comment.member.get_profile_image(100,100) %>
-              <%= theme_comment.member.name %>
-              <%= theme_comment.member.belong %>
-            <% end %>
-          </td>
-          <td><%= theme_comment.comment %></td>
-          <td>
-            <% if theme_comment.member == current_member %>
-              <%= link_to 'Destroy', theme_theme_comment_path(theme_comment.theme,theme_comment), method: :delete, remote: true,  data: { confirm: '本当に消しますか？' },  class: "btn btn-sm btn-danger pull-right"%>
-            <% end %>
-          </td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+<div class="row">
+  <div class="col-sm-2 offset-1 ">
+    <div class="row justify-content-center">
+      <%= image_tag comment.member.get_profile_image(70,70) %>
+    </div>
+    <div class="row justify-content-center">
+      <%= link_to member_path(comment.member) do %>
+        <%= comment.member.nickname %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="comment-all">
+      <%= comment.comment %>
+    </div>
+  </div>
+  <div class="col-sm-2">
+    <div class="row justify-content-center">
+      <div id="comment_<%= comment.id %>">
+        <%= render partial: 'public/favorites/favorite', locals:{job: job, theme: theme, comment: comment} %>
+      </div>
+    </div>
+    <div class="row justify-content-center ">
+        <div id="comments_destroy">
+          <%= render partial: 'public/comments/destroy', locals:{job: job, theme: theme, comment: comment} %>
+        </div>
+        <%# if comment.member == current_member || admin_signed_in? %>
+          <%#= link_to '削除する', job_theme_comment_path(@job ,@theme ,comment), method: :delete, remote: true,  data: { confirm: '本当に消しますか？' },  class: "btn btn-sm btn-danger "%>
+        <%# end %>
+    </div>
   </div>
 </div>
