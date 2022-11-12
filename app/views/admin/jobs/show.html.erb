@@ -1,0 +1,55 @@
+  <div class = "container">
+    <div class = "row py-4">
+      <h3>職業詳細</h3>
+    </div>
+
+    <div class="table-responsive table-hover">
+      <table class="table table-bordered">
+        <tr>
+          <th width="30%" class="table-dark text-light">職業id</th>
+          <td class="table-light"><%= @job.id %></td>
+        </tr>
+        <tr>
+          <th width="30%" class="table-dark text-light">職業ジャンル</th>
+          <td class="table-light"><%= @job.genre.name %></td>
+        </tr>
+        <tr>
+          <th width="30%" class="table-dark text-light">職業名</th>
+          <td class="table-light"><%= @job.name %></td>
+        </tr>
+        <tr>
+        <tr>
+          <th width="30%" class="table-dark text-light">職業追加理由</th>
+          <td class="table-light"><%= @job.reason %></td>
+        </tr>
+        <tr>
+          <th width="30%" class="table-dark text-light">投稿者</th>
+          <td class="table-light"><%= link_to @job.member.nickname , admin_member_path(@job.member) %></td>
+        </tr>
+        <tr>
+          <th width="30%" class="table-dark text-light">表示ステータス</th>
+          <td class="table-light">
+            <% if @job.is_published == false %>
+              <div class="text-danger font-weight-bold">未公開</div>
+            <% else %>
+              <div class="text-success font-weight-bold">公開</div>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th width="30%" class="table-dark text-light">確認ステータス</th>
+          <td class="table-light">
+            <% if @job.is_checked == false %>
+              <div class="text-danger font-weight-bold">未確認</div>
+            <% else %>
+              <div class="text-success font-weight-bold">確認済み</div>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="row py-4 ">
+      <%= link_to "編集する" , edit_admin_job_path(@job), class: 'btn btn-success col-sm-4' %>
+      <%= link_to "職業一覧へ戻る" , admin_jobs_path, class: 'btn btn-primary offset-1 col-sm-4' %>
+    </div>
+  </div>

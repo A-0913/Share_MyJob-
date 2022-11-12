@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ShareMyjob</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script src="https://kit.fontawesome.com/c8df76fea2.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">
+            <%= image_tag 'logo.jpg', class: 'logo' %>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav me-auto">
+              <!--顧客ログイン時-->
+              <% if member_signed_in? %>
+                <li class="nav-item mx-3">
+                  <%= link_to about_path, class: 'nav-link text-dark' do %>
+                    <i class="fa-regular fa-comments">サイト概要</i>
+                  <% end %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to jobs_path, class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-star">職業一覧</i>
+                  <% end %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to member_path(current_member), class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-user-gear">マイページ</i>
+                  <% end %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to member_favorites_path(current_member), class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-paperclip">参考になった一覧</i>
+                  <% end %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to destroy_member_session_path, class: 'nav-link text-dark' , method: :delete do %>
+                  <i class="fa-solid fa-right-from-bracket">ログアウト</i>
+                  <% end %>
+                </li>
+
+              <!--管理者ログイン時-->
+              <% elsif admin_signed_in? %>
+                <li class="nav-item mx-3">
+                  <%= link_to admin_members_path, class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-star">会員一覧</i>
+                  <% end %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to admin_jobs_path, class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-star">職業一覧</i>
+                  <% end %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to admin_themes_path, class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-star">テーマ一覧</i>
+                  <% end %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to admin_genres_path, class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-star">ジャンル一覧</i>
+                  <% end %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to destroy_admin_session_path, class: 'nav-link text-dark' , method: :delete do %>
+                    <i class="fa-solid fa-right-from-bracket">ログアウト</i>
+                  <% end %>
+                </li>
+
+              <!--顧客・管理者ログアウト時-->
+              <% else %>
+                <li class="nav-item mx-3">
+                  <%= link_to about_path, class: 'nav-link text-dark' do %>
+                    <i class="fa-regular fa-comments">サイト概要</i>
+                  <% end %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to  new_member_registration_path, class: 'nav-link text-dark' do %>
+                  <i class="fa-solid fa-user-plus">新規登録</i>
+                  <% end %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to  new_member_session_path, class: 'nav-link text-dark' do %>
+                  <i class="fa-solid fa-right-to-bracket">ログイン</i>
+                  <% end %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to  members_guest_sign_in_path, method: :post, class: 'nav-link text-dark' do %>
+                  <i class="fa-solid fa-door-open">ゲストログイン（閲覧用）</i>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <%= flash[:notice] %>
+      <%= flash[:alert] %>
+      <%= yield %>
+    </main>
+    <footer class="p-3">
+      <div class = "row">
+        <div class="col-sm-1">
+          <% unless admin_signed_in? %>
+            <%= link_to  new_admin_session_path, class: 'nav-link text-dark' do %>
+              <i class="fa-solid fa-key"></i>
+             <% end %>
+          <% end %>
+        </div>
+        <div class="text-center col-sm-11">© 2022,Share MyJob, © 2022 Japan</div>
+      </div>
+    </footer>
+  </body>
+</html>
