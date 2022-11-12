@@ -16,7 +16,10 @@
         <tr>
           <td class="table-light"><%= comment.job.name %></td>
           <td class="table-light"><%= comment.theme.name %></td>
-          <td class="table-light"><%= comment.comment %></td>
+          <td class="table-light">
+            <%= link_to job_theme_path(comment.job,comment.theme) do %>
+              <%= comment.comment %></td>
+            <% end %>
           <td class="table-light"><%= comment.member.nickname %></td>
         </tr>
       <% end %>

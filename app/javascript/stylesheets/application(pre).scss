@@ -9,7 +9,7 @@
 
 
 header{
-  // height: 100px;
+  height: 100px;
   background-color: #99C3ED;
 }
 
@@ -24,14 +24,9 @@ body{
   background-color: #D9E5FF;
 }
 
-.footer > .footer-container {
-    width: auto;
-    max-width: 680px;
-    padding: 0 15px;
-}
 
 footer{
-  // position: absolute;
+  position: absolute;
   bottom: 0;
   background-color: #99C3ED;
   height: 60px;
