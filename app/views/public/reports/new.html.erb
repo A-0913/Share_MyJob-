@@ -3,10 +3,10 @@
       <h3>通報画面</h3>
     </div>
 
-<%= form_with model:[@comment, @report] do |f| %>
+<%= form_with model: @report ,url: job_theme_comment_reports_path do |f| %>
   <div class="form-group row">
     <%= f.label :"テーマ名", class: "col-sm-3 col-form-label" %>
-    <%= @comment.comment,  class: "col-lg-6"  %>
+    <%= @comment.comment %>
   </div>
   <div class="reason-group">
     <p>通報理由</p>
@@ -19,4 +19,4 @@
   </div>
   <%= f.submit "通報する", class: "btn btn-danger" %>
 <% end %>
-</div>  
+</div>

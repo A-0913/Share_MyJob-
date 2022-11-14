@@ -14,19 +14,19 @@
       <%= comment.comment %>
     </div>
   </div>
-  <div class="col-sm-2">
-    <div class="row justify-content-center">
-      <div id="comment_<%= comment.id %>">
-        <%= render partial: 'public/favorites/favorite', locals:{job: job, theme: theme, comment: comment} %>
-      </div>
+  <div class="row col-sm-2">
+    <div id="comment_<%= comment.id %>">
+      <%= render partial: 'public/favorites/favorite', locals:{job: job, theme: theme, comment: comment} %>
     </div>
-    <div class="row justify-content-center ">
-        <div id="comments_destroy">
-          <%= render partial: 'public/comments/destroy', locals:{job: job, theme: theme, comment: comment} %>
-        </div>
-        <%# if comment.member == current_member || admin_signed_in? %>
-          <%#= link_to '削除する', job_theme_comment_path(@job ,@theme ,comment), method: :delete, remote: true,  data: { confirm: '本当に消しますか？' },  class: "btn btn-sm btn-danger "%>
-        <%# end %>
+    <div id="comments_destroy">
+      <%= render partial: 'public/comments/destroy', locals:{job: job, theme: theme, comment: comment} %>
+    </div>
+    <div>
+      <%# if comment.member != current_member %>
+        <%= link_to  new_job_theme_comment_report_path(job ,theme ,comment),   class: "btn btn-sm btn-warning" do %>
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        <% end %>
+      <%# end %>
     </div>
   </div>
 </div>
