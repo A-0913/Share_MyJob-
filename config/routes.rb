@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'reports/new'
+  end
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
@@ -30,7 +33,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :edit, :create, :update]
     resources :jobs, only: [:index, :show, :edit, :update]
     resources :themes, only: [:index, :show, :edit, :update]
-
+    resources :reports, only: [:index, :show, :update]
   end
 
   scope module: :public do
@@ -39,6 +42,7 @@ Rails.application.routes.draw do
       resources :themes, only: [:new, :create, :show] do
          resources :comments, only: [:create, :destroy] do
            resource :favorites, only: [:create, :destroy]
+           resources :reports, only: [:new, :create]
          end
       end
     end
