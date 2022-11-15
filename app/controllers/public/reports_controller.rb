@@ -1,7 +1,7 @@
 class Public::ReportsController < ApplicationController
   def new
-    #@job = Job.find(params[:job_id])
-    #@theme = Theme.find(params[:theme_id])
+    @job = Job.find(params[:job_id])
+    @theme = Theme.find(params[:theme_id])
     @comment = Comment.find(params[:comment_id])
     #@report = Report.new
   end
