@@ -3,15 +3,14 @@
     <h3>通報画面</h3>
   </div>
 
-  <%= form_with model: @report ,url: job_theme_comment_reports_path do |f| %>
+
   <table class="table table-bordered ">
     <tr>
-      <!--<div class="form-group row">-->
       <th class="table-light"><%= f.label :"コメント内容" %></th>
       <td class="table-light"><%= @comment.comment %></td>
-      <!--</div>-->
     </tr>
-    <!--<div class="reason-group">-->
+    
+    <%= form_with model: @report ,url: job_theme_comment_reports_path do |f| %>
     <tr>
       <th class="table-light ">通報理由</th>
       <td class="table-light">
@@ -22,14 +21,14 @@
       <%= f.radio_button :reason, :"上記以外で相応しくない発言である" %>
       <%= f.label :reason, "上記以外で相応しくない発言である", value: :"上記以外で相応しくない発言である" %><br>
       </th>
-    <!--</div>-->
     </tr>
   </table>
   <div class="row justify-content-center py-3">
     <%= f.submit "通報する", class: "btn btn-danger col-sm-3" %>
   </div>
+    <% end %>
   <div class="row justify-content-center py-3">
     <%= link_to "掲示板へ戻る" , job_theme_path(@job,@theme) , class: "btn btn-primary col-sm-3" %>
   </div>
-  <% end %>
+
 </div>
