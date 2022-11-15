@@ -4,7 +4,9 @@
   </div>
   <div class="row">
     <div class="d-flex align-items-center col-sm-3 ">
-       <%= image_tag @member.get_profile_image(200,200) %>
+      <div class="member-icon">
+         <%= image_tag @member.get_profile_image(200,200) %>
+      </div>
     </div>
     <div class="col-sm-8">
       <div class="row">
@@ -33,7 +35,7 @@
             <td class="table-light"><%= @member.introduction %></td>
           </tr>
           <tr>
-            <th class="table-light">所属</th>
+            <th class="table-light">属性</th>
             <td class="table-light"><%= @member.belong %></td>
           </tr>
         </table>

@@ -1,32 +1,37 @@
 <div class="row">
-  <div class="col-sm-2 offset-1 ">
-    <div class="row justify-content-center">
-      <%= image_tag comment.member.get_profile_image(70,70) %>
-    </div>
-    <div class="row justify-content-center">
-      <%= link_to member_path(comment.member) do %>
-        <%= comment.member.nickname %>
-      <% end %>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="comment-all">
-      <%= comment.comment %>
+  <div class="col-2 align-self-center">
+    <div class="balloon5">
+      <div class="faceicon">
+        <%= link_to member_path(comment.member) do %>
+          <%=  image_tag comment.member.get_profile_image(70,70) %>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class="row col-sm-2">
-    <div id="comment_<%= comment.id %>">
-      <%= render partial: 'public/favorites/favorite', locals:{job: job, theme: theme, comment: comment} %>
+  <div class="col-7 align-self-center">
+    <div class="balloon5">
+      <div class="chatting">
+        <div class="says">
+          <%= comment.comment %>
+        </div>
+      </div>
     </div>
-    <div id="comments_destroy">
-      <%= render partial: 'public/comments/destroy', locals:{job: job, theme: theme, comment: comment} %>
-    </div>
-    <div>
-      <%# if comment.member != current_member %>
+  </div>
+  <div class="col-3 align-self-center">
+    <div class="balloon5">
+      <span id="comment_<%= comment.id %>">
+        <%= render partial: 'public/favorites/favorite', locals:{job: job, theme: theme, comment: comment} %>
+      </span>
+      <span id="comments_destroy">
+        <%= render partial: 'public/comments/destroy', locals:{job: job, theme: theme, comment: comment} %>
+      </span>
+        <%# if comment.member != current_member %>
+      <span>
         <%= link_to  new_job_theme_comment_report_path(job ,theme ,comment),   class: "btn btn-sm btn-warning" do %>
           <i class="fa-solid fa-triangle-exclamation"></i>
         <% end %>
-      <%# end %>
+        <%# end %>
+      </span>
     </div>
   </div>
 </div>

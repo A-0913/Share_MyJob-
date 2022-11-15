@@ -1,26 +1,21 @@
-<div class="container ">
-  <div class="row justify-content-center">
-    <div class="w-50  justify-content-center">
-      <div class="row　border  justify-content-center pt-4 ">
+<div class="container">
+  <div class="row justify-content-center pt-4">
+    <div class="w-50">
+      <div class="headline">
         <div class="bg-primary text-center text-white"><%= @job.name %></div>
-      </div>
-      <div class="row　border justify-content-center">
         <div class="bg-white text-center text-black"><%= @theme.name %></div>
       </div>
     </div>
   </div>
-  <div id="comments_area" class="justify-content-center  py-4 ">
+  <div id="comments_area">
     <% @comments.each do |comment| %>
-        <div id="comments_area_<%=comment.id%>">
-          <%= render partial: 'public/comments/comments', locals:{job: @job, theme: @theme,comment: comment} %>
-        </div>
+      <div id="comments_area_<%=comment.id%>">
+        <%= render partial: 'public/comments/comments', locals:{job: @job, theme: @theme,comment: comment} %>
+      </div>
     <% end %>
   </div>
-  <div class="row justify-content-center ">
-    <div id="comments_new">
-      <%= render partial: 'public/comments/form', locals:{job: @job, theme: @theme, comment: @comment} %>
-    </div>
-    </div>
+  <div id="comments_new">
+    <%= render partial: 'public/comments/form', locals:{job: @job, theme: @theme, comment: @comment} %>
   </div>
   <div class="row justify-content-center py-4">
       <%= link_to "テーマ一覧へ戻る" , job_path(@job), class: 'btn btn-primary col-sm-5' %>
