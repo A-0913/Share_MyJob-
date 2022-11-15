@@ -1,7 +1,12 @@
-<% if admin_signed_in? || current_member.email != 'guest@example.com' %>
-  <%= form_with model: [theme, comment], url: job_theme_comments_path(job,theme), local: false do |f| %>
-  コメント入力フォーム<br>
-  <%= f.text_area :comment, rows: '3', cols: '70',placeholder: "コメントをこちらに" %>
-  <%= f.submit "送信" ,  class: "col-sm-5 "%>
+<div class="container">
+  <% if admin_signed_in? || current_member.email != 'guest@example.com' %>
+    <%= form_with model: [theme, comment], url: job_theme_comments_path(job,theme), local: false do |f| %>
+    <div class = "row py-4 justify-content-center">
+      <%= f.text_area :comment, rows: '3', cols: '70',placeholder: "コメントをこちらに" %>
+    </div>
+    <div class = "row justify-content-center">
+      <%= f.submit "送信" ,  class: "col-sm-3 "%>
+    </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>

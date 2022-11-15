@@ -24,6 +24,7 @@ header{
 
 body{
   background-color: #D9E5FF;
+  font-family: 'ヒラギノ丸ゴ ProN W5',sans-serif;
 }
 
 // .footer > .footer-container {
@@ -46,6 +47,25 @@ footer{
 //   min-height: 80%;
 // }
 
+.title-box{
+  margin: 1em 0;
+  background-color: #e3f2fd;
+  border: 2px solid #2196f3;
+  letter-spacing: .3px;
+}
+
+.title-box-title{
+  color: #fff;
+  font-weight: bold;
+  background-color: #2196f3;
+  padding: 4px 6px;
+  text-align: center;
+}
+
+.title-box p{
+  margin: 0;
+  padding: 1em;
+}
 
 .member-icon img{
   width: 100%;

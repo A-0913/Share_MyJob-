@@ -25,11 +25,17 @@
       <span id="comments_destroy">
         <%= render partial: 'public/comments/destroy', locals:{job: job, theme: theme, comment: comment} %>
       </span>
-        <%# if comment.member != current_member %>
       <span>
-        <%= link_to  new_job_theme_comment_report_path(job ,theme ,comment),   class: "btn btn-sm btn-warning" do %>
-          <i class="fa-solid fa-triangle-exclamation"></i>
-        <% end %>
+        <%# if comment.member != current_member %>
+          <%# if comment.reported_by?(current_member) %>
+            <%= link_to  new_job_theme_comment_report_path(job ,theme ,comment),   class: "btn btn-sm btn-warning" do %>
+              <i class="fa-solid fa-triangle-exclamation"></i>
+            <% end %>
+          <%# else %>
+            <!--<button type="button" class="btn btn-secondary">-->
+            <!--  <i class="fa-solid fa-triangle-exclamation"></i>-->
+            <!--</button>-->
+          <%# end %>
         <%# end %>
       </span>
     </div>
