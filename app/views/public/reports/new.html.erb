@@ -1,22 +1,32 @@
 <div class="container">
-    <div class="row justify-content-center py-4">
-      <h3>通報画面</h3>
-    </div>
+  <div class="row justify-content-center py-4">
+    <h3>通報画面</h3>
+  </div>
 
-<%= form_with model: @report ,url: job_theme_comment_reports_path do |f| %>
-  <div class="form-group row">
-    <%= f.label :"テーマ名", class: "col-sm-3 col-form-label" %>
-    <%= @comment.comment %>
+  <%= form_with model: @report ,url: job_theme_comment_reports_path do |f| %>
+  <table class="table table-bordered ">
+    <tr>
+      <!--<div class="form-group row">-->
+      <th class="table-light"><%= f.label :"コメント内容" %></th>
+      <td class="table-light"><%= @comment.comment %></td>
+      <!--</div>-->
+    </tr>
+    <!--<div class="reason-group">-->
+    <tr>
+      <th class="table-light ">通報理由</th>
+      <td class="table-light">
+      <%= f.radio_button :reason, :"法律違反である（プライバシー侵害、企業情報漏洩、名誉棄損等）", checked: true %>
+      <%= f.label :reason, "法律違反である（プライバシー侵害、企業情報漏洩、名誉棄損等）", value: :"法律違反である（プライバシー侵害、企業情報漏洩、名誉棄損等）" %><br>
+      <%= f.radio_button :reason, :"社会的に不適切である（公序良俗に反する）" %>
+      <%= f.label :reason, "社会的に不適切である（公序良俗に反する）", value: :"社会的に不適切である（公序良俗に反する）" %><br>
+      <%= f.radio_button :reason, :"上記以外で相応しくない発言である" %>
+      <%= f.label :reason, "上記以外で相応しくない発言である", value: :"上記以外で相応しくない発言である" %><br>
+      </th>
+    <!--</div>-->
+    </tr>
+  </table>
+  <div class="row justify-content-center py-4">
+    <%= f.submit "通報する", class: "btn btn-danger col-sm-3" %>
   </div>
-  <div class="reason-group">
-    <p>通報理由</p>
-    <%= f.radio_button :reason, :"法律違反である（プライバシー侵害、企業情報漏洩、名誉棄損等" %><br>
-    <%= f.label :reason, "法律違反である（プライバシー侵害、企業情報漏洩、名誉棄損等", value: :"法律違反である（プライバシー侵害、企業情報漏洩、名誉棄損等" %>
-    <%= f.radio_button :reason, :"社会的に不適切である（公序良俗に反する）" %><br>
-    <%= f.label :reason, "社会的に不適切である（公序良俗に反する）", value: :"社会的に不適切である（公序良俗に反する）い" %>
-    <%= f.radio_button :reason, :"上記以外で相応しくない発言である", checked: true %><br>
-    <%= f.label :reason, "上記以外で相応しくない発言である", value: :"上記以外で相応しくない発言である" %>
-  </div>
-  <%= f.submit "通報する", class: "btn btn-danger" %>
-<% end %>
+  <% end %>
 </div>

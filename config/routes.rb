@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'reports/index'
+    get 'reports/show'
+  end
   namespace :public do
     get 'reports/new'
   end
