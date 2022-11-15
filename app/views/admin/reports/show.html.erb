@@ -14,7 +14,7 @@
         </tr>
         <tr>
           <th class="table-dark text-light">対象コメント</th>
-          <td class="table-light"><%= link_to @report.comment, job_theme_path(@job,@theme) %></td>
+          <td class="table-light"><%= link_to @comment.comment, job_theme_path(@job,@theme) %></td>
         </tr>
         <tr>
         <tr>
@@ -22,7 +22,7 @@
           <td class="table-light"><%= link_to @report.member.nickname , admin_member_path(@report.member) %></td>
         </tr>
         <tr>
-          <th class="table-dark text-light"通報理由</th>
+          <th class="table-dark text-light">通報理由</th>
           <td class="table-light"><%= @report.reason %></td>
         </tr>
         <tr>
@@ -37,10 +37,10 @@
         </tr>
       </table>
 
-    <div class="row py-3 ">
+    <div class="row py-3 justify-content-center">
       <%= link_to "編集する" , edit_admin_report_path(@report), class: 'btn btn-success col-sm-3' %>
     </div>
-    <div class="row py-3 ">
+    <div class="row py-3 justify-content-center">
       <%= link_to "通報一覧へ戻る" , admin_reports_path, class: 'btn btn-primary col-sm-3' %>
     </div>
   </div>

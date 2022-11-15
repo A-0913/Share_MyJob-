@@ -19,13 +19,13 @@
           <td class="table-light"><%= report.id %></td>
           <td class="table-light"><%= report.created_at.strftime('%Y年%m月%d日 %H:%M') %></td>
           <td class="table-light">
-            <%= link_to report.comment , admin_report_path(report) %>
+            <%= link_to report.comment.comment , admin_report_path(report) %>
           </td>
           <td class="table-light">
             <%= link_to report.member.nickname , admin_member_path(report.member) %>
           </td>
           <td class="table-light">
-            <% if job.is_checked == false %>
+            <% if report.is_checked == false %>
               <p class="text-danger font-weight-bold">未確認</p>
             <% else %>
               <p class="text-success font-weight-bold">確認済み</p>
