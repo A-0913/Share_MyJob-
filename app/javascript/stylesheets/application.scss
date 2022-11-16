@@ -144,29 +144,10 @@ footer{
 }
 
 .job-interest{
-  position: relative;
-  display: inline-block;
-  margin: 0 15px;
-  padding: 0 5px;
-  width: 45px;
-  height: 45px;
-  line-height: 45px;
-  text-align: center;
-  color: #FFF;
-  font-size: 20px;
-  font-weight: bold;
-  background: #ffcc75;
-  border-radius: 50%;
-  box-sizing: border-box;
-}
-
-.job-interest:before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -25px;
-  margin-top: -15px;
-  border: 15px solid transparent;
-  border-right: 15px solid #ffcc75;
-  z-index: 0;
+    padding: 0.5em 1em;
+    color: white;
+    background: #A4C6FF;
+    border-left: solid 10px #7db4e6;
+    width: 20%;
+    text-align: center;
 }

@@ -14,7 +14,7 @@
         <% @jobs.each do |job| %>
           <div class="row justify-content-center py-2">
             <div class="job-title"><%= link_to job.name, job_path(job) %></div>
-            <div class="job-interest"><%= job.interest %></div>
+            <div class="job-interest"><%= job.interest %> <i class="fa-solid fa-arrow-pointer"></i> Click</i></div>
           </div>
         <% end %>
       </div>
