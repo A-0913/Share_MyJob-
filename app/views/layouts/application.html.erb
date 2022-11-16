@@ -94,7 +94,7 @@
                   </li>
                   <li class="nav-item mx-3">
                     <%= link_to  new_member_session_path, class: 'nav-link text-dark' do %>
-                    <i class="fa-solid fa-right-to-bracket">Log out</i>
+                    <i class="fa-solid fa-right-to-bracket">Log In</i>
                     <% end %>
                   </li>
                   <li class="nav-item mx-3">
@@ -109,21 +109,24 @@
         </nav>
       </header>
       <main>
-        <%= flash[:notice] %>
-        <%= flash[:alert] %>
+        <% if flash[:notice]%>
+          <div class="alert alert-warning" role="alert"><%=flash[:notice] %></div>
+        <% elsif flash[:alert] %>
+          <div class="alert alert-warning" role="alert"><%= flash[:alert] %></div>
+        <% end %>
         <%= yield %>
       </main>
-      <footer class="p-3">
+      <footer class="p-2 fixed-bottom">
         <div class= "footer-container">
           <div class = "row">
-            <div class="col-sm-1">
+            <div class="col-1">
               <% unless admin_signed_in? %>
                 <%= link_to  new_admin_session_path, class: 'nav-link text-dark' do %>
                   <i class="fa-solid fa-key"></i>
                  <% end %>
               <% end %>
             </div>
-            <div class="text-center col-sm-11">© 2022,Share MyJob, © 2022 Japan</div>
+            <div class="text-center col-11">© 2022,Share MyJob, © 2022 Japan</div>
           </div>
         </div>
       </footer>

@@ -2,9 +2,9 @@
       <div class="row justify-content-center py-4">
         <div class="job-name"><%= @job.name %></div>
       </div>
-      <div class="theme-box  pb-2">
+      <div class="row theme-box  pb-2">
             <% @themes.each do |theme| %>
-              <div class="row justify-content-center py-2">
+              <div class="col-md-6 justify-content-center py-2">
                 <div class="box27">
                     <span class="box-title">
                       <%= ThemeInJob.find_by(job_id: @job.id, theme_id: theme.id).interest %>

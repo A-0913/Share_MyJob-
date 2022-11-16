@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-2 align-self-center">
+  <div class="col-2 col-md-1 offset-md-2 align-self-center">
     <div class="balloon5">
       <div class="faceicon">
         <%= link_to member_path(comment.member) do %>
@@ -8,7 +8,7 @@
       </div>
     </div>
   </div>
-  <div class="col-7 align-self-center">
+  <div class="col-7 col-md-6 align-self-center">
     <div class="balloon5">
       <div class="chatting">
         <div class="says">
@@ -26,17 +26,17 @@
         <%= render partial: 'public/comments/destroy', locals:{job: job, theme: theme, comment: comment} %>
       </span>
       <span>
-        <%# if comment.member != current_member %>
-          <%# if comment.reported_by?(current_member) %>
+        <% if comment.member != current_member %>
+          <% if comment.reported_by?(current_member) %>
+            <button type="button" class="btn btn-secondary">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+            </button>
+          <% else %>
             <%= link_to  new_job_theme_comment_report_path(job ,theme ,comment),   class: "btn btn-sm btn-warning" do %>
               <i class="fa-solid fa-triangle-exclamation"></i>
             <% end %>
-          <%# else %>
-            <!--<button type="button" class="btn btn-secondary">-->
-            <!--  <i class="fa-solid fa-triangle-exclamation"></i>-->
-            <!--</button>-->
-          <%# end %>
-        <%# end %>
+          <% end %>
+        <% end %>
       </span>
     </div>
   </div>

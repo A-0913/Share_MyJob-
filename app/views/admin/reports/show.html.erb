@@ -14,7 +14,13 @@
         </tr>
         <tr>
           <th class="table-dark text-light">対象コメント</th>
-          <td class="table-light"><%= link_to @comment.comment, job_theme_path(@job,@theme) %></td>
+          <td class="table-light">
+            <%# if @comment.present? %>
+            <%= link_to @comment.comment, job_theme_path(@job,@theme) %>
+            <%# else %>
+            <!--対象コメントはすでに削除済です。-->
+            <%# end %>
+          </td>
         </tr>
         <tr>
         <tr>

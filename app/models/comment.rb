@@ -17,11 +17,9 @@ class Comment < ApplicationRecord
   end
 
   def reported_by?(member)
-    if member.nil?
-      false
-    else
+
       reports.exists?(member_id: member.id)
-    end
+
   end
 
 end
