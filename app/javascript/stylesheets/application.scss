@@ -151,3 +151,46 @@ footer{
     width: 20%;
     text-align: center;
 }
+
+.job-name{
+    padding: 0.5em 1em;
+    color: #474747;
+    background: whitesmoke;/*背景色*/
+    border-left: double 7px #4ec4d3;/*左線*/
+    border-right: double 7px #4ec4d3;/*右線*/
+    width: 40%;
+    text-align: center;
+    font-weight: bold;
+    background-color: #FFFFFF;
+}
+
+
+.box27 {
+    position: relative;
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #62c1ce;
+    width: 40%;
+    background-color: #FFFFFF;
+}
+.box27 .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -27px;
+    left: -3px;
+    padding: 0 9px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 17px;
+    background: #62c1ce;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+    width: 40%;
+    text-align: center;
+}
+.box27 p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}

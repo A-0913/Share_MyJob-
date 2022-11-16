@@ -1,40 +1,21 @@
 <div class="container">
       <div class="row justify-content-center py-4">
-        <table  border="1" width="70%" >
-          <thead>
-            <tr align="center">
-              <th class="bg-primary text-white">職業名</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr align="center">
-              <td class="bg-white"><%= @job.name %></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="job-name"><%= @job.name %></div>
       </div>
-      <div class="row justify-content-center pt-2 pb-4">
-        <table  border="1"  rules=rows width="80%" >
-          <thead>
-            <tr align="center">
-              <th width="50%" class="bg-primary text-white" >テーマ</th>
-              <th width="30%"class="bg-primary text-white"></th>
-              <th width="20%" class="bg-primary text-white">関心度</th>
-            </tr>
-          </thead>
-          <tbody>
+      <div class="theme-box  pb-2">
             <% @themes.each do |theme| %>
-              <tr align="center">
-                <td class="bg-white"><%= theme.name %></td>
-                <td class="bg-white"><%= link_to "みんなの情報を見る" , job_theme_path(@job,theme) %></td>
-                <!--<td class="bg-white"><%#= @job.theme_in_jobs.find_by(theme_id: theme.id).interest %></td>-->
-                <td class="bg-white"><%= ThemeInJob.find_by(job_id: @job.id, theme_id: theme.id).interest %></td>
-              </tr>
+              <div class="row justify-content-center py-2">
+                <div class="box27">
+                    <span class="box-title">
+                      <%= ThemeInJob.find_by(job_id: @job.id, theme_id: theme.id).interest %>
+                      <i class="fa-solid fa-arrow-pointer"></i> Click
+                    </span>
+                    <p><%= link_to theme.name , job_theme_path(@job,theme) %></p>
+                </div>
+              </div>
             <% end %>
-          </tbody>
-        </table>
       </div>
-      <div class="row my-4 justify-content-center">
+      <div class="row pb-4 justify-content-center">
         <% unless admin_signed_in? %>
           <% if @member.email != 'guest@example.com' %>
             <%= link_to "テーマを追加する" , new_job_theme_path(@job), class: 'btn btn-success col-sm-4' %>
@@ -42,4 +23,5 @@
         <% end %>
         <%= link_to "職業一覧へ戻る" , jobs_path, class: 'btn btn-primary offset-1 col-sm-4' %>
       </div>
+
 </div>
