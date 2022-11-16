@@ -222,3 +222,13 @@ footer{
   width: 100%;
   border-bottom: solid 3px #99C3ED;
 }
+
+.nav-item {
+  background-image: linear-gradient(-45deg, rgba(200,230,245,0.4) 25%, transparent 25%, transparent 50%, rgba(200,230,245,.4) 50%, rgba(200,230,245,.4) 75%, transparent 75%, transparent 100%);/*見出しの色*/
+  background-size: 20px 20px;/*線の太さ*/
+  border-left:2px dotted rgba(0,0,0,.1);
+  border-right:2px dotted rgba(0,0,0,.1);
+  box-shadow:0 0 5px rgba(0,0,0,.2);/*見出しの影*/
+  padding: 0.5em;/*文字まわりの余白*/
+  color: #454545;/*文字色*/
+}
