@@ -1,52 +1,52 @@
-  <div class = "container">
-    <div class = "row py-4">
-      <h3>通報詳細</h3>
-    </div>
+ <div class = "container p-4">
+  <div class = "row justify-content-center pt-3">
+    <h3>通報詳細</h3>
+  </div>
 
-      <table class="table table-bordered">
-        <tr>
-          <th class="table-dark text-light">通報id</th>
-          <td class="table-light"><%= @report.id %></td>
-        </tr>
-        <tr>
-          <th class="table-dark text-light">通報日時</th>
-          <td class="table-light"><%= @report.created_at.strftime('%Y年%m月%d日 %H:%M') %></td>
-        </tr>
-        <tr>
-          <th class="table-dark text-light">対象コメント</th>
-          <td class="table-light">
-            <%# if @comment.present? %>
-            <%= link_to @comment.comment, job_theme_path(@job,@theme) %>
-            <%# else %>
-            <!--対象コメントはすでに削除済です。-->
-            <%# end %>
-          </td>
-        </tr>
-        <tr>
-        <tr>
-          <th class="table-dark text-light">通報者</th>
-          <td class="table-light"><%= link_to @report.member.nickname , admin_member_path(@report.member) %></td>
-        </tr>
-        <tr>
-          <th class="table-dark text-light">通報理由</th>
-          <td class="table-light"><%= @report.reason %></td>
-        </tr>
-        <tr>
-          <th class="table-dark text-light">確認ステータス</th>
-          <td class="table-light">
-            <% if @report.is_checked == false %>
-              <div class="text-danger font-weight-bold">未確認</div>
-            <% else %>
-              <div class="text-success font-weight-bold">確認済み</div>
-            <% end %>
-          </td>
-        </tr>
-      </table>
-
-    <div class="row py-3 justify-content-center">
-      <%= link_to "編集する" , edit_admin_report_path(@report), class: 'btn btn-success col-sm-3' %>
+  <div class="row justify-content-center py-3">
+    <div class="row col-10 justify-content-center">
+      <div class="col-md-5 text-center border border-white bg-info text-white">通報id</div>
+      <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @report.id %></div>
     </div>
-    <div class="row py-3 justify-content-center">
-      <%= link_to "通報一覧へ戻る" , admin_reports_path, class: 'btn btn-primary col-sm-3' %>
+    <div class="row col-10 justify-content-center">
+      <div class="col-md-5 text-center border border-white bg-info text-white">通報日時</div>
+      <div class="col-md-5 text-center border border-dark bg-white text-dark">
+        <%= @report.created_at.strftime('%Y年%m月%d日 %H:%M') %>
+      </div>
+    </div>
+    <div class="row col-10 justify-content-center">
+      <div class="col-md-5 text-center border border-white bg-info text-white">対象コメント</div>
+      <div class="col-md-5 text-center border border-dark bg-white text-dark">
+        <%= link_to @comment.comment, job_theme_path(@job,@theme) %>
+      </div>
+    </div>
+    <div class="row col-10 justify-content-center">
+      <div class="col-md-5 text-center border border-white bg-info text-white">通報者</div>
+      <div class="col-md-5 text-center border border-dark bg-white text-dark">
+        <%= link_to @report.member.nickname , admin_member_path(@report.member) %>
+      </div>
+    </div>
+    <div class="row col-10 justify-content-center">
+      <div class="col-md-5 text-center border border-white bg-info text-white">通報理由</div>
+      <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @report.reason %></div>
+    </div>
+    <div class="row col-10 justify-content-center">
+      <div class="col-md-5 text-center border border-white bg-info text-white">確認ステータス</div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark">
+          <% if @report.is_checked == false %>
+            <div class="text-danger font-weight-bold">未確認</div>
+          <% else %>
+            <div class="text-success font-weight-bold">確認済み</div>
+          <% end %>
+        </div>
     </div>
   </div>
+
+  <div class="row justify-content-center pt-4">
+    <%= link_to "編集する" , edit_admin_report_path(@report), class: "btn btn-success col-sm-3" %>
+  </div>
+
+  <div class="row justify-content-center py-4">
+    <%=link_to "通報一覧へ戻る" , admin_reports_path, class: "btn btn-primary col-sm-3" %>
+  </div>
+</div>

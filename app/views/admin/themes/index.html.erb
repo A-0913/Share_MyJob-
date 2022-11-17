@@ -21,9 +21,9 @@
         <div class="col-md-5 text-center border border-white bg-info text-white">確認状況</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
           <% if 0 < job.themes.where(is_checked: false).count %><!--表示ステータスが「false」のものがある場合の条件分岐-->
-            <div class="text-danger">未確認のテーマが<%= job.themes.where(is_checked: false).count%>個あります</div>
+            <div class="text-danger font-weight-bold">未確認のテーマが<%= job.themes.where(is_checked: false).count%>個あります</div>
           <% else %>
-            <div class="text-success">すべてのテーマが確認済みです</div>
+            <div class="text-success font-weight-bold">すべてのテーマが確認済みです</div>
           <% end %>
         </div>
       </div>

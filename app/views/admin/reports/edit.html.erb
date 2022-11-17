@@ -1,47 +1,47 @@
-<div class="container">
-    <div class="row py-4">
-      <h3>職業情報編集</h3>
+ <div class = "container p-4">
+  <div class = "row justify-content-center pt-3">
+    <h3>通報詳細</h3>
+  </div>
+  <%= form_with model: @report, url: admin_report_path(@report), local:true do |f| %>
+    <div class="row justify-content-center py-3">
+      <div class="row col-10 justify-content-center">
+        <div class="col-md-5 text-center border border-white bg-info text-white">通報id</div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @report.id %></div>
+      </div>
+      <div class="row col-10 justify-content-center">
+        <div class="col-md-5 text-center border border-white bg-info text-white">通報日時</div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark">
+          <%= @report.created_at.strftime('%Y年%m月%d日 %H:%M') %>
+        </div>
+      </div>
+      <div class="row col-10 justify-content-center">
+        <div class="col-md-5 text-center border border-white bg-info text-white">対象コメント</div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @report.comment.comment %></div>
+      </div>
+      <div class="row col-10 justify-content-center">
+        <div class="col-md-5 text-center border border-white bg-info text-white">通報者</div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @report.member.nickname %></div>
+      </div>
+      <div class="row col-10 justify-content-center">
+        <div class="col-md-5 text-center border border-white bg-info text-white">通報理由</div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @report.reason %></div>
+      </div>
+      <div class="row col-10 justify-content-center">
+        <div class="col-md-5 text-center border border-white bg-warning text-dark">確認ステータス</div>
+          <div class="col-md-5 text-center border border-dark bg-white text-dark ">
+            <%= f.radio_button :is_checked, :false , class: "col-sm-1"%>
+            <%= f.label :is_checked, "未確認", class: "col-sm-3" %>
+            <%= f.radio_button :is_checked, :true , class: "col-sm-1"%>
+            <%= f.label :is_checked, "確認済", class: "col-sm-3" %>
+          </div>
+      </div>
     </div>
-    <%= form_with model: @report, url: admin_report_path(@report), local:true do |f| %>
-    <div class="table-responsive">
-      <table class="table table-bordered text-nowrap">
-        <tr>
-          <th class="table-light">通報id</th>
-          <td class="table-light"><%= @report.id %></td>
-        </tr>
-        <tr>
-          <th class="table-light">通報日時</th>
-          <td class="table-light"><%= @report.created_at.strftime('%Y年%m月%d日 %H:%M') %></td>
-        </tr>
-        <tr>
-          <th class="table-light">対象コメント</th>
-          <td class="table-light"><%= @report.comment.comment %></td>
-        </tr>
-        <tr>
-          <th class="table-light">通報者</th>
-          <td class="table-light"><%= @report.member.nickname %></td>
-        </tr>
-        <tr>
-          <th class="table-light">通報理由</th>
-          <td class="table-light"><%= @report.reason %></td>
-        </tr>
-        <tr>
-          <th class="table-light ">確認ステータス</th>
-          <td class="table-light">
-              <%= f.radio_button :is_checked, :false %>
-              <%= f.label :is_checked, "未確認", class: "col-sm-2" %>
-              <%= f.radio_button :is_checked, :true %>
-              <%= f.label :is_checked, "確認済み", class: "col-sm-2" %>
-          </td>
-        </tr>
-      </table>
-    </div>
-    <div class="row py-3  justify-content-center">
+    <div class="row justify-content-center pt-4">
       <%= f.submit "更新する" , class: 'btn btn-success col-sm-3'  %>
     </div>
   <% end %>
-    <div class="row py-3  justify-content-center">
-      <%= link_to "通報詳細画面へ戻る" , admin_report_path(@report), class: 'btn btn-primary col-sm-3 ' %>
-    </div>
 
+  <div class="row justify-content-center py-4">
+    <%=link_to "通報一覧へ戻る" , admin_reports_path, class: "btn btn-primary col-sm-3" %>
+  </div>
 </div>
