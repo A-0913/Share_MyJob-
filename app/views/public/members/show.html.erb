@@ -40,11 +40,11 @@
       <% if @member.email != 'guest@example.com'&& @member == current_member %>
         <div class="row justify-content-center">
           <div class="row col-10 justify-content-center pt-3">
-            <div class="col-sm-5 text-center">投稿職業一覧</div>
+            <div class="col-sm-5 text-center">職業投稿一覧</div>
             <div class="col-sm-5"><%= link_to "一覧を見る" , member_jobs_path(@member), class: 'btn btn-primary col-sm-5' %></div>
           </div>
           <div class="row col-10 justify-content-center pt-3">
-            <div class="col-sm-5 text-center">投稿テーマ一覧</div>
+            <div class="col-sm-5 text-center">テーマ投稿一覧</div>
             <div class="col-sm-5"><%= link_to "一覧を見る" , member_themes_path(@member), class: 'btn btn-primary col-sm-5' %></div>
           </div>
         </div>
