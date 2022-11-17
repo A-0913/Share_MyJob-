@@ -41,4 +41,7 @@
   <div class="row justify-content-center">
   <%= paginate @themes %>
   </div>
+  <div class="row justify-content-center py-4">
+    <%= link_to "プロフィールへ戻る" , admin_member_path(@member) , class: "btn btn-primary col-sm-3" %>
+  </div>
 </div>

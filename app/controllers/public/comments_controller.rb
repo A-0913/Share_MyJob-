@@ -20,7 +20,7 @@ before_action :authenticate_any!
     job = Job.find(params[:job_id])
     @theme = Theme.find(params[:theme_id])
     comment = Comment.find(params[:id])
-    comment.update(is_deleted: true)
+    comment.update(is_published: false)
     #redirect_to job_theme_path(job,@theme)
   end
 
@@ -29,7 +29,7 @@ before_action :authenticate_any!
   def comment_params
     params.require(:comment).permit(:comment)
   end
-  
+
 
 
 end
