@@ -26,14 +26,27 @@
         <%= render partial: 'public/comments/destroy', locals:{job: job, theme: theme, comment: comment} %>
       </span>
       <span>
-        <% if comment.member != current_member %>
-          <% if comment.reported_by?(current_member) %>
-            <button type="button" class="btn btn-secondary">
+        <% if admin_signed_in? %>
+          <% if comment.reports.count > 0 %>
+            <button type="button" class="btn btn-danger">
               <i class="fa-solid fa-triangle-exclamation"></i>
             </button>
           <% else %>
-            <%= link_to  new_job_theme_comment_report_path(job ,theme ,comment),   class: "btn btn-sm btn-warning" do %>
+            <button type="button" class="btn btn-secondary">
               <i class="fa-solid fa-triangle-exclamation"></i>
+            </button>
+          <% end %>
+        <% end %>
+        <% if member_signed_in? %>
+          <% if comment.member != current_member %>
+            <% if comment.reported_by?(current_member) %>
+              <button type="button" class="btn btn-secondary">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </button>
+            <% else %>
+              <%= link_to  new_job_theme_comment_report_path(job ,theme ,comment),   class: "btn btn-sm btn-warning" do %>
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
