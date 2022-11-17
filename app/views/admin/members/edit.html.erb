@@ -36,15 +36,23 @@
           <%= f.select :belong, {"大企業": "大企業", "中小企業": "中小企業", "小規模企業者": "小規模企業者", "学生": "学生", "就職活動中": "就職活動中", "転職を検討中": "転職を検討中"}, { include_blank: '選択してください'}, { class: 'form-control col-lg-5' , required: true } %>
         </div>
 
-        <div class="form-group row">
-          <%= f.label "会員ステータス", class: "col-sm-5  col-form-label" %>
-          <div class="row col-sm-3">
-            <%= f.radio_button :is_deleted, :false %>
-            <%= f.label :is_deleted, "有効" %>
-          </div>
-          <div class="row col-sm-3">
-          <%= f.radio_button :is_deleted, :true %>
-          <%= f.label :is_deleted, "退会"  %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-5 h-100">
+              <%= f.label "会員ステータス", class: "col-form-label" %>
+            </div>
+            <div class="col-sm-7 h-100 d-flex flex-column align-self-center">
+              <div class="row">
+                <div class="col-sm-3 h-100 d-flex align-self-center">
+                  <%= f.radio_button :is_deleted, :false, class: 'mr-2' %>
+                  <%= f.label :is_deleted, "有効", class: 'p-0 m-0' %>
+                </div>
+                <div class="col-sm-3 h-100 d-flex align-self-center">
+                <%= f.radio_button :is_deleted, :true, class: 'mr-2' %>
+                <%= f.label :is_deleted, "退会", class: 'p-0 m-0' %>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

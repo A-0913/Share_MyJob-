@@ -17,8 +17,10 @@
     <div class="row">
       <%  @genres.each do |genre| %>
         <div class="col-md-6 justify-content-center py-2">
-          <div class=""><%= genre.name %></div>
-          <div class=""><%= link_to "編集する", edit_admin_genre_path(genre), class: ' d-sm-flex justify-content-sm-center btn btn-success ' %></div>
+          <div class="row">
+            <div class="col-md-3"><%= genre.name %></div>
+            <div class="col-md-3"><%= link_to "編集する", edit_admin_genre_path(genre), class: ' d-sm-flex justify-content-sm-center btn btn-success ' %></div>
+          </div>
         </div>
       <% end %>
     </div>
