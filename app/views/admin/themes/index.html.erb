@@ -1,38 +1,36 @@
-  <div class = "container">
-    <div class = "row py-4">
-      <h3>職業選択画面</h3>
-    </div>
-
-    <table class="table table-hover table-bordered py-4">
-      <thead class="thead-dark">
-        <tr>
-          <th class="header">職業id</th>
-          <th class="header">職業名</th>
-          <th class="header">保有テーマ数</th>
-          <th class="header">確認状況</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @Jobs.each do |job| %>
-          <tr>
-            <td class="table-light"><%= job.id %></td>
-            <td class="table-light">
-              <%= link_to job.name, admin_theme_path(job) %>
-            </td>
-            <td class="table-light">
-              <%= job.themes.count %>
-            </td>
-            <% if 0 < job.themes.where(is_checked: false).count %><!--表示ステータスが「false」のものがある場合の条件分岐-->
-              <td class="table-light text-danger">未確認のテーマが<%= job.themes.where(is_checked: false).count%>個あります</td>
-            <% else %>
-              <td class="table-light text-primary">すべてのテーマが確認済みです</td>
-            <% end %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <div class="row justify-content-center py-4">
-      <%= link_to "TOPへ戻る" , admin_path , class: "btn btn-primary col-sm-3" %>
-    </div>
+<div class = "container p-4">
+  <div class = "row justify-content-center pt-3">
+    <h3>職業選択画面</h3>
   </div>
+
+  <% @Jobs.each do |job| %>
+    <div class="row justify-content-center py-3">
+      <div class="row col-10 justify-content-center">
+        <div class="col-md-5 text-center border border-white bg-info text-white">職業id</div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= job.id %></div>
+      </div>
+      <div class="row col-10 justify-content-center">
+        <div class="col-md-5 text-center border border-white bg-info text-white">職業名</div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= link_to job.name, admin_theme_path(job) %></div>
+      </div>
+      <div class="row col-10 justify-content-center">
+        <div class="col-md-5 text-center border border-white bg-info text-white">保有テーマ数</div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= job.themes.count %>テーマ</div>
+      </div>
+      <div class="row col-10 justify-content-center">
+        <div class="col-md-5 text-center border border-white bg-info text-white">確認状況</div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark">
+          <% if 0 < job.themes.where(is_checked: false).count %><!--表示ステータスが「false」のものがある場合の条件分岐-->
+            <div class="text-danger">未確認のテーマが<%= job.themes.where(is_checked: false).count%>個あります</div>
+          <% else %>
+            <div class="text-success">すべてのテーマが確認済みです</div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row justify-content-center py-4">
+    <%= link_to "TOPへ戻る" , admin_path , class: "btn btn-primary col-sm-3" %>
+  </div>
+</div>

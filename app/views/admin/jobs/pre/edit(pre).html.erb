@@ -1,8 +1,8 @@
-<div class="container p-4">
-    <div class = "row justify-content-center pt-3">
+<div class="container">
+    <div class="row py-4">
       <h3>職業情報編集</h3>
     </div>
-    <div class="row justify-content-center  p-4">
+    <div class="row">
       <div class="w-75">
         <%= form_with model: @job,url:admin_job_path(@job), local:true do |f| %>
 
@@ -37,11 +37,9 @@
             <%= f.label :is_checked, "確認済み", class: "col-sm-2" %>
           </div>
 
-          <div class="row justify-content-center pt-4">
-            <%= f.submit "更新" , class: 'btn btn-success col-sm-5'  %>
-          </div>
-          <div class="row justify-content-center py-4">
-            <%= link_to "職業詳細へ戻る" , admin_job_path(@job), class: 'btn btn-primary col-sm-5' %>
+          <div class="row py-4">
+            <%= f.submit "更新" , class: 'btn btn-success offset-3 col-lg-3'  %>
+            <%= link_to "職業詳細へ戻る" , admin_job_path(@job), class: 'btn btn-danger offset-1 col-lg-3 ' %>
           </div>
 
         <% end %>
