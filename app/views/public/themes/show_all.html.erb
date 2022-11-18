@@ -11,11 +11,14 @@
         <%= render partial: 'public/comments/comments', locals:{job: @job, theme: @theme,comment: comment} %>
       </div>
     <% end %>
+    <div class="row justify-content-center ">
+      <%= paginate @comments %>
+    </div>
   </div>
   <div id="comments_new">
     <%= render partial: 'public/comments/form', locals:{job: @job, theme: @theme, comment: @comment} %>
   </div>
-  
+
    <div class="row justify-content-center py-4">
       <%= link_to "テーマ一覧へ戻る" , job_path(@job), class: 'btn btn-primary col-sm-5' %>
   </div>
