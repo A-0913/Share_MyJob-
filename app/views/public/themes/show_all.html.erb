@@ -1,0 +1,21 @@
+<div class="container p-4">
+  <div class="row justify-content-center ">
+    <div class="title-box">
+      <div class="title-box-title"><%= @job.name %></div>
+        <p><%= @theme.name %></p>
+    </div>
+  </div>
+  <div id="comments_area">
+    <% @comments.each do |comment| %>
+      <div id="comments_area_<%=comment.id%>">
+        <%= render partial: 'public/comments/comments', locals:{job: @job, theme: @theme,comment: comment} %>
+      </div>
+    <% end %>
+  </div>
+  <div id="comments_new">
+    <%= render partial: 'public/comments/form', locals:{job: @job, theme: @theme, comment: @comment} %>
+  </div>
+  
+   <div class="row justify-content-center py-4">
+      <%= link_to "テーマ一覧へ戻る" , job_path(@job), class: 'btn btn-primary col-sm-5' %>
+  </div>

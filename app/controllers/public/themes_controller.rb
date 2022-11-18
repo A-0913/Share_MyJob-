@@ -7,8 +7,16 @@ before_action :authenticate_any!
     @theme_job = ThemeInJob.find_by(job_id: @job.id, themes: @theme.id)
     @theme_job.update(interest: @theme_job.interest+1)
     @comment = Comment.new
+    #@comments = Comment.where(theme_id: @theme.id).where(job_id: @job.id).where(is_published: true)
+    @comments = Comment.where(theme_id: @theme.id).where(job_id: @job.id).where(is_published: true).first(10)
+    @comments_all = Comment.where(theme_id: @theme.id).where(job_id: @job.id).where(is_published: true)
+  end
+  
+  def show_all
+    @job = Job.find(params[:job_id])
+    @theme = @job.themes.find(params[:id])
+    @comment = Comment.new
     @comments = Comment.where(theme_id: @theme.id).where(job_id: @job.id).where(is_published: true)
-    #@comments = Comment.where(theme_id: @theme.id).where(job_id: @job.id).where(is_published: true).first(3)
   end
 
   def new

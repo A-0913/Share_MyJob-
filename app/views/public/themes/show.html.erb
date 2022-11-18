@@ -12,9 +12,14 @@
       </div>
     <% end %>
   </div>
-  <div id="comments_new">
-    <%= render partial: 'public/comments/form', locals:{job: @job, theme: @theme, comment: @comment} %>
-  </div>
+  <%# if 10 < @comments_all.count %>
+    <%#= link_to "すべてのコメントを見る" , _path(@job), class: 'btn btn-primary col-sm-5' %>
+  <%# else %>
+    <div id="comments_new">
+      <%= render partial: 'public/comments/form', locals:{job: @job, theme: @theme, comment: @comment} %>
+    </div>
+  <%# end %>
+
   <div class="row justify-content-center py-4">
       <%= link_to "テーマ一覧へ戻る" , job_path(@job), class: 'btn btn-primary col-sm-5' %>
   </div>
