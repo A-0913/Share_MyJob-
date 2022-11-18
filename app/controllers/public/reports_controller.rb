@@ -1,4 +1,6 @@
 class Public::ReportsController < ApplicationController
+  before_action :authenticate_member!
+
   def new
     @job = Job.find(params[:job_id])
     @theme = Theme.find(params[:theme_id])
