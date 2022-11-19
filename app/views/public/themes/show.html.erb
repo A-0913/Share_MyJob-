@@ -6,10 +6,12 @@
     </div>
   </div>
   <div id="comments_area">
-    <div id="comments_area_id"></div>
+
   </div>
     <% @comments.each do |comment| %>
+      <div class="comment_<%= comment.id %>">
         <%= render partial: 'public/comments/comments', locals:{job: @job, theme: @theme,comment: comment} %>
+      </div>
     <% end %>
 
   <div class="row justify-content-center ">

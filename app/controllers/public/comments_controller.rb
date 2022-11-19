@@ -9,20 +9,19 @@ before_action :authenticate_any!
     @comment.theme_id = @theme.id
     @comment.member_id = current_member.id
     @comment.save
-    #redirect_to job_theme_path(job,theme)
+   # redirect_to job_theme_path(job,theme)
   end
 
   def destroy
     @job = Job.find(params[:job_id])
     @theme = Theme.find(params[:theme_id])
     @comment = Comment.find(params[:id])
-
     job = Job.find(params[:job_id])
     @theme = Theme.find(params[:theme_id])
     comment = Comment.find(params[:id])
     comment.update(is_published: false)
     #↑is_publishedカラムをfalseに変更することによりコメントを非表示にする
-    #redirect_to job_theme_path(job,@theme)
+    redirect_to job_theme_path(job,@theme)
   end
 
   private
