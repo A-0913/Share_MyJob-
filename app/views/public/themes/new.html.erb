@@ -15,15 +15,16 @@
             <%= f.label :"追加理由", class: "col-sm-3 col-form-label" %>
             <%= f.text_area :reason,  class: "col-lg-6", placeholder: "既存のテーマにないため" %>
           </div>
-      </div>
-    </div>
+
           <div class="row justify-content-center pb-4">
             <%= f.submit "新規登録" , class: 'btn btn-success col-sm-5' %>
           </div>
 
         <% end %>
-
-    <div class="row justify-content-center pb-4">
-        <%= link_to "テーマ一覧へ戻る" , job_path(@job), class: 'btn btn-primary col-sm-5' %>
+          <div class="row justify-content-center pb-4">
+              <%= link_to "テーマ一覧へ戻る" , job_path(@job), class: 'btn btn-primary col-sm-5' %>
+          </div>
+      </div>
     </div>
+
 </div>

@@ -21,6 +21,7 @@ before_action :authenticate_any!
     @theme = Theme.find(params[:theme_id])
     comment = Comment.find(params[:id])
     comment.update(is_published: false)
+    #↑is_publishedカラムをfalseに変更することによりコメントを非表示にする
     #redirect_to job_theme_path(job,@theme)
   end
 
