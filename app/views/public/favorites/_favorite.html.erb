@@ -1,9 +1,16 @@
-<% if comment.favorited_by?(current_member) %>
-    <%= link_to  job_theme_comment_favorites_path(job, theme, comment), class: "btn btn-info ", method: :delete , remote: true do%>
-    なるほど!<i class="far fa-thumbs-up"></i><%= comment.favorites.count %>
-    <% end %>
-<% else %>
-    <%= link_to  job_theme_comment_favorites_path(job, theme, comment), class: "btn btn-secondary",  method: :post , remote: true  do %>
-    なるほど!<i class="far fa-thumbs-up"></i><%= comment.favorites.count %>
+<% if admin_signed_in? %>
+    <button type="button" class="btn btn-secondary">
+      <i class="far fa-thumbs-up"></i>
+    </button>
+<% end %>
+<% if member_signed_in? %>
+    <% if comment.favorited_by?(current_member) %>
+        <%= link_to  job_theme_comment_favorites_path(job, theme, comment), class: "btn btn-info ", method: :delete , remote: true do%>
+        <i class="far fa-thumbs-up"></i><%= comment.favorites.count %>
+        <% end %>
+    <% else %>
+        <%= link_to  job_theme_comment_favorites_path(job, theme, comment), class: "btn btn-secondary",  method: :post , remote: true  do %>
+        <i class="far fa-thumbs-up"></i><%= comment.favorites.count %>
+        <% end %>
     <% end %>
 <% end %>

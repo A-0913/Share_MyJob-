@@ -7,11 +7,12 @@ before_action :authenticate_any!
     @theme_job = ThemeInJob.find_by(job_id: @job.id, themes: @theme.id)
     @theme_job.update(interest: @theme_job.interest+1)
     @comment = Comment.new
-    @comments = Comment.where(theme_id: @theme.id).where(job_id: @job.id)
+    @comments = Comment.where(theme_id: @theme.id).where(job_id: @job.id).where(is_published: true).order(created_at: :desc).page(params[:page]).per(7)
   end
 
   def new
     @job = Job.find(params[:job_id])
+    @theme = Theme.new
   end
 
   def create
@@ -33,7 +34,7 @@ before_action :authenticate_any!
 
   private
     def theme_params
-      params.permit(:name, :reason )
+      params.require(:theme).permit(:name, :reason )
     end
 
 end
