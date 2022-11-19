@@ -1,38 +1,46 @@
-<div class = "container">
-  <div class = "row py-4">
+<div class = "container p-4">
+  <div class = "row justify-content-center pt-3">
     <h3>会員一覧</h3>
   </div>
-  <table class="table table-hover table-bordered ">
-    <thead class="thead-dark">
-      <tr>
-        <th class="header">会員ID</th>
-        <th class="header">氏名</th>
-        <th class="header">ニックネーム</th>
-        <th class="header">メールアドレス</th>
-        <th class="header">ステータス</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @members.each do |member| %>
-        <tr>
-          <td class="table-light"><%= member.id %></td>
-          <td class="table-light">
-            <%= link_to member.last_name+"　"+member.first_name , admin_member_path(member) %>
-          </td>
-          <td class="table-light"><%= member.nickname %></td>
-          <td class="table-light"><%= member.email %></td>
-          <td class="table-light">
-                <% if member.is_deleted == false %>
-                  <p class="text-success font-weight-bold">有効</p>
-                <% else %>
-                  <p class="text-danger font-weight-bold">退会</p>
-                <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+
+  <% @members.each do |member| %>
+    <div class="row justify-content-center py-3">
+      <div class="row col-10 justify-content-center">
+        <div class="col-md-5 text-center border border-white bg-info text-white">会員ID</div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= member.id %></div>
+      </div>
+      <div class="row col-10 justify-content-center">
+        <div class="col-md-5 text-center border border-white bg-info text-white">氏名</div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark">
+          <%= link_to member.last_name+"　"+member.first_name , admin_member_path(member) %>
+        </div>
+      </div>
+      <div class="row col-10 justify-content-center">
+        <div class="col-md-5 text-center border border-white bg-info text-white">ニックネーム</div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= member.nickname %></div>
+      </div>
+      <div class="row col-10 justify-content-center">
+        <div class="col-md-5 text-center border border-white bg-info text-white">メールアドレス</div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= member.email %></div>
+      </div>
+      <div class="row col-10 justify-content-center">
+        <div class="col-md-5 text-center border border-white bg-info text-white">ステータス</div>
+          <div class="col-md-5 text-center border border-dark bg-white text-dark">
+            <% if member.is_deleted == false %>
+              <div class="text-success font-weight-bold">有効</div>
+            <% else %>
+              <div class="text-danger font-weight-bold">退会</div>
+            <% end %>
+          </div>
+      </div>
+    </div>
+  <% end %>
+
   <div class="row justify-content-center">
   <%= paginate @members %>
+  </div>
+
+  <div class="row justify-content-center py-4">
+    <%= link_to "TOPへ戻る" , admin_path , class: "btn btn-primary col-sm-3" %>
   </div>
 </div>

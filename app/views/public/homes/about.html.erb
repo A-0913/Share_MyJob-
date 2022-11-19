@@ -1,22 +1,29 @@
 <div  class="container">
   <div class="row justify-content-center py-3">
-    <h2>Share MyJobとは？</h2>
+    <h2 class="about">Share MyJobとは？</h2>
   </div>
   <div class="row justify-content-center text-center pb-3">
-    <h4>職業について気軽に情報交換ができる就活コミュニティサイトです</h4>
+    <h4>
+      仕事の情報交換が気軽にできる<br>
+      就活コミュニティサイトです
+    </h4>
   </div>
   <div class="row justify-content-center text-center pb-3">
-    <h5>転職をしようか悩んでいる方や気になっている職業のある方へ<br>
-    <br>
+    <h5>
+      転職をしようか悩んでいる方や気になっている職業のある方へ
+    </h5>
+  </div>
+  <div class="row justify-content-center text-center pb-3">
+    <h6>
     ここでは職業ごとに区分けしたうえで、<br>
     さらにテーマ別に掲示板を展開しています。<br>
     まずは気になることから職業に関する知識を深め、<br>
     「天職」探しへの1歩を踏み出しましょう！
-    </h5>
+    </h6>
   </div>
   <div class="row justify-content-center py-3">
-    <%= image_tag asset_path("男性調べもの.png") %>
-    <%= image_tag asset_path("男女.png"), class: 'offset-1' %>
-    <%= image_tag asset_path("女性ひらめき.png"), class: 'offset-1' %>
+      <div class="col-md-2 text-center"><%= image_tag asset_path("男性調べもの.png"), class: 'm-2' %></div>
+      <div class="col-md-2 text-center"><%= image_tag asset_path("男女.png"), class: 'm-2' %></div>
+      <div class="col-md-2 text-center"><%= image_tag asset_path("女性ひらめき.png"), class: 'm-2' %></div>
   </div>
 </div>

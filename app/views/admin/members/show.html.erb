@@ -1,64 +1,68 @@
-<div class="container">
-  <div class="row py-4">
-    <h3>マイページ</h3>
+<div class = "container p-4">
+  <div class = "row justify-content-center pt-3">
+    <h3>会員情報詳細</h3>
   </div>
-  <div class="row">
-    <div class="d-flex align-items-center col-sm-3 ">
-       <%= image_tag @member.get_profile_image(200,200) %>
-    </div>
-    <div class="col-sm-8">
-      <div class="row">
-        <h4>登録情報</h4>
-        <% if admin_signed_in? %>
-        <h5 class="mx-5"><%= link_to "編集する" , edit_admin_member_path(@member), class: 'btn btn-success' %></h5>
-        <% end %>
+  <div class="row py-4">
+    <div class="col-sm-2 p-2">
+      <div class="row justify-content-center">
+        <div class="d-flex align-items-center ">
+          <div class="member-icon">
+          <%= image_tag @member.get_profile_image(200,200) %>
+          </div>
+        </div>
       </div>
-      <div class="table-responsive table-hover">
-        <table class="table table-bordered">
-          <tr>
-            <th class="table-light">会員id</th>
-            <td class="table-light"><%= @member.id %></td>
-          </tr>
-          <tr>
-            <th class="table-light">氏名</th>
-            <td class="table-light"><%= @member.last_name %><%= "　" %><%=@member.first_name %></td>
-          </tr>
-          <tr>
-          <tr>
-            <th class="table-light">メールアドレス</th>
-            <td class="table-light"><%= @member.email %></td>
-          </tr>
-          <tr>
-            <th class="table-light">ニックネーム</th>
-            <td class="table-light"><%= @member.nickname %></td>
-          </tr>
-          <tr>
-            <th class="table-light">紹介文</th>
-            <td class="table-light"><%= @member.introduction %></td>
-          </tr>
-          <tr>
-            <th class="table-light">所属</th>
-            <td class="table-light"><%= @member.belong %></td>
-          </tr>
-          <tr>
-            <th class="table-light">会員ステータス</th>
-            <td class="table-light">
+    </div>
+    <div class="col-sm-10 ">
+      <div class="row justify-content-center">
+        <div class="row col-10 justify-content-center">
+          <div class="col-md-5 text-center border border-white bg-info text-white">会員ID</div>
+          <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @member.id %></div>
+        </div>
+        <div class="row col-10 justify-content-center">
+          <div class="col-md-5 text-center border border-white bg-info text-white">氏名</div>
+          <div class="col-md-5 text-center border border-dark bg-white text-dark">
+            <%= @member.last_name %><%= "　" %><%=@member.first_name %>
+          </div>
+        </div>
+        <div class="row col-10 justify-content-center">
+          <div class="col-md-5 text-center border border-white bg-info text-white">ニックネーム</div>
+          <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @member.nickname %></div>
+        </div>
+        <div class="row col-10 justify-content-center">
+          <div class="col-md-5 text-center border border-white bg-info text-white">メールアドレス</div>
+          <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @member.email %></div>
+        </div>
+        <div class="row col-10 justify-content-center">
+          <div class="col-md-5 text-center border border-white bg-info text-white">自己紹介文</div>
+          <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @member.introduction %></div>
+        </div>
+        <div class="row col-10 justify-content-center">
+          <div class="col-md-5 text-center border border-white bg-info text-white">属性</div>
+          <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @member.belong %></div>
+        </div>
+        <div class="row col-10 justify-content-center">
+          <div class="col-md-5 text-center border border-white bg-info text-white">会員ステータス</div>
+            <div class="col-md-5 text-center border border-dark bg-white text-dark">
               <% if @member.is_deleted == false %>
                 <div class="text-success font-weight-bold">有効</div>
               <% else %>
                 <div class="text-danger font-weight-bold">退会</div>
               <% end %>
-            </td>
-          </tr>
-
-        </table>
-      </div>
-      <div class="row my-4">
-        <h5>投稿職業一覧　</h5><h5 class="mx-5"><%= link_to "一覧を見る" , admin_member_jobs_path(@member), class: 'btn btn-primary' %></h5>
-        <h5>投稿テーマ一覧</h5><h5 class="mx-5"><%= link_to "一覧を見る" , admin_member_themes_path(@member), class: 'btn btn-primary' %></h5>
+            </div>
+        </div>
       </div>
     </div>
-
+  </div>
+  <div class="row justify-content-center my-3">
+    <h5>投稿職業一覧　</h5><h5 class="mx-5"><%= link_to "一覧を見る" , admin_member_jobs_path(@member), class: 'btn btn-primary' %></h5>
+    <h5>投稿テーマ一覧</h5><h5 class="mx-5"><%= link_to "一覧を見る" , admin_member_themes_path(@member), class: 'btn btn-primary' %></h5>
   </div>
 
+  <div class="row justify-content-center pt-4">
+   <%= link_to "編集する" , edit_admin_member_path(@member), class: 'btn btn-success col-sm-4' %>
+  </div>
+
+  <div class="row justify-content-center py-4">
+    <%= link_to "会員一覧へ戻る" , admin_members_path, class: 'btn btn-info col-sm-4' %>
+  </div>
 </div>

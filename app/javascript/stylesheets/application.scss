@@ -1,11 +1,13 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-#wrapper{
-  width: 100%;
-  position: relative;
-  min-height: 100vh;
-}
+// .wrapper{
+//   width: 100%;
+//   position: relative;
+//   min-height: 100vh;
+//   padding-bottom: 60px;
+//   box-sizing: border-box;
+// }
 
 
 header{
@@ -21,29 +23,216 @@ header{
 // }
 
 body{
+  // min-height: 1500px;
+  padding-top: 80px;
+  padding-bottom: 70px;
   background-color: #D9E5FF;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
-.footer > .footer-container {
-    width: auto;
-    max-width: 680px;
-    padding: 0 15px;
-}
+// .footer > .footer-container {
+//     width: auto;
+//     max-width: 680px;
+//     padding: 0 15px;
+// }
 
 footer{
   // position: absolute;
-  bottom: 0;
+  // bottom: 0;
   background-color: #99C3ED;
-  height: 60px;
+  // height: 60px;
   width: 100%;
 }
 
-.comment-all{
+// .comment-all{
+//   background-color: white;
+//   padding-left: 30px;
+//   min-height: 80%;
+// }
+
+.title-box{
+  margin: 1em 0;
   background-color: white;
-  padding-left: 30px;
-  min-height: 80%;
+  letter-spacing: .3px;
+  width: 400px;
+  border-radius: 15px;
+}
+
+.title-box-title{
+  color: #fff;
+  font-weight: bold;
+  background-color: #62c1ce;
+  padding: 4px 6px;
+  text-align: center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.title-box p{
+  margin: 0;
+  padding: 1em;
+  text-align: center
+}
+
+.member-icon img{
+  width: 100%;
+  height: auto;
+  border: solid 3px white;
+  border-radius: 50%;
+  background: #FFFFE0;
+}
+
+.headline {
+  border-radius: 30px;
+}
+
+.balloon5 {
+  width: 100%;
+  margin: 1.5em 0;
+  //overflow: hidden;
+}
+
+.balloon5 .faceicon {
+  float: left;
+  margin-right: -90px;
+  width: 80px;
+}
+
+.balloon5 .faceicon img{
+  width: 100%;
+  height: auto;
+  border: solid 3px white;
+  border-radius: 50%;
+  background: #FFFFE0;
+}
+
+.balloon5 .chatting {
+  width: 100%;
+}
+
+.says {
+  display: inline-block;
+  position: relative;
+  margin: 0 0 0 10px;
+  padding: 17px 13px;
+  border-radius: 12px;
+  background: white;
+  width: 100%;
+}
+
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 18px;
+  left: -24px;
+  border: 12px solid transparent;
+  border-right: 12px solid white;
+}
+
+.says p {
+  margin: 0;
+  padding: 0;
 }
 
 .button-area{
   text-align: center;
 }
+
+ .job-title{
+  padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
+  color: #494949;/*文字色*/
+  background: #f4f4f4;/*背景色*/
+  border-left: solid 5px #7db4e6;/*左線*/
+  border-bottom: solid 3px #d7d7d7;/*下線*/
+  width: 50%;
+}
+
+.job-interest{
+    padding: 0.5em 1em;
+    color: white;
+    background: #A4C6FF;
+    border-left: solid 10px #7db4e6;
+    width: 20%;
+    text-align: center;
+}
+
+.job-name{
+    padding: 0.5em 1em;
+    color: #474747;
+    background: whitesmoke;/*背景色*/
+    border-left: double 7px #4ec4d3;/*左線*/
+    border-right: double 7px #4ec4d3;/*右線*/
+    width: 40%;
+    text-align: center;
+    font-weight: bold;
+    background-color: #FFFFFF;
+}
+
+
+.box27 {
+    position: relative;
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #62c1ce;
+    // width: 40%;
+    background-color: #FFFFFF;
+}
+.box27 .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -27px;
+    left: -3px;
+    padding: 0 9px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 17px;
+    background: #62c1ce;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+    width: 40%;
+    text-align: center;
+}
+.box27 p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+
+.about {
+  position: relative;
+  padding-left: 25px;
+}
+
+.about:before {
+  position: absolute;
+  content: '';
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: none;
+  border-left: solid 15px transparent;
+  border-bottom: solid 15px #99C3ED;
+}
+.about:after {
+  position: absolute;
+  content: '';
+  bottom: -3px;
+  left: 10px;
+  width: 100%;
+  border-bottom: solid 3px #99C3ED;
+}
+
+.nav-item {
+  background-image: linear-gradient(-45deg, rgba(200,230,245,0.4) 25%, transparent 25%, transparent 50%, rgba(200,230,245,.4) 50%, rgba(200,230,245,.4) 75%, transparent 75%, transparent 100%);/*見出しの色*/
+  background-size: 20px 20px;/*線の太さ*/
+  border-left:2px dotted rgba(0,0,0,.1);
+  border-right:2px dotted rgba(0,0,0,.1);
+  box-shadow:0 0 5px rgba(0,0,0,.2);/*見出しの影*/
+  padding: 0.5em;/*文字まわりの余白*/
+  color: #454545;/*文字色*/
+}
+

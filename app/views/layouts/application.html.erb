@@ -8,122 +8,133 @@
     <script src="https://kit.fontawesome.com/c8df76fea2.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/">
-            <%= image_tag asset_path("logo.jpg"), class: 'logo' %>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <ul class="navbar-nav me-auto">
-              <!--顧客ログイン時-->
-              <% if member_signed_in? %>
-                <li class="nav-item mx-3">
-                  <%= link_to about_path, class: 'nav-link text-dark' do %>
-                    <i class="fa-regular fa-comments">サイト概要</i>
-                  <% end %>
-                </li>
-                <li class="nav-item mx-3">
-                  <%= link_to jobs_path, class: 'nav-link text-dark' do %>
-                    <i class="fa-solid fa-star">職業一覧</i>
-                  <% end %>
-                </li>
-                <li class="nav-item mx-3">
-                  <%= link_to member_path(current_member), class: 'nav-link text-dark' do %>
-                    <i class="fa-solid fa-user-gear">マイページ</i>
-                  <% end %>
-                </li>
-                <li class="nav-item mx-3">
-                  <%= link_to member_favorites_path(current_member), class: 'nav-link text-dark' do %>
-                    <i class="fa-solid fa-paperclip">参考になった一覧</i>
-                  <% end %>
-                </li>
-                <li class="nav-item mx-3">
-                  <%= link_to destroy_member_session_path, class: 'nav-link text-dark' , method: :delete do %>
-                  <i class="fa-solid fa-right-from-bracket">ログアウト</i>
-                  <% end %>
-                </li>
+    <div class="wrapper">
+      <header class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+              <%= image_tag asset_path("logo.jpg"), class: 'logo' %>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+              <ul class="navbar-nav me-auto">
+                <!--顧客ログイン時-->
+                <% if member_signed_in? %>
+                  <li class="nav-item  mx-3">
+                    <%= link_to about_path, class: 'nav-link text-dark' do %>
+                      <i class="fa-regular fa-comments">About</i>
+                    <% end %>
+                  </li>
+                  <li class="nav-item mx-3">
+                    <%= link_to jobs_path, class: 'nav-link text-dark' do %>
+                      <i class="fa-solid fa-star">Jobs</i>
+                    <% end %>
+                  </li>
+                  <li class="nav-item mx-3">
+                    <%= link_to member_path(current_member), class: 'nav-link text-dark' do %>
+                      <i class="fa-solid fa-user-gear">Mypage</i>
+                    <% end %>
+                  </li>
+                  <li class="nav-item mx-3">
+                    <%= link_to member_favorites_path(current_member), class: 'nav-link text-dark' do %>
+                      <i class="fa-solid fa-paperclip">Bookmarks</i>
+                    <% end %>
+                  </li>
+                  <li class="nav-item mx-3">
+                    <%= link_to destroy_member_session_path, class: 'nav-link text-dark' , method: :delete do %>
+                    <i class="fa-solid fa-right-from-bracket">Log out</i>
+                    <% end %>
+                  </li>
 
-              <!--管理者ログイン時-->
-              <% elsif admin_signed_in? %>
-                <li class="nav-item mx-3">
-                  <%= link_to admin_members_path, class: 'nav-link text-dark' do %>
-                    <i class="fa-solid fa-star">会員一覧</i>
-                  <% end %>
-                </li>
-                <li class="nav-item mx-3">
-                  <%= link_to admin_jobs_path, class: 'nav-link text-dark' do %>
-                    <i class="fa-solid fa-star">職業一覧</i>
-                  <% end %>
-                </li>
-                <li class="nav-item mx-3">
-                  <%= link_to admin_themes_path, class: 'nav-link text-dark' do %>
-                    <i class="fa-solid fa-star">テーマ一覧</i>
-                  <% end %>
-                </li>
-                <li class="nav-item mx-3">
-                  <%= link_to admin_genres_path, class: 'nav-link text-dark' do %>
-                    <i class="fa-solid fa-star">ジャンル一覧</i>
-                  <% end %>
-                </li>
-                <li class="nav-item mx-3">
-                  <%= link_to destroy_admin_session_path, class: 'nav-link text-dark' , method: :delete do %>
-                    <i class="fa-solid fa-right-from-bracket">ログアウト</i>
-                  <% end %>
-                </li>
+                <!--管理者ログイン時-->
+                <% elsif admin_signed_in? %>
+                  <li class="nav-item mx-3">
+                    <%= link_to admin_members_path, class: 'nav-link text-dark' do %>
+                      <i class="fa-solid fa-star">会員一覧</i>
+                    <% end %>
+                  </li>
+                  <li class="nav-item mx-3">
+                    <%= link_to admin_jobs_path, class: 'nav-link text-dark' do %>
+                      <i class="fa-solid fa-star">職業一覧</i>
+                    <% end %>
+                  </li>
+                  <li class="nav-item mx-3">
+                    <%= link_to admin_themes_path, class: 'nav-link text-dark' do %>
+                      <i class="fa-solid fa-star">テーマ一覧</i>
+                    <% end %>
+                  </li>
+                  <li class="nav-item mx-3">
+                    <%= link_to admin_reports_path, class: 'nav-link text-dark' do %>
+                      <i class="fa-solid fa-star">通報一覧</i>
+                    <% end %>
+                  </li>
+                  <li class="nav-item mx-3">
+                    <%= link_to admin_genres_path, class: 'nav-link text-dark' do %>
+                      <i class="fa-solid fa-star">ジャンル一覧</i>
+                    <% end %>
+                  </li>
+                  <li class="nav-item mx-3">
+                    <%= link_to destroy_admin_session_path, class: 'nav-link text-dark' , method: :delete do %>
+                      <i class="fa-solid fa-right-from-bracket">ログアウト</i>
+                    <% end %>
+                  </li>
 
-              <!--顧客・管理者ログアウト時-->
-              <% else %>
-                <li class="nav-item mx-3">
-                  <%= link_to about_path, class: 'nav-link text-dark' do %>
-                    <i class="fa-regular fa-comments">サイト概要</i>
-                  <% end %>
-                </li>
-                <li class="nav-item mx-3">
-                  <%= link_to  new_member_registration_path, class: 'nav-link text-dark' do %>
-                  <i class="fa-solid fa-user-plus">新規登録</i>
-                  <% end %>
-                </li>
-                <li class="nav-item mx-3">
-                  <%= link_to  new_member_session_path, class: 'nav-link text-dark' do %>
-                  <i class="fa-solid fa-right-to-bracket">ログイン</i>
-                  <% end %>
-                </li>
-                <li class="nav-item mx-3">
-                  <%= link_to  members_guest_sign_in_path, method: :post, class: 'nav-link text-dark' do %>
-                  <i class="fa-solid fa-door-open">ゲストログイン（閲覧用）</i>
-                  <% end %>
-                </li>
+                <!--顧客・管理者ログアウト時-->
+                <% else %>
+                  <li class="nav-item mx-3">
+                    <%= link_to about_path, class: 'nav-link text-dark' do %>
+                      <i class="fa-regular fa-comments">About</i>
+                    <% end %>
+                  </li>
+                  <li class="nav-item mx-3">
+                    <%= link_to  new_member_registration_path, class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-user-plus">Sign up</i>
+                    <% end %>
+                  </li>
+                  <li class="nav-item mx-3">
+                    <%= link_to  new_member_session_path, class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-right-to-bracket">Log In</i>
+                    <% end %>
+                  </li>
+                  <li class="nav-item mx-3">
+                    <%= link_to  members_guest_sign_in_path, method: :post, class: 'nav-link text-dark' do %>
+                    <i class="fa-solid fa-door-open">Guest Login（閲覧用）</i>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <% if flash[:notice]%>
+          <div class="alert alert-warning" role="alert"><%=flash[:notice] %></div>
+        <% elsif flash[:alert] %>
+          <div class="alert alert-warning" role="alert"><%= flash[:alert] %></div>
+        <% end %>
+        <%= yield %>
+      </main>
+      <footer class="p-2 fixed-bottom">
+        <div class= "footer-container">
+          <div class = "row">
+            <div class="col-1">
+              <% unless admin_signed_in? %>
+                <%= link_to  new_admin_session_path, class: 'nav-link text-dark' do %>
+                  <i class="fa-solid fa-key"></i>
+                 <% end %>
               <% end %>
-            </ul>
+            </div>
+            <div class="text-center col-11">© 2022,Share MyJob, © 2022 Japan</div>
           </div>
         </div>
-      </nav>
-    </header>
-    <main>
-      <%= flash[:notice] %>
-      <%= flash[:alert] %>
-      <%= yield %>
-    </main>
-    <footer class="p-3">
-      <div class= "footer-container">
-        <div class = "row">
-          <div class="col-sm-1">
-            <% unless admin_signed_in? %>
-              <%= link_to  new_admin_session_path, class: 'nav-link text-dark' do %>
-                <i class="fa-solid fa-key"></i>
-               <% end %>
-            <% end %>
-          </div>
-          <div class="text-center col-sm-11">© 2022,Share MyJob, © 2022 Japan</div>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </body>
 </html>

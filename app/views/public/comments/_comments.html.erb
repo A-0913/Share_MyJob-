@@ -1,32 +1,59 @@
 <div class="row">
-  <div class="col-sm-2 offset-1 ">
-    <div class="row justify-content-center">
-      <%= image_tag comment.member.get_profile_image(70,70) %>
-    </div>
-    <div class="row justify-content-center">
-      <%= link_to member_path(comment.member) do %>
-        <%= comment.member.nickname %>
-      <% end %>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="comment-all">
-      <%= comment.comment %>
-    </div>
-  </div>
-  <div class="col-sm-2">
-    <div class="row justify-content-center">
-      <div id="comment_<%= comment.id %>">
-        <%= render partial: 'public/favorites/favorite', locals:{job: job, theme: theme, comment: comment} %>
+  <div class="col-3 col-md-1 offset-md-2 align-self-center">
+    <div class="balloon5">
+      <div class="faceicon">
+        <%= link_to member_path(comment.member) do %>
+          <%=  image_tag comment.member.get_profile_image(70,70) %>
+        <% end %>
       </div>
     </div>
-    <div class="row justify-content-center ">
-        <div id="comments_destroy">
-          <%= render partial: 'public/comments/destroy', locals:{job: job, theme: theme, comment: comment} %>
+  </div>
+  <div class="col-7 col-md-6 align-self-center">
+    <div class="balloon5">
+      <div class="chatting">
+        <div class="says">
+          <%= comment.comment %>
         </div>
-        <%# if comment.member == current_member || admin_signed_in? %>
-          <%#= link_to '削除する', job_theme_comment_path(@job ,@theme ,comment), method: :delete, remote: true,  data: { confirm: '本当に消しますか？' },  class: "btn btn-sm btn-danger "%>
-        <%# end %>
+      </div>
+      <div class="text-right"><%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %></div>
+    </div>
+  </div>
+  <div class="col-2 align-self-center">
+    <div class="balloon5">
+      <span id="comment_<%= comment.id %>">
+        <%= render partial: 'public/favorites/favorite', locals:{job: job, theme: theme, comment: comment} %>
+      </span>
+      <span id="comments_destroy">
+        <%= render partial: 'public/comments/destroy', locals:{job: job, theme: theme, comment: comment} %>
+      </span>
+      <span>
+        <% if admin_signed_in? %>
+          <% if comment.reports.count > 0 %>
+            <button type="button" class="btn btn-danger">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+            </button>
+          <% else %>
+            <button type="button" class="btn btn-secondary">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+            </button>
+          <% end %>
+        <% end %>
+        <% if member_signed_in? %>
+          <% if current_member.email != 'guest@example.com' %>
+            <% if comment.member != current_member %>
+              <% if comment.reported_by?(current_member) %>
+                <button type="button" class="btn btn-secondary">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                </button>
+              <% else %>
+                <%= link_to  new_job_theme_comment_report_path(job ,theme ,comment), class: "btn btn-warning" do %>
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </span>
     </div>
   </div>
 </div>

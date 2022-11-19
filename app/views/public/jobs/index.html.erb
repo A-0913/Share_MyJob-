@@ -1,37 +1,27 @@
-<div class="container">
+<div class="container p-4">
   <div class="row">
     <div class="col-sm-3">
-      <div class="mt-4">
+      <div class="py-3">
         <%#= render 'public/searches/search' %>
         <%= render partial: 'public/searches/serach' %>
       </div>
-      <div class="mt-4">
+      <div class="py-2">
         <%= render 'admin/genres/genre_sidebar', genres: @genres%>
       </div>
     </div>
-    <div class="col-sm-9">
-      <div class="row justify-content-center py-4">
-        <table  border="1"  rules=rows width="80%" >
-          <thead>
-            <tr align="center">
-              <th width="50%" class="bg-primary text-white" >職業名</th>
-              <th width="20%" class="bg-primary text-white">関心度</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @jobs.each do |job| %>
-              <tr align="center">
-                <td class="bg-white"><%= link_to job.name, job_path(job) %></td>
-                <td class="bg-white"><%= job.interest %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+    <div class="col-sm-9 p-2">
+      <div class="job-box  py-4">
+        <% @jobs.each do |job| %>
+          <div class="row justify-content-center py-2">
+            <div class="job-title"><%= link_to job.name, job_path(job) %></div>
+            <div class="job-interest"><%= job.interest %> <i class="fa-solid fa-arrow-pointer"></i> Click</div>
+          </div>
+        <% end %>
       </div>
       <div class="row justify-content-center py-4 ">
         <% unless admin_signed_in? %>
           <% if @member.email != 'guest@example.com' %>
-            <%= link_to "職業を追加する" , new_job_path, class: 'btn btn-success col-sm-4' %>
+            <%= link_to "職業を追加する" , new_job_path, class: 'btn btn-success col-sm-4 ' %>
           <% end %>
         <% end %>
       </div>

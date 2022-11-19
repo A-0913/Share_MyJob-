@@ -13,7 +13,7 @@ Member.create!(
   introduction:'よろしくお願いします！',
   email:'test1@test.jp',
   password:'111111',
-  belong:'転職を考え中',
+  belong:'転職を検討中',
 )
 
 Member.create!(
@@ -24,7 +24,7 @@ Member.create!(
   introduction:'転職しようか悩んでいます。',
   email:'test2@test.jp',
   password:'222222',
-  belong:'転職を考え中',
+  belong:'転職を検討中',
 )
 
 Member.create!(
@@ -35,7 +35,7 @@ Member.create!(
   introduction:'ゲストとしてログイン。',
   email:'guest@example.com',
   password:'guest_login',
-  belong:'転職を考え中',
+  belong:'転職を検討中',
 )
 
 Admin.create!(

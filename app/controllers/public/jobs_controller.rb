@@ -22,12 +22,13 @@ class Public::JobsController < ApplicationController
 
 
   def new
+    @job = Job.new
   end
 
   def create
     @job = Job.new(job_params)
     @job.member_id = current_member.id
-    @themes = Theme.where(id: [1, 2, 3, 4, 5])
+    @themes = Theme.where(id: [1, 2, 3, 4, 5]) #デフォルトのテーマ5つ分をseedファイルに設定済み
     @job.themes = @themes
       if @job.save!
         @themes.each do |theme|
@@ -44,7 +45,7 @@ class Public::JobsController < ApplicationController
 
   private
     def job_params
-      params.permit(:name, :reason, :genre_id )
+      params.require(:job).permit(:name, :reason, :genre_id )
     end
 
 end

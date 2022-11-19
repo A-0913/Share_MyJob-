@@ -24,13 +24,15 @@ Rails.application.routes.draw do
   get 'admin/:id/member_themes', to: 'admin/members#member_themes' ,as: 'admin_member_themes'
   get "search" => "public/searches#search"
   get 'members/:id/member_favorites', to: 'public/members#member_favorites' ,as: 'member_favorites'
+  #get 'jobs/:job_id/themes/:id/show_all', to: 'public/themes#show_all' ,as: 'show_all'
+
 
   namespace :admin do
     resources :members, only: [:update, :edit, :show, :index]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :jobs, only: [:index, :show, :edit, :update]
     resources :themes, only: [:index, :show, :edit, :update]
-
+    resources :reports, only: [:index, :show, :edit,:update]
   end
 
   scope module: :public do
@@ -39,6 +41,7 @@ Rails.application.routes.draw do
       resources :themes, only: [:new, :create, :show] do
          resources :comments, only: [:create, :destroy] do
            resource :favorites, only: [:create, :destroy]
+           resources :reports, only: [:new, :create]
          end
       end
     end
