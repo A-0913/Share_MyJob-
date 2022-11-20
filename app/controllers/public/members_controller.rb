@@ -1,5 +1,5 @@
 class Public::MembersController < ApplicationController
-  before_action :authenticate_member!
+  before_action :authenticate_member!, only: [:show,:edit,:update,:member_jobs,:member_theme,:member_favorites,:confirm,:withdraw]
 
     def show
       @member = Member.find(params[:id])
@@ -21,16 +21,17 @@ class Public::MembersController < ApplicationController
 
     def member_jobs
       @member = Member.find(params[:id])
-      @jobs = @member.jobs.order("created_at DESC").page(params[:page]).per(10)
+      @jobs = @member.jobs.order("created_at DESC").page(params[:page]).per(5)
     end
 
     def member_themes
       @member = Member.find(params[:id])
-      @themes = @member.themes.order("created_at DESC").page(params[:page]).per(10)
+      @themes = @member.themes.order("created_at DESC").page(params[:page]).per(5)
     end
 
     def member_favorites
       @member = Member.find(params[:id])
+
       favorites= Favorite.where(member_id: @member.id).pluck(:comment_id)
       @favorite_comments = Comment.find(favorites)
     end
@@ -46,6 +47,11 @@ class Public::MembersController < ApplicationController
       reset_session
       flash[:notice] = "退会処理を実行いたしました"
       redirect_to root_path
+    end
+
+    def dummy
+      redirect_to new_member_registration_path
+      #Deviseを使った新規登録画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処法
     end
 
     private

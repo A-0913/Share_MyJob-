@@ -29,7 +29,11 @@ before_action :authenticate_any!
     end
   end
 
-
+  def dummy
+    @job = Job.find(params[:job_id])
+    redirect_to new_job_theme_path(@job)
+    #Deviseを使った新規登録画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処法
+  end
 
 
   private

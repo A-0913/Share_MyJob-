@@ -24,8 +24,11 @@ Rails.application.routes.draw do
   get 'admin/:id/member_themes', to: 'admin/members#member_themes' ,as: 'admin_member_themes'
   get "search" => "public/searches#search"
   get 'members/:id/member_favorites', to: 'public/members#member_favorites' ,as: 'member_favorites'
-  #get 'jobs/:job_id/themes/:id/show_all', to: 'public/themes#show_all' ,as: 'show_all'
 
+  get 'members' => 'public/members#dummy'
+  #Deviseを使った新規登録画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処法
+  get '/jobs/:job_id/themes' => 'public/themes#dummy'
+  #テーマ投稿画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処法
 
   namespace :admin do
     resources :members, only: [:update, :edit, :show, :index]

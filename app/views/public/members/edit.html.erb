@@ -35,10 +35,14 @@
             <%= f.select :belong, {"大企業勤務": "大企業勤務", "中小企業勤務": "中小企業勤務", "フリーランス": "フリーランス", "学生": "学生", "就職活動中": "就職活動中", "転職を検討中": "転職を検討中"}, { include_blank: '選択してください'}, { class: 'form-control col-lg-5' , required: true } %>
           </div>
 
-          <div class="row justify-content-center p-4">
-            <%= f.submit "更新する" , class: 'btn btn-success  col-sm-3 m-4'%>
-            <%= link_to "退会する" , members_confirm_path(@member), class: 'btn btn-danger col-sm-3 m-4' %>
+          <div class="row justify-content-center">
+            <%= f.submit "更新する" , class: 'btn btn-success  col-sm-3 m-3'%>
+            <%= link_to "退会する" , members_confirm_path(@member), class: 'btn btn-danger col-sm-3 m-3' %>
+          </div>
+          <div class="row justify-content-center py-3">
+            <%=  link_to "マイページへ戻る" , member_path(@member), class: 'btn btn-primary col-sm-5 mx-4' %>
           </div>
         <% end %>
+
     </div>
 </div>
