@@ -12,7 +12,7 @@
 
 header{
   // height: 100px;
-  background-color: #99C3ED;
+  background-color: #87CEFA;
 }
 
 
@@ -26,7 +26,7 @@ body{
   // min-height: 1500px;
   padding-top: 80px;
   padding-bottom: 70px;
-  background-color: #D9E5FF;
+  background-color: #D7EEFF;
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
@@ -39,7 +39,7 @@ body{
 footer{
   // position: absolute;
   // bottom: 0;
-  background-color: #99C3ED;
+  background-color: #87CEFA;
   // height: 60px;
   width: 100%;
 }
@@ -142,7 +142,7 @@ footer{
  .job-title{
   padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
   color: #494949;/*文字色*/
-  background: #f4f4f4;/*背景色*/
+  background: white;/*背景色*/
   border-left: solid 5px #7db4e6;/*左線*/
   border-bottom: solid 3px #d7d7d7;/*下線*/
   width: 50%;
@@ -215,15 +215,27 @@ footer{
   height: 0;
   border: none;
   border-left: solid 15px transparent;
-  border-bottom: solid 15px #99C3ED;
+  border-bottom: solid 15px #87CEFA;
 }
+
 .about:after {
   position: absolute;
   content: '';
   bottom: -3px;
   left: 10px;
   width: 100%;
-  border-bottom: solid 3px #99C3ED;
+  border-bottom: solid 3px #87CEFA;
+}
+
+.about-box {
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  border: double 5px #87CEFA;
+  background-color: white;
+}
+.about-box h5 {
+  margin: 0;
+  padding: 0;
 }
 
 .nav-item {
