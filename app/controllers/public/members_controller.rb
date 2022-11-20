@@ -31,7 +31,6 @@ class Public::MembersController < ApplicationController
 
     def member_favorites
       @member = Member.find(params[:id])
-
       favorites= Favorite.where(member_id: @member.id).pluck(:comment_id)
       @favorite_comments = Comment.find(favorites)
     end
@@ -49,9 +48,9 @@ class Public::MembersController < ApplicationController
       redirect_to root_path
     end
 
+    #Deviseを使った新規登録画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処法
     def dummy
       redirect_to new_member_registration_path
-      #Deviseを使った新規登録画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処法
     end
 
     private

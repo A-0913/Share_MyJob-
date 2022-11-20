@@ -1,5 +1,17 @@
 ja:
   activerecord:
+    models:
+      member: 会員
+    attributes:
+      member:
+        last_name: 苗字
+        first_name: 名前
+        email: メールアドレス
+        password: パスワード
+        nickname: ニックネーム
+        introduction: 自己紹介文
+        belong: 属性
+
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
