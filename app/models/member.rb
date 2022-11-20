@@ -5,9 +5,10 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :last_name, presence: true, length: { maximum: 10 }
-  validates :first_name, presence: true, uniqueness: true, length: { maximum: 10 }
+  validates :first_name, presence: true, length: { maximum: 10 }
   validates :nickname, presence: true, length: { maximum: 20 }
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
+  #validates :password, presence: true
 
   has_one_attached :profile_image
 

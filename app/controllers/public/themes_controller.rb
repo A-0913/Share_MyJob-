@@ -24,7 +24,7 @@ before_action :authenticate_any!
       flash[:notice] = "テーマが申請されました。承認がおりると、テーマ一覧に表示されます。しばらくお待ちください。"
       redirect_to job_path(@job)
     else
-      flash[:notice] = "テーマの申請ができませんでした。申請内容をご確認ください。"
+      #flash[:notice] = "テーマの申請ができませんでした。申請内容をご確認ください。"
       render 'new'
     end
   end

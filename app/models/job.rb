@@ -5,6 +5,10 @@ class Job < ApplicationRecord
   has_many :theme_in_jobs
   has_many :themes, through: :theme_in_jobs
 
+
+  validates :name, presence: true
+  validates :reason, presence: true
+
   def self.search_for(method, word)
     if method == "perfect_match"
       @job = Job.where("name LIKE?", "#{word}")

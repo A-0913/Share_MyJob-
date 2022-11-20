@@ -236,3 +236,13 @@ footer{
   color: #454545;/*文字色*/
 }
 
+.field_with_errors {
+  display: contents;
+}
+
+.alert-danger {
+  text-align: center;
+  margin: 0 auto;
+  width: 70%;
+  list-style: none;
+}
