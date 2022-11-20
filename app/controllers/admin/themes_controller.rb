@@ -1,11 +1,11 @@
 class Admin::ThemesController < ApplicationController
   def index
-    @Jobs = Job.all
+    @jobs = Job.all.page(params[:page]).per(5)
   end
 
   def show
     @job = Job.find(params[:id])
-    @themes = @job.themes.order("updated_at DESC")
+    @themes = @job.themes.order("updated_at DESC").page(params[:page]).per(5)
   end
 
   def edit
