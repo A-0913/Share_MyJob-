@@ -40,11 +40,15 @@
       </div>
     </div>
     <div class="row justify-content-center pb-4">
-      <%= link_to "上記を編集する" , edit_admin_theme_path(theme), class: 'btn btn-success col-sm-3' %>
+      <%= link_to "上記を編集する" , edit_admin_job_theme_path(@job,theme), class: 'btn btn-success col-sm-3' %>
     </div>
   <% end %>
 
-  <div class="row justify-content-center py-4">
+  <div class="row justify-content-center py-4 ">
+    <%= paginate @themes, theme: 'twitter-bootstrap-4' %>
+  </div>
+
+  <div class="row justify-content-center pb-4">
     <%=link_to "職業一覧へ戻る" , admin_themes_path, class: "btn btn-primary col-sm-3" %>
   </div>
 </div>

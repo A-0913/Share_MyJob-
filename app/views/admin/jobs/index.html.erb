@@ -54,7 +54,11 @@
     </div>
   <% end %>
 
-  <div class="row justify-content-center py-4">
+  <div class="row justify-content-center py-4 ">
+    <%= paginate @jobs, theme: 'twitter-bootstrap-4' %>
+  </div>
+
+  <div class="row justify-content-center pb-4">
     <%= link_to "TOPへ戻る" , admin_path , class: "btn btn-primary col-sm-3" %>
   </div>
 </div>

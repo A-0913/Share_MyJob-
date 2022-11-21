@@ -1,5 +1,5 @@
 class Public::MembersController < ApplicationController
-  before_action :authenticate_member!
+  before_action :authenticate_member!, only: [:show,:edit,:update,:member_jobs,:member_theme,:member_favorites,:confirm,:withdraw]
 
     def show
       @member = Member.find(params[:id])
@@ -12,21 +12,21 @@ class Public::MembersController < ApplicationController
     def update
       @member = Member.find(params[:id])
       if @member.update(update_params)
-         flash[:notice] = "更新が成功しました!"
+         flash[:notice] = "情報を更新しました"
          redirect_to member_path(@member)
       else
-         render :show
+         render :edit
       end
     end
 
     def member_jobs
       @member = Member.find(params[:id])
-      @jobs = @member.jobs.order("created_at DESC").page(params[:page]).per(10)
+      @jobs = @member.jobs.order("created_at DESC").page(params[:page]).per(5)
     end
 
     def member_themes
       @member = Member.find(params[:id])
-      @themes = @member.themes.order("created_at DESC").page(params[:page]).per(10)
+      @themes = @member.themes.order("created_at DESC").page(params[:page]).per(5)
     end
 
     def member_favorites
@@ -48,8 +48,13 @@ class Public::MembersController < ApplicationController
       redirect_to root_path
     end
 
+    #Deviseを使った新規登録画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処法
+    def dummy
+      redirect_to new_member_registration_path
+    end
+
     private
     def update_params
-      params.require(:member).permit(:last_name, :first_name, :nickname, :introduction, :belong ,:profile_image, :email)
+      params.require(:member).permit(:last_name, :first_name, :nickname, :introduction, :belong ,:profile_image, :email, :encrypted_password)
     end
 end
