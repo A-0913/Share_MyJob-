@@ -24,5 +24,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  #ゲストログインユーザーによる情報の更新を阻止する
+  def block_gusest_member
+    if admin_signed_in?
+        true
+    else
+      redirect_back(fallback_location: root_path) and return if current_member.email == 'guest@example.com'
+    end
+  end
 
 end

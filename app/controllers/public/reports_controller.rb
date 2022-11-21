@@ -1,5 +1,6 @@
 class Public::ReportsController < ApplicationController
   before_action :authenticate_member!
+  before_action :block_gusest_member, only: [:create]
 
   def new
     @job = Job.find(params[:job_id])
