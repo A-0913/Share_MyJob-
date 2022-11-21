@@ -1,7 +1,7 @@
 class Admin::JobsController < ApplicationController
 
   def index
-    @jobs = Job.all.order(created_at: :desc)
+    @jobs = Job.all.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def show

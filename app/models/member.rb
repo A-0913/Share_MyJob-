@@ -4,10 +4,11 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :last_name, presence: true
-  validates :first_name, presence: true
-  validates :nickname, presence: true
-  validates :email, presence: true
+  validates :last_name, presence: true, length: { maximum: 10 }
+  validates :first_name, presence: true, length: { maximum: 10 }
+  validates :nickname, presence: true, length: { maximum: 20 }
+  validates :email, presence: true, uniqueness: true
+  #validates :password, presence: true
 
   has_one_attached :profile_image
 
@@ -26,6 +27,7 @@ class Member < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  #退会済みのユーザーが同じアカウントでログイン出来ないようにするための制約
   # is_deletedがfalseならtrueを返す
   def active_for_authentication?
     super && (is_deleted == false)

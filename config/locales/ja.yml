@@ -1,9 +1,28 @@
 ja:
   activerecord:
+    models:
+      member: 会員
+      job: 職業
+      theme: テーマ
+    attributes:
+      member:
+        last_name: 苗字
+        first_name: 名前
+        email: メールアドレス
+        password: パスワード
+        nickname: ニックネーム
+        introduction: 自己紹介文
+        belong: 属性
+      job:
+        genre: ジャンル
+        name: 職業名
+        reason: 申請理由
+      theme:
+        name: テーマ
+        reason: 申請理由
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
-
   views:
     pagination:
       first: <i class="fas fa-angle-double-left"></i>

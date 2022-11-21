@@ -3,7 +3,7 @@
     <h3>職業選択画面</h3>
   </div>
 
-  <% @Jobs.each do |job| %>
+  <% @jobs.each do |job| %>
     <div class="row justify-content-center py-3">
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">職業id</div>
@@ -30,7 +30,11 @@
     </div>
   <% end %>
 
-  <div class="row justify-content-center py-4">
+  <div class="row justify-content-center py-4 ">
+    <%= paginate @jobs, theme: 'twitter-bootstrap-4' %>
+  </div>
+
+  <div class="row justify-content-center pb-4">
     <%= link_to "TOPへ戻る" , admin_path , class: "btn btn-primary col-sm-3" %>
   </div>
 </div>
