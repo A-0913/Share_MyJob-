@@ -10,13 +10,14 @@ class Admin::ThemesController < ApplicationController
 
   def edit
     @theme = Theme.find(params[:id])
+    #@job = @theme.themeInJob.find_by(params[:job_id])
   end
 
   def update
     @theme = Theme.find(params[:id])
     if @theme.update(theme_update_params)
        flash[:notice] = "更新が成功しました!"
-       redirect_to action: :index
+       redirect_to request.referer
     else
        flash[:notice] = "更新が正常に行われませんでした。内容をご確認ください。"
        render :edit
