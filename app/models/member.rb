@@ -27,6 +27,7 @@ class Member < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  #退会済みのユーザーが同じアカウントでログイン出来ないようにするための制約
   # is_deletedがfalseならtrueを返す
   def active_for_authentication?
     super && (is_deleted == false)

@@ -34,7 +34,10 @@ Rails.application.routes.draw do
     resources :members, only: [:update, :edit, :show, :index]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :jobs, only: [:index, :show, :edit, :update]
-    resources :themes, only: [:index, :show, :edit, :update]
+    resources :themes, only: [:index, :show]
+      resources :jobs do
+        resources :themes, only: [:edit, :update]
+      end
     resources :reports, only: [:index, :show, :edit,:update]
   end
 

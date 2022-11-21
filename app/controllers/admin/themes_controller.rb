@@ -10,10 +10,11 @@ class Admin::ThemesController < ApplicationController
 
   def edit
     @theme = Theme.find(params[:id])
-    #@job = @theme.themeInJob.find_by(params[:job_id])
+    @job = Job.find(params[:job_id])
   end
 
   def update
+    @job = Job.find(params[:job_id])
     @theme = Theme.find(params[:id])
     if @theme.update(theme_update_params)
        flash[:notice] = "更新が成功しました!"
