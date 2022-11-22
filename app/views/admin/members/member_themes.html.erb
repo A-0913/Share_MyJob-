@@ -14,7 +14,15 @@
       </div>
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">テーマ</div>
-        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= theme.name %></div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark">
+          <% if theme.is_published == false %>
+            <%= theme.name %>
+          <% else %>
+            <%= link_to job_theme_path(theme.jobs.first,theme) do %>
+              <%= theme.name %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">追加理由</div>

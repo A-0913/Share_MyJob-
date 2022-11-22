@@ -1,5 +1,6 @@
 class Public::MembersController < ApplicationController
-  before_action :authenticate_member!, only: [:show,:edit,:update,:member_jobs,:member_theme,:member_favorites,:confirm,:withdraw]
+  before_action :authenticate_member!, except: [:dummy]
+  before_action :block_gusest_member, only: [:update, :withdraw]
 
     def show
       @member = Member.find(params[:id])
