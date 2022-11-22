@@ -1,6 +1,6 @@
 class Public::CommentsController < ApplicationController
 before_action :authenticate_any!
-#before_action :block_gusest_member
+before_action :block_gusest_member
 
   def create
     @job = Job.find(params[:job_id])
