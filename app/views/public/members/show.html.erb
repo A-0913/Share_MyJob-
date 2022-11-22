@@ -14,20 +14,24 @@
     </div>
     <div class="col-sm-10">
       <div class="row justify-content-center">
-        <div class="row col-10 justify-content-center">
-          <div class="col-md-5 text-center border border-white bg-primary text-white">氏名</div>
-          <div class="col-md-5 text-center border border-dark bg-white text-dark">
-            <%= @member.last_name %><%= "　" %><%=@member.first_name %>
+        <% if @member == current_member %>
+          <div class="row col-10 justify-content-center">
+            <div class="col-md-5 text-center border border-white bg-primary text-white">氏名</div>
+            <div class="col-md-5 text-center border border-dark bg-white text-dark">
+              <%= @member.last_name %><%= "　" %><%=@member.first_name %>
+            </div>
           </div>
-        </div>
+        <% end %>
         <div class="row col-10 justify-content-center">
           <div class="col-md-5 text-center border border-white bg-primary text-white">ニックネーム</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @member.nickname %></div>
         </div>
-        <div class="row col-10 justify-content-center">
-          <div class="col-md-5 text-center border border-white bg-primary text-white">メールアドレス</div>
-          <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @member.email %></div>
-        </div>
+        <% if @member == current_member %>
+          <div class="row col-10 justify-content-center">
+            <div class="col-md-5 text-center border border-white bg-primary text-white">メールアドレス</div>
+            <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @member.email %></div>
+          </div>
+        <% end %>
         <div class="row col-10 justify-content-center">
           <div class="col-md-5 text-center border border-white bg-primary text-white">自己紹介文</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @member.introduction %></div>
