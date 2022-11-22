@@ -1,4 +1,5 @@
 class Public::FavoritesController < ApplicationController
+  before_action :block_gusest_member
 
   def create
     @job = Job.find(params[:job_id])
