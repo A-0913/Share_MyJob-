@@ -1,6 +1,6 @@
 class Public::RepliesController < ApplicationController
 before_action :authenticate_any!
-before_action :block_gusest_member
+before_action :block_gusest_member, only: [:create, :destroy]
 
   def index
     @job = Job.find(params[:job_id])
