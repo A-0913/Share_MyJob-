@@ -1,2 +1,37 @@
-<h1>Public::Replies#new</h1>
-<p>Find me in app/views/public/replies/new.html.erb</p>
+<div class="container p-4">
+  <div class="row justify-content-center  py-2">
+    <h3>コメント返信</h3>
+  </div>
+
+  <div class="row justify-content-center ">
+    <div class="title-box">
+      <div class="title-box-title">返信対象コメント</div>
+        <p><%= @comment.comment %></p>
+    </div>
+  </div>
+
+  <% if @reply.errors.any? %>
+    <ul class="alert alert-danger" role="alert">
+      <h5 class="alert-heading">
+        <%= @reply.errors.count %>件のエラーが発生しました
+      </h5>
+      <% @reply.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+    <%= form_with model: @reply, url: job_theme_comment_replies_path(@job,@theme,@comment), local: false do |f| %>
+      <div class = "row p-4 justify-content-center">
+        <%= f.text_area :reply, rows: '3', cols: '70',placeholder: "0文字では送信できません" %>
+      </div>
+      <div class = "row justify-content-center">
+        <%= f.submit "送信" ,  class: "col-sm-3 "%>
+      </div>
+    <% end %>
+
+  <div class="row justify-content-center py-3">
+    <%= link_to "返信コメント一覧へ戻る" , job_theme_comment_replies_path(@job,@theme,@comment) , class: "btn btn-primary col-sm-3" %>
+  </div>
+
+</div>

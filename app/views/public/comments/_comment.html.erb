@@ -18,7 +18,7 @@
       <div class="text-right">
         <%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %>
         <%= link_to  job_theme_comment_replies_path(job ,theme ,comment) do %>
-           <%= comment.replies.count %> 件
+           <i class="fa-solid fa-message"></i><%= comment.replies.count %>件
         <% end %>
       </div>
     </div>
