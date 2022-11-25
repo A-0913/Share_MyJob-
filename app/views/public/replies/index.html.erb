@@ -47,6 +47,11 @@
         </div>
         <div class="col-7 col-md-6 align-self-center">
           <div class="balloon5">
+            <% if reply.member == reply.comment.member %>
+              <div class=" rounded  text-primary ">
+                《コメント投稿者》
+              </div>
+            <% end %>
             <div class="chatting">
               <div class="says">
                 <%= reply.reply %>
@@ -95,7 +100,7 @@
       </div>
     <% end %>
   <% else %>
-    <div class="text-center">コメントはありません</div>
+    <h3 class="text-center py-3">コメントはありません</h3>
   <% end %>
   <div class="row justify-content-center py-3">
     <%= link_to "掲示板へ戻る" , job_theme_path(@job,@theme) , class: "btn btn-primary col-sm-3" %>

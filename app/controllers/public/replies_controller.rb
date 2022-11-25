@@ -6,7 +6,7 @@ before_action :block_gusest_member
     @job = Job.find(params[:job_id])
     @theme = Theme.find(params[:theme_id])
     @comment = Comment.find(params[:comment_id])
-    @replies = Reply.where(is_published: true)
+    @replies = @comment.replies.where(is_published: true)
   end
 
   def new
