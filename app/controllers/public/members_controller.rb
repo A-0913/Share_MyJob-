@@ -36,6 +36,12 @@ class Public::MembersController < ApplicationController
       @favorite_comments = Comment.find(favorites)
     end
 
+    def member_comment_replies
+      @member = Member.find(params[:id])
+      @comments = @member.comments.where(is_published: true).select { |comment| comment.replies.count > 0 }
+
+    end
+
     def confirm
       @member = current_member
     end
