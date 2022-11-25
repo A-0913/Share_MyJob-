@@ -18,7 +18,7 @@
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="w-100 py-3">
+    <div class="w-100 pt-3">
       <div class="reply-title">
         <div class="text-left">
           <%= @replies.count %>件の返信
@@ -35,7 +35,7 @@
   </div>
   <% if @replies.count > 0 %>
     <% @replies.each do |reply| %>
-      <div class="row">
+      <div class="row bg-select pr-3">
         <div class="col-3 col-md-1 offset-md-2 align-self-center">
           <div class="balloon5">
             <div class="faceicon">
@@ -69,31 +69,31 @@
             <% end %>
             <span>
               <%# if admin_signed_in? %>
-                <%# if comment.reports.count > 0 %>
+                <%# if reply.reports.count > 0 %>
                   <!--<button type="button" class="btn btn-danger">-->
                   <!--  <i class="fa-solid fa-triangle-exclamation"></i>-->
                   <!--</button>-->
                 <%# else %>
-                  <button type="button" class="btn btn-secondary">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                  </button>
+                  <!--<button type="button" class="btn btn-secondary">-->
+                  <!--  <i class="fa-solid fa-triangle-exclamation"></i>-->
+                  <!--</button>-->
                 <%# end %>
               <%# end %>
-              <%# if member_signed_in? %>
-                <%# if current_member.email != 'guest@example.com' %>
-                  <%# if comment.member != current_member %>
+              <% if member_signed_in? %>
+                <% if current_member.email != 'guest@example.com' %>
+                  <% if reply.member != current_member %>
                     <%# if comment.reported_by?(current_member) %>
-                      <!--<button type="button" class="btn btn-secondary">-->
-                      <!--  <i class="fa-solid fa-triangle-exclamation"></i>-->
-                      <!--</button>-->
+                      <button type="button" class="btn btn-secondary">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                      </button>
                     <%# else %>
                       <%#= link_to  new_job_theme_comment_report_path(job ,theme ,comment), class: "btn btn-warning" do %>
                         <!--<i class="fa-solid fa-triangle-exclamation"></i>-->
                       <%# end %>
                     <%# end %>
-                  <%# end %>
-                <%# end %>
-              <%# end %>
+                  <% end %>
+                <% end %>
+              <% end %>
             </span>
           </div>
         </div>
