@@ -21,16 +21,18 @@
   <div class="row justify-content-center">
     <div class="w-100 pt-3">
       <div class="reply-title">
-        <div class="text-left float-left">
-          <%= @replies.count %>件の返信
-        </div>
-        <% if member_signed_in? %>
-          <% if current_member.email != 'guest@example.com' %>
-            <div class="text-right">
-              <%= link_to "返信する" , new_job_theme_comment_reply_path(@job,@theme,@comment) , class: "btn btn-primary text-right" %>
-            </div>
+        <div class="row ">
+          <div class="col-6">
+            <%= @replies.count %>件の返信
+          </div>
+          <% if member_signed_in? %>
+            <% if current_member.email != 'guest@example.com' %>
+              <div class="col-6 text-right">
+                <%= link_to "返信する" , new_job_theme_comment_reply_path(@job,@theme,@comment) , class: "btn btn-primary text-right" %>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
