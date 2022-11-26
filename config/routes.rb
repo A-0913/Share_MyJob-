@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'admin/:id/member_themes', to: 'admin/members#member_themes' ,as: 'admin_member_themes'
   get "search" => "public/searches#search"
   get 'members/:id/member_favorites', to: 'public/members#member_favorites' ,as: 'member_favorites'
+  get 'members/:id/member_comment_replies', to: 'public/members#member_comment_replies' ,as: 'member_comment_replies'
 
   get 'members' => 'public/members#dummy'
   #Deviseを使った新規登録画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処法
@@ -48,6 +49,7 @@ Rails.application.routes.draw do
          resources :comments, only: [:create, :destroy] do
            resource :favorites, only: [:create, :destroy]
            resources :reports, only: [:new, :create]
+           resources :replies, only: [:index, :new, :create, :destroy]
          end
       end
     end
