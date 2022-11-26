@@ -1,4 +1,11 @@
 <div class = "container p-4">
+  <% if @unconfirmed_jobs.count > 0 %>
+    <% @unconfirmed_jobs.each do |unconfirmed_job| %>
+    <div class="row text-danger ">
+      ※職業id<div class="font-weight-bold"><%= unconfirmed_job.id %></div>の<div class="font-weight-bold"><%= unconfirmed_job.name %></div>が未確認です。
+    </div>
+    <% end %>
+  <% end %>
   <div class = "row justify-content-center pt-3">
     <h3>職業一覧</h3>
   </div>
