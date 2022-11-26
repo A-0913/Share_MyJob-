@@ -25,7 +25,7 @@
 * 気になっている職業があり、「リアルな声」を通して情報収集をしたい時
 
 ## ER図
-![ER図](https://user-images.githubusercontent.com/111132750/203306106-41e273c9-9d0a-4bfb-8512-8df43c765c8c.jpg)
+![ER図](https://user-images.githubusercontent.com/111132750/204082699-fc912a35-12b0-4ba1-a1c3-f3c297a8a074.jpg)
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -44,6 +44,7 @@
 * 検索機能
 * いいね（ブックマーク）機能
 * コメント機能
+* コメント返信機能
 * 通報機能
 
 ### UI/UX
