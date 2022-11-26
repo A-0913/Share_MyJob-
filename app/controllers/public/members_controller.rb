@@ -38,7 +38,7 @@ class Public::MembersController < ApplicationController
 
     def member_comment_replies
       @member = Member.find(params[:id])
-      @comments = @member.comments.where(is_published: true).select { |comment| comment.replies.count > 0 }
+      @comments = @member.comments.where(is_published: true).select { |comment| comment.replies.count > 0  && comment.replies.last.member != current_member}
 
     end
 

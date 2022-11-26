@@ -17,15 +17,15 @@ before_action :block_gusest_member, only: [:create, :destroy]
   end
 
   def create
-    job = Job.find(params[:job_id])
-    theme = Theme.find(params[:theme_id])
-    comment = Comment.find(params[:comment_id])
-    reply = current_member.replies.new(reply_params)
-    reply.member_id = current_member.id
-    reply.comment_id = comment.id
-    if reply.save
+    @job = Job.find(params[:job_id])
+    @theme = Theme.find(params[:theme_id])
+    @comment = Comment.find(params[:comment_id])
+    @reply = current_member.replies.new(reply_params)
+    @reply.member_id = current_member.id
+    @reply.comment_id = @comment.id
+    if @reply.save
       flash[:notice] = "返信コメントを送信しました！"
-      redirect_to job_theme_comment_replies_path(job,theme,comment)
+      redirect_to job_theme_comment_replies_path(@job,@theme,@comment)
     else
       render 'new'
     end

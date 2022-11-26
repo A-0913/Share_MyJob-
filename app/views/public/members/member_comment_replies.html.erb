@@ -1,13 +1,13 @@
 <div class = "container p-4">
   <div class = "row justify-content-center py-3">
-    <h3>返信のあるコメント</h3>
+    <h3>返信のきたコメント</h3>
   </div>
 
   <% @comments.each do |comment| %>
       <div class="row justify-content-center pb-4">
         <div class="row col-10 justify-content-center">
           <div class="col-md-5 text-center border border-white bg-primary text-white">職業</div>
-          <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= comment.theme.jobs.first.name %></div>
+          <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= comment.job.name %></div>
         </div>
          <div class="row col-10 justify-content-center">
           <div class="col-md-5 text-center border border-white bg-primary text-white">テーマ</div>
@@ -32,7 +32,7 @@
         <div class="row col-10 justify-content-center">
           <div class="col-md-5 text-center border border-white bg-primary text-white">確認する</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark">
-            <%= link_to '返信一覧へ移動する', job_theme_comment_replies_path(comment.theme.jobs.first,comment.theme,comment) %>
+            <%= link_to '返信一覧へ移動する', job_theme_comment_replies_path(comment.job,comment.theme,comment) %>
           </div>
         </div>
       </div>

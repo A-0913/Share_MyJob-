@@ -22,7 +22,7 @@
     </ul>
   <% end %>
 
-    <%= form_with model: @reply, url: job_theme_comment_replies_path(@job,@theme,@comment), local: false do |f| %>
+    <%= form_with model: @reply, url: job_theme_comment_replies_path(@job,@theme,@comment), local: true do |f| %>
       <div class = "row p-4 justify-content-center">
         <%= f.text_area :reply, rows: '3', cols: '70',placeholder: "0文字では送信できません" %>
       </div>
