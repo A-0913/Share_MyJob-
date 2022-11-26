@@ -25,7 +25,7 @@
 * 気になっている職業があり、「リアルな声」を通して情報収集をしたい時
 
 ## ER図
-![ER図](https://user-images.githubusercontent.com/111132750/204082699-fc912a35-12b0-4ba1-a1c3-f3c297a8a074.jpg)
+![ER図](https://user-images.githubusercontent.com/111132750/204083088-40bf7040-288b-4ab2-a529-ceb609c799da.jpg)
 
 ## 開発環境
 - OS：Linux(CentOS)
