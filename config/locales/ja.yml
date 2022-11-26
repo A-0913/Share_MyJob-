@@ -4,6 +4,7 @@ ja:
       member: 会員
       job: 職業
       theme: テーマ
+      reply: 返信
     attributes:
       member:
         last_name: 苗字
@@ -20,6 +21,8 @@ ja:
       theme:
         name: テーマ
         reason: 申請理由
+      reply:
+        reply: 返信コメント
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"

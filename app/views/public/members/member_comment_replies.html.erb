@@ -1,0 +1,46 @@
+<div class = "container p-4">
+  <div class = "row justify-content-center py-3">
+    <h3>返信のきたコメント</h3>
+  </div>
+
+  <% @comments.each do |comment| %>
+      <div class="row justify-content-center pb-4">
+        <div class="row col-10 justify-content-center">
+          <div class="col-md-5 text-center border border-white bg-primary text-white">職業</div>
+          <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= comment.job.name %></div>
+        </div>
+         <div class="row col-10 justify-content-center">
+          <div class="col-md-5 text-center border border-white bg-primary text-white">テーマ</div>
+          <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= comment.theme.name %></div>
+        </div>
+        <div class="row col-10 justify-content-center">
+          <div class="col-md-5 text-center border border-white bg-primary text-white">返信のあるコメント</div>
+          <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= comment.comment %></div>
+        </div>
+        <div class="row col-10 justify-content-center">
+          <div class="col-md-5 text-center border border-white bg-primary text-white">返信数</div>
+          <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= comment.replies.where(is_published: true).count %>件の返信</div>
+        </div>
+        <div class="row col-10 justify-content-center">
+          <div class="col-md-5 text-center border border-white bg-primary text-white">最終返信日時</div>
+          <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= comment.replies.last.created_at.strftime('%Y年%m月%d日 %H:%M') %></div>
+        </div>
+        <div class="row col-10 justify-content-center">
+          <div class="col-md-5 text-center border border-white bg-primary text-white">最終返信者</div>
+          <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= comment.replies.last.member.nickname %></div>
+        </div>
+        <div class="row col-10 justify-content-center">
+          <div class="col-md-5 text-center border border-white bg-primary text-white">確認する</div>
+          <div class="col-md-5 text-center border border-dark bg-white text-dark">
+            <%= link_to '返信一覧へ移動する', job_theme_comment_replies_path(comment.job,comment.theme,comment) %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+
+
+  <div class="row justify-content-center py-4">
+    <%= link_to "マイページへ戻る" , member_path(@member) , class: "btn btn-primary col-sm-3" %>
+  </div>
+
+</div>

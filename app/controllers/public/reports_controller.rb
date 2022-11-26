@@ -13,7 +13,7 @@ class Public::ReportsController < ApplicationController
     @comment = Comment.find(params[:comment_id])
     @report = Report.new(report_params)
     @report.member_id = current_member.id
-    @report.comment = Comment.find(params[:comment_id])
+    @report.comment = @comment
     if @report.save
       @theme = @comment.theme
       @job = Job.find(params[:job_id])

@@ -51,6 +51,10 @@
             <div class="col-sm-5 text-center">テーマ投稿一覧</div>
             <div class="col-sm-5"><%= link_to "一覧を見る" , member_themes_path(@member), class: 'btn btn-primary col-sm-5' %></div>
           </div>
+          <div class="row col-10 justify-content-center pt-3">
+            <div class="col-sm-5 text-center">返信のきたコメント一覧</div>
+            <div class="col-sm-5"><%= link_to "一覧を見る" , member_comment_replies_path(@member), class: 'btn btn-primary col-sm-5' %></div>
+          </div>
         </div>
       <% end %>
       </div>

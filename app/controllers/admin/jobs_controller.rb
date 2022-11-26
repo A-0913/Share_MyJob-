@@ -2,6 +2,7 @@ class Admin::JobsController < ApplicationController
 
   def index
     @jobs = Job.all.order(created_at: :desc).page(params[:page]).per(5)
+    @unconfirmed_jobs = Job.where(is_checked: false)
   end
 
   def show

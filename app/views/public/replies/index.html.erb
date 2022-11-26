@@ -1,0 +1,109 @@
+<div class="container p-4">
+<div class="text-info font-weight-bold">《<%= @job.name %>》<%= @theme.name %></div>
+  <div class="row justify-content-center">
+    <div class="col-3 col-md-1 align-self-center">
+      <div class="balloon5">
+        <div class="faceicon">
+          <%=  image_tag @comment.member.get_profile_image(70,70) %>
+        </div>
+      </div>
+    </div>
+    <div class="col-7 col-md-6 align-self-center">
+      <div class="balloon5">
+        <div class="chatting">
+          <div class="says">
+            <%= @comment.comment %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="w-100 pt-3">
+      <div class="reply-title">
+        <div class="text-left float-left">
+          <%= @replies.count %>件の返信
+        </div>
+        <% if member_signed_in? %>
+          <% if current_member.email != 'guest@example.com' %>
+            <div class="text-right">
+              <%= link_to "返信する" , new_job_theme_comment_reply_path(@job,@theme,@comment) , class: "btn btn-primary text-right" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% if @replies.count > 0 %>
+    <% @replies.each do |reply| %>
+      <div class="row bg-select pr-3">
+        <div class="col-3 col-md-1 offset-md-2 align-self-center">
+          <div class="balloon5">
+            <div class="faceicon">
+              <%= link_to member_path(reply.member) do %>
+                <%=  image_tag reply.member.get_profile_image(70,70) %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-7 col-md-6 align-self-center">
+          <div class="balloon5">
+            <% if reply.member == reply.comment.member %>
+              <div class=" rounded  text-primary font-weight-bold">
+                《コメント投稿者》
+              </div>
+            <% end %>
+            <div class="chatting">
+              <div class="says">
+                <%= reply.reply %>
+              </div>
+            </div>
+            <div class="text-right"><%= reply.created_at.strftime('%Y年%m月%d日 %H:%M') %></div>
+          </div>
+        </div>
+        <div class="col-2 align-self-center">
+          <div class="balloon5">
+            <% if reply.member == current_member || admin_signed_in? %>
+              <%= link_to  job_theme_comment_reply_path(@job ,@theme ,@comment ,reply), method: :delete, remote: true,  data: { confirm: '本当に消しますか？' },  class: "btn btn-danger" do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
+            <% end %>
+            <span>
+              <%# if admin_signed_in? %>
+                <%# if reply.reports.count > 0 %>
+                  <!--<button type="button" class="btn btn-danger">-->
+                  <!--  <i class="fa-solid fa-triangle-exclamation"></i>-->
+                  <!--</button>-->
+                <%# else %>
+                  <!--<button type="button" class="btn btn-secondary">-->
+                  <!--  <i class="fa-solid fa-triangle-exclamation"></i>-->
+                  <!--</button>-->
+                <%# end %>
+              <%# end %>
+              <% if member_signed_in? %>
+                <% if current_member.email != 'guest@example.com' %>
+                  <% if reply.member != current_member %>
+                    <%# if comment.reported_by?(current_member) %>
+                      <button type="button" class="btn btn-secondary">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                      </button>
+                    <%# else %>
+                      <%#= link_to  new_job_theme_comment_report_path(job ,theme ,comment), class: "btn btn-warning" do %>
+                        <!--<i class="fa-solid fa-triangle-exclamation"></i>-->
+                      <%# end %>
+                    <%# end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <h3 class="text-center py-3">コメントはありません</h3>
+  <% end %>
+  <div class="row justify-content-center py-3">
+    <%= link_to "掲示板へ戻る" , job_theme_path(@job,@theme) , class: "btn btn-primary col-sm-3" %>
+  </div>
+</div>

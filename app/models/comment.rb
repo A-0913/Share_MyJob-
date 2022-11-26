@@ -5,6 +5,7 @@ class Comment < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
   has_many :reports, dependent: :destroy
+  has_many :replies, dependent: :destroy
 
   validates :comment, presence: true
 
