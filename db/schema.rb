@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_25_003232) do
+ActiveRecord::Schema.define(version: 2022_11_27_071735) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 2022_11_25_003232) do
     t.integer "comment_id", null: false
     t.string "reason", null: false
     t.boolean "is_checked", default: false, null: false
+    t.integer "reply_id"
   end
 
   create_table "theme_in_jobs", force: :cascade do |t|
