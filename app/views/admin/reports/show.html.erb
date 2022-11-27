@@ -15,12 +15,30 @@
       </div>
     </div>
     <div class="row col-10 justify-content-center">
+      <div class="col-md-5 text-center border border-white bg-info text-white">区分</div>
+      <div class="col-md-5 text-center border border-dark bg-white text-dark">
+        <% if @report.reply_id? %>
+          <div class="text-info font-weight-bold">返信コメント</div>
+        <% else %>
+          <div class="text-info font-weight-bold">コメント</div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row col-10 justify-content-center">
       <div class="col-md-5 text-center border border-white bg-info text-white">対象コメント</div>
       <div class="col-md-5 text-center border border-dark bg-white text-dark">
-        <% if @comment.is_published == true %>
-          <%= link_to @comment.comment, job_theme_path(@job,@theme) %>
+        <% if @report.reply_id? %>
+          <% if @reply.is_published == true %>
+            <%= link_to @reply.reply, job_theme_comment_replies_path(@job,@theme,@comment) %>
+          <% else %>
+            <div class="text-danger font-weight-bold">すでに削除済みです</div>
+          <% end %>
         <% else %>
-          <div class="text-danger font-weight-bold">すでに削除済みです</div>
+          <% if @comment.is_published == true %>
+            <%= link_to @comment.comment, job_theme_path(@job,@theme) %>
+          <% else %>
+            <div class="text-danger font-weight-bold">すでに削除済みです</div>
+          <% end %>
         <% end %>
       </div>
     </div>

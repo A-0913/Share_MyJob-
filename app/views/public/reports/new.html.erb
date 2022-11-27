@@ -8,10 +8,10 @@
     <div class="row col-10 justify-content-center">
       <div class="col-md-2 text-center border border-white text-white bg-dark p-3">通報コメント</div>
       <div class="col-md-8 border border-dark bg-white text-dark p-3">
-        <% if @report.reply.nil? %>
-          <%= @comment.comment %>
-        <% else %>
+        <% if params[:reply_id] %>
           <%= @reply.reply %>
+        <% else %>
+          <%= @comment.comment %>
         <% end %>
       </div>
     </div>
@@ -33,5 +33,9 @@
   <% end %>
 
   <div class="row justify-content-center py-3">
-    <%= link_to "掲示板へ戻る" , job_theme_path(@job,@theme) , class: "btn btn-primary col-sm-3" %>
+    <% if params[:reply_id] %>
+      <%= link_to "返信一覧へ戻る" , job_theme_comment_replies_path(@job,@theme,@comment) , class: "btn btn-primary col-sm-3" %>
+    <% else %>
+      <%= link_to "掲示板へ戻る" , job_theme_path(@job,@theme) , class: "btn btn-primary col-sm-3" %>
+    <% end %>
   </div>

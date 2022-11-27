@@ -12,11 +12,12 @@ class Public::ReportsController < ApplicationController
 
   def create
     @comment = Comment.find(params[:comment_id])
+    @reply = Reply.find(params[:reply_id]) if params[:reply_id]
     @report = Report.new(report_params)
     @report.member_id = current_member.id
     @report.comment = @comment
     @report.reply_id = Reply.find(params[:reply_id]).id if params[:reply_id]
-    p @report, @report.reply
+    #p @report, @report.reply
     if @report.save!
       @theme = @comment.theme
       @job = Job.find(params[:job_id])
