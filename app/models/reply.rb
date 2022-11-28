@@ -6,8 +6,8 @@ class Reply < ApplicationRecord
 
   validates :reply, presence: true
 
-  def reported_by?(member)
-    reports.exists?(member_id: member.id)
+  def reported_by?(member, reply)
+    reports.exists?(member_id: member.id, reply_id: reply.id)
   end
 
 end

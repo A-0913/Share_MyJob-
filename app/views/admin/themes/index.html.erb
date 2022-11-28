@@ -2,6 +2,13 @@
   <div class = "row justify-content-center pt-3">
     <h3>職業選択画面</h3>
   </div>
+  <% @jobs.each do |job| %>
+    <% job_theme = job.themes.where(is_checked: false) %>
+    <% if job_theme.present? %>
+      <%= job.name %>:
+      <%= job_theme.count %></br>
+    <% end %>
+  <% end %>
 
   <% @jobs.each do |job| %>
     <div class="row justify-content-center py-3">
