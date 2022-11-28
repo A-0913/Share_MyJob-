@@ -71,17 +71,17 @@
               <% end %>
             <% end %>
             <span>
-              <%# if admin_signed_in? %>
-                <%# if reply.reports.count > 0 %>
-                  <!--<button type="button" class="btn btn-danger">-->
-                  <!--  <i class="fa-solid fa-triangle-exclamation"></i>-->
-                  <!--</button>-->
-                <%# else %>
-                  <!--<button type="button" class="btn btn-secondary">-->
-                  <!--  <i class="fa-solid fa-triangle-exclamation"></i>-->
-                  <!--</button>-->
-                <%# end %>
-              <%# end %>
+              <% if admin_signed_in? %>
+                <% if reply.reports.count > 0 %>
+                  <button type="button" class="btn btn-danger">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                  </button>
+                <% else %>
+                  <button type="button" class="btn btn-secondary">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                  </button>
+                <% end %>
+              <% end %>
               <% if member_signed_in? %>
                 <% if current_member.email != 'guest@example.com' %>
                   <% if reply.member != current_member %>

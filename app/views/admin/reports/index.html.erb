@@ -1,4 +1,11 @@
 <div class = "container p-4">
+  <% if @unconfirmed_reports.count > 0 %>
+    <% @unconfirmed_reports.each do |unconfirmed_report| %>
+    <h4 class="row text-danger ">
+      ※通報id<div class="font-weight-bold"><%= unconfirmed_report.id %></div>が未確認です。
+    </h4>
+    <% end %>
+  <% end %>
   <div class = "row justify-content-center pt-3">
     <h3>通報一覧</h3>
   </div>
@@ -18,7 +25,11 @@
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">対象コメント</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
-          <%= link_to report.comment.comment , admin_report_path(report) %>
+          <% if report.reply_id? %>
+            <%= link_to report.reply.reply , admin_report_path(report) %>
+          <% else %>
+            <%= link_to report.comment.comment , admin_report_path(report) %>
+          <% end %>
         </div>
       </div>
       <div class="row col-10 justify-content-center">

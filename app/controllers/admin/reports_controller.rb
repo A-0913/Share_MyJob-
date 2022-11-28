@@ -2,6 +2,7 @@ class Admin::ReportsController < ApplicationController
 
   def index
     @reports = Report.all.order(created_at: :desc).page(params[:page]).per(5)
+    @unconfirmed_reports = Report.where(is_checked: false)
   end
 
   def show

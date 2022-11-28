@@ -28,10 +28,14 @@
       <div class="col-md-5 text-center border border-white bg-info text-white">対象コメント</div>
       <div class="col-md-5 text-center border border-dark bg-white text-dark">
         <% if @report.reply_id? %>
-          <% if @reply.is_published == true %>
-            <%= link_to @reply.reply, job_theme_comment_replies_path(@job,@theme,@comment) %>
+          <% if @reply.comment.is_published == true %>
+            <% if @reply.is_published == true %>
+              <%= link_to @reply.reply, job_theme_comment_replies_path(@job,@theme,@comment) %>
+            <% else %>
+              <div class="text-danger font-weight-bold">すでに削除済みです</div>
+            <% end %>
           <% else %>
-            <div class="text-danger font-weight-bold">すでに削除済みです</div>
+            <div class="text-danger font-weight-bold">返信元のコメントが削除済みです</div>
           <% end %>
         <% else %>
           <% if @comment.is_published == true %>
