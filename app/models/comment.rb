@@ -17,8 +17,8 @@ class Comment < ApplicationRecord
     end
   end
 
-  def reported_by?(member)
-    reports.exists?(member_id: member.id)
+  def reported_by?(member, comment)
+    reports.exists?(member_id: member.id, comment_id: comment.id, reply_id: nil)
   end
 
 end
