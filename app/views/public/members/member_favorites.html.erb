@@ -20,7 +20,7 @@
         <div class="col-md-5 text-center border border-white bg-info text-white">コメント</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
           <% if comment.is_published == true %>
-            <%= link_to job_theme_path(comment.job,comment.theme) do %>
+            <%= link_to job_theme_comment_replies_path(comment.job,comment.theme,comment) do %>
               <%= comment.comment %></td>
             <% end %>
           <% else %>

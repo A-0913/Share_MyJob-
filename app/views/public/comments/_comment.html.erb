@@ -33,7 +33,7 @@
       </span>
       <span>
         <% if admin_signed_in? %>
-          <% if comment.reports.count > 0 %>
+          <% if comment.reports.exists?(reply_id: nil) %>
             <button type="button" class="btn btn-danger">
               <i class="fa-solid fa-triangle-exclamation"></i>
             </button>
@@ -46,7 +46,7 @@
         <% if member_signed_in? %>
           <% if current_member.email != 'guest@example.com' %>
             <% if comment.member != current_member %>
-              <% if comment.reported_by?(current_member) %>
+              <% if comment.reported_by?(current_member, comment) %>
                 <button type="button" class="btn btn-secondary">
                   <i class="fa-solid fa-triangle-exclamation"></i>
                 </button>
