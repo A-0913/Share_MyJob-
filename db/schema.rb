@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_27_071735) do
+ActiveRecord::Schema.define(version: 2022_12_01_010351) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2022_11_27_071735) do
     t.integer "member_id", null: false
     t.integer "genre_id", null: false
     t.string "name", null: false
-    t.string "reason", null: false
+    t.string "reason"
     t.integer "interest", default: 0, null: false
     t.boolean "is_published", default: false, null: false
     t.boolean "is_checked", default: false, null: false
@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 2022_11_27_071735) do
 
   create_table "themes", force: :cascade do |t|
     t.string "name", null: false
-    t.string "reason", null: false
+    t.string "reason"
     t.boolean "is_published", default: false, null: false
     t.boolean "is_checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false

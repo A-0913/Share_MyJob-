@@ -7,7 +7,6 @@ class Job < ApplicationRecord
 
 
   validates :name, presence: true
-  validates :reason, presence: true
 
   def self.search_for(method, word)
     if method == "perfect_match"
