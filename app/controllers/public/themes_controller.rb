@@ -39,7 +39,7 @@ before_action :block_gusest_member, only: [:create]
 
   private
     def theme_params
-      params.require(:theme).permit(:name, :reason )
+      params.require(:theme).permit(:name, :contact )
     end
 
 end
