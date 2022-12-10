@@ -33,4 +33,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_comment
+    @job = Job.find(params[:job_id])
+    @theme = Theme.find(params[:theme_id])
+    @comment = Comment.find(params[:comment_id])
+  end
+
 end

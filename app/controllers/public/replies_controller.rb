@@ -3,23 +3,17 @@ before_action :authenticate_any!
 before_action :block_gusest_member, only: [:create, :destroy]
 
   def index
-    @job = Job.find(params[:job_id])
-    @theme = Theme.find(params[:theme_id])
-    @comment = Comment.find(params[:comment_id])
+    set_comment
     @replies = @comment.replies.where(is_published: true)
   end
 
   def new
-    @job = Job.find(params[:job_id])
-    @theme = Theme.find(params[:theme_id])
-    @comment = Comment.find(params[:comment_id])
+    set_comment
     @reply = Reply.new
   end
 
   def create
-    @job = Job.find(params[:job_id])
-    @theme = Theme.find(params[:theme_id])
-    @comment = Comment.find(params[:comment_id])
+    set_comment
     @reply = current_member.replies.new(reply_params)
     @reply.member_id = current_member.id
     @reply.comment_id = @comment.id
@@ -32,9 +26,7 @@ before_action :block_gusest_member, only: [:create, :destroy]
   end
 
   def destroy
-    @job = Job.find(params[:job_id])
-    @theme = Theme.find(params[:theme_id])
-    @comment = Comment.find(params[:comment_id])
+    set_comment
     reply = Reply.find(params[:id])
     reply.update(is_published: false)
     #is_publishedカラムをfalseに変更することにより返信を非表示にする
@@ -45,5 +37,6 @@ before_action :block_gusest_member, only: [:create, :destroy]
   def reply_params
     params.require(:reply).permit(:reply)
   end
+
 
 end

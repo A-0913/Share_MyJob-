@@ -31,27 +31,27 @@
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">表示ステータス</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark">
-            <% if job.is_published == false %>
-              <div class="text-danger font-weight-bold">未公開</div>
-            <% else %>
+            <% if job.is_published? %>
               <div class="text-success font-weight-bold">公開</div>
+            <% else %>
+              <div class="text-danger font-weight-bold">未公開</div>
             <% end %>
           </div>
       </div>
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">確認ステータス</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark">
-            <% if job.is_checked == false %>
-              <div class="text-danger font-weight-bold">未確認</div>
-            <% else %>
+            <% if job.is_checked? %>
               <div class="text-success font-weight-bold">確認済み</div>
+            <% else %>
+              <div class="text-danger font-weight-bold">未確認</div>
             <% end %>
           </div>
       </div>
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">リンク先</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
-            <% if job.is_published == true %>
+            <% if job.is_published? %>
               <%= link_to "テーマ一覧へ進む" , job_path(job) %>
             <% else %>
               <div class="text-danger font-weight-bold">未公開です</div>
