@@ -26,7 +26,7 @@ class Admin::JobsController < ApplicationController
 
   private
     def job_update_params
-      params.require(:job).permit(:genre_id, :name, :reason, :is_published, :is_checked)
+      params.require(:job).permit(:genre_id, :name, :contact, :is_published, :is_checked)
     end
 
 end

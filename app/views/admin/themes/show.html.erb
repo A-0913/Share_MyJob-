@@ -14,8 +14,14 @@
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= link_to theme.member.nickname , admin_member_path(theme.member) %></div>
       </div>
       <div class="row col-10 justify-content-center">
-        <div class="col-md-5 text-center border border-white bg-info text-white">追加理由</div>
-        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= theme.reason %></div>
+        <div class="col-md-5 text-center border border-white bg-info text-white">管理人への連絡事項</div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark">
+          <% if theme.contact.blank? %>
+            <div class="text-info font-weight-bold">連絡事項はありません。</div>
+          <% else %>
+            <%= theme.contact %>
+          <% end %>
+        </div>
       </div>
 
       <div class="row col-10 justify-content-center">
