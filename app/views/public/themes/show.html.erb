@@ -5,19 +5,20 @@
         <p><%= @theme.name %></p>
     </div>
   </div>
-  <div id="comments_area">
 
-  </div>
+  <div id="comments_area"></div>
     <% @comments.each do |comment| %>
+
       <div class="comment_<%= comment.id %>">
-        <%= render partial: 'public/comments/comment', locals:{job: @job, theme: @theme,comment: comment} %>
+       <%= render partial: 'public/comments/comment', locals:{job: @job, theme: @theme,comment: comment} %>
+
       </div>
     <% end %>
 
   <div class="row justify-content-center">
     <%= paginate @comments, theme: 'twitter-bootstrap-4' %>
   </div>
-
+  <div id="error_message_area"></div>
     <div id="comments_new">
       <%= render partial: 'public/comments/form', locals:{job: @job, theme: @theme, comment: @comment} %>
     </div>

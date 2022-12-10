@@ -10,6 +10,7 @@ before_action :block_gusest_member
     @comment.theme_id = @theme.id
     @comment.member_id = current_member.id
     @comment.save
+
    # redirect_to job_theme_path(job,theme)
   end
 

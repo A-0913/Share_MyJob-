@@ -1,3 +1,4 @@
+<% if comment.id.present? %>
 <div class="row">
   <div class="col-3 col-md-1 offset-md-2 align-self-center">
     <div class="balloon5">
@@ -16,7 +17,7 @@
         </div>
       </div>
       <div class="text-right">
-        <%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %>
+        <%#= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %>
         <%= link_to  job_theme_comment_replies_path(job ,theme ,comment) do %>
            <i class="fa-solid fa-message"></i><%= comment.replies.where(is_published: true).count %>件
         <% end %>
@@ -62,3 +63,4 @@
     </div>
   </div>
 </div>
+<% end %>

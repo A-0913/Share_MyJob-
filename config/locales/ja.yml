@@ -21,6 +21,8 @@ ja:
       theme:
         name: テーマ
         contact: 管理人との連絡事項
+      comment:
+        comment: コメント
       reply:
         reply: 返信コメント
     errors:
