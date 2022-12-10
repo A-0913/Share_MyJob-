@@ -13,11 +13,8 @@
 
   <% if @reply.errors.any? %>
     <ul class="alert alert-danger" role="alert">
-      <h5 class="alert-heading">
-        <%= @reply.errors.count %>件のエラーが発生しました
-      </h5>
       <% @reply.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li><%= simple_format(message) %></li>
       <% end %>
     </ul>
   <% end %>
