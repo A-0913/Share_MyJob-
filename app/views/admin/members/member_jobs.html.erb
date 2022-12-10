@@ -15,12 +15,12 @@
         <div class="row col-10 justify-content-center">
           <div class="col-md-5 text-center border border-white bg-info text-white">職業名</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark">
-            <% if job.is_published == false %>
-              <%= job.name %>
-            <% else %>
+            <% if job.is_published? %>
               <%= link_to job_path(job) do %>
                 <%= job.name %>
               <% end %>
+            <% else %>
+              <%= job.name %>
             <% end %>
           </div>
         </div>
@@ -37,20 +37,20 @@
         <div class="row col-10 justify-content-center">
           <div class="col-md-5 text-center border border-white bg-info text-white">公開/非公開</div>
             <div class="col-md-5 text-center border border-dark bg-white text-dark">
-              <% if job.is_published == false %>
-                <div class="text-danger font-weight-bold">非公開</div>
-              <% else %>
+              <% if job.is_published? %>
                 <div class="text-success font-weight-bold">公開</div>
+              <% else %>
+                <div class="text-danger font-weight-bold">非公開</div>
               <% end %>
             </div>
         </div>
         <div class="row col-10 justify-content-center">
           <div class="col-md-5 text-center border border-white bg-info text-white">管理者確認</div>
             <div class="col-md-5 text-center border border-dark bg-white text-dark">
-              <% if job.is_checked == false %>
-                <div class="text-danger font-weight-bold">未確認</div>
-              <% else %>
+              <% if job.is_checked? %>
                 <div class="text-success font-weight-bold">確認済み</div>
+              <% else %>
+                <div class="text-danger font-weight-bold">未確認</div>
               <% end %>
             </div>
         </div>
