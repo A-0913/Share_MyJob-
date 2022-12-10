@@ -27,7 +27,7 @@ class Admin::ThemesController < ApplicationController
 
   private
     def theme_update_params
-      params.require(:theme).permit( :name, :reason, :is_published, :is_checked)
+      params.require(:theme).permit( :name, :contact, :is_published, :is_checked)
     end
 
 

@@ -114,7 +114,7 @@ Job.create!(
   member_id:1,
   genre_id:2,
   name:'会計士',
-  reason:'初期設定',
+  contact:'初期設定',
   is_published:true,
   is_checked:true
 )
@@ -124,7 +124,7 @@ Job.create!(
   member_id:2,
   genre_id:12,
   name:'システムエンジニア',
-  reason:'初期設定',
+  contact:'初期設定',
   is_published:true,
   is_checked:true
 )
@@ -134,7 +134,7 @@ Job.create!(
   member_id:1,
   genre_id:4,
   name:'銀行員',
-  reason:'既存の職業になかったため',
+  contact:'既存の職業になかったため',
   is_published:false,
   is_checked:false
 )
@@ -143,7 +143,7 @@ Theme.create!(
   id:1,
   member_id:3,
   name:'どんな仕事をしてる？',
-  reason:'初期設定',
+  contact:'初期設定',
   is_published:true,
   is_checked:true
 )
@@ -152,7 +152,7 @@ Theme.create!(
   id:2,
   member_id:3,
   name:'どんな働き方がある？',
-  reason:'初期設定',
+  contact:'初期設定',
   is_published:true,
   is_checked:true
 )
@@ -161,7 +161,7 @@ Theme.create!(
   id:3,
   member_id:3,
   name:'どんな人が向いてると思う？',
-  reason:'初期設定',
+  contact:'初期設定',
   is_published:true,
   is_checked:true
 )
@@ -170,7 +170,7 @@ Theme.create!(
   id:4,
   member_id:3,
   name:'何が大変？',
-  reason:'初期設定',
+  contact:'初期設定',
   is_published:true,
   is_checked:true
 )
@@ -178,8 +178,8 @@ Theme.create!(
 Theme.create!(
   id:5,
   member_id:3,
-  name:'お給料はどのくらい？',
-  reason:'初期設定',
+  name:'この職業でよかったと思うところは？',
+  contact:'初期設定',
   is_published:true,
   is_checked:true
 )
