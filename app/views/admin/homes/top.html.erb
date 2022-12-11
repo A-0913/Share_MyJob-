@@ -1,40 +1,51 @@
-<div class = "container">
-  <div class="btn-wrapper col-11 py-4 mx-auto">
+<div class = "container py-4">
     <div class = "row justify-content-center py-4">
-      <div class= "col-md-1">
-        <% if @unconfirmed_jobs.count > 0 %>
-          <div class="mx-3">
-            <button type="button" class="btn btn-danger"><i class="fa-solid fa-bell"></i></button>
-          </div>
-        <% end %>
+      <div class = "col-11 d-flex">
+        <div class= "col-3 d-flex justify-content-end align-items-center"></div>
+        <div class="col-8 mx-3 d-flex">
+          <%= link_to "会員一覧" , admin_members_path, class: 'btn btn-success col-10'  %>
+        </div>
       </div>
-        <%= link_to "職業投稿一覧" , admin_jobs_path, class: 'btn btn-primary btn-block col-6'  %>
     </div>
     <div class = "row justify-content-center py-4">
-      <div class="col-md-1">
-        <% @jobs.each do |job| %>
-          <% job_theme = job.themes.where(is_checked: false) %>
-          <% if job_theme.count > 0 %>
-            <div class="mx-3"><button type="button" class="btn btn-danger"><i class="fa-solid fa-bell"></i></button></div>
-            <% break %>
+      <div class = "col-11 d-flex">
+        <div class="col-3 d-flex justify-content-end align-items-center">
+          <% if @unconfirmed_jobs.count > 0 %>
+              <button type="button" class="btn btn-danger">Check→</button>
           <% end %>
-        <% end %>
+        </div>
+        <div class="col-8 mx-3 d-flex">
+          <%= link_to "職業投稿一覧" , admin_jobs_path, class: 'btn btn-primary col-10'  %>
+        </div>
       </div>
-        <%= link_to "テーマ投稿一覧" , admin_themes_path, class: 'btn btn-info btn-block col-6'  %>
     </div>
     <div class = "row justify-content-center py-4">
-      <div class= "col-md-1">
-        <% if @unconfirmed_reports.count > 0 %>
-          <div class="mx-3">
-            <button type="button" class="btn btn-danger"><i class="fa-solid fa-bell"></i></button>
-          </div>
-        <% end %>
+      <div class = "col-11 d-flex">
+        <div class="col-3 d-flex justify-content-center align-items-center">
+          <% @jobs.each do |job| %>
+            <% job_theme = job.themes.where(is_checked: false) %>
+            <% if job_theme.count > 0 %>
+                <button type="button" class="btn btn-danger">Check→</button>
+              <% break %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-8 mx-3 d-flex">
+          <%= link_to "テーマ投稿一覧" , admin_themes_path, class: 'btn btn-info col-10'  %>
+        </div>
       </div>
-        <%= link_to "通報一覧" , admin_reports_path, class: 'btn btn-warning btn-block col-6 '  %>
     </div>
     <div class = "row justify-content-center py-4">
-       <div class= "col-md-1"></div>
-        <%= link_to "会員一覧" , admin_members_path, class: 'btn btn-success btn-block col-6 '  %>
+      <div class = "col-11 d-flex">
+        <div class= "col-3 d-flex justify-content-center align-items-center">
+          <% if @unconfirmed_reports.count > 0 %>
+            <button type="button" class="btn btn-danger">Check→</button>
+          <% end %>
+        </div>
+        <div class="col-8 mx-3 d-flex">
+          <%= link_to "通報一覧" , admin_reports_path, class: 'btn btn-warning col-10'  %>
+        </div>
+      </div>
     </div>
-  </div>
+
 </div>
