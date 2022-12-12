@@ -1,4 +1,6 @@
 class Member < ApplicationRecord
+  GUEST_EMAIL = "guest@example.com"
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -35,7 +37,7 @@ class Member < ApplicationRecord
   end
 
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |member|
+    find_or_create_by!(email: GUEST_EMAIL) do |member|
       #SecureRandom:ランダムパスワードにすることで変更されることを防ぐ。
       #.urlsafe_base64:ランダムで URL-safe な base64 文字列を生成して返す。
       member.password = SecureRandom.urlsafe_base64
@@ -46,4 +48,7 @@ class Member < ApplicationRecord
     end
   end
 
+  def guest?
+     email == GUEST_EMAIL
+  end
 end

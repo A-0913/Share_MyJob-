@@ -1,0 +1,2 @@
+$('#comments_area').html("<%= j(render partial: 'public/comments/comment', collection: @comments, as: :comment) %>");
+$("textarea").val('');

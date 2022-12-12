@@ -1,5 +1,6 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!, except: [:dummy]
+  before_action :ensure_user!, only: [:edit]
   before_action :block_gusest_member, only: [:update, :withdraw]
 
     def show
@@ -61,7 +62,12 @@ class Public::MembersController < ApplicationController
     end
 
     private
+
     def update_params
       params.require(:member).permit(:last_name, :first_name, :nickname, :introduction, :belong ,:profile_image, :email, :encrypted_password)
+    end
+
+    def ensure_user!
+      redirect_to root_path, alert: "不正なユーザーです" unless params[:id] == current_member.id
     end
 end

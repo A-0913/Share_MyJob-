@@ -27,11 +27,7 @@
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">表示ステータス</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark">
-            <% if theme.is_published? %>
-              <div class="text-success font-weight-bold">公開</div>
-            <% else %>
-              <div class="text-danger font-weight-bold">未公開</div>
-            <% end %>
+            <%= published_message(theme) %>
           </div>
       </div>
       <div class="row col-10 justify-content-center">

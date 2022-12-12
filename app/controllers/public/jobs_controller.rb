@@ -43,8 +43,8 @@ class Public::JobsController < ApplicationController
   end
 
   private
+  
     def job_params
       params.require(:job).permit(:name, :contact, :genre_id )
     end
-
 end
