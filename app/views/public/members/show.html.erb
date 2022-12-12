@@ -40,6 +40,11 @@
           <div class="col-md-5 text-center border border-white bg-primary text-white">属性</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @member.belong %></div>
         </div>
+        <% if @member.email != 'guest@example.com'&& @member != current_member %>
+          <% if @member.is_deleted? %>
+            <div class="text-danger font-weight-bold">※この会員はすでに退会済みです</div>
+          <% end %>
+        <% end %>
       </div>
       <% if @member.email != 'guest@example.com'&& @member == current_member %>
         <div class="row justify-content-center">
@@ -57,7 +62,7 @@
           </div>
         </div>
       <% end %>
-      </div>
+    </div>
   </div>
 
   <div class="row justify-content-center pt-4">
