@@ -133,10 +133,10 @@
         <div class= "footer-container">
           <div class = "row">
             <div class="col-1">
-              <% unless admin_signed_in? %>
+              <% unless admin_signed_in? or  member_signed_in? %>
                 <%= link_to  new_admin_session_path, class: 'nav-link text-dark' do %>
                   <i class="fa-solid fa-key"></i>
-                 <% end %>
+                <% end %>
               <% end %>
             </div>
             <div class="text-center col-11">© 2022,Share MyJob, © 2022 Japan</div>
