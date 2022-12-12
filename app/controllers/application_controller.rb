@@ -33,6 +33,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  #各コントローラ内で複数回使用するため、こちらに定義する
   def set_comment
     @job = Job.find(params[:job_id])
     @theme = Theme.find(params[:theme_id])
