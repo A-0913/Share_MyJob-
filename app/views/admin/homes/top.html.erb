@@ -21,7 +21,7 @@
     </div>
     <div class = "row justify-content-center py-4">
       <div class = "col-11 d-flex">
-        <div class="col-3 d-flex justify-content-center align-items-center">
+        <div class="col-3 d-flex justify-content-end align-items-center">
           <% @jobs.each do |job| %>
             <% job_theme = job.themes.where(is_checked: false) %>
             <% if job_theme.count > 0 %>
@@ -37,7 +37,7 @@
     </div>
     <div class = "row justify-content-center py-4">
       <div class = "col-11 d-flex">
-        <div class= "col-3 d-flex justify-content-center align-items-center">
+        <div class= "col-3 d-flex justify-content-end align-items-center">
           <% if @unconfirmed_reports.count > 0 %>
             <button type="button" class="btn btn-danger">Check→</button>
           <% end %>
