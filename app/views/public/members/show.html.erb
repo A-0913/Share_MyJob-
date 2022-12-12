@@ -34,7 +34,9 @@
         <% end %>
         <div class="row col-10 justify-content-center">
           <div class="col-md-5 text-center border border-white bg-primary text-white">自己紹介文</div>
-          <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @member.introduction %></div>
+          <div class="col-md-5 text-center border border-dark bg-white text-dark">
+            <%= @member.introduction.blank? ? "-" :  @member.introduction  %>
+          </div>
         </div>
         <div class="row col-10 justify-content-center">
           <div class="col-md-5 text-center border border-white bg-primary text-white">属性</div>
