@@ -1,6 +1,6 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!, except: [:dummy]
-  before_action :ensure_user!, only: [:edit]
+  before_action :ensure_user!, except: [:show, :confirm, :withdraw, :dummy]
   before_action :block_gusest_member, only: [:update, :withdraw]
 
     def show
