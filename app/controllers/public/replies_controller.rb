@@ -17,8 +17,7 @@ before_action :block_gusest_member, only: [:create, :destroy]
     @reply = current_member.replies.new(reply_params)
     @reply.comment_id = @comment.id
     if @reply.save
-      flash[:notice] = "返信コメントを送信しました！"
-      redirect_to job_theme_comment_replies_path(@job,@theme,@comment)
+      redirect_to job_theme_comment_replies_path(@job,@theme,@comment), notice: "返信コメントを送信しました！"
     else
       render :new
     end

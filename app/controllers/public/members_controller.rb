@@ -13,11 +13,13 @@ class Public::MembersController < ApplicationController
 
     def update
       @member = Member.find(params[:id])
+
+      update_params = params[:member][:password].blank? ? update_without_password_params : update_with_password_params
+
       if @member.update(update_params)
-         flash[:notice] = "情報を更新しました"
-         redirect_to member_path(@member)
+        redirect_to member_path(@member), notice: "情報を更新しました"
       else
-         render :edit
+        render :edit
       end
     end
 
@@ -47,8 +49,7 @@ class Public::MembersController < ApplicationController
       # is_deletedカラムをtrueに変更することにより削除フラグを立てる
       @member.update!(is_deleted: true)
       reset_session
-      flash[:notice] = "退会処理を実行いたしました"
-      redirect_to root_path
+      redirect_to root_path, notice: "退会処理を実行いたしました"
     end
 
     #Deviseを使った新規登録画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処法
@@ -58,8 +59,12 @@ class Public::MembersController < ApplicationController
 
     private
 
-    def update_params
-      params.require(:member).permit(:last_name, :first_name, :nickname, :introduction, :belong ,:profile_image, :email, :encrypted_password)
+    def update_with_password_params
+      params.require(:member).permit(:last_name, :first_name, :nickname, :introduction, :belong ,:profile_image, :email, :password)
+    end
+
+    def update_without_password_params
+      params.require(:member).permit(:last_name, :first_name, :nickname, :introduction, :belong ,:profile_image, :email)
     end
 
     def ensure_user!

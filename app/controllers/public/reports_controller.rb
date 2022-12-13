@@ -11,8 +11,7 @@ class Public::ReportsController < ApplicationController
   def create
     @comment = Comment.find(params[:comment_id])
     @reply = Reply.find(params[:reply_id]) if params[:reply_id]
-    @report = Report.new(report_params)
-    @report.member_id = current_member.id
+    @report = current_member.reports.new(report_params)
     @report.comment = @comment
     @report.reply_id = Reply.find(params[:reply_id]).id if params[:reply_id]
     if @report.save!
@@ -26,7 +25,7 @@ class Public::ReportsController < ApplicationController
       end
     else
       set_comment
-      render "new"
+      render :new
     end
   end
 

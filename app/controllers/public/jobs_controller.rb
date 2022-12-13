@@ -31,8 +31,7 @@ class Public::JobsController < ApplicationController
         @themes.each do |theme|
           theme.save
         end
-        flash[:notice] = "職業が申請されました。承認がおりると、職業一覧に表示されます。しばらくお待ちください。"
-        redirect_to jobs_path
+        redirect_to jobs_path, notice: "職業が申請されました。承認がおりると、職業一覧に表示されます。しばらくお待ちください。"
       else
         render :new
       end
