@@ -20,7 +20,7 @@
               <%= theme.name %>
             <% end %>
           <% else %>
-            <%= theme.name %>>
+            <%= theme.name %>
           <% end %>
         </div>
       </div>
@@ -37,21 +37,13 @@
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">公開/非公開</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark">
-            <% if theme.is_published? %>
-              <div class="text-success font-weight-bold">公開</div>
-            <% else %>
-              <div class="text-danger font-weight-bold">非公開</div>
-            <% end %>
+            <%= published_message(theme) %>
           </div>
       </div>
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">管理者確認</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark">
-            <% if theme.is_checked? %>
-              <div class="text-success font-weight-bold">確認済み</div>
-            <% else %>
-              <div class="text-danger font-weight-bold">未確認</div>
-            <% end %>
+            <%= checked_message(theme) %>
           </div>
       </div>
     </div>

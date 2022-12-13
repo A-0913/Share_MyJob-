@@ -68,6 +68,7 @@ class Public::MembersController < ApplicationController
     end
 
     def ensure_user!
-      redirect_to root_path, alert: "不正なユーザーです" unless params[:id] == current_member.id
+      redirect_to root_path, alert: "不正なアクセスです" unless params[:id].to_i == current_member.id
+      #params[:id]で取得できる値は文字列であり、数値であるcurrent_user.idと比較してもfalseとなるため、「.to_i」をつける
     end
 end
