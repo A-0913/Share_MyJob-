@@ -24,8 +24,7 @@ class Public::JobsController < ApplicationController
   end
 
   def create
-    @job = Job.new(job_params)
-    @job.member_id = current_member.id
+    @job = current_member.jobs.new(job_params)
     @themes = Theme.where(id: [1, 2, 3, 4, 5]) #デフォルトのテーマ5つ分をseedファイルに設定済み
     @job.themes = @themes
       if @job.save

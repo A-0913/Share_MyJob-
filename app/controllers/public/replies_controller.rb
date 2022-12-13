@@ -15,7 +15,6 @@ before_action :block_gusest_member, only: [:create, :destroy]
   def create
     set_comment
     @reply = current_member.replies.new(reply_params)
-    #@reply.member_id = current_member.id
     @reply.comment_id = @comment.id
     if @reply.save
       flash[:notice] = "返信コメントを送信しました！"
