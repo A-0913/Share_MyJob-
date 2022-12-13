@@ -1,45 +1,45 @@
 <div class="container p-4">
-    <div class="row justify-content-center py-3">
-      <h4>ジャンル一覧・登録</h4>
-    </div>
+  <div class="row justify-content-center py-3">
+    <h4>ジャンル一覧・登録</h4>
+  </div>
 
-    <%= form_with model: @genre,url: admin_genres_path, local:true  do |f| %>
-      <div class="row justify-content-center pb-3">
-        <div class="col-12 col-md-5 ">
+  <%= form_with model: @genre,url: admin_genres_path, local:true  do |f| %>
+    <div class="row justify-content-center pb-3">
+      <div class="col-12 col-md-5 ">
+        <div class="px-4">
+          <div class="form-group">
+            <%=f.text_field :name, autofocus: true, class: "form-control", placeholder: "追加したいジャンルを入力"  %>
+          </div>
+        </div>
+      </div>
+        <div class="col-12 col-md-4">
           <div class="px-4">
             <div class="form-group">
-              <%=f.text_field :name, autofocus: true, class: "form-control", placeholder: "追加したいジャンルを入力"  %>
+              <%= f.submit "新規登録" , class: 'btn btn-info form-control ' %>
             </div>
           </div>
         </div>
-          <div class="col-12 col-md-4">
-            <div class="px-4">
-              <div class="form-group">
-                <%= f.submit "新規登録" , class: 'btn btn-info form-control ' %>
-              </div>
-            </div>
-          </div>
+    </div>
+  <% end %>
+
+ <div class="border-bottom border-dark py-2" ></div>
+
+  <div class="row p-4">
+    <% @genres.each do |genre| %>
+      <div class="col-12 col-md-6 justify-content-center py-2">
+        <div class="row justify-content-center ">
+          <div class="col-6 col-md-4"><%= genre.name %></div>
+          <div class="col-6 col-md-4"><%= link_to "編集する", edit_admin_genre_path(genre), class: ' d-sm-flex justify-content-sm-center btn btn-success ' %></div>
+        </div>
       </div>
     <% end %>
+  </div>
 
-   <div class="border-bottom border-dark py-2" ></div>
+  <div class="row justify-content-center pt-3">
+    <%= paginate  @genres, theme: 'twitter-bootstrap-4' %>
+  </div>
 
-    <div class="row p-4">
-      <%  @genres.each do |genre| %>
-        <div class="col-12 col-md-6 justify-content-center py-2">
-          <div class="row justify-content-center ">
-            <div class="col-6 col-md-4"><%= genre.name %></div>
-            <div class="col-6 col-md-4"><%= link_to "編集する", edit_admin_genre_path(genre), class: ' d-sm-flex justify-content-sm-center btn btn-success ' %></div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="row justify-content-center pt-3">
-      <%= paginate  @genres, theme: 'twitter-bootstrap-4' %>
-    </div>
-
-    <div class="row justify-content-center py-4">
-      <%= link_to "TOPへ戻る" , admin_path , class: "btn btn-primary col-sm-3" %>
-    </div>
+  <div class="row justify-content-center py-4">
+    <%= link_to "TOPへ戻る" , admin_path , class: "btn btn-primary col-sm-3" %>
+  </div>
 </div>

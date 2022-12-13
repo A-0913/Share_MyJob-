@@ -83,7 +83,7 @@
                 <% end %>
               <% end %>
               <% if member_signed_in? %>
-                <% if current_member.email != 'guest@example.com' %>
+                <% if !current_member.guest? %>
                   <% if reply.member != current_member %>
                     <% if reply.reported_by?(current_member, reply) %>
                       <button type="button" class="btn btn-secondary">

@@ -1,6 +1,6 @@
 <div class = "container p-4">
   <div class = "row justify-content-center pt-3">
-    <h3><%= @member.nickname %>さんの職業投稿履歴</h3>
+    <h3><%= current_member.nickname %>さんの職業投稿履歴</h3>
   </div>
     <% @jobs.each do |job| %>
       <div class="row justify-content-center py-3">
@@ -55,6 +55,6 @@
   </div>
 
   <div class="row justify-content-center pb-4">
-    <%= link_to "マイページへ戻る" , member_path(@member) , class: "btn btn-primary col-sm-3" %>
+    <%= link_to "マイページへ戻る" , member_path(current_member) , class: "btn btn-primary col-sm-3" %>
   </div>
 </div>

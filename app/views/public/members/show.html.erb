@@ -42,13 +42,13 @@
           <div class="col-md-5 text-center border border-white bg-primary text-white">属性</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @member.belong %></div>
         </div>
-        <% if @member.email != 'guest@example.com'&& @member != current_member %>
+        <% if !current_member.guest? && @member != current_member %>
           <% if @member.is_deleted? %>
             <div class="text-danger font-weight-bold">※この会員はすでに退会済みです</div>
           <% end %>
         <% end %>
       </div>
-      <% if @member.email != 'guest@example.com'&& @member == current_member %>
+      <% if !current_member.guest? && @member == current_member %>
         <div class="row justify-content-center">
           <div class="row col-10 justify-content-center pt-3">
             <div class="col-sm-5 text-center">職業投稿一覧</div>
@@ -68,7 +68,7 @@
   </div>
 
   <div class="row justify-content-center pt-4">
-    <% if @member.email != 'guest@example.com'&& @member == current_member %>
+    <% if !current_member.guest? && @member == current_member %>
       <%=  link_to "編集する" , edit_member_path(@member), class: 'btn btn-success col-sm-4' %>
     <% end %>
   </div>

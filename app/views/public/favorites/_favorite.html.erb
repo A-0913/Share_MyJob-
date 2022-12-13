@@ -4,7 +4,7 @@
     </button>
 <% end %>
 <% if member_signed_in? %>
-    <% if current_member.email != 'guest@example.com' %>
+    <% if !current_member.guest? %>
         <% if comment.favorited_by?(current_member) %>
             <%= link_to  job_theme_comment_favorites_path(job, theme, comment), class: "btn btn-info ", method: :delete , remote: true do%>
             <i class="far fa-thumbs-up"></i><%= comment.favorites.count %>

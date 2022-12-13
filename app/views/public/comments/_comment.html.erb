@@ -45,7 +45,7 @@
           <% end %>
         <% end %>
         <% if member_signed_in? %>
-          <% if current_member.email != 'guest@example.com' %>
+          <% if !current_member.guest? %>
             <% if comment.member != current_member %>
               <% if comment.reported_by?(current_member, comment) %>
                 <button type="button" class="btn btn-secondary">

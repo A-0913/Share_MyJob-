@@ -22,29 +22,24 @@ class Public::MembersController < ApplicationController
     end
 
     def member_jobs
-      @member = Member.find(params[:id])
-      @jobs = @member.jobs.order("created_at DESC").page(params[:page]).per(5)
+      @jobs = current_member.jobs.order("created_at DESC").page(params[:page]).per(5)
     end
 
     def member_themes
-      @member = Member.find(params[:id])
-      @themes = @member.themes.order("created_at DESC").page(params[:page]).per(5)
+      @themes = current_member.themes.order("created_at DESC").page(params[:page]).per(5)
     end
 
     def member_favorites
-      @member = Member.find(params[:id])
-      favorites= Favorite.where(member_id: @member.id).pluck(:comment_id)
+      favorites= Favorite.where(member_id: current_member.id).pluck(:comment_id)
       @favorite_comments = Comment.find(favorites)
     end
 
     def member_comment_replies
-      @member = Member.find(params[:id])
-      @comments = @member.comments.where(is_published: true).select { |comment| comment.replies.count > 0  && comment.replies.last.member != current_member}
+      @comments = current_member.comments.where(is_published: true).select { |comment| comment.replies.count > 0  && comment.replies.last.member != current_member}
 
     end
 
     def confirm
-      @member = current_member
     end
 
     def withdraw
