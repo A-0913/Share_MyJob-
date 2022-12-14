@@ -18,24 +18,50 @@
       <div class="w-75">
         <%= form_with model: [@job, @theme], local:true do |f| %>
 
-          <div class="form-group row">
-            <%= f.label :"テーマ名", class: "col-sm-3 col-form-label" %>
-            <%= f.text_field :name,  class: "col-lg-6"  %>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-3 text-left text-md-left">
+                <%= f.label :name, "テーマ名" %>
+              </div>
+              <div class="col-md-9">
+                <%= f.text_field :name, placeholder: "追加するテーマを入力", class: 'form-control' %>
+              </div>
+            </div>
           </div>
 
-          <div class="form-group row">
-            <%= f.label :"管理人への連絡事項", class: "col-sm-3 col-form-label" %>
-            <%= f.text_area :reason,  class: "col-lg-6", placeholder: "連絡事項がありましたらご入力下さい" %>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-3 text-left text-md-left">
+                <%= f.label :contact, "管理人への連絡事項" %>
+              </div>
+              <div class="col-md-9">
+                <%= f.text_area :contact, placeholder: "連絡事項がありましたらご入力下さい", class: 'form-control' %>
+              </div>
+            </div>
           </div>
 
-          <div class="row justify-content-center pb-4">
-            <%= f.submit "新規登録" , class: 'btn btn-success col-sm-5' %>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-3 text-left text-md-center">
+              </div>
+              <div class="col-md-9">
+                <%= f.submit "テーマを追加する" , class: 'btn btn-success col-md-8' %>
+              </div>
+            </div>
           </div>
 
         <% end %>
-          <div class="row justify-content-center pb-4">
-              <%= link_to "テーマ一覧へ戻る" , job_path(@job), class: 'btn btn-primary col-sm-5' %>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-3 text-left text-md-center">
+              </div>
+              <div class="col-md-9">
+                <%= link_to "テーマ一覧へ戻る" , job_path(@job), class: 'btn btn-primary col-md-8' %>
+              </div>
+            </div>
           </div>
+
       </div>
     </div>
 

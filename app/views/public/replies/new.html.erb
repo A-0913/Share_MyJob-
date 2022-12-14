@@ -1,10 +1,10 @@
 <div class="container p-4">
   <div class="text-info font-weight-bold">《<%= @job.name %>》<%= @theme.name %></div>
-  <div class="row justify-content-center  py-2">
+  <div class="row justify-content-center py-2">
     <h3>コメント返信</h3>
   </div>
 
-  <div class="row justify-content-center ">
+  <div class="row justify-content-center">
     <div class="title-box">
       <div class="title-box-title">返信対象コメント</div>
         <p><%= @comment.comment %></p>
@@ -19,12 +19,15 @@
     </ul>
   <% end %>
     <%= form_with model: [@job, @theme, @comment, @reply] , local: true do |f| %>
-    <%#= form_with model: @reply, url: job_theme_comment_replies_path(@job,@theme,@comment,reply_id: @reply), local: true do |f| %>
-      <div class = "row p-4 justify-content-center">
-        <%= f.text_area :reply, rows: '3', cols: '70',placeholder: "0文字では送信できません" %>
-      </div>
-      <div class = "row justify-content-center">
-        <%= f.submit "送信" ,  class: "col-sm-3 "%>
+      <div class="form-group">
+        <div class = "row py-4 justify-content-center">
+          <div class="col-md-8">
+            <%= f.text_area :reply, placeholder: "※0文字では送信できません", class: 'form-control' %>
+          </div>
+        </div>
+        <div class = "row justify-content-center">
+          <%= f.submit "送信" ,  class: "col-sm-3 "%>
+        </div>
       </div>
     <% end %>
 
