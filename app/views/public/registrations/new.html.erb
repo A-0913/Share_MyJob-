@@ -5,101 +5,101 @@
 
     <div class="row justify-content-center pt-3">
       <%= form_with model: @member, url: member_registration_path do |f| %>
-          <%= render "public/shared/error_messages", resource: resource %>
+        <%= render "public/shared/error_messages", resource: resource %>
 
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-4 text-left text-md-center">
-                <%= f.label :name, "名前（姓/名）" %>
-              </div>
-              <div class="col-md-8">
-                <div class="row">
-                  <div class="col-md-6">
-                    <%= f.text_field :last_name, placeholder: '姓', class: 'form-control' %>
-                  </div>
-                  <div class="col-md-6">
-                    <%= f.text_field :first_name, placeholder: '名', class: 'form-control' %>
-                  </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 text-left text-md-center">
+              <%= f.label :name, "名前（姓/名）" %>
+            </div>
+            <div class="col-md-8">
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.text_field :last_name, placeholder: '姓', class: 'form-control' %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.text_field :first_name, placeholder: '名', class: 'form-control' %>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-4 text-left text-md-center">
-                <%= f.label :nickname, "ニックネーム" %>
-              </div>
-              <div class="col-md-8">
-                <%= f.text_field :nickname, class: 'form-control' %>
-              </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 text-left text-md-center">
+              <%= f.label :nickname, "ニックネーム" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_field :nickname, class: 'form-control' %>
             </div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-4 text-left text-md-center">
-                <%= f.label :email, "メールアドレス" %>
-              </div>
-              <div class="col-md-8">
-                <%= f.email_field :email, class: 'form-control' %>
-              </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 text-left text-md-center">
+              <%= f.label :email, "メールアドレス" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.email_field :email, class: 'form-control' %>
             </div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-4 text-left text-md-center">
-                <%= f.label :password, "パスワード(6文字以上)" %>
-              </div>
-              <div class="col-md-8">
-                <%= f.password_field :password, class: 'form-control' %>
-              </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 text-left text-md-center">
+              <%= f.label :password, "パスワード(6文字以上)" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.password_field :password, class: 'form-control' %>
             </div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-4 text-left text-md-center">
-                <%= f.label :password, "パスワード(確認用)" %>
-              </div>
-              <div class="col-md-8">
-                <%= f.password_field :password, class: 'form-control' %>
-              </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 text-left text-md-center">
+              <%= f.label :password_confirmation, "パスワード(確認用)" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.password_field :password_confirmation, class: 'form-control' %>
             </div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-4 text-left text-md-center">
-                <%= f.label :introduction, "自己紹介文" %>
-              </div>
-              <div class="col-md-8">
-                <%= f.text_area :introduction, class: 'form-control' %>
-              </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 text-left text-md-center">
+              <%= f.label :introduction, "自己紹介文" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_area :introduction, class: 'form-control' %>
             </div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-4 text-left text-md-center">
-                <%= f.label :belong, "属性" %>
-              </div>
-              <div class="col-md-8">
-                <%= f.select :belong, {"大企業勤務": "大企業勤務", "中小企業勤務": "中小企業勤務", "フリーランス": "フリーランス", "学生": "学生", "就職活動中": "就職活動中", "転職を検討中": "転職を検討中"}, { include_blank: '選択してください'}, class: 'form-control' %>
-              </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 text-left text-md-center">
+              <%= f.label :belong, "属性" %>
+            </div>
+            <div class="col-md-8">
+              <%= f.select :belong, {"大企業勤務": "大企業勤務", "中小企業勤務": "中小企業勤務", "フリーランス": "フリーランス", "学生": "学生", "就職活動中": "就職活動中", "転職を検討中": "転職を検討中"}, { include_blank: '選択してください'}, class: 'form-control' %>
             </div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-4 text-left text-md-center">
-              </div>
-              <div class="col-md-8">
-                <%= f.submit "新規登録", class: 'btn btn-success col-md-8' %>
-              </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 text-left text-md-center">
+            </div>
+            <div class="col-md-8">
+              <%= f.submit "新規登録", class: 'btn btn-success col-md-8' %>
             </div>
           </div>
+        </div>
 
       <% end %>
 

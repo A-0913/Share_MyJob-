@@ -10,7 +10,7 @@ class Member < ApplicationRecord
   validates :first_name, presence: true, length: { maximum: 10 }
   validates :nickname, presence: true, length: { maximum: 20 }
   validates :email, presence: true, uniqueness: true
-  #validates :password, presence: true
+  validates :password, confirmation: true
 
   has_one_attached :profile_image
 
