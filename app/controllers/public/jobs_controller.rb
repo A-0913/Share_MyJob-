@@ -25,10 +25,10 @@ class Public::JobsController < ApplicationController
 
   def create
     @job = current_member.jobs.new(job_params)
-    @themes = Theme.where(id: [1, 2, 3, 4, 5]) #デフォルトのテーマ5つ分をseedファイルに設定済み
-    @job.themes = @themes
+    themes = Theme.where(id: [1, 2, 3, 4, 5]) #デフォルトのテーマ5つ分をseedファイルに設定済み
+    @job.themes = themes
       if @job.save
-        @themes.each do |theme|
+        themes.each do |theme|
           theme.save
         end
         redirect_to jobs_path, notice: "職業が申請されました。承認がおりると、職業一覧に表示されます。しばらくお待ちください。"

@@ -7,10 +7,6 @@ class Admin::ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
-    @reply = @report.reply
-    @comment =  @report.comment
-    @theme = @comment.theme
-    @job = @comment.job
   end
 
   def edit

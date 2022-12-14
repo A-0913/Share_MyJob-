@@ -12,12 +12,12 @@ class Public::MembersController < ApplicationController
     end
 
     def update
-      @member = Member.find(params[:id])
+      member = Member.find(params[:id])
 
       update_params = params[:member][:password].blank? ? update_without_password_params : update_with_password_params
 
-      if @member.update(update_params)
-        redirect_to member_path(@member), notice: "情報を更新しました"
+      if member.update(update_params)
+        redirect_to member_path(member), notice: "情報を更新しました"
       else
         render :edit
       end
@@ -45,9 +45,9 @@ class Public::MembersController < ApplicationController
     end
 
     def withdraw
-      @member = current_member
+      member = current_member
       # is_deletedカラムをtrueに変更することにより削除フラグを立てる
-      @member.update!(is_deleted: true)
+      member.update!(is_deleted: true)
       reset_session
       redirect_to root_path, notice: "退会処理を実行いたしました"
     end
