@@ -16,34 +16,57 @@
 
     <div class="row justify-content-center pt-3">
       <%= form_with model: @member, local:true do |f| %>
-          <div class="form-group row px-4">
-            <%= f.label :プロフィール画像, class: "col-sm-5 col-form-label" %>
-            <%= f.file_field :profile_image, accept: "image/*" %>
-          </div>
-          <div class="form-group row px-4 ">
-            <%= f.label :"名前", class: "col-sm-4 col-form-label" %>
-            <%= f.label :"(姓)", class: "col-sm-1 col-form-label" %>
-            <%= f.text_field  :last_name, class: "col-lg-3" %>
-            <%= f.label :"(名)", class: "col-sm-1 col-form-label" %>
-            <%= f.text_field :first_name, class: "col-lg-3" %>
-          </div>
-          <div class="form-group row px-4">
-            <%= f.label :"ニックネーム", class: "col-sm-5  col-form-label" %>
-            <%= f.text_field :nickname, class: "col-lg-3" %>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4 text-left text-md-center">
+                <%= f.label :profile_image, "プロフィール画像" %>
+              </div>
+              <div class="col-md-8">
+                <%= f.file_field :profile_image, accept: "image/*" %>
+              </div>
+            </div>
           </div>
 
-          <div class="form-group row px-4">
-            <%= f.label :"メールアドレス", class: "col-sm-5  col-form-label" %>
-            <%= f.email_field :email, autocomplete: "email", class: "col-lg-7" %>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4 text-left text-md-center">
+                <%= f.label :name, "名前（姓/名）" %>
+              </div>
+              <div class="col-md-8">
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.text_field :last_name, placeholder: '姓', class: 'form-control' %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.text_field :first_name, placeholder: '名', class: 'form-control' %>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <!--<div class="form-group row px-4">-->
-          <!--  <%#= f.label :"パスワード", class: "col-sm-5  col-form-label" %>-->
-          <!--  <%#= f.password_field :password, class: "col-lg-7" %>-->
-          <!--  <div class="text-right">-->
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4 text-left text-md-center">
+                <%= f.label :nickname, "ニックネーム" %>
+              </div>
+              <div class="col-md-8">
+                <%= f.text_field :nickname, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
 
-          <!--  </div>-->
-          <!--</div>-->
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4 text-left text-md-center">
+                <%= f.label :email, "メールアドレス" %>
+              </div>
+              <div class="col-md-8">
+                <%= f.email_field :email, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
 
           <div class="form-group">
             <div class="row">
@@ -57,14 +80,26 @@
             </div>
           </div>
 
-          <div class="form-group row px-4">
-            <%= f.label :"自己紹介文", class: "col-sm-5 col-form-label" %>
-            <%= f.text_area :introduction,  class: "col-lg-7" %>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4 text-left text-md-center">
+                <%= f.label :introduction, "自己紹介文" %>
+              </div>
+              <div class="col-md-8">
+                <%= f.text_area :introduction, class: 'form-control' %>
+              </div>
+            </div>
           </div>
 
-          <div class="form-group row px-4">
-            <%= f.label :belong, '属性', class: "col-sm-5 col-form-label" %>
-            <%= f.select :belong, {"大企業勤務": "大企業勤務", "中小企業勤務": "中小企業勤務", "フリーランス": "フリーランス", "学生": "学生", "就職活動中": "就職活動中", "転職を検討中": "転職を検討中"}, { include_blank: '選択してください'}, { class: 'form-control col-lg-5' , required: true } %>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4 text-left text-md-center">
+                <%= f.label :belong, "属性" %>
+              </div>
+              <div class="col-md-8">
+                <%= f.select :belong, {"大企業勤務": "大企業勤務", "中小企業勤務": "中小企業勤務", "フリーランス": "フリーランス", "学生": "学生", "就職活動中": "就職活動中", "転職を検討中": "転職を検討中"}, { include_blank: '選択してください'}, class: 'form-control' %>
+              </div>
+            </div>
           </div>
 
           <div class="row justify-content-center">
