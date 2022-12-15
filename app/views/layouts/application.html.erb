@@ -43,7 +43,7 @@
                   </li>
                   <% if current_member.email != 'guest@example.com' %>
                     <li class="nav-item mx-3">
-                      <%= link_to member_favorites_path(current_member), class: 'nav-link text-dark' do %>
+                      <%= link_to member_favorites_member_path(current_member), class: 'nav-link text-dark' do %>
                         <i class="fa-solid fa-paperclip">Bookmarks</i>
                       <% end %>
                     </li>
