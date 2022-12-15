@@ -1,28 +1,27 @@
 class Public::CommentsController < ApplicationController
-before_action :authenticate_any!
-before_action :block_gusest_member
+  before_action :authenticate_any!
+  before_action :block_gusest_member
 
   def create
-    @job = Job.find(params[:job_id])
-    @theme = Theme.find(params[:theme_id])
-    @comment = current_member.comments.new(comment_params)
-    @comment.job_id = @job.id
-    @comment.theme_id = @theme.id
-    @comment.member_id = current_member.id
-    @comment.save
-   # redirect_to job_theme_path(job,theme)
+    comment = current_member.comments.new(comment_params)
+    comment.job_id = params[:job_id]
+    comment.theme_id = params[:theme_id]
+
+    if comment.save
+      @comments = Comment.where(theme_id: params[:theme_id], job_id: params[:job_id], is_published: true).order(created_at: :desc).page(params[:page]).per(7)
+      render :toggle
+    else
+      @comment = comment
+      render :error
+    end
   end
 
   def destroy
-    @job = Job.find(params[:job_id])
-    @theme = Theme.find(params[:theme_id])
-    @comment = Comment.find(params[:id])
-    job = Job.find(params[:job_id])
-    @theme = Theme.find(params[:theme_id])
     comment = Comment.find(params[:id])
     comment.update(is_published: false)
     #↑is_publishedカラムをfalseに変更することによりコメントを非表示にする
-    redirect_to job_theme_path(job,@theme)
+    @comments = Comment.where(theme_id: params[:theme_id], job_id: params[:job_id], is_published: true).order(created_at: :desc).page(params[:page]).per(7)
+    render :toggle
   end
 
   private
@@ -30,7 +29,4 @@ before_action :block_gusest_member
   def comment_params
     params.require(:comment).permit(:comment)
   end
-
-
-
 end

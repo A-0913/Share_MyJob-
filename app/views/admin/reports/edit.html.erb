@@ -2,18 +2,23 @@
   <div class = "row justify-content-center pt-3">
     <h3>通報編集</h3>
   </div>
+  
   <%= form_with model: @report, url: admin_report_path(@report,reply_id: params[:reply_id]), local:true do |f| %>
+  
     <div class="row justify-content-center py-3">
+      
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">通報id</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @report.id %></div>
       </div>
+      
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">通報日時</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
           <%= @report.created_at.strftime('%Y年%m月%d日 %H:%M') %>
         </div>
       </div>
+      
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">対象コメント</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
@@ -24,18 +29,22 @@
           <% end %>
         </div>
       </div>
+      
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">コメント投稿日</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @report.created_at.strftime('%Y年%m月%d日 %H:%M') %></div>
       </div>
+      
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">通報者</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @report.member.nickname %></div>
       </div>
+      
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">通報理由</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @report.reason %></div>
       </div>
+      
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-warning text-dark">確認ステータス</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark ">
@@ -53,10 +62,13 @@
             </div>
           </div>
       </div>
+      
     </div>
+    
     <div class="row justify-content-center pt-4">
       <%= f.submit "更新する" , class: 'btn btn-success col-sm-3'  %>
     </div>
+    
   <% end %>
 
   <div class="row justify-content-center py-4">
