@@ -2,12 +2,18 @@
   <div class="container">
     <%= form_with model: [job, theme, comment], local: false do |f| %>
       <%= hidden_field_tag :page, params[:page] %>
-      <div class = "row py-4 justify-content-center">
-        <%= f.text_area :comment, rows: '3', cols: '70',placeholder: "コメントを入力（0文字では送信できません）" %>
+
+      <div class="form-group">
+        <div class = "row py-4 justify-content-center">
+          <div class="col-md-8">
+            <%= f.text_area :comment, placeholder: "※0文字では送信できません", class: 'form-control' %>
+          </div>
+        </div>
+        <div class = "row justify-content-center">
+          <%= f.submit "送信" ,  class: "col-sm-3 "%>
+        </div>
       </div>
-      <div class = "row justify-content-center">
-        <%= f.submit "送信" ,  class: "col-sm-3 "%>
-      </div>
+
     <% end %>
   </div>
 <% end %>
