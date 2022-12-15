@@ -4,6 +4,10 @@
 
 ### サイトテーマ
 職業について情報交換ができる就活コミュニティサイト
+（レスポンシブ対応のため、スマートフォンからもご利用いただけます。）
+![ABOUT画面](https://user-images.githubusercontent.com/111132750/207779197-d07e52ad-3c63-4827-ac67-f03842f2ad1f.jpg)
+
+![トーク画面](https://user-images.githubusercontent.com/111132750/207779404-812bdc06-a2ac-4c52-a9af-11e554286baf.jpg)
 
 ### テーマを選んだ理由
 昨今、転職市場は活発になっており、「転職」は誰もが1度は経験する時代になりました。<br>
@@ -25,7 +29,7 @@
 * 気になっている職業があり、「リアルな声」を通して情報収集をしたい時
 
 ## ER図
-![ER図](https://user-images.githubusercontent.com/111132750/204083088-40bf7040-288b-4ab2-a529-ceb609c799da.jpg)
+![ER図](https://user-images.githubusercontent.com/111132750/207772615-76ec6f3f-cc75-403d-9bff-395f3849ce18.jpg)
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -34,14 +38,16 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
+## テスト仕様書
+https://docs.google.com/spreadsheets/d/12r7phHhGyXB8V1uRow5PISFnr70ukvsh/edit#gid=1494678040
 
 ## 機能一覧
 
 ### 基本機能
 * 各種CRUD機能
 * ログイン機能/ゲストログイン機能
-* 投稿機能
-* 検索機能
+* 投稿機能（職業及びテーマ投稿）
+* 検索機能（ワード検索及びジャンル検索）
 * いいね（ブックマーク）機能
 * コメント機能
 * コメント返信機能
