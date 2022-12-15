@@ -1,6 +1,7 @@
 module Admin::MembersHelper
   include HasIsPublished
   include HasIsChecked
+  include HasContact
 
   def deleted_message(instance)
     if instance.is_deleted?

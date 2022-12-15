@@ -2,8 +2,10 @@
   <div class = "row justify-content-center py-3">
     <h3>会員情報</h3>
   </div>
+
   <div class="row pb-4">
-    <div class="col-sm-2 p-2">
+
+    <div class="col-md-2 p-2">
       <div class="row justify-content-center">
         <div class="d-flex align-items-center ">
           <div class="member-icon">
@@ -12,7 +14,9 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-10">
+
+    <div class="col-md-10">
+
       <div class="row justify-content-center">
         <% if @member == current_member %>
           <div class="row col-10 justify-content-center">
@@ -22,54 +26,65 @@
             </div>
           </div>
         <% end %>
+
         <div class="row col-10 justify-content-center">
           <div class="col-md-5 text-center border border-white bg-primary text-white">ニックネーム</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @member.nickname %></div>
         </div>
+
         <% if @member == current_member %>
           <div class="row col-10 justify-content-center">
             <div class="col-md-5 text-center border border-white bg-primary text-white">メールアドレス</div>
             <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @member.email %></div>
           </div>
         <% end %>
+
         <div class="row col-10 justify-content-center">
           <div class="col-md-5 text-center border border-white bg-primary text-white">自己紹介文</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark">
             <%= @member.introduction.blank? ? "-" :  @member.introduction  %>
           </div>
         </div>
+
         <div class="row col-10 justify-content-center">
           <div class="col-md-5 text-center border border-white bg-primary text-white">属性</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @member.belong %></div>
         </div>
+
         <% if !current_member.guest? && @member != current_member %>
           <% if @member.is_deleted? %>
             <div class="text-danger font-weight-bold">※この会員はすでに退会済みです</div>
           <% end %>
         <% end %>
+
       </div>
+
       <% if !current_member.guest? && @member == current_member %>
         <div class="row justify-content-center">
           <div class="row col-10 justify-content-center pt-3">
-            <div class="col-sm-5 text-center">職業投稿一覧</div>
-            <div class="col-sm-5"><%= link_to "一覧を見る" , member_jobs_path(@member), class: 'btn btn-primary col-sm-5' %></div>
+            <div class="col-md-5 text-center">職業投稿一覧</div>
+            <div class="col-md-5"><%= link_to "一覧を見る" , member_jobs_path(@member), class: 'btn btn-primary col-md-5' %></div>
           </div>
+
           <div class="row col-10 justify-content-center pt-3">
-            <div class="col-sm-5 text-center">テーマ投稿一覧</div>
-            <div class="col-sm-5"><%= link_to "一覧を見る" , member_themes_path(@member), class: 'btn btn-primary col-sm-5' %></div>
+            <div class="col-md-5 text-center">テーマ投稿一覧</div>
+            <div class="col-md-5"><%= link_to "一覧を見る" , member_themes_path(@member), class: 'btn btn-primary col-md-5' %></div>
           </div>
+
           <div class="row col-10 justify-content-center pt-3">
-            <div class="col-sm-5 text-center">返信のきたコメント一覧</div>
-            <div class="col-sm-5"><%= link_to "一覧を見る" , member_comment_replies_path(@member), class: 'btn btn-primary col-sm-5' %></div>
+            <div class="col-md-5 text-center">返信のきたコメント一覧</div>
+            <div class="col-md-5"><%= link_to "一覧を見る" , member_comment_replies_path(@member), class: 'btn btn-primary col-md-5' %></div>
           </div>
         </div>
       <% end %>
+
     </div>
+
   </div>
 
   <div class="row justify-content-center pt-4">
     <% if !current_member.guest? && @member == current_member %>
-      <%=  link_to "編集する" , edit_member_path(@member), class: 'btn btn-success col-sm-4' %>
+      <%=  link_to "編集する" , edit_member_path(@member), class: 'btn btn-success col-md-4' %>
     <% end %>
   </div>
 </div>

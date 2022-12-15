@@ -1,5 +1,6 @@
 <div class="container p-4">
   <div class="row">
+    
     <div class="col-sm-3">
       <div class="py-3">
         <%= render partial: 'public/searches/serach' %>
@@ -8,6 +9,7 @@
         <%= render 'admin/genres/genre_sidebar', genres: @genres%>
       </div>
     </div>
+    
     <div class="col-sm-9 p-2">
       <div class="job-box  py-4">
         <% @jobs.each do |job| %>
@@ -17,6 +19,7 @@
           </div>
         <% end %>
       </div>
+      
       <div class="row justify-content-center py-4">
         <%= paginate @jobs, theme: 'twitter-bootstrap-4' %>
       </div>
@@ -29,5 +32,6 @@
         <% end %>
       </div>
     </div>
+    
   </div>
 </div>

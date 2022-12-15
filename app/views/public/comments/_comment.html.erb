@@ -1,5 +1,6 @@
 <% if comment.id.present? %>
 <div class="row">
+
   <div class="col-3 col-md-1 offset-md-2 align-self-center">
     <div class="balloon5">
       <div class="faceicon">
@@ -9,6 +10,7 @@
       </div>
     </div>
   </div>
+
   <div class="col-7 col-md-6 align-self-center">
     <div class="balloon5">
       <div class="chatting">
@@ -24,15 +26,20 @@
       </div>
     </div>
   </div>
+
   <div class="col-2 align-self-center">
     <div class="balloon5">
+
       <span id="comment_<%= comment.id %>">
         <%= render partial: 'public/favorites/favorite', locals:{job: comment.job, theme: comment.theme, comment: comment} %>
       </span>
+
       <span id="comments_destroy">
         <%= render partial: 'public/comments/destroy', locals:{job: comment.job, theme: comment.theme, comment: comment} %>
       </span>
+
       <span>
+        <!--管理者としてログインしている場合の通報ボタンの表示-->
         <% if admin_signed_in? %>
           <% if comment.reports.exists?(reply_id: nil) %>
             <button type="button" class="btn btn-danger">
@@ -44,23 +51,23 @@
             </button>
           <% end %>
         <% end %>
-        <% if member_signed_in? %>
-          <% if !current_member.guest? %>
-            <% if comment.member != current_member %>
-              <% if comment.reported_by?(current_member, comment) %>
-                <button type="button" class="btn btn-secondary">
-                  <i class="fa-solid fa-triangle-exclamation"></i>
-                </button>
-              <% else %>
-                <%= link_to  new_job_theme_comment_report_path(comment.job ,comment.theme ,comment), class: "btn btn-warning" do %>
-                  <i class="fa-solid fa-triangle-exclamation"></i>
-                <% end %>
-              <% end %>
+
+        <!--ゲストユーザー以外の会員としてログインしている場合の通報（自分以外のコメントを通報できる）ボタンの表示-->
+        <% if member_signed_in? && !current_member.guest? && comment.member != current_member %>
+          <% if comment.reported_by?(current_member, comment) %>
+            <button type="button" class="btn btn-secondary">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+            </button>
+          <% else %>
+            <%= link_to  new_job_theme_comment_report_path(comment.job ,comment.theme ,comment), class: "btn btn-warning" do %>
+              <i class="fa-solid fa-triangle-exclamation"></i>
             <% end %>
           <% end %>
         <% end %>
       </span>
+
     </div>
   </div>
+
 </div>
 <% end %>

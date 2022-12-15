@@ -4,14 +4,17 @@
   </div>
   <% @themes.each do |theme| %>
     <div class="row justify-content-center py-3">
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">投稿日</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= theme.created_at.strftime('%Y/%m/%d') %></div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">職業名</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= theme.jobs.first.name %></div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">テーマ</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
@@ -24,28 +27,28 @@
           <% end %>
         </div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">管理人との連絡事項</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
-          <% if theme.contact.blank? %>
-            <div class="text-info font-weight-bold">連絡事項はありません。</div>
-          <% else %>
-            <%= theme.contact %>
-          <% end %>
+          <%= contact_message(theme) %>
         </div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">公開/非公開</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark">
             <%= published_message(theme) %>
           </div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">管理者確認</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark">
             <%= checked_message(theme) %>
           </div>
       </div>
+
     </div>
     <% end %>
 

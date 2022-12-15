@@ -12,19 +12,24 @@
   </div>
 
   <% @jobs.each do |job| %>
+
     <div class="row justify-content-center py-3">
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">職業id</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= job.id %></div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">職業名</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= link_to job.name, theme_in_job_admin_job_themes_path(job) %></div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">保有テーマ数</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= job.themes.count %>テーマ</div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">確認状況</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
@@ -35,7 +40,9 @@
           <% end %>
         </div>
       </div>
+
     </div>
+
   <% end %>
 
   <div class="row justify-content-center py-4 ">
@@ -43,6 +50,6 @@
   </div>
 
   <div class="row justify-content-center pb-4">
-    <%= link_to "TOPへ戻る" , admin_path , class: "btn btn-primary col-sm-3" %>
+    <%= link_to "TOPへ戻る" , admin_path , class: "btn btn-primary col-md-3" %>
   </div>
 </div>

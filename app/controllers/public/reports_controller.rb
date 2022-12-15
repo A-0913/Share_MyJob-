@@ -15,13 +15,11 @@ class Public::ReportsController < ApplicationController
     @report.comment = @comment
     @report.reply_id = Reply.find(params[:reply_id]).id if params[:reply_id]
     if @report.save!
-      @theme = @comment.theme
-      @job = Job.find(params[:job_id])
       flash[:notice] = "通報を受け付けました。ご報告ありがとうございました。"
       if params[:reply_id]
-        redirect_to job_theme_comment_replies_path(@job,@theme,@comment)
+        redirect_to job_theme_comment_replies_path(@comment.job, @comment.theme, @comment)
       else
-        redirect_to job_theme_path(@job,@theme)
+        redirect_to job_theme_path(@comment.job, @comment.theme)
       end
     else
       set_comment

@@ -25,17 +25,20 @@ Rails.application.routes.draw do
   get 'members/:id/member_favorites', to: 'public/members#member_favorites' ,as: 'member_favorites'
   get 'members/:id/member_comment_replies', to: 'public/members#member_comment_replies' ,as: 'member_comment_replies'
 
+  #Deviseを使った新規登録画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処
   get 'members' => 'public/members#dummy'
-  #Deviseを使った新規登録画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処法
+
+  #テーマ投稿画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処
   get '/jobs/:job_id/themes' => 'public/themes#dummy'
-  #テーマ投稿画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処法
+
+  #ジャンル名編集画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処
+  get '/admin/genres/:id' => 'admin/genres#dummy'
 
   namespace :admin do
-    #resources :members, only: [:update, :edit, :show, :index]
-    resources :members, only: %i(update edit show index)
+    resources :members, only: [:update, :edit, :show, :index]
+    #resources :members, only: %i(update edit show index)
     resources :genres, only: [:index, :edit, :create, :update]
     resources :jobs, only: [:index, :show, :edit, :update]
-    #resources :themes, only: [:index, :show]
     resources :themes, only: [:index]
     resources :jobs do
       resources :themes, only: [:edit, :update] do
@@ -57,8 +60,6 @@ Rails.application.routes.draw do
       resources :themes, only: [:new, :create, :show] do
          resources :comments, only: [:create, :destroy] do
            resource :favorites, only: [:create, :destroy]
-           #get 'replies/:reply_id/repots' => 'reports#new',as: 'new_repot'
-           #post 'replies/:reply_id/repots' => 'reports#create',as: 'create_repot'
            resources :reports, only: [:new, :create]
            resources :replies, only: [:index, :new, :create, :destroy]
          end

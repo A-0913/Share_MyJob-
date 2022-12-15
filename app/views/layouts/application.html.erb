@@ -133,7 +133,7 @@
         <div class= "footer-container">
           <div class = "row">
             <div class="col-1">
-              <!--管理者でもログインしておらず、会員でもログインしていない状態のみ、鍵のマークを表示させる-->
+              <!--管理者でも会員でもログインしていない状態のみ、鍵のマークを表示させる-->
               <% unless admin_signed_in? or  member_signed_in? %>
                 <%= link_to  new_admin_session_path, class: 'nav-link text-dark' do %>
                   <i class="fa-solid fa-key"></i>

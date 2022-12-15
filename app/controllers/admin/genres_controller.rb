@@ -24,10 +24,17 @@ class Admin::GenresController < ApplicationController
       if @genre.update(genre_params)
          redirect_to admin_genres_path, notice: "編集が完了しました。"
       else
+         flash[:notice] = "更新できませんでした。入力内容をご確認ください。"
          @genre = Genre.find(params[:id])
          render :edit
       end
   end
+
+  #ジャンル名編集画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処
+  def dummy
+    redirect_to edit_admin_genre_path(params[:id])
+  end
+
 
   private
    def genre_params

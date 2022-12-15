@@ -2,67 +2,128 @@
     <div class="row justify-content-center  py-4">
       <h3>会員情報編集</h3>
     </div>
-    <div class="row justify-content-center  p-4">
-      <%= form_with model: @member,url: admin_member_path(@member.id), local:true do |f| %>
-        <div class="form-group row">
-          <%= f.label :プロフィール画像, class: "col-sm-5 col-form-label" %>
-          <%= f.file_field :profile_image, accept: "image/*" %>
-        </div>
-        <div class="form-group row ">
-          <%= f.label :"名前", class: "col-sm-4 col-form-label" %>
-          <%= f.label :"(姓)", class: "col-sm-1 col-form-label" %>
-          <%= f.text_field  :last_name, class: "col-lg-3" %>
-          <%= f.label :"(名)", class: "col-sm-1 col-form-label" %>
-          <%= f.text_field :first_name, class: "col-lg-3" %>
-        </div>
 
-        <div class="form-group row">
-          <%= f.label :"メールアドレス", class: "col-sm-5  col-form-label" %>
-          <%= f.email_field :email, autocomplete: "email", class: "col-lg-3" %>
-        </div>
+    <div class="row justify-content-center p-4">
+      <div class="w-75">
 
-        <div class="form-group row">
-          <%= f.label :"ニックネーム", class: "col-sm-5  col-form-label" %>
-          <%= f.text_field :nickname, class: "col-lg-3" %>
-        </div>
+        <%= form_with model: @member, url: admin_member_path(@member.id), local:true do |f| %>
 
-        <div class="form-group row">
-          <%= f.label :"紹介文", class: "col-sm-5 col-form-label" %>
-          <%= f.text_area :introduction,  class: "col-lg-7" %>
-        </div>
-
-        <div class="form-group row">
-          <%= f.label :belong, '属性', class: "col-sm-5 col-form-label" %>
-          <%= f.select :belong, {"大企業勤務": "大企業勤務", "中小企業勤務": "中小企業勤務", "フリーランス": "フリーランス", "学生": "学生", "就職活動中": "就職活動中", "転職を検討中": "転職を検討中"}, { include_blank: '選択してください'}, { class: 'form-control col-lg-5' , required: true } %>
-        </div>
-
-        <div class="form-group">
-          <div class="row">
-            <div class="col-sm-5 h-100">
-              <%= f.label "会員ステータス", class: "col-form-label" %>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4 text-left text-md-center">
+                <%= f.label :profile_image, "プロフィール画像" %>
+              </div>
+              <div class="col-md-8">
+                <%= f.file_field :profile_image, accept: "image/*" %>
+              </div>
             </div>
-            <div class="col-sm-7 h-100 d-flex flex-column align-self-center">
-              <div class="row">
-                <div class="col-sm-3 h-100 d-flex align-self-center">
-                  <%= f.radio_button :is_deleted, :false, class: 'mr-2' %>
-                  <%= f.label :is_deleted, "有効", class: 'p-0 m-0' %>
-                </div>
-                <div class="col-sm-3 h-100 d-flex align-self-center">
-                <%= f.radio_button :is_deleted, :true, class: 'mr-2' %>
-                <%= f.label :is_deleted, "退会", class: 'p-0 m-0' %>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4 text-left text-md-center">
+                <%= f.label :name, "名前（姓/名）" %>
+              </div>
+              <div class="col-md-8">
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.text_field :last_name, placeholder: '姓', class: 'form-control' %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.text_field :first_name, placeholder: '名', class: 'form-control' %>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4 text-left text-md-center">
+                <%= f.label :email, "メールアドレス" %>
+              </div>
+              <div class="col-md-8">
+                <%= f.email_field :email, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4 text-left text-md-center">
+                <%= f.label :nickname, "ニックネーム" %>
+              </div>
+              <div class="col-md-8">
+                <%= f.text_field :nickname, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4 text-left text-md-center">
+                <%= f.label :introduction, "自己紹介文" %>
+              </div>
+              <div class="col-md-8">
+                <%= f.text_area :introduction, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4 text-left text-md-center">
+                <%= f.label :belong, "属性" %>
+              </div>
+              <div class="col-md-8">
+                <%= f.select :belong, {"大企業勤務": "大企業勤務", "中小企業勤務": "中小企業勤務", "フリーランス": "フリーランス", "学生": "学生", "就職活動中": "就職活動中", "転職を検討中": "転職を検討中"}, { include_blank: '選択してください'}, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4 text-left text-md-center">
+                <%= f.label "会員ステータス", class: "col-form-label" %>
+              </div>
+              <div class="col-sm-7 h-100 d-flex flex-column align-self-center">
+                <div class="row">
+                  <div class="col-sm-3 h-100 d-flex align-self-center">
+                    <%= f.radio_button :is_deleted, :false, class: 'mr-2' %>
+                    <%= f.label :is_deleted, "有効", class: 'p-0 m-0' %>
+                  </div>
+                  <div class="col-sm-3 h-100 d-flex align-self-center">
+                  <%= f.radio_button :is_deleted, :true, class: 'mr-2' %>
+                  <%= f.label :is_deleted, "退会", class: 'p-0 m-0' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4 text-left text-md-center">
+              </div>
+              <div class="col-md-8">
+                <%= f.submit "編集内容を保存" , class: 'btn btn-success col-md-8' %>
+              </div>
+            </div>
+          </div>
+
+        <% end %>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4 text-left text-md-center">
+            </div>
+            <div class="col-md-8">
+              <%= link_to "プロフィールへ戻る" , admin_member_path(@member) , class: 'btn btn-primary col-md-8' %>
+            </div>
+          </div>
         </div>
 
-        <div class="row justify-content-center  py-3">
-          <%= f.submit "編集内容を保存" , class: 'btn btn-success col-sm-5  ' %>
-        </div>
-      <% end %>
+      </div>
     </div>
 
-  <div class="row justify-content-center pb-3">
-    <%= link_to "プロフィールへ戻る" , admin_member_path(@member) , class: "btn btn-primary col-sm-3" %>
-  </div>
 </div>

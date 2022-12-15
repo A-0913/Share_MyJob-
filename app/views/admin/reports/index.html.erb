@@ -12,16 +12,19 @@
 
   <% @reports.each do |report| %>
     <div class="row justify-content-center py-3">
+      
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">通報id</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= report.id %></div>
       </div>
+      
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">通報日時</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
           <%= report.created_at.strftime('%Y年%m月%d日 %H:%M') %>
         </div>
       </div>
+      
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">対象コメント</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
@@ -32,18 +35,21 @@
           <% end %>
         </div>
       </div>
+      
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">通報者</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
           <%= link_to report.member.nickname , admin_member_path(report.member) %>
         </div>
       </div>
+      
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">確認ステータス</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark">
             <%= checked_message(report) %>
           </div>
       </div>
+      
     </div>
   <% end %>
 

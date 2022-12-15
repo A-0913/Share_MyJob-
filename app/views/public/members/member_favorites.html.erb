@@ -4,18 +4,22 @@
   </div>
   <% @favorite_comments.each do |comment| %>
     <div class="row justify-content-center py-3">
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">職業名</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= comment.job.name %></div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">テーマ</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= comment.theme.name %></div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">コメント投稿日</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %></div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">コメント</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
@@ -28,14 +32,16 @@
           <% end %>
         </div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">コメント投稿者</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= comment.member.nickname %></div>
       </div>
+
     </div>
     <% end %>
 
   <div class="row justify-content-center py-4">
-    <%= link_to "マイページへ戻る" , member_path(current_member) , class: "btn btn-primary col-sm-3" %>
+    <%= link_to "マイページへ戻る" , member_path(current_member) , class: "btn btn-primary col-md-3" %>
   </div>
 </div>

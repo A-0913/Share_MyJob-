@@ -10,8 +10,8 @@ class Admin::ThemesController < ApplicationController
   end
 
   def edit
-    @theme = Theme.find(params[:id])
     @job = Job.find(params[:job_id])
+    @theme = Theme.find(params[:id])
   end
 
   def update
