@@ -5,14 +5,17 @@
 
   <% @jobs.each do |job| %>
   <div class="row justify-content-center pb-4">
+
     <div class="row col-10 justify-content-center">
       <div class="col-md-5 text-center border border-white bg-primary text-white">ヒットした職業</div>
-      <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= job.name %></div>
+      <div class="col-md-5 text-center border border-dark bg-white text-dark font-weight-bold"><%= job.name %></div>
     </div>
+
     <div class="row col-10 justify-content-center">
       <div class="col-md-5 text-center border border-white bg-primary text-white">リンク先</div>
       <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= link_to 'テーマ一覧へ移動する', job_path(job) %></div>
     </div>
+
   </div>
   <% end %>
 </div>

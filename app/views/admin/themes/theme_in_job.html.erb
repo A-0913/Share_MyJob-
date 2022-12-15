@@ -4,50 +4,46 @@
   </div>
 
   <% @themes.each do |theme| %>
+
     <div class="row justify-content-center pt-3 pb-1">
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">テーマ</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= theme.name %></div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">投稿者</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= link_to theme.member.nickname , admin_member_path(theme.member) %></div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">管理人への連絡事項</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
-          <% if theme.contact.blank? %>
-            <div class="text-info font-weight-bold">連絡事項はありません。</div>
-          <% else %>
-            <%= theme.contact %>
-          <% end %>
+          <%= contact_message(theme) %>
         </div>
       </div>
 
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">表示ステータス</div>
-          <div class="col-md-5 text-center border border-dark bg-white text-dark">
-            <% if theme.is_published == false %>
-              <div class="text-danger font-weight-bold">未公開</div>
-            <% else %>
-              <div class="text-success font-weight-bold">公開</div>
-            <% end %>
-          </div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark">
+          <%= published_message(theme) %>
+        </div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">確認ステータス</div>
-          <div class="col-md-5 text-center border border-dark bg-white text-dark">
-            <% if theme.is_checked == false %>
-              <div class="text-danger font-weight-bold">未確認</div>
-            <% else %>
-              <div class="text-success font-weight-bold">確認済み</div>
-            <% end %>
-          </div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark">
+          <%= checked_message(theme) %>
+        </div>
       </div>
+
+      <div class="row col-8 justify-content-center mt-3">
+        <%= link_to "上記を編集する" , edit_admin_job_theme_path(@job,theme), class: 'btn btn-success col-md-5' %>
+      </div>
+
     </div>
-    <div class="row justify-content-center pb-4">
-      <%= link_to "上記を編集する" , edit_admin_job_theme_path(@job,theme), class: 'btn btn-success col-sm-3' %>
-    </div>
+
   <% end %>
 
   <div class="row justify-content-center py-4 ">
@@ -55,6 +51,6 @@
   </div>
 
   <div class="row justify-content-center pb-4">
-    <%=link_to "職業一覧へ戻る" , admin_themes_path, class: "btn btn-primary col-sm-3" %>
+    <%=link_to "職業一覧へ戻る" , admin_themes_path, class: "btn btn-primary col-md-3" %>
   </div>
 </div>

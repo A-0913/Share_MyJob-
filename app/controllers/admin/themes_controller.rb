@@ -1,24 +1,24 @@
 class Admin::ThemesController < ApplicationController
+
+  def theme_in_job
+    @job = Job.find(params[:job_id])
+    @themes = @job.themes.order("updated_at DESC").page(params[:page]).per(5)
+  end
+
   def index
     @jobs = Job.all.page(params[:page]).per(5)
   end
 
-  def show
-    @job = Job.find(params[:id])
-    @themes = @job.themes.order("updated_at DESC").page(params[:page]).per(5)
-  end
-
   def edit
-    @theme = Theme.find(params[:id])
     @job = Job.find(params[:job_id])
+    @theme = Theme.find(params[:id])
   end
 
   def update
     @job = Job.find(params[:job_id])
     @theme = Theme.find(params[:id])
     if @theme.update(theme_update_params)
-       flash[:notice] = "更新が成功しました!"
-       redirect_to request.referer
+       redirect_to edit_admin_job_theme_path(@job, @theme), notice: "更新が成功しました!"
     else
        flash[:notice] = "更新が正常に行われませんでした。内容をご確認ください。"
        render :edit

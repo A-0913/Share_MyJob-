@@ -23,8 +23,7 @@ class Public::SessionsController < Devise::SessionsController
     @member = Member.find_by(email: params[:member][:email])
     if @member
       if @member.valid_password?(params[:member][:password]) && (@member.is_deleted == true)
-        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-        redirect_to new_member_session_path
+        redirect_to new_member_session_path, notice: "退会済みです。再度ご登録をしてご利用ください。"
       end
     end
   end
@@ -32,7 +31,7 @@ class Public::SessionsController < Devise::SessionsController
   def new_guest
     member = Member.guest
     sign_in member   # ユーザーをログインさせる
-    redirect_to jobs_path, notice: 'ゲストとしてログインしました。'
+    redirect_to jobs_path, notice: "ゲストとしてログインしました。"
   end
 
   def after_sign_in_path_for(resource)

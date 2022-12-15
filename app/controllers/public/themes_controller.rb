@@ -17,23 +17,19 @@ before_action :block_gusest_member, only: [:create]
   end
 
   def create
-    @theme = Theme.new(theme_params)
-    @theme.member_id = current_member.id
+    @theme = current_member.themes.new(theme_params)
     @job = Job.find(params[:job_id])
     @theme.jobs = [@job]
     if @theme.save
-      flash[:notice] = "テーマが申請されました。承認がおりると、テーマ一覧に表示されます。しばらくお待ちください。"
-      redirect_to job_path(@job)
+      redirect_to job_path(@job), notice: "テーマが申請されました。承認がおりると、テーマ一覧に表示されます。しばらくお待ちください。"
     else
-      #flash[:notice] = "テーマの申請ができませんでした。申請内容をご確認ください。"
-      render 'new'
+      render :new
     end
   end
 
   #テーマ投稿画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処法
   def dummy
-    @job = Job.find(params[:job_id])
-    redirect_to new_job_theme_path(@job)
+    redirect_to new_job_theme_path(params[:job_id])
   end
 
 

@@ -4,16 +4,19 @@
   </div>
 
   <div class="row justify-content-center py-3">
+
     <div class="row col-10 justify-content-center">
       <div class="col-md-5 text-center border border-white bg-info text-white">通報id</div>
       <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @report.id %></div>
     </div>
+
     <div class="row col-10 justify-content-center">
       <div class="col-md-5 text-center border border-white bg-info text-white">通報日時</div>
       <div class="col-md-5 text-center border border-dark bg-white text-dark">
         <%= @report.created_at.strftime('%Y年%m月%d日 %H:%M') %>
       </div>
     </div>
+
     <div class="row col-10 justify-content-center">
       <div class="col-md-5 text-center border border-white bg-info text-white">区分</div>
       <div class="col-md-5 text-center border border-dark bg-white text-dark">
@@ -24,54 +27,71 @@
         <% end %>
       </div>
     </div>
+
     <div class="row col-10 justify-content-center">
       <div class="col-md-5 text-center border border-white bg-info text-white">対象コメント</div>
       <div class="col-md-5 text-center border border-dark bg-white text-dark">
+
+        <!--★通報がコメントに対するものか、返信コメントに対するものかを判別する-->
         <% if @report.reply_id? %>
-          <% if @reply.comment.is_published == true %>
-            <% if @reply.is_published == true %>
-              <%= link_to @reply.reply, job_theme_comment_replies_path(@job,@theme,@comment) %>
+
+          <!--△返信コメントの通報の場合に、返信元のコメントが生きているかを判別する-->
+          <% if @report.reply.comment.is_published? %>
+
+            <!--◎返信元のコメントが生きている場合、（通報対象である）返信コメントが生きているかを判別する-->
+            <% if @report.reply.is_published? %>
+              <%= link_to @report.reply.reply, job_theme_comment_replies_path(@report.comment.job, @report.comment.theme, @report.comment) %>
             <% else %>
               <div class="text-danger font-weight-bold">すでに削除済みです</div>
             <% end %>
+
+          <!--△返信コメントに対する通報の場合で、返信元のコメントがすでに（論理）削除されている場合-->
           <% else %>
             <div class="text-danger font-weight-bold">返信元のコメントが削除済みです</div>
           <% end %>
+
+        <!--★コメントに対する通報の場合-->
         <% else %>
-          <% if @comment.is_published == true %>
-            <%= link_to @comment.comment, job_theme_path(@job,@theme) %>
+
+          <% if @report.comment.is_published? %>
+            <%= link_to @report.comment.comment, job_theme_path(@report.comment.job, @report.comment.theme) %>
           <% else %>
             <div class="text-danger font-weight-bold">すでに削除済みです</div>
           <% end %>
+
         <% end %>
+
       </div>
     </div>
+
     <div class="row col-10 justify-content-center">
       <div class="col-md-5 text-center border border-white bg-info text-white">コメント投稿日</div>
       <div class="col-md-5 text-center border border-dark bg-white text-dark">
-        <%= @comment.created_at.strftime('%Y年%m月%d日 %H:%M') %>
+        <%= @report.comment.created_at.strftime('%Y年%m月%d日 %H:%M') %>
       </div>
     </div>
+
     <div class="row col-10 justify-content-center">
       <div class="col-md-5 text-center border border-white bg-info text-white">通報者</div>
       <div class="col-md-5 text-center border border-dark bg-white text-dark">
         <%= link_to @report.member.nickname , admin_member_path(@report.member) %>
       </div>
     </div>
+
     <div class="row col-10 justify-content-center">
       <div class="col-md-5 text-center border border-white bg-info text-white">通報理由</div>
-      <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @report.reason %></div>
+      <div class="col-md-5 text-center border border-dark bg-white text-dark">
+        <%= @report.reason %>
+      </div>
     </div>
+
     <div class="row col-10 justify-content-center">
       <div class="col-md-5 text-center border border-white bg-info text-white">確認ステータス</div>
-        <div class="col-md-5 text-center border border-dark bg-white text-dark">
-          <% if @report.is_checked == false %>
-            <div class="text-danger font-weight-bold">未確認</div>
-          <% else %>
-            <div class="text-success font-weight-bold">確認済み</div>
-          <% end %>
-        </div>
+      <div class="col-md-5 text-center border border-dark bg-white text-dark">
+        <%= checked_message(@report) %>
+      </div>
     </div>
+
   </div>
 
   <div class="row justify-content-center pt-4">

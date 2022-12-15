@@ -1,59 +1,54 @@
 <div class = "container p-4">
   <div class = "row justify-content-center pt-3">
-    <h3><%= @member.nickname %>さんのテーマ投稿履歴</h3>
+    <h3><%= current_member.nickname %>さんのテーマ投稿履歴</h3>
   </div>
   <% @themes.each do |theme| %>
     <div class="row justify-content-center py-3">
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">投稿日</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= theme.created_at.strftime('%Y/%m/%d') %></div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">職業名</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= theme.jobs.first.name %></div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">テーマ</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
-          <% if theme.is_published == false %>
-            <%= theme.name %>
-          <% else %>
+          <% if theme.is_published? %>
             <%= link_to job_theme_path(theme.jobs.first,theme) do %>
               <%= theme.name %>
             <% end %>
+          <% else %>
+            <%= theme.name %>
           <% end %>
         </div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">管理人との連絡事項</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
-          <% if theme.contact.blank? %>
-            <div class="text-info font-weight-bold">連絡事項はありません。</div>
-          <% else %>
-            <%= theme.contact %>
-          <% end %>
+          <%= contact_message(theme) %>
         </div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">公開/非公開</div>
-          <div class="col-md-5 text-center border border-dark bg-white text-dark">
-            <% if theme.is_published == false %>
-              <div class="text-danger font-weight-bold">非公開</div>
-            <% else %>
-              <div class="text-success font-weight-bold">公開</div>
-            <% end %>
-          </div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark">
+          <%= published_message(theme) %>
+        </div>
       </div>
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">管理者確認</div>
-          <div class="col-md-5 text-center border border-dark bg-white text-dark">
-            <% if theme.is_checked == false %>
-              <div class="text-danger font-weight-bold">未確認</div>
-            <% else %>
-              <div class="text-success font-weight-bold">確認済み</div>
-            <% end %>
-          </div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark">
+          <%= checked_message(theme) %>
+        </div>
       </div>
+
     </div>
     <% end %>
 
@@ -62,6 +57,6 @@
   </div>
 
   <div class="row justify-content-center pb-4">
-    <%= link_to "マイページへ戻る" , member_path(@member) , class: "btn btn-primary col-sm-3" %>
+    <%= link_to "マイページへ戻る" , member_path(current_member) , class: "btn btn-primary col-md-3" %>
   </div>
 </div>

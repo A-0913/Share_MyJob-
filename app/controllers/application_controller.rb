@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-  devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :nickname, :introduction, :belong])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :nickname, :introduction, :belong])
   end
 
   #管理者もしくは会員のどちらかでログインをしていれば移動できるようにする
@@ -31,6 +31,13 @@ class ApplicationController < ActionController::Base
     else
       redirect_back(fallback_location: root_path) and return if current_member.email == 'guest@example.com'
     end
+  end
+
+  #複数のコントローラ内で使用するため、こちらに定義する
+  def set_comment
+    @job = Job.find(params[:job_id])
+    @theme = Theme.find(params[:theme_id])
+    @comment = Comment.find(params[:comment_id])
   end
 
 end

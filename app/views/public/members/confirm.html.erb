@@ -10,7 +10,7 @@
 
   <div class="row justify-content-center mt-4">
    <%= link_to "退会する", members_withdraw_path, method: :patch, data: { confirm: "本当に退会しますか？" }, class: 'btn btn-danger col-sm-3 m-3' %>
-   <%= link_to "マイページに戻る" , member_path(@member), class: 'btn btn-success col-sm-3  m-3' %>
+   <%= link_to "マイページに戻る" , member_path(current_member), class: 'btn btn-primary col-sm-3  m-3' %>
   </div>
  </div>
 </div>

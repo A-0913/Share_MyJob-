@@ -1,69 +1,95 @@
 <div class="container p-4">
-    <div class="row justify-content-center">
-      <h3>テーマ情報編集</h3>
-    </div>
-    <div class="row justify-content-center p-4">
-      <div class="w-75">
-        <%= form_with model: @theme,url:admin_job_theme_path(@job,@theme), local:true do |f| %>
+  <div class="row justify-content-center">
+    <h3>テーマ情報編集</h3>
+  </div>
+  <div class="row justify-content-center p-4">
+    <div class="w-75">
+      <%= form_with model: @theme,url:admin_job_theme_path(@job,@theme), local:true do |f| %>
 
-          <div class="form-group row">
-            <%= f.label :"テーマ名", class: "col-sm-3 col-form-label" %>
-            <%= f.text_field :name,  class: "col-sm-6"  %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-3 text-left text-md-left">
+              <%= f.label :name, "テーマ名" %>
+            </div>
+            <div class="col-md-9">
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
           </div>
+        </div>
 
-          <div class="form-group row">
-            <%= f.label :"管理人への連絡事項", class: "col-sm-3 col-form-label" %>
-            <%= f.text_area :contact,  class: "col-sm-6", placeholder: "連絡事項がありましたらご入力下さい" %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-3 text-left text-md-left">
+              <%= f.label :contact, "管理人への連絡事項" %>
+            </div>
+            <div class="col-md-9">
+              <%= f.text_area :contact, placeholder: "連絡事項がありましたらご入力下さい", class: 'form-control' %>
+            </div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <div class="row">
-              <div class="col-sm-3 h-100">
-                <%= f.label "表示ステータス", class: "col-form-label" %>
-              </div>
-              <div class="col-sm-7 h-100 d-flex flex-column align-self-center">
-                <div class="row">
-                  <div class="col-sm-3 h-100 d-flex align-self-center">
-                    <%= f.radio_button :is_published, :false, class: "mr-2"  %>
-                    <%= f.label :is_published, "未公開", class: "'p-0 m-0" %>
-                  </div>
-                  <div class="col-sm-3 h-100 d-flex align-self-center">
-                    <%= f.radio_button :is_published, :true, class: "mr-2" %>
-                    <%= f.label :is_published, "公開", class: "'p-0 m-0" %>
-                  </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-3 h-100">
+              <%= f.label "表示ステータス", class: "col-form-label" %>
+            </div>
+            <div class="col-md-7 h-100 d-flex flex-column align-self-center">
+              <div class="row">
+                <div class="col-md-3 h-100 d-flex align-self-center">
+                  <%= f.radio_button :is_published, :false, class: "mr-2"  %>
+                  <%= f.label :is_published, "未公開", class: "'p-0 m-0" %>
+                </div>
+                <div class="col-md-3 h-100 d-flex align-self-center">
+                  <%= f.radio_button :is_published, :true, class: "mr-2" %>
+                  <%= f.label :is_published, "公開", class: "'p-0 m-0" %>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="form-group">
-            <div class="row">
-              <div class="col-sm-3 h-100">
-                <%= f.label "確認ステータス", class: "col-form-label" %>
-              </div>
-              <div class="col-sm-7 h-100 d-flex flex-column align-self-center">
-                <div class="row">
-                  <div class="col-sm-3 h-100 d-flex align-self-center">
-                    <%= f.radio_button :is_checked, :false, class: 'mr-2' %>
-                    <%= f.label :is_checked, "未確認", class: 'p-0 m-0' %>
-                  </div>
-                  <div class="col-sm-3 h-100 d-flex align-self-center">
-                    <%= f.radio_button :is_checked, :true, class: 'mr-2' %>
-                    <%= f.label :is_checked, "確認済み", class: 'p-0 m-0' %>
-                  </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-3 h-100">
+              <%= f.label "確認ステータス", class: "col-form-label" %>
+            </div>
+            <div class="col-md-7 h-100 d-flex flex-column align-self-center">
+              <div class="row">
+                <div class="col-md-3 h-100 d-flex align-self-center">
+                  <%= f.radio_button :is_checked, :false, class: 'mr-2' %>
+                  <%= f.label :is_checked, "未確認", class: 'p-0 m-0' %>
+                </div>
+                <div class="col-md-3 h-100 d-flex align-self-center">
+                  <%= f.radio_button :is_checked, :true, class: 'mr-2' %>
+                  <%= f.label :is_checked, "確認済み", class: 'p-0 m-0' %>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="row justify-content-center pt-4">
-            <%= f.submit "更新する" , class: 'btn btn-success col-sm-3'  %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-3 text-left text-md-center">
+            </div>
+            <div class="col-md-9">
+              <%= f.submit "更新する" , class: 'btn btn-success col-md-8' %>
+            </div>
           </div>
-          <div class="row justify-content-center py-4">
-            <%= link_to "テーマ選択画面へ戻る" , admin_theme_path(@job), class: 'btn btn-primary col-sm-3 ' %>
-          </div>
+        </div>
 
-        <% end %>
-     </div>
+      <% end %>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-3 text-left text-md-center">
+          </div>
+          <div class="col-md-9">
+            <%= link_to "テーマ選択画面へ戻る" , theme_in_job_admin_job_themes_path(@job), class: 'btn btn-primary col-md-8' %>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
 </div>

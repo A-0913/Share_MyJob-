@@ -9,6 +9,10 @@ class Comment < ApplicationRecord
 
   validates :comment, presence: true
 
+  validate :slander_check
+
+
+
   def favorited_by?(member)
     if member.nil?
       false
@@ -19,6 +23,27 @@ class Comment < ApplicationRecord
 
   def reported_by?(member, comment)
     reports.exists?(member_id: member.id, comment_id: comment.id, reply_id: nil)
+  end
+
+  def slander_check
+    slander_words = ["バカ","きもい","死ね","ブサイク","アホ","殺す","キモい","クズ","消えろ","失せろ","ブス","クソ","ばか"]
+
+    slander_word = slander_words.find {|w| self.comment.include?(w) }
+    if slander_word.present?
+      errors.add(:comment, "内に人を傷つける可能性のある言葉(※#{slander_word})が含まれています。\n内容をご確認の上、ご入力をお願いします。")
+    end
+
+    #slander_words.each do |word|
+    # if self.comment.include?(word)
+    #    errors.add(:comment, "内に人を傷つける可能性のある言葉が含まれています。\n内容をご確認の上、再度ご入力をお願いします。")
+    #    break
+    #  end
+
+    #end
+    #slander_words.select {|w| self.comment.include?(w) }.each do |word|
+    #  errors.add(:comment, "内に人を傷つける可能性のある言葉が(#{word})含まれています。\n内容をご確認の上、ご入力をお願いします。")
+    #end
+
   end
 
 end

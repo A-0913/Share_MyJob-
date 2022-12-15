@@ -7,10 +7,6 @@ class Admin::ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
-    @reply = @report.reply
-    @comment =  @report.comment
-    @theme = @comment.theme
-    @job = @comment.job
   end
 
   def edit
@@ -20,8 +16,9 @@ class Admin::ReportsController < ApplicationController
   def update
     @report = Report.find(params[:id])
     if @report.update(report_params)
-      flash[:notice] = "内容を更新しました。"
-      redirect_to admin_report_path(@report)
+      redirect_to admin_report_path(@report), notice: "内容を更新しました。"
+    else
+      render :edit
     end
   end
 

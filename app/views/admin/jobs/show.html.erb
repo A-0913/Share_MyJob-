@@ -19,35 +19,25 @@
     <div class="row col-10 justify-content-center">
       <div class="col-md-5 text-center border border-white bg-info text-white">管理人への連絡事項</div>
       <div class="col-md-5 text-center border border-dark bg-white text-dark">
-        <% if @job.contact.blank? %>
-          <div class="text-info font-weight-bold">連絡事項はありません。</div>
-        <% else %>
-          <%= @job.contact %>
-        <% end %>
+        <%= contact_message(@job) %>
       </div>
     </div>
     <div class="row col-10 justify-content-center">
       <div class="col-md-5 text-center border border-white bg-info text-white">投稿者</div>
-      <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= link_to @job.member.nickname , admin_member_path(@job.member) %></div>
+      <div class="col-md-5 text-center border border-dark bg-white text-dark">
+        <%= link_to @job.member.nickname , admin_member_path(@job.member) %>
+      </div>
     </div>
     <div class="row col-10 justify-content-center">
       <div class="col-md-5 text-center border border-white bg-info text-white">表示ステータス</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
-          <% if @job.is_published == false %>
-            <div class="text-danger font-weight-bold">未公開</div>
-          <% else %>
-            <div class="text-success font-weight-bold">公開</div>
-          <% end %>
+          <%= published_message(@job) %>
         </div>
     </div>
     <div class="row col-10 justify-content-center">
       <div class="col-md-5 text-center border border-white bg-info text-white">確認ステータス</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
-          <% if @job.is_checked == false %>
-            <div class="text-danger font-weight-bold">未確認</div>
-          <% else %>
-            <div class="text-success font-weight-bold">確認済み</div>
-          <% end %>
+          <%= checked_message(@job) %>
         </div>
     </div>
   </div>

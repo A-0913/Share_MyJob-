@@ -2,22 +2,18 @@
   <div class="row justify-content-center ">
     <div class="title-box">
       <div class="title-box-title"><%= @job.name %></div>
-        <p><%= @theme.name %></p>
+        <p class="font-italic">Q: <%= @theme.name %></p>
     </div>
   </div>
-  <div id="comments_area">
 
+  <div id="comments_area">
+    <%= render partial: 'public/comments/comment', collection: @comments, as: :comment %>
   </div>
-    <% @comments.each do |comment| %>
-      <div class="comment_<%= comment.id %>">
-        <%= render partial: 'public/comments/comment', locals:{job: @job, theme: @theme,comment: comment} %>
-      </div>
-    <% end %>
 
   <div class="row justify-content-center">
     <%= paginate @comments, theme: 'twitter-bootstrap-4' %>
   </div>
-
+  <div id="error_message_area"></div>
     <div id="comments_new">
       <%= render partial: 'public/comments/form', locals:{job: @job, theme: @theme, comment: @comment} %>
     </div>
