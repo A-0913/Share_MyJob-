@@ -25,6 +25,11 @@ class Admin::ThemesController < ApplicationController
     end
   end
 
+  #テーマ編集画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処
+  def dummy
+    redirect_to edit_admin_job_theme_path(params[:job_id], params[:id] )
+  end
+
   private
     def theme_update_params
       params.require(:theme).permit( :name, :contact, :is_published, :is_checked)
