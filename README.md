@@ -3,7 +3,7 @@
 ## サイト概要
 
 ### サイトテーマ
-職業について情報交換ができる就活コミュニティサイト
+職業について情報交換ができる就活コミュニティサイト<br>
 （レスポンシブ対応のため、スマートフォンからもご利用いただけます。）
 ![ABOUT画面](https://user-images.githubusercontent.com/111132750/207779197-d07e52ad-3c63-4827-ac67-f03842f2ad1f.jpg)
 
@@ -38,8 +38,6 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
-## テスト仕様書
-https://docs.google.com/spreadsheets/d/12r7phHhGyXB8V1uRow5PISFnr70ukvsh/edit#gid=1494678040
 
 ## 機能一覧
 
@@ -58,6 +56,9 @@ https://docs.google.com/spreadsheets/d/12r7phHhGyXB8V1uRow5PISFnr70ukvsh/edit#gi
 
 ### 開発効率向上
 * bootstrap
+
+### テスト仕様書
+https://docs.google.com/spreadsheets/d/12r7phHhGyXB8V1uRow5PISFnr70ukvsh/edit#gid=1494678040
 
 ## 使用素材
 「ソコスト 商用可・フリーイラスト素材集」
