@@ -140,7 +140,13 @@
                 <% end %>
               <% end %>
             </div>
-            <div class="text-center col-11">© 2022 Share MyJob. ALL RIGHTS RESERVED.</div>
+            <% if admin_signed_in? %>
+              <div class="text-center col-11">
+                <%= link_to admin_path do %>《TOPへ移動する》<% end %>
+              </div>
+            <% else %>
+              <div class="text-center col-11">© 2022 Share MyJob. ALL RIGHTS RESERVED.</div>
+            <% end %>
           </div>
         </div>
       </footer>
