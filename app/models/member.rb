@@ -11,6 +11,7 @@ class Member < ApplicationRecord
   validates :nickname, presence: true, length: { maximum: 20 }
   validates :email, presence: true, uniqueness: true
   validates :password, confirmation: true
+  validates :belong, presence: true
 
   has_one_attached :profile_image
 
