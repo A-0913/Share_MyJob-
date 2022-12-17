@@ -51,7 +51,7 @@ describe '投稿のテスト' do
   end
 
   describe 'ジャンル編集のテスト' do
-    describe '職業編集画面(edit_admin_genre_path)のテスト' do
+    describe 'ジャンル編集画面(edit_admin_genre_path)のテスト' do
       before do
         visit edit_admin_genre_path(genre)
       end

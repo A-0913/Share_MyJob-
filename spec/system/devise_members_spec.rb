@@ -10,7 +10,7 @@ describe '会員登録のテスト' do
       it 'new_member_registrationが"/members/sign_up"であるか' do
         expect(current_path).to eq('/members/sign_up')
       end
-      it '職業を追加するボタンが表示されているか' do
+      it '新規登録ボタンが表示されているか' do
         expect(page).to have_button '新規登録'
       end
       it '情報入力フォームがページ内に表示されているか' do
@@ -65,6 +65,136 @@ describe '会員登録のテスト' do
 
         click_button '新規登録'
         expect(page).to have_current_path jobs_path
+      end
+    end
+  end
+  describe "編集処理のテスト" do
+    before do
+      visit member_session_path
+      fill_in 'member[email]', with: member.email
+      fill_in 'member[password]', with: member.password
+      click_on 'ログイン'
+    end
+    describe '会員情報編集画面(edit_member_path)のテスト' do
+      before do
+        visit edit_member_path(member)
+      end
+      context '表示の確認' do
+        it 'edit_member_pathが"/members/1/edit"であるか' do
+          expect(current_path).to eq('/members/1/edit')
+        end
+        it '更新するボタンが表示される' do
+          expect(page).to have_button '更新する'
+        end
+        it '退会するボタンが表示される' do
+          expect(page).to have_link '退会する', href: "/members/confirm"
+        end
+        it 'マイページへ戻るボタンが表示される' do
+          expect(page).to have_link 'マイページへ戻る', href: "/members/1"
+        end
+        it '情報編集に必要な入力欄が同一のページに表示されているか' do
+          expect(page).to have_field 'member[last_name]'
+          expect(page).to have_field 'member[first_name]'
+          expect(page).to have_field 'member[nickname]'
+          expect(page).to have_field 'member[email]'
+          expect(page).to have_field 'member[password]'
+          expect(page).to have_field 'member[introduction]'
+          expect(page).to have_field 'member[belong]'
+        end
+      end
+      context '編集処理に関するテスト' do
+        it '編集に成功しサクセスメッセージが表示されるか（パスワードの変更を含まない）' do
+          fill_in 'member[last_name]', with: Faker::Lorem.characters(number:5)
+          fill_in 'member[first_name]', with: Faker::Lorem.characters(number:5)
+          fill_in 'member[nickname]', with: Faker::Lorem.characters(number:5)
+          fill_in 'member[email]', with: 'hogehoge@example.com'
+          select '中小企業勤務', from: 'member_belong'
+          fill_in 'member[introduction]', with: Faker::Lorem.characters(number:5)
+
+          click_button '更新する'
+          expect(page).to have_content '情報を更新しました'
+        end
+          it '編集に成功しサクセスメッセージが表示されるか（パスワードの変更を含む）' do
+          fill_in 'member[last_name]', with: Faker::Lorem.characters(number:5)
+          fill_in 'member[first_name]', with: Faker::Lorem.characters(number:5)
+          fill_in 'member[nickname]', with: Faker::Lorem.characters(number:5)
+          fill_in 'member[email]', with: 'hoge@example.com'
+          fill_in 'member[password]', with: 'rspec_pass'
+          select 'フリーランス', from: 'member_belong'
+          fill_in 'member[introduction]', with: Faker::Lorem.characters(number:5)
+
+          click_button '更新する'
+          expect(page).to have_content 'ログインもしくはアカウント登録してください'
+        end
+        it '編集に失敗しエラーメッセージが表示されるか' do
+          fill_in 'member[last_name]', with: ''
+          fill_in 'member[first_name]', with: ''
+          fill_in 'member[nickname]', with: ''
+          fill_in 'member[email]', with: ''
+          fill_in 'member[password]', with: ''
+          fill_in 'member[introduction]', with: ''
+
+         click_button '更新する'
+         expect(page).to have_content 'のエラーが発生しました'
+         expect(current_path).to eq('/members/1')
+        end
+        it '編集（パスワードの変更を含まない）後のリダイレクト先は正しいか' do
+          fill_in 'member[last_name]', with: Faker::Lorem.characters(number:5)
+          fill_in 'member[first_name]', with: Faker::Lorem.characters(number:5)
+          fill_in 'member[nickname]', with: Faker::Lorem.characters(number:5)
+          fill_in 'member[email]', with: 'hogehoge@example.com'
+          select '中小企業勤務', from: 'member_belong'
+          fill_in 'member[introduction]', with: Faker::Lorem.characters(number:5)
+
+          click_button '更新する'
+          expect(page).to have_current_path member_path(member)
+        end
+          it '編集（パスワードの変更を含む）後のリダイレクト先は正しいか' do
+          fill_in 'member[last_name]', with: Faker::Lorem.characters(number:5)
+          fill_in 'member[first_name]', with: Faker::Lorem.characters(number:5)
+          fill_in 'member[nickname]', with: Faker::Lorem.characters(number:5)
+          fill_in 'member[email]', with: 'hoge@example.com'
+          fill_in 'member[password]', with: 'rspec_pass'
+          select 'フリーランス', from: 'member_belong'
+          fill_in 'member[introduction]', with: Faker::Lorem.characters(number:5)
+
+          click_button '更新する'
+          expect(page).to have_current_path member_session_path
+        end
+      end
+    end
+  end
+  describe "退会処理のテスト" do
+    before do
+      visit member_session_path
+      fill_in 'member[email]', with: member.email
+      fill_in 'member[password]', with: member.password
+      click_on 'ログイン'
+    end
+    describe '会員退会画面(confirm_members_path)のテスト' do
+      before do
+        visit confirm_members_path
+      end
+      context '表示の確認' do
+        it 'confirm_members_pathが"/members/confirm"であるか' do
+          expect(current_path).to eq('/members/confirm')
+        end
+        it '退会するボタンが表示される' do
+          expect(page).to have_link '退会する', href: "/members/withdraw"
+        end
+        it 'マイページに戻るボタンが表示される' do
+          expect(page).to have_link 'マイページに戻る', href: "/members/1"
+        end
+      end
+      context '退会処理に関するテスト' do
+        it '退会処理に成功しサクセスメッセージが表示されるか' do
+          click_on '退会する'
+          expect(page).to have_content '退会処理を実行いたしました'
+        end
+        it '編集（パスワードの変更を含む）後のリダイレクト先は正しいか' do
+          click_on '退会する'
+          expect(page).to have_current_path root_path
+        end
       end
     end
   end
