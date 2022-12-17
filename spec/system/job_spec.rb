@@ -60,8 +60,8 @@ describe '職業投稿のテスト' do
         visit admin_job_path
       end
       context '表示の確認' do
-        it 'admin_job_pathが"/admin/jobs/:id"であるか' do
-          expect(current_path).to eq('/admin/jobs/:id')
+        it 'admin_job_pathが"/admin/jobs/1"であるか' do
+          expect(current_path).to eq('/admin/jobs/:1')
         end
         it '編集するが表示される' do
           expect(page).to have_button '編集する'
