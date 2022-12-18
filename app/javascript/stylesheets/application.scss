@@ -28,7 +28,7 @@ header{
 body{
   // min-height: 1500px;
   padding-top: 80px;
-  padding-bottom: 60px;
+  padding-bottom: 59px;
   background-color: #D7EEFF;
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
@@ -300,4 +300,24 @@ footer{
 
 .top-title span {
   display: inline-block;
+}
+
+.top-logo {
+  width: 40%;
+}
+
+@media screen and (max-width: 375px) {
+  .top-logo {
+    width: 100%;
+  }
+}
+
+.top-logo-woman {
+  width: 30%;
+}
+
+@media screen and (max-width: 375px) {
+  .top-logo-woman {
+    width: 100%;
+  }
 }
