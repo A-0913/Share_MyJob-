@@ -12,7 +12,11 @@
               <%= f.label :genre_id, "職業ジャンル" %>
             </div>
             <div class="col-md-9">
-              <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name, @job.genre.id), include_blank: 'ジャンルを選択してください' %>
+              <% if @job.genre %>
+                <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name, @job.genre.id), include_blank: 'ジャンルを選択してください' %>
+              <% else %>
+                <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), include_blank: 'ジャンルを選択してください' %>
+              <% end %>
             </div>
           </div>
         </div>
