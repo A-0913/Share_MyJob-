@@ -108,7 +108,14 @@ describe '職業投稿のテスト' do
           click_button '更新'
           expect(page).to have_content '更新が成功しました!'
         end
-        it '更新に失敗した趣旨のメッセージが表示されるか' do
+        it '更新に失敗した趣旨のメッセージが表示されるか（ジャンル空白）' do
+          find("#job_genre_id").find("option[value='']").select_option
+          fill_in 'job[name]', with: Faker::Lorem.characters(number:5)
+          click_button '更新'
+          expect(page).to have_content '更新が正常に行われませんでした。内容をご確認ください。'
+          expect(current_path).to eq('/admin/jobs/1')
+        end
+        it '更新に失敗した趣旨のメッセージが表示されるか（職業名空白）' do
           fill_in 'job[name]', with: ''
           click_button '更新'
           expect(page).to have_content '更新が正常に行われませんでした。内容をご確認ください。'
