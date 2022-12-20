@@ -52,11 +52,11 @@
               <div class="row">
                 <div class="col-md-3 h-100 d-flex align-self-center">
                   <%= f.radio_button :is_published, :false, class: "mr-2"  %>
-                  <%= f.label :is_published, "未公開", class: "'p-0 m-0" %>
+                  <%= f.label :is_published, "未公開", value: :false, class: "p-0 m-0" %>
                 </div>
                 <div class="col-md-3 h-100 d-flex align-self-center">
                   <%= f.radio_button :is_published, :true, class: "mr-2" %>
-                  <%= f.label :is_published, "公開", class: "'p-0 m-0" %>
+                  <%= f.label :is_published, "公開", value: :true, class: "p-0 m-0" %>
                 </div>
               </div>
             </div>
@@ -72,11 +72,11 @@
               <div class="row">
                 <div class="col-md-3 h-100 d-flex align-self-center">
                   <%= f.radio_button :is_checked, :false, class: 'mr-2' %>
-                  <%= f.label :is_checked, "未確認", class: 'p-0 m-0' %>
+                  <%= f.label :is_checked, "未確認", value: :false, class: 'p-0 m-0' %>
                 </div>
                 <div class="col-md-3 h-100 d-flex align-self-center">
                   <%= f.radio_button :is_checked, :true, class: 'mr-2' %>
-                  <%= f.label :is_checked, "確認済み", class: 'p-0 m-0' %>
+                  <%= f.label :is_checked, "確認済み", value: :true, class: 'p-0 m-0' %>
                 </div>
               </div>
             </div>

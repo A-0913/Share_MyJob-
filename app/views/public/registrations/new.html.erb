@@ -11,6 +11,7 @@
           <div class="row">
             <div class="col-md-4 text-left text-md-center">
               <%= f.label :name, "名前（姓/名）" %>
+              <small class="text-danger">※必須</small>
             </div>
             <div class="col-md-8">
               <div class="row">
@@ -29,6 +30,7 @@
           <div class="row">
             <div class="col-md-4 text-left text-md-center">
               <%= f.label :nickname, "ニックネーム" %>
+              <small class="text-danger">※必須</small>
             </div>
             <div class="col-md-8">
               <%= f.text_field :nickname, class: 'form-control' %>
@@ -40,6 +42,7 @@
           <div class="row">
             <div class="col-md-4 text-left text-md-center">
               <%= f.label :email, "メールアドレス" %>
+              <small class="text-danger">※必須</small>
             </div>
             <div class="col-md-8">
               <%= f.email_field :email, class: 'form-control' %>
@@ -50,10 +53,11 @@
         <div class="form-group">
           <div class="row">
             <div class="col-md-4 text-left text-md-center">
-              <%= f.label :password, "パスワード(6文字以上)" %>
+              <%= f.label :password, "パスワード" %>
+              <small class="text-danger">※必須</small>
             </div>
             <div class="col-md-8">
-              <%= f.password_field :password, class: 'form-control' %>
+              <%= f.password_field :password, placeholder: '※6文字以上で設定してください', class: 'form-control' %>
             </div>
           </div>
         </div>
@@ -61,7 +65,8 @@
         <div class="form-group">
           <div class="row">
             <div class="col-md-4 text-left text-md-center">
-              <%= f.label :password_confirmation, "パスワード(確認用)" %>
+              <%= f.label :password_confirmation, "パスワード再入力" %>
+              <small class="text-danger">※必須</small>
             </div>
             <div class="col-md-8">
               <%= f.password_field :password_confirmation, class: 'form-control' %>
@@ -84,6 +89,7 @@
           <div class="row">
             <div class="col-md-4 text-left text-md-center">
               <%= f.label :belong, "属性" %>
+              <small class="text-danger">※必須</small>
             </div>
             <div class="col-md-8">
               <%= f.select :belong, {"大企業勤務": "大企業勤務", "中小企業勤務": "中小企業勤務", "フリーランス": "フリーランス", "学生": "学生", "就職活動中": "就職活動中", "転職を検討中": "転職を検討中"}, { include_blank: '選択してください'}, class: 'form-control' %>
