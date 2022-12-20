@@ -1,4 +1,4 @@
-class Admin::MembersController < ApplicationController
+class Admin::MembersController < Admin::AdminController
 
   def index
     @members = Member.page(params[:page]).per(5)

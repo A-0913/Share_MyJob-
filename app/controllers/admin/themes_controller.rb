@@ -1,4 +1,4 @@
-class Admin::ThemesController < ApplicationController
+class Admin::ThemesController < Admin::AdminController
 
   def theme_in_job
     @job = Job.find(params[:job_id])

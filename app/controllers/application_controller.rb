@@ -1,13 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_admin!, if: :admin_url
-
-  #管理者ログインをしないと管理者関連ページに移動できないようにする
-  def admin_url
-    request.fullpath.include?("/admin")
-  end
-
-
 
   protected
 

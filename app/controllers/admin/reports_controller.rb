@@ -1,4 +1,4 @@
-class Admin::ReportsController < ApplicationController
+class Admin::ReportsController < Admin::AdminController
 
   def index
     @reports = Report.all.order(created_at: :desc).page(params[:page]).per(5)

@@ -1,1 +1,1 @@
-$('#comment_<%= @comment.id %>').html("<%= j(render partial: 'public/favorites/favorite', locals: { job: @job, theme: @theme, comment: @comment}) %>");
+$('#comment_<%= @comment.id %>').html("<%= j(render partial: 'public/favorites/favorite', locals: {comment: @comment}) %>");

@@ -1,4 +1,4 @@
-class Admin::JobsController < ApplicationController
+class Admin::JobsController < Admin::AdminController
 
   def index
     @jobs = Job.all.order(created_at: :desc).page(params[:page]).per(5)

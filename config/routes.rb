@@ -61,11 +61,11 @@ Rails.application.routes.draw do
     end
     resources :jobs, only: [:new, :create, :index, :show] do
       resources :themes, only: [:new, :create, :show] do
-         resources :comments, only: [:create, :destroy] do
-           resource :favorites, only: [:create, :destroy]
-           resources :reports, only: [:new, :create]
-           resources :replies, only: [:index, :new, :create, :destroy]
-         end
+        resources :comments, only: [:create, :destroy] do
+          resource :favorites, only: [:create, :destroy]
+          resources :reports, only: [:new, :create]
+          resources :replies, only: [:index, :new, :create, :destroy]
+        end
       end
     end
   end
