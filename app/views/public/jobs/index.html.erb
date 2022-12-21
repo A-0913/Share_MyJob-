@@ -3,15 +3,15 @@
 
     <div class="col-sm-3">
       <div class="py-3">
-        <%= render partial: 'public/searches/serach' %>
+        <%= render partial: "public/searches/serach" %>
       </div>
       <div class="py-2">
-        <%= render 'admin/genres/genre_sidebar', genres: @genres%>
+        <%= render "admin/genres/genre_sidebar", genres: @genres %>
       </div>
     </div>
 
     <div class="col-sm-9 p-2">
-      <div class="job-box  py-4">
+      <div class="job-box py-4">
         <% @jobs.each do |job| %>
           <div class="row justify-content-center py-2">
             <div class="job-title"><%= link_to job.name, job_path(job) %></div>
@@ -21,12 +21,12 @@
       </div>
 
       <div class="row justify-content-center py-4">
-        <%= paginate @jobs, theme: 'twitter-bootstrap-4' %>
+        <%= paginate @jobs, theme: "twitter-bootstrap-4" %>
       </div>
 
       <div class="row justify-content-center pb-4 ">
         <% if !admin_signed_in? && !current_member.guest? %>
-          <%= link_to "職業を追加する" , new_job_path, class: 'btn btn-success col-sm-4 ' %>
+          <%= link_to "職業を追加する", new_job_path, class: "btn btn-success col-sm-4" %>
         <% end %>
       </div>
     </div>

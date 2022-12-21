@@ -1,11 +1,11 @@
 <% if !admin_signed_in? && member_signed_in? && !current_member.guest? %>
-    <% if comment.favorited_by?(current_member) %>
-        <%= link_to  job_theme_comment_favorites_path(job, theme, comment), class: "btn btn-info ", method: :delete , remote: true do%>
-        <i class="far fa-thumbs-up"></i><%= comment.favorites.count %>
-        <% end %>
-    <% else %>
-        <%= link_to  job_theme_comment_favorites_path(job, theme, comment), class: "btn btn-secondary",  method: :post , remote: true  do %>
-        <i class="far fa-thumbs-up"></i><%= comment.favorites.count %>
-        <% end %>
+  <% if comment.favorited_by?(current_member) %>
+    <%= link_to job_theme_comment_favorites_path(comment.job_id, comment.theme_id, comment), class: "btn btn-info ", method: :delete, remote: true do %>
+    <i class="far fa-thumbs-up"></i><%= comment.favorites.count %>
     <% end %>
+  <% else %>
+    <%= link_to job_theme_comment_favorites_path(comment.job_id, comment.theme_id, comment), class: "btn btn-secondary",  method: :post, remote: true do %>
+    <i class="far fa-thumbs-up"></i><%= comment.favorites.count %>
+    <% end %>
+  <% end %>
 <% end %>

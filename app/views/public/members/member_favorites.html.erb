@@ -17,14 +17,14 @@
 
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">コメント投稿日</div>
-        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %></div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= comment.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
       </div>
 
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">コメント</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
           <% if comment.is_published? %>
-            <%= link_to job_theme_comment_replies_path(comment.job,comment.theme,comment) do %>
+            <%= link_to job_theme_comment_replies_path(comment.job, comment.theme, comment) do %>
               <%= comment.comment %></td>
             <% end %>
           <% else %>
@@ -42,6 +42,6 @@
     <% end %>
 
   <div class="row justify-content-center py-4">
-    <%= link_to "マイページへ戻る" , member_path(current_member) , class: "btn btn-primary col-md-3" %>
+    <%= link_to "マイページへ戻る", member_path(current_member), class: "btn btn-primary col-md-3" %>
   </div>
 </div>

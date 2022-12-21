@@ -18,13 +18,6 @@ class Reply < ApplicationRecord
     if slander_word.present?
       errors.add(:reply, "内に人を傷つける可能性のある言葉(※#{slander_word})が含まれています。\n内容をご確認の上、ご入力をお願いします。")
     end
-
-    # slander_words.each do |word|
-    #   if self.reply.include?(word)
-    #     errors.add(:reply, "内に人を傷つける可能性のある言葉が含まれています。\n内容をご確認の上、再度ご入力をお願いします。")
-    #     break
-    #   end
-    # end
   end
 
 end

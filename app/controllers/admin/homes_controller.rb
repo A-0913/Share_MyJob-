@@ -1,4 +1,4 @@
-class Admin::HomesController < ApplicationController
+class Admin::HomesController < Admin::AdminController
   def top
     @unconfirmed_jobs = Job.where(is_checked: false)
     @jobs = Job.all
