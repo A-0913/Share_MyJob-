@@ -3,7 +3,6 @@ require 'rails_helper'
 describe 'comment投稿のテスト' do
   let!(:member) { create(:member) }
   let!(:job) { create(:job) }
-  let!(:theme) { create(:theme) }
   let!(:comment) { create(:comment) }
   before do
     visit member_session_path
@@ -11,14 +10,10 @@ describe 'comment投稿のテスト' do
     fill_in 'member[password]', with: member.password
     click_on 'ログイン'
   end
-  
+
   describe "コメント投稿画面(job_theme_path)のテスト" do
     before do
-      visit job_path(job)
-      job.themes.each do |theme|
-        click_link theme.name
-        visit job_theme_path(job,theme)
-      end
+      visit job_theme_path(job, job.themes.first)
     end
     context '表示の確認' do
       it 'job_theme_pathが"/jobs/1/themes/1"であるか' do
@@ -62,6 +57,7 @@ describe 'comment投稿のテスト' do
     end
     context '投稿削除に関するテスト' do
       it '投稿後のリダイレクト先は正しいか' do
+        find("#comment_id").find("comments_destroy").select_option
         click_button 'trash-alt'
         expect(page).to have_current_path job_theme_path(job, theme)
       end
