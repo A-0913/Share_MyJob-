@@ -1,5 +1,5 @@
 <div class="container p-4">
-    <div class="row justify-content-center  py-4">
+    <div class="row justify-content-center py-4">
       <h3>会員情報編集</h3>
     </div>
 
@@ -27,10 +27,10 @@
               <div class="col-md-8">
                 <div class="row">
                   <div class="col-md-6">
-                    <%= f.text_field :last_name, placeholder: '姓', class: 'form-control' %>
+                    <%= f.text_field :last_name, placeholder: "姓", class: "form-control" %>
                   </div>
                   <div class="col-md-6">
-                    <%= f.text_field :first_name, placeholder: '名', class: 'form-control' %>
+                    <%= f.text_field :first_name, placeholder: "名", class: "form-control" %>
                   </div>
                 </div>
               </div>
@@ -43,7 +43,7 @@
                 <%= f.label :email, "メールアドレス" %>
               </div>
               <div class="col-md-8">
-                <%= f.email_field :email, class: 'form-control' %>
+                <%= f.email_field :email, class: "form-control" %>
               </div>
             </div>
           </div>
@@ -54,7 +54,7 @@
                 <%= f.label :nickname, "ニックネーム" %>
               </div>
               <div class="col-md-8">
-                <%= f.text_field :nickname, class: 'form-control' %>
+                <%= f.text_field :nickname, class: "form-control" %>
               </div>
             </div>
           </div>
@@ -65,7 +65,7 @@
                 <%= f.label :introduction, "自己紹介文" %>
               </div>
               <div class="col-md-8">
-                <%= f.text_area :introduction, class: 'form-control' %>
+                <%= f.text_area :introduction, class: "form-control" %>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@
                 <%= f.label :belong, "属性" %>
               </div>
               <div class="col-md-8">
-                <%= f.select :belong, {"大企業勤務": "大企業勤務", "中小企業勤務": "中小企業勤務", "フリーランス": "フリーランス", "学生": "学生", "就職活動中": "就職活動中", "転職を検討中": "転職を検討中"}, { include_blank: '選択してください'}, class: 'form-control' %>
+                <%= f.select :belong, {"大企業勤務": "大企業勤務", "中小企業勤務": "中小企業勤務", "フリーランス": "フリーランス", "学生": "学生", "就職活動中": "就職活動中", "転職を検討中": "転職を検討中"}, { include_blank: "選択してください"}, class: "form-control" %>
               </div>
             </div>
           </div>
@@ -89,12 +89,12 @@
               <div class="col-sm-7 h-100 d-flex flex-column align-self-center">
                 <div class="row">
                   <div class="col-sm-3 h-100 d-flex align-self-center">
-                    <%= f.radio_button :is_deleted, :false, class: 'mr-2' %>
-                    <%= f.label :is_deleted, "有効", value: :false, class: 'p-0 m-0' %>
+                    <%= f.radio_button :is_deleted, :false, class: "mr-2" %>
+                    <%= f.label :is_deleted, "有効", value: :false, class: "p-0 m-0" %>
                   </div>
                   <div class="col-sm-3 h-100 d-flex align-self-center">
-                  <%= f.radio_button :is_deleted, :true, class: 'mr-2' %>
-                  <%= f.label :is_deleted, "退会", value: :true, class: 'p-0 m-0' %>
+                  <%= f.radio_button :is_deleted, :true, class: "mr-2" %>
+                  <%= f.label :is_deleted, "退会", value: :true, class: "p-0 m-0" %>
                   </div>
                 </div>
               </div>
@@ -106,7 +106,7 @@
               <div class="col-md-4 text-left text-md-center">
               </div>
               <div class="col-md-8">
-                <%= f.submit "編集内容を保存" , class: 'btn btn-success col-md-8' %>
+                <%= f.submit "編集内容を保存", class: "btn btn-success col-md-8" %>
               </div>
             </div>
           </div>
@@ -118,7 +118,7 @@
             <div class="col-md-4 text-left text-md-center">
             </div>
             <div class="col-md-8">
-              <%= link_to "プロフィールへ戻る" , admin_member_path(@member) , class: 'btn btn-primary col-md-8' %>
+              <%= link_to "プロフィールへ戻る", admin_member_path(@member), class: "btn btn-primary col-md-8" %>
             </div>
           </div>
         </div>

@@ -5,42 +5,42 @@
 
   <% @members.each do |member| %>
     <div class="row justify-content-center py-3">
-      
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">会員ID</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= member.id %></div>
       </div>
-      
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">氏名</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
-          <%= link_to member.last_name+"　"+member.first_name , admin_member_path(member) %>
+          <%= link_to member.last_name+"　"+member.first_name, admin_member_path(member) %>
         </div>
       </div>
-      
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">ニックネーム</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= member.nickname %></div>
       </div>
-      
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">メールアドレス</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= member.email %></div>
       </div>
-      
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">ステータス</div>
-          <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= deleted_message(member) %></div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= deleted_message(member) %></div>
       </div>
-      
+
     </div>
   <% end %>
 
   <div class="row justify-content-center py-4">
-  <%= paginate @members, theme: 'twitter-bootstrap-4' %>
+    <%= paginate @members, theme: "twitter-bootstrap-4" %>
   </div>
 
   <div class="row justify-content-center pb-4">
-    <%= link_to "TOPへ戻る" , admin_path , class: "btn btn-primary col-sm-3" %>
+    <%= link_to "TOPへ戻る", admin_path, class: "btn btn-primary col-sm-3" %>
   </div>
 </div>

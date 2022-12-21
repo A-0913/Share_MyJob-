@@ -11,8 +11,6 @@ class Comment < ApplicationRecord
 
   validate :slander_check
 
-
-
   def favorited_by?(member)
     if member.nil?
       false
@@ -32,18 +30,6 @@ class Comment < ApplicationRecord
     if slander_word.present?
       errors.add(:comment, "内に人を傷つける可能性のある言葉(※#{slander_word})が含まれています。\n内容をご確認の上、ご入力をお願いします。")
     end
-
-    #slander_words.each do |word|
-    # if self.comment.include?(word)
-    #    errors.add(:comment, "内に人を傷つける可能性のある言葉が含まれています。\n内容をご確認の上、再度ご入力をお願いします。")
-    #    break
-    #  end
-
-    #end
-    #slander_words.select {|w| self.comment.include?(w) }.each do |word|
-    #  errors.add(:comment, "内に人を傷つける可能性のある言葉が(#{word})含まれています。\n内容をご確認の上、ご入力をお願いします。")
-    #end
-
   end
 
 end

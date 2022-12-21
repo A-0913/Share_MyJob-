@@ -15,7 +15,7 @@
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">通報日時</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
-          <%= @report.created_at.strftime('%Y年%m月%d日 %H:%M') %>
+          <%= @report.created_at.strftime("%Y年%m月%d日 %H:%M") %>
         </div>
       </div>
 
@@ -32,7 +32,7 @@
 
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">コメント投稿日</div>
-        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @report.created_at.strftime('%Y年%m月%d日 %H:%M') %></div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @report.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
       </div>
 
       <div class="row col-10 justify-content-center">
@@ -51,12 +51,12 @@
             <div class="d-flex flex-column align-self-center">
               <div class="row">
                 <div class="col-md-5 h-100 d-flex align-self-center">
-                  <%= f.radio_button :is_checked, :false , class: 'mr-2'%>
-                  <%= f.label :is_checked, "未確認", value: :false, class: 'p-0 m-0' %>
+                  <%= f.radio_button :is_checked, :false, class: "mr-2"%>
+                  <%= f.label :is_checked, "未確認", value: :false, class: "p-0 m-0" %>
                 </div>
                 <div class="col-md-5 h-100 d-flex align-self-center">
-                  <%= f.radio_button :is_checked, :true , class: 'mr-2'%>
-                  <%= f.label :is_checked, "確認済", value: :true, class: 'p-0 m-0' %>
+                  <%= f.radio_button :is_checked, :true, class: "mr-2"%>
+                  <%= f.label :is_checked, "確認済", value: :true, class: "p-0 m-0" %>
                 </div>
               </div>
             </div>
@@ -66,12 +66,12 @@
     </div>
 
     <div class="row justify-content-center pt-4">
-      <%= f.submit "更新する" , class: 'btn btn-success col-sm-3'  %>
+      <%= f.submit "更新する", class: "btn btn-success col-sm-3" %>
     </div>
 
   <% end %>
 
   <div class="row justify-content-center py-4">
-    <%=link_to "通報一覧へ戻る" , admin_reports_path, class: "btn btn-primary col-sm-3" %>
+    <%=link_to "通報一覧へ戻る", admin_reports_path, class: "btn btn-primary col-sm-3" %>
   </div>
 </div>

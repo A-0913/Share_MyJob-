@@ -1,7 +1,7 @@
 <div class = "container p-4">
   <% if @unconfirmed_reports.count > 0 %>
     <% @unconfirmed_reports.each do |unconfirmed_report| %>
-    <h4 class="row text-danger ">
+    <h4 class="row text-danger">
       ※通報id<div class="font-weight-bold"><%= unconfirmed_report.id %></div>が未確認です。
     </h4>
     <% end %>
@@ -12,52 +12,52 @@
 
   <% @reports.each do |report| %>
     <div class="row justify-content-center py-3">
-      
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">通報id</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= report.id %></div>
       </div>
-      
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">通報日時</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
-          <%= report.created_at.strftime('%Y年%m月%d日 %H:%M') %>
+          <%= report.created_at.strftime("%Y年%m月%d日 %H:%M") %>
         </div>
       </div>
-      
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">対象コメント</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
           <% if report.reply_id? %>
-            <%= link_to report.reply.reply , admin_report_path(report) %>
+            <%= link_to report.reply.reply, admin_report_path(report) %>
           <% else %>
-            <%= link_to report.comment.comment , admin_report_path(report) %>
+            <%= link_to report.comment.comment, admin_report_path(report) %>
           <% end %>
         </div>
       </div>
-      
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">通報者</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
           <%= link_to report.member.nickname , admin_member_path(report.member) %>
         </div>
       </div>
-      
+
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">確認ステータス</div>
           <div class="col-md-5 text-center border border-dark bg-white text-dark">
             <%= checked_message(report) %>
           </div>
       </div>
-      
+
     </div>
   <% end %>
 
   <div class="row justify-content-center py-4">
-    <%= paginate @reports, theme: 'twitter-bootstrap-4' %>
+    <%= paginate @reports, theme: "twitter-bootstrap-4" %>
   </div>
 
   <div class="row justify-content-center pb-4">
-    <%= link_to "TOPへ戻る" , admin_path , class: "btn btn-primary col-sm-3" %>
+    <%= link_to "TOPへ戻る", admin_path, class: "btn btn-primary col-sm-3" %>
   </div>
 </div>

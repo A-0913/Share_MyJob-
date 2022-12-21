@@ -10,18 +10,18 @@ class ApplicationController < ActionController::Base
   #管理者もしくは会員のどちらかでログインをしていれば移動できるようにする
   def authenticate_any!
     if admin_signed_in?
-        true
+      true
     else
-        authenticate_member!
+      authenticate_member!
     end
   end
 
   #ゲストログインユーザーによる情報の更新を阻止する
   def block_gusest_member
     if admin_signed_in?
-        true
+      true
     else
-      redirect_back(fallback_location: root_path) and return if current_member.email == 'guest@example.com'
+      redirect_back(fallback_location: root_path) and return if current_member.guest?
     end
   end
 

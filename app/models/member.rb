@@ -44,7 +44,7 @@ class Member < ApplicationRecord
       member.last_name = "ゲスト"
       member.first_name = "ゲスト"
       member.nickname = "ゲスト"
-      member.belong = "転職を考え中"
+      member.belong = "転職を検討中"
     end
   end
 

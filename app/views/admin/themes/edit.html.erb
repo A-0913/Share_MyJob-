@@ -4,7 +4,7 @@
   </div>
   <div class="row justify-content-center p-4">
     <div class="w-75">
-      <%= form_with model: @theme,url:admin_job_theme_path(@job,@theme), local:true do |f| %>
+      <%= form_with model: @theme, url:admin_job_theme_path(@job,@theme), local:true do |f| %>
 
         <div class="form-group">
           <div class="row">
@@ -12,7 +12,7 @@
               <%= f.label :name, "テーマ名" %>
             </div>
             <div class="col-md-9">
-              <%= f.text_field :name, class: 'form-control' %>
+              <%= f.text_field :name, class: "form-control" %>
             </div>
           </div>
         </div>
@@ -23,7 +23,7 @@
               <%= f.label :contact, "管理人への連絡事項" %>
             </div>
             <div class="col-md-9">
-              <%= f.text_area :contact, placeholder: "連絡事項がありましたらご入力下さい", class: 'form-control' %>
+              <%= f.text_area :contact, placeholder: "連絡事項がありましたらご入力下さい", class: "form-control" %>
             </div>
           </div>
         </div>
@@ -37,11 +37,11 @@
               <div class="row">
                 <div class="col-md-3 h-100 d-flex align-self-center">
                   <%= f.radio_button :is_published, :false, class: "mr-2"  %>
-                  <%= f.label :is_published, "未公開", value: :false, class: "'p-0 m-0" %>
+                  <%= f.label :is_published, "未公開", value: :false, class: "p-0 m-0" %>
                 </div>
                 <div class="col-md-3 h-100 d-flex align-self-center">
                   <%= f.radio_button :is_published, :true, class: "mr-2" %>
-                  <%= f.label :is_published, "公開", value: :true, class: "'p-0 m-0" %>
+                  <%= f.label :is_published, "公開", value: :true, class: "p-0 m-0" %>
                 </div>
               </div>
             </div>
@@ -56,12 +56,12 @@
             <div class="col-md-7 h-100 d-flex flex-column align-self-center">
               <div class="row">
                 <div class="col-md-3 h-100 d-flex align-self-center">
-                  <%= f.radio_button :is_checked, :false, class: 'mr-2' %>
-                  <%= f.label :is_checked, "未確認", value: :false, class: 'p-0 m-0' %>
+                  <%= f.radio_button :is_checked, :false, class: "mr-2" %>
+                  <%= f.label :is_checked, "未確認", value: :false, class: "p-0 m-0" %>
                 </div>
                 <div class="col-md-3 h-100 d-flex align-self-center">
-                  <%= f.radio_button :is_checked, :true, class: 'mr-2' %>
-                  <%= f.label :is_checked, "確認済み", value: :true, class: 'p-0 m-0' %>
+                  <%= f.radio_button :is_checked, :true, class: "mr-2" %>
+                  <%= f.label :is_checked, "確認済み", value: :true, class: "p-0 m-0" %>
                 </div>
               </div>
             </div>
@@ -73,7 +73,7 @@
             <div class="col-md-3 text-left text-md-center">
             </div>
             <div class="col-md-9">
-              <%= f.submit "更新する" , class: 'btn btn-success col-md-8' %>
+              <%= f.submit "更新する" , class: "btn btn-success col-md-8" %>
             </div>
           </div>
         </div>
@@ -85,7 +85,7 @@
           <div class="col-md-3 text-left text-md-center">
           </div>
           <div class="col-md-9">
-            <%= link_to "テーマ選択画面へ戻る" , theme_in_job_admin_job_themes_path(@job), class: 'btn btn-primary col-md-8' %>
+            <%= link_to "テーマ選択画面へ戻る", theme_in_job_admin_job_themes_path(@job), class: "btn btn-primary col-md-8" %>
           </div>
         </div>
       </div>

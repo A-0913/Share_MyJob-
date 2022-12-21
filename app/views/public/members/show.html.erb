@@ -9,7 +9,7 @@
       <div class="row justify-content-center">
         <div class="d-flex align-items-center ">
           <div class="member-icon">
-          <%= image_tag @member.get_profile_image(200,200) %>
+          <%= image_tag @member.get_profile_image(200, 200) %>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
           <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= @member.belong %></div>
         </div>
 
-        <% if !current_member.guest? && @member != current_member %>
+        <% if @member != current_member %>
           <% if @member.is_deleted? %>
             <div class="text-danger font-weight-bold">※この会員はすでに退会済みです</div>
           <% end %>
@@ -63,17 +63,17 @@
         <div class="row justify-content-center">
           <div class="row col-10 justify-content-center pt-3">
             <div class="col-md-5 text-center">職業投稿一覧</div>
-            <div class="col-md-5"><%= link_to "一覧を見る" , member_jobs_member_path(@member), class: 'btn btn-primary col-md-5' %></div>
+            <div class="col-md-5"><%= link_to "一覧を見る", member_jobs_member_path(@member), class: "btn btn-primary col-md-5" %></div>
           </div>
 
           <div class="row col-10 justify-content-center pt-3">
             <div class="col-md-5 text-center">テーマ投稿一覧</div>
-            <div class="col-md-5"><%= link_to "一覧を見る" , member_themes_member_path(@member), class: 'btn btn-primary col-md-5' %></div>
+            <div class="col-md-5"><%= link_to "一覧を見る", member_themes_member_path(@member), class: "btn btn-primary col-md-5" %></div>
           </div>
 
           <div class="row col-10 justify-content-center pt-3">
             <div class="col-md-5 text-center">返信のきたコメント一覧</div>
-            <div class="col-md-5"><%= link_to "一覧を見る" , member_comment_replies_member_path(@member), class: 'btn btn-primary col-md-5' %></div>
+            <div class="col-md-5"><%= link_to "一覧を見る", member_comment_replies_member_path(@member), class: "btn btn-primary col-md-5" %></div>
           </div>
         </div>
       <% end %>
@@ -84,7 +84,7 @@
 
   <div class="row justify-content-center pt-4">
     <% if !current_member.guest? && @member == current_member %>
-      <%=  link_to "編集する" , edit_member_path(@member), class: 'btn btn-success col-md-4' %>
+      <%=  link_to "編集する", edit_member_path(@member), class: "btn btn-success col-md-4" %>
     <% end %>
   </div>
 </div>

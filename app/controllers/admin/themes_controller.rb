@@ -18,10 +18,10 @@ class Admin::ThemesController < Admin::AdminController
     @job = Job.find(params[:job_id])
     @theme = Theme.find(params[:id])
     if @theme.update(theme_update_params)
-       redirect_to edit_admin_job_theme_path(@job, @theme), notice: "更新が成功しました!"
+      redirect_to edit_admin_job_theme_path(@job, @theme), notice: "更新が成功しました!"
     else
-       flash[:notice] = "更新が正常に行われませんでした。内容をご確認ください。"
-       render :edit
+      flash[:notice] = "更新が正常に行われませんでした。内容をご確認ください。"
+      render :edit
     end
   end
 

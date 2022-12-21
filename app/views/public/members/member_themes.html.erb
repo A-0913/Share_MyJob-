@@ -7,7 +7,7 @@
 
       <div class="row col-10 justify-content-center">
         <div class="col-md-5 text-center border border-white bg-info text-white">投稿日</div>
-        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= theme.created_at.strftime('%Y/%m/%d') %></div>
+        <div class="col-md-5 text-center border border-dark bg-white text-dark"><%= theme.created_at.strftime("%Y/%m/%d") %></div>
       </div>
 
       <div class="row col-10 justify-content-center">
@@ -19,7 +19,7 @@
         <div class="col-md-5 text-center border border-white bg-info text-white">テーマ</div>
         <div class="col-md-5 text-center border border-dark bg-white text-dark">
           <% if theme.is_published? %>
-            <%= link_to job_theme_path(theme.jobs.first,theme) do %>
+            <%= link_to job_theme_path(theme.jobs.first, theme) do %>
               <%= theme.name %>
             <% end %>
           <% else %>
@@ -53,10 +53,10 @@
     <% end %>
 
   <div class="row justify-content-center py-4">
-    <%= paginate @themes, theme: 'twitter-bootstrap-4' %>
+    <%= paginate @themes, theme: "twitter-bootstrap-4" %>
   </div>
 
   <div class="row justify-content-center pb-4">
-    <%= link_to "マイページへ戻る" , member_path(current_member) , class: "btn btn-primary col-md-3" %>
+    <%= link_to "マイページへ戻る", member_path(current_member), class: "btn btn-primary col-md-3" %>
   </div>
 </div>

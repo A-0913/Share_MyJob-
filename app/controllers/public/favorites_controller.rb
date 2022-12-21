@@ -10,6 +10,4 @@ class Public::FavoritesController < ApplicationController
     @comment = Comment.find(params[:comment_id])
     current_member.favorites.find_by(comment_id: @comment.id).destroy
   end
-
-
 end

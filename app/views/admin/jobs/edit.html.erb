@@ -13,9 +13,9 @@
             </div>
             <div class="col-md-9">
               <% if @job.genre %>
-                <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name, @job.genre.id), include_blank: 'ジャンルを選択してください' %>
+                <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name, @job.genre.id), include_blank: "ジャンルを選択してください" %>
               <% else %>
-                <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), include_blank: 'ジャンルを選択してください' %>
+                <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), include_blank: "ジャンルを選択してください" %>
               <% end %>
             </div>
           </div>
@@ -27,7 +27,7 @@
               <%= f.label :name, "職業名" %>
             </div>
             <div class="col-md-9">
-              <%= f.text_field :name, class: 'form-control' %>
+              <%= f.text_field :name, class: "form-control" %>
             </div>
           </div>
         </div>
@@ -38,7 +38,7 @@
               <%= f.label :contact, "管理人への連絡事項" %>
             </div>
             <div class="col-md-9">
-              <%= f.text_area :contact, placeholder: "連絡事項がありましたらご入力下さい", class: 'form-control' %>
+              <%= f.text_area :contact, placeholder: "連絡事項がありましたらご入力下さい", class: "form-control" %>
             </div>
           </div>
         </div>
@@ -71,12 +71,12 @@
             <div class="col-md-7 h-100 d-flex flex-column align-self-center">
               <div class="row">
                 <div class="col-md-3 h-100 d-flex align-self-center">
-                  <%= f.radio_button :is_checked, :false, class: 'mr-2' %>
-                  <%= f.label :is_checked, "未確認", value: :false, class: 'p-0 m-0' %>
+                  <%= f.radio_button :is_checked, :false, class: "mr-2" %>
+                  <%= f.label :is_checked, "未確認", value: :false, class: "p-0 m-0" %>
                 </div>
                 <div class="col-md-3 h-100 d-flex align-self-center">
-                  <%= f.radio_button :is_checked, :true, class: 'mr-2' %>
-                  <%= f.label :is_checked, "確認済み", value: :true, class: 'p-0 m-0' %>
+                  <%= f.radio_button :is_checked, :true, class: "mr-2" %>
+                  <%= f.label :is_checked, "確認済み", value: :true, class: "p-0 m-0" %>
                 </div>
               </div>
             </div>
@@ -84,10 +84,10 @@
         </div>
 
         <div class="row justify-content-center pt-4">
-          <%= f.submit "更新" , class: 'btn btn-success col-md-5'  %>
+          <%= f.submit "更新", class: "btn btn-success col-md-5" %>
         </div>
         <div class="row justify-content-center py-4">
-          <%= link_to "職業詳細へ戻る" , admin_job_path(@job), class: 'btn btn-primary col-md-5' %>
+          <%= link_to "職業詳細へ戻る", admin_job_path(@job), class: "btn btn-primary col-md-5" %>
         </div>
 
       <% end %>
