@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Theme, "モデルに関するテスト", type: :model do
+  let!(:job) { build(:job) }
   let!(:theme) { build(:theme) }
 
   describe '実際に保存してみる' do

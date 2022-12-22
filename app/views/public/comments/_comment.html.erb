@@ -41,7 +41,7 @@
         <%= render partial: "public/favorites/favorite", locals:{job: comment.job, theme: comment.theme, comment: comment} %>
       </span>
 
-      <span id="comments_destroy">
+      <span id="comments_destroy_<%= comment.id %>">
         <%= render partial: "public/comments/destroy", locals:{job: comment.job, theme: comment.theme, comment: comment} %>
       </span>
 

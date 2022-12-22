@@ -2,7 +2,8 @@ FactoryBot.define do
   factory :comment do
     association :member
     association :job
-    association :theme
+    theme { job.themes.first }
+
     comment { Faker::Lorem.characters(number:5) }
   end
 end
