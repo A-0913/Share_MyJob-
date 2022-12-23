@@ -10,12 +10,12 @@ describe '投稿のテスト' do
     click_on 'ログイン'
   end
   #let!(:genre) { create(:genre, name:'hoge') }
-  describe 'ジャンル一覧画面(admin_genres_path)のテスト' do
+  describe 'ジャンル一覧画面のテスト' do
     before do
       visit admin_genres_path
     end
     context '表示の確認' do
-      it 'admin_genres_pathが"/admin/genres"であるか' do
+      it 'ジャンル一覧画面のパスが適切であるか' do
         expect(current_path).to eq('/admin/genres')
       end
       it '新規登録ボタンが表示される' do
@@ -51,18 +51,18 @@ describe '投稿のテスト' do
   end
 
   describe 'ジャンル編集のテスト' do
-    describe 'ジャンル編集画面(edit_admin_genre_path)のテスト' do
+    describe 'ジャンル編集画面のテスト' do
       before do
         visit edit_admin_genre_path(genre)
       end
       context '表示の確認' do
-        it 'edit_admin_genre_pathが"/admin/jobs/1"であるか' do
-          expect(current_path).to eq('/admin/genres/1/edit')
+        it 'ジャンル編集画面のパスが適切であるか' do
+          expect(current_path).to eq("/admin/genres/#{genre.id}/edit")
         end
-        it '変更を更新するボタンが表示される' do
+        it '変更を更新するボタンが表示されるか' do
           expect(page).to have_button '変更を更新する'
         end
-        it 'ジャンル一覧へ戻るボタンが表示される' do
+        it 'ジャンル一覧へ戻るボタンが表示されるか' do
           expect(page).to have_link 'ジャンル一覧へ戻る', href: "/admin/genres"
         end
         it 'ジャンル入力欄が同一のページに表示されているか' do

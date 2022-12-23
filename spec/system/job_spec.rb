@@ -9,12 +9,12 @@ describe '職業投稿のテスト' do
     fill_in 'member[password]', with: member.password
     click_on 'ログイン'
   end
-  describe '職業一覧画面(jobs_path)のテスト' do
+  describe '職業一覧画面のテスト' do
     before do
       visit jobs_path
     end
     context '表示の確認' do
-      it 'jobs_pathが"/jobs"であるか' do
+      it '職業一覧画面のパスが適切であるか' do
         expect(current_path).to eq('/jobs')
       end
       it '職業を追加するボタンが表示される' do
@@ -27,7 +27,7 @@ describe '職業投稿のテスト' do
       visit new_job_path
     end
     context '表示の確認' do
-      it 'new_job_pathが"/jobs/new"であるか' do
+      it '職業投稿画面のパスが適切であるか' do
         expect(current_path).to eq('/jobs/new')
       end
       it '職業を追加するボタンが表示されているか' do
@@ -69,26 +69,26 @@ describe '職業投稿のテスト' do
       fill_in 'admin[password]', with: admin.password
       click_on 'ログイン'
     end
-    describe '職業詳細画面(admin_job_path)のテスト' do
+    describe '職業詳細画面のテスト' do
       before do
         visit admin_job_path(job)
       end
       context '表示の確認' do
-        it 'admin_job_pathが"/admin/jobs/1"であるか' do
-          expect(current_path).to eq('/admin/jobs/1')
+        it '管理者側の職業詳細画面のパスが適切であるか' do
+          expect(current_path).to eq("/admin/jobs/#{job.id}")
         end
-        it '編集するが表示される' do
+        it '編集するリンクが表示されるか' do
           expect(page).to have_link '編集する', href: "/admin/jobs/1/edit"
         end
       end
     end
-    describe "職業編集画面(edit_admin_job_path)のテスト" do
+    describe "職業編集画面のテスト" do
       before do
         visit edit_admin_job_path(job)
       end
       context '表示の確認' do
-        it 'edit_admin_job_pathが"/admin/jobs/1/edit"であるか' do
-          expect(current_path).to eq('/admin/jobs/1/edit')
+        it '管理者側の職業編集画面のパスが適切であるか' do
+          expect(current_path).to eq("/admin/jobs/#{job.id}/edit")
         end
         it '更新ボタンが表示されているか' do
           expect(page).to have_button '更新'

@@ -5,9 +5,9 @@ describe '会員登録のテスト' do
   before do
     visit new_member_registration_path
   end
-  describe "新規登録画面(new_member_registration_path)のテスト" do
+  describe "新規登録画面のテスト" do
     context '表示の確認' do
-      it 'new_member_registrationが"/members/sign_up"であるか' do
+      it '新規登録画面のパスが適切であるか' do
         expect(current_path).to eq('/members/sign_up')
       end
       it '新規登録ボタンが表示されているか' do
@@ -75,13 +75,13 @@ describe '会員登録のテスト' do
       fill_in 'member[password]', with: member.password
       click_on 'ログイン'
     end
-    describe '会員情報編集画面(edit_member_path)のテスト' do
+    describe '会員情報編集画面のテスト' do
       before do
         visit edit_member_path(member)
       end
       context '表示の確認' do
-        it 'edit_member_pathが"/members/1/edit"であるか' do
-          expect(current_path).to eq('/members/1/edit')
+        it '会員情報編集画面のパスが適切であるか' do
+          expect(current_path).to eq("/members/#{member.id}/edit")
         end
         it '更新するボタンが表示される' do
           expect(page).to have_button '更新する'
@@ -171,12 +171,12 @@ describe '会員登録のテスト' do
       fill_in 'member[password]', with: member.password
       click_on 'ログイン'
     end
-    describe '会員退会画面(confirm_members_path)のテスト' do
+    describe '会員退会画面のテスト' do
       before do
         visit confirm_members_path
       end
       context '表示の確認' do
-        it 'confirm_members_pathが"/members/confirm"であるか' do
+        it '会員退会画面のパスが適切であるか' do
           expect(current_path).to eq('/members/confirm')
         end
         it '退会するボタンが表示される' do
