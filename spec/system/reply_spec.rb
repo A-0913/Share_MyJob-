@@ -68,7 +68,7 @@ describe 'comment投稿のテスト' do
         expect(find("#reply_destroy_#{reply.id}"))
       end
     end
-    describe 'コメント削除のテスト' do
+    describe '会員側の返信コメント削除機能のテスト' do
       before do
         visit job_theme_comment_replies_path(reply.comment.job, reply.comment.theme, reply.comment)
       end
@@ -78,7 +78,7 @@ describe 'comment投稿のテスト' do
         end
       end
       context 'コメント削除処理に関するテスト' do
-        it '投稿後のパスは正しいか' do
+        it '削除後のパスは正しいか' do
           find("#reply_destroy_#{reply.id}").click
           expect(page).to have_current_path job_theme_comment_replies_path(reply.comment.job, reply.comment.theme, reply.comment)
         end
@@ -86,7 +86,7 @@ describe 'comment投稿のテスト' do
     end
   end
 
-  describe 'comment削除のテスト' do
+  describe '管理者側の返信コメント削除機能のテスト' do
     let!(:admin) { create(:admin) }
     before do
       visit new_admin_session_path
