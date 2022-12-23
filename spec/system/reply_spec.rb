@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe 'comment投稿のテスト' do
   let!(:member) { create(:member) }
-  let!(:member2) { create(:member) }
   let!(:job) { create(:job) }
   let!(:comment) { create(:comment) }
   let!(:reply) { create(:reply) }
@@ -61,6 +60,11 @@ describe 'comment投稿のテスト' do
         fill_in 'reply[reply]', with: Faker::Lorem.characters(number:10)
         click_on '送信'
         expect(current_path).to eq("/jobs/#{reply.comment.job.id}/themes/#{reply.comment.theme.id}/comments/#{reply.comment.id}/replies")
+      end
+      it '投稿に成功しサクセスメッセージが表示されるか' do
+        fill_in 'reply[reply]', with: Faker::Lorem.characters(number:10)
+        click_on '送信'
+        expect(page).to have_content '返信コメントを送信しました！'
       end
       it '投稿後の返信コメントに削除ボタンが付与されているか' do
         fill_in 'reply[reply]', with: Faker::Lorem.characters(number:10)
