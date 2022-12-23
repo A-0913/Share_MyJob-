@@ -48,28 +48,32 @@
       <span>
         <!--管理者としてログインしている場合の通報ボタンの表示-->
         <% if admin_signed_in? %>
-          <% if comment.reports.exists?(reply_id: nil) %>
-            <button type="button" class="btn btn-danger">
-              <i class="fa-solid fa-triangle-exclamation"></i>
-            </button>
-          <% else %>
-            <button type="button" class="btn btn-secondary">
-              <i class="fa-solid fa-triangle-exclamation"></i>
-            </button>
-          <% end %>
+          <span id="admin_comment_report_<%= comment.id %>">
+            <% if comment.reports.exists?(reply_id: nil) %>
+              <button type="button" class="btn btn-danger">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </button>
+            <% else %>
+              <button type="button" class="btn btn-secondary">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </button>
+            <% end %>
+          </span>
         <% end %>
 
         <!--ゲストユーザー以外の会員としてログインしている場合の通報（自分以外のコメントを通報できる）ボタンの表示-->
         <% if member_signed_in? && !current_member.guest? && comment.member != current_member %>
-          <% if comment.reported_by?(current_member, comment) %>
-            <button type="button" class="btn btn-secondary">
-              <i class="fa-solid fa-triangle-exclamation"></i>
-            </button>
-          <% else %>
-            <%= link_to  new_job_theme_comment_report_path(comment.job, comment.theme, comment), class: "btn btn-warning" do %>
-              <i class="fa-solid fa-triangle-exclamation"></i>
+          <span id="member_comment_report_<%= comment.id %>">
+            <% if comment.reported_by?(current_member, comment) %>
+              <button type="button" class="btn btn-secondary">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </button>
+            <% else %>
+              <%= link_to  new_job_theme_comment_report_path(comment.job, comment.theme, comment), class: "btn btn-warning" do %>
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              <% end %>
             <% end %>
-          <% end %>
+          </span>
         <% end %>
       </span>
 
