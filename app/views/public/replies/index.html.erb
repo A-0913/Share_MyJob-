@@ -69,11 +69,13 @@
         <div class="col-2 align-self-center">
           <div class="balloon5">
 
-            <% if reply.member == current_member || admin_signed_in? %>
-              <%= link_to  job_theme_comment_reply_path(@comment.job, @comment.theme, @comment, reply), method: :delete, remote: true,  data: { confirm: "本当に消しますか？" }, class: "btn btn-danger" do %>
-                <i class="fas fa-trash-alt"></i>
+              <% if reply.member == current_member || admin_signed_in? %>
+                <span id="reply_destroy_<%= reply.id %>">
+                  <%= link_to  job_theme_comment_reply_path(@comment.job, @comment.theme, @comment, reply), method: :delete, remote: true,  data: { confirm: "本当に消しますか？" }, class: "btn btn-danger" do %>
+                    <i class="fas fa-trash-alt"></i>
+                  <% end %>
+                </span>
               <% end %>
-            <% end %>
 
             <span>
               <!--管理者としてログインしている場合の通報ボタンの表示-->

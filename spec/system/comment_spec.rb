@@ -11,12 +11,12 @@ describe 'comment投稿のテスト' do
     click_on 'ログイン'
   end
 
-  describe 'コメント投稿画面(job_theme_path)のテスト' do
+  describe '会員側のコメント投稿機能のテスト' do
     before do
       visit job_theme_path(comment.job, comment.theme)
     end
     context '表示の確認' do
-      it 'job_theme_pathが適切であるか' do
+      it 'コメント詳細画面のパスが適切であるか' do
         expect(current_path).to eq("/jobs/#{comment.job.id}/themes/#{comment.theme.id}")
       end
       it 'コメント送信ボタンが表示されているか' do
@@ -46,7 +46,7 @@ describe 'comment投稿のテスト' do
       end
     end
   end
-  describe 'コメント削除のテスト' do
+  describe '会員側のコメント削除機能のテスト' do
     before do
       visit job_theme_path(comment.job, comment.theme)
     end
@@ -63,7 +63,7 @@ describe 'comment投稿のテスト' do
     end
   end
 
-  describe 'comment削除のテスト' do
+  describe '管理者側のコメント削除機能のテスト' do
     let!(:admin) { create(:admin) }
     before do
       visit new_admin_session_path
@@ -71,12 +71,12 @@ describe 'comment投稿のテスト' do
       fill_in 'admin[password]', with: admin.password
       click_on 'ログイン'
     end
-    describe 'コメント一覧画面(job_theme_path)のテスト' do
+    describe 'コメント一覧画面のテスト' do
       before do
         visit job_theme_path(comment.job, comment.theme)
       end
       context '表示の確認' do
-        it 'job_theme_pathが適切であるか' do
+        it 'コメント詳細画面のパスが適切であるか' do
           expect(current_path).to eq("/jobs/#{comment.job.id}/themes/#{comment.theme.id}")
         end
         it 'コメント削除ボタンが表示されているか' do
