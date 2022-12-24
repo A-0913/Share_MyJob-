@@ -4,6 +4,7 @@ describe 'comment投稿のテスト' do
   let!(:member) { create(:member) }
   let!(:job) { create(:job) }
   let!(:comment) { create(:comment) }
+
   before do
     visit member_session_path
     fill_in 'member[email]', with: member.email

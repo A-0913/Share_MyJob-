@@ -3,7 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Comment, "モデルに関するテスト", type: :model do
-  let!(:comment) { build(:comment) }
+  let!(:job) { create(:job) }
+  let!(:comment) { create(:comment) }
 
   describe "実際に保存してみる" do
     it "有効な投稿内容の場合は保存されるか" do
