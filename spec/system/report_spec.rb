@@ -73,7 +73,7 @@ describe 'コメント及び返信コメントに対する通報機能のテス�
   end
   describe '返信コメントに対する通報テスト' do
     before do
-      visit new_job_theme_comment_report_path(report.reply.comment.job, report.reply.comment.theme, report.reply.comment, report.reply)
+      visit "/jobs/#{report.reply.comment.job.id}/themes/#{report.reply.comment.theme.id}/comments/#{report.reply.comment.id}/reports/new.#{report.reply.id}"
     end
     context '表示の確認（通報画面）' do
       it '返信コメントに対する通報画面のパスが適切であるか' do
@@ -85,9 +85,6 @@ describe 'コメント及び返信コメントに対する通報機能のテス�
       it '通報するのボタン表示されているか' do
         expect(page).to have_button '通報する'
       end
-      # it '返信一覧へ戻るのボタン表示されているか' do
-      #   expect(page).to have_link '返信一覧へ戻る', href: "/jobs/#{report.reply.comment.job.id}/themes/#{report.reply.comment.theme.id}/comments/#{report.reply.comment.id}/replies"
-      # end
     end
     context '返信コメントに対する通報機能に関するテスト' do
       it '返信コメント通報後のパスは正しいか' do
