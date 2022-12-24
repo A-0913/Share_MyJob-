@@ -1,6 +1,6 @@
 class Public::ThemesController < ApplicationController
 before_action :authenticate_any!
-before_action :block_gusest_member, only: [:create]
+before_action :block_gusest_member, only: [:new, :create]
 
   def show
     @job = Job.find(params[:job_id])
@@ -27,7 +27,7 @@ before_action :block_gusest_member, only: [:create]
     end
   end
 
-  #テーマ投稿画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処法
+  #テーマ投稿画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処
   def dummy
     redirect_to new_job_theme_path(params[:job_id])
   end

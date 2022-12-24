@@ -12,7 +12,7 @@
             <%= f.label :email, "メールアドレス" %>
           </div>
           <div class="col-md-8">
-            <%= f.email_field :email, autocomplete: "email", class: 'form-control' %>
+            <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
           </div>
         </div>
       </div>
@@ -23,7 +23,7 @@
             <%= f.label :password, "パスワード" %>
           </div>
           <div class="col-md-8">
-            <%= f.password_field :password, class: 'form-control' %>
+            <%= f.password_field :password, class: "form-control" %>
           </div>
         </div>
       </div>
@@ -33,7 +33,7 @@
           <div class="col-md-4 text-left text-md-center">
           </div>
           <div class="col-md-8">
-            <%= f.submit "ログイン", class: 'btn btn-primary col-md-8' %>
+            <%= f.submit "ログイン", class: "btn btn-primary col-md-8" %>
           </div>
         </div>
       </div>
@@ -41,9 +41,9 @@
     <% end %>
   </div>
 
-  <div class="row py-3 ">
-    <div class = "col-md-3 "></div>
-    <div class = "col-md-9 ">
+  <div class="row py-3">
+    <div class = "col-md-3"></div>
+    <div class = "col-md-9">
       <h5>会員登録がお済でない方</h5>
       <%= link_to "こちら ", new_member_registration_path %>から新規登録を行ってください。
     </div>

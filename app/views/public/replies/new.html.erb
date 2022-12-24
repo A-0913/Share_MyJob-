@@ -1,5 +1,5 @@
 <div class="container p-4">
-  <div class="text-info font-weight-bold">《<%= @job.name %>》<%= @theme.name %></div>
+  <div class="text-info font-weight-bold">《<%= @comment.job.name %>》<%= @comment.theme.name %></div>
   <div class="row justify-content-center py-2">
     <h3>コメント返信</h3>
   </div>
@@ -18,22 +18,22 @@
       <% end %>
     </ul>
   <% end %>
-  
-    <%= form_with model: [@job, @theme, @comment, @reply] , local: true do |f| %>
+
+    <%= form_with model: [@comment.job, @comment.theme, @comment, @reply], local: true do |f| %>
       <div class="form-group">
         <div class = "row py-4 justify-content-center">
           <div class="col-md-8">
-            <%= f.text_area :reply, placeholder: "※0文字では送信できません", class: 'form-control' %>
+            <%= f.text_area :reply, placeholder: "※0文字では送信できません", class: "form-control" %>
           </div>
         </div>
         <div class = "row justify-content-center">
-          <%= f.submit "送信" ,  class: "col-sm-3 "%>
+          <%= f.submit "送信", class: "col-sm-3" %>
         </div>
       </div>
     <% end %>
 
   <div class="row justify-content-center py-3">
-    <%= link_to "返信コメント一覧へ戻る" , job_theme_comment_replies_path(@job,@theme,@comment) , class: "btn btn-primary col-sm-3" %>
+    <%= link_to "返信コメント一覧へ戻る", job_theme_comment_replies_path(@comment.job, @comment.theme, @comment) , class: "btn btn-primary col-sm-3" %>
   </div>
 
 </div>

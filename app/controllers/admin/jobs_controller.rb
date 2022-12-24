@@ -1,4 +1,4 @@
-class Admin::JobsController < ApplicationController
+class Admin::JobsController < Admin::AdminController
 
   def index
     @jobs = Job.all.order(created_at: :desc).page(params[:page]).per(5)
@@ -16,10 +16,10 @@ class Admin::JobsController < ApplicationController
   def update
     @job = Job.find(params[:id])
     if @job.update(job_update_params)
-       redirect_to admin_job_path(@job), notice: "更新が成功しました!"
+      redirect_to admin_job_path(@job), notice: "更新が成功しました!"
     else
-       flash[:notice] = "更新が正常に行われませんでした。内容をご確認ください。"
-       render :edit
+      flash[:notice] = "更新が正常に行われませんでした。内容をご確認ください。"
+      render :edit
     end
   end
 

@@ -1,5 +1,4 @@
 class Public::CommentsController < ApplicationController
-  before_action :authenticate_any!
   before_action :block_gusest_member
 
   def create
@@ -9,10 +8,10 @@ class Public::CommentsController < ApplicationController
 
     if comment.save
       @comments = Comment.where(theme_id: params[:theme_id], job_id: params[:job_id], is_published: true).order(created_at: :desc).page(params[:page]).per(7)
-      render :toggle
+      render "create.js.erb"
     else
       @comment = comment
-      render :error
+      render "error.js.erb"
     end
   end
 
@@ -21,7 +20,7 @@ class Public::CommentsController < ApplicationController
     comment.update(is_published: false)
     #↑is_publishedカラムをfalseに変更することによりコメントを非表示にする
     @comments = Comment.where(theme_id: params[:theme_id], job_id: params[:job_id], is_published: true).order(created_at: :desc).page(params[:page]).per(7)
-    render :toggle
+    render "destroy.js.erb"
   end
 
   private

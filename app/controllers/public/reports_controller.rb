@@ -1,9 +1,9 @@
 class Public::ReportsController < ApplicationController
   before_action :authenticate_member!
-  before_action :block_gusest_member, only: [:create]
+  before_action :block_gusest_member, only: [:new, :create]
 
   def new
-    set_comment
+    @comment = Comment.find(params[:comment_id])
     @reply = Reply.find(params[:reply_id]) if params[:reply_id]
     @report = Report.new
   end
@@ -13,7 +13,7 @@ class Public::ReportsController < ApplicationController
     @reply = Reply.find(params[:reply_id]) if params[:reply_id]
     @report = current_member.reports.new(report_params)
     @report.comment = @comment
-    @report.reply_id = Reply.find(params[:reply_id]).id if params[:reply_id]
+    @report.reply_id = @reply.id if params[:reply_id]
     if @report.save!
       flash[:notice] = "通報を受け付けました。ご報告ありがとうございました。"
       if params[:reply_id]
@@ -22,7 +22,6 @@ class Public::ReportsController < ApplicationController
         redirect_to job_theme_path(@comment.job, @comment.theme)
       end
     else
-      set_comment
       render :new
     end
   end
@@ -32,6 +31,4 @@ class Public::ReportsController < ApplicationController
   def report_params
     params.require(:report).permit(:reason)
   end
-
-
 end

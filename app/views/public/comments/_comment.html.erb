@@ -6,12 +6,12 @@
       <div class="faceicon">
         <% if admin_signed_in? %>
           <%= link_to admin_member_path(comment.member) do %>
-            <%=  image_tag comment.member.get_profile_image(70,70) %>
+            <%=  image_tag comment.member.get_profile_image(70, 70) %>
           <% end %>
         <% end %>
         <% if member_signed_in? %>
           <%= link_to member_path(comment.member) do %>
-            <%=  image_tag comment.member.get_profile_image(70,70) %>
+            <%=  image_tag comment.member.get_profile_image(70, 70) %>
           <% end %>
         <% end %>
       </div>
@@ -26,8 +26,8 @@
         </div>
       </div>
       <div class="text-right">
-        <%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %>
-        <%= link_to  job_theme_comment_replies_path(comment.job ,comment.theme ,comment) do %>
+        <%= comment.created_at.strftime("%Y年%m月%d日 %H:%M") %>
+        <%= link_to  job_theme_comment_replies_path(comment.job, comment.theme, comment) do %>
           <i class="fa-solid fa-message"></i><%= comment.replies.where(is_published: true).count %>件
         <% end %>
       </div>
@@ -38,38 +38,42 @@
     <div class="balloon5">
 
       <span id="comment_<%= comment.id %>">
-        <%= render partial: 'public/favorites/favorite', locals:{job: comment.job, theme: comment.theme, comment: comment} %>
+        <%= render partial: "public/favorites/favorite", locals:{job: comment.job, theme: comment.theme, comment: comment} %>
       </span>
 
-      <span id="comments_destroy">
-        <%= render partial: 'public/comments/destroy', locals:{job: comment.job, theme: comment.theme, comment: comment} %>
+      <span id="comments_destroy_<%= comment.id %>">
+        <%= render partial: "public/comments/destroy", locals:{job: comment.job, theme: comment.theme, comment: comment} %>
       </span>
 
       <span>
         <!--管理者としてログインしている場合の通報ボタンの表示-->
         <% if admin_signed_in? %>
-          <% if comment.reports.exists?(reply_id: nil) %>
-            <button type="button" class="btn btn-danger">
-              <i class="fa-solid fa-triangle-exclamation"></i>
-            </button>
-          <% else %>
-            <button type="button" class="btn btn-secondary">
-              <i class="fa-solid fa-triangle-exclamation"></i>
-            </button>
-          <% end %>
+          <span id="admin_comment_report_<%= comment.id %>">
+            <% if comment.reports.exists?(reply_id: nil) %>
+              <button type="button" class="btn btn-danger">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </button>
+            <% else %>
+              <button type="button" class="btn btn-secondary">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </button>
+            <% end %>
+          </span>
         <% end %>
 
         <!--ゲストユーザー以外の会員としてログインしている場合の通報（自分以外のコメントを通報できる）ボタンの表示-->
         <% if member_signed_in? && !current_member.guest? && comment.member != current_member %>
-          <% if comment.reported_by?(current_member, comment) %>
-            <button type="button" class="btn btn-secondary">
-              <i class="fa-solid fa-triangle-exclamation"></i>
-            </button>
-          <% else %>
-            <%= link_to  new_job_theme_comment_report_path(comment.job ,comment.theme ,comment), class: "btn btn-warning" do %>
-              <i class="fa-solid fa-triangle-exclamation"></i>
+          <span id="member_comment_report_<%= comment.id %>">
+            <% if comment.reported_by?(current_member, comment) %>
+              <button type="button" class="btn btn-secondary">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </button>
+            <% else %>
+              <%= link_to  new_job_theme_comment_report_path(comment.job, comment.theme, comment), class: "btn btn-warning" do %>
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              <% end %>
             <% end %>
-          <% end %>
+          </span>
         <% end %>
       </span>
 

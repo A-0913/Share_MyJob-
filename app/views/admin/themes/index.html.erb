@@ -1,4 +1,5 @@
 <div class = "container p-4">
+
   <% @jobs.each do |job| %>
     <% job_theme = job.themes.where(is_checked: false) %>
     <% if job_theme.present? %>
@@ -7,6 +8,7 @@
     </h4>
     <% end %>
   <% end %>
+
   <div class = "row justify-content-center pt-3">
     <h3>職業選択画面</h3>
   </div>
@@ -46,10 +48,10 @@
   <% end %>
 
   <div class="row justify-content-center py-4 ">
-    <%= paginate @jobs, theme: 'twitter-bootstrap-4' %>
+    <%= paginate @jobs, theme: "twitter-bootstrap-4" %>
   </div>
 
   <div class="row justify-content-center pb-4">
-    <%= link_to "TOPへ戻る" , admin_path , class: "btn btn-primary col-md-3" %>
+    <%= link_to "TOPへ戻る", admin_path , class: "btn btn-primary col-md-3" %>
   </div>
 </div>

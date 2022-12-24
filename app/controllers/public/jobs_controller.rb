@@ -1,6 +1,6 @@
 class Public::JobsController < ApplicationController
   before_action :authenticate_any!
-  before_action :block_gusest_member, only: [:create]
+  before_action :block_gusest_member, only: [:new, :create]
 
   def index
     @genres = Genre.all

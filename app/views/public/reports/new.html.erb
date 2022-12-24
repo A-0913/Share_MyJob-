@@ -4,7 +4,7 @@
   </div>
 
   <%= form_with model: @report ,url: job_theme_comment_reports_path(reply_id: params[:reply_id]) do |f| %>
-  <div class = "row justify-content-center ">
+  <div class = "row justify-content-center">
     <div class="row col-10 justify-content-center">
       <div class="col-md-3 d-flex align-items-center border border-white text-white bg-dark">通報コメント</div>
       <div class="col-md-9 border border-dark bg-white text-dark p-3">
@@ -24,7 +24,7 @@
           <div class="col-md-1">
             <%= f.radio_button :reason, :"法律違反である（プライバシー侵害、企業情報漏洩、名誉棄損等）", checked: true %>
           </div>
-          <div class="col-md-11">
+          <div class="col-md-10">
             <%= f.label :reason, "法律違反である（プライバシー侵害、企業情報漏洩、名誉棄損等）", value: :"法律違反である（プライバシー侵害、企業情報漏洩、名誉棄損等）" %>
           </div>
         </div>
@@ -33,7 +33,7 @@
           <div class="col-md-1">
             <%= f.radio_button :reason, :"社会的に不適切である（公序良俗に反する）" %>
           </div>
-          <div class="col-md-11">
+          <div class="col-md-10">
             <%= f.label :reason, "社会的に不適切である（公序良俗に反する）", value: :"社会的に不適切である（公序良俗に反する）" %>
           </div>
         </div>
@@ -42,7 +42,7 @@
           <div class="col-md-1">
             <%= f.radio_button :reason, :"上記以外で相応しくない発言である" %>
           </div>
-          <div class="col-md-11">
+          <div class="col-md-10">
             <%= f.label :reason, "上記以外で相応しくない発言である", value: :"上記以外で相応しくない発言である" %>
           </div>
         </div>
@@ -57,8 +57,8 @@
 
   <div class="row justify-content-center py-3">
     <% if params[:reply_id] %>
-      <%= link_to "返信一覧へ戻る" , job_theme_comment_replies_path(@job,@theme,@comment) , class: "btn btn-primary col-md-3" %>
+      <%= link_to "返信一覧へ戻る", job_theme_comment_replies_path(@comment.job, @comment.theme, @comment), class: "btn btn-primary col-md-3" %>
     <% else %>
-      <%= link_to "掲示板へ戻る" , job_theme_path(@job,@theme) , class: "btn btn-primary col-md-3" %>
+      <%= link_to "掲示板へ戻る", job_theme_path(@comment.job, @comment.theme), class: "btn btn-primary col-md-3" %>
     <% end %>
   </div>
