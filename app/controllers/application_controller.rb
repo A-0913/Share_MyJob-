@@ -25,11 +25,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  #複数のコントローラ内で使用するため、こちらに定義する
-  def set_comment
-    @job = Job.find(params[:job_id])
-    @theme = Theme.find(params[:theme_id])
-    @comment = Comment.find(params[:comment_id])
-  end
-
 end

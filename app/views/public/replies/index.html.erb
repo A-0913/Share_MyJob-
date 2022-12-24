@@ -69,37 +69,43 @@
         <div class="col-2 align-self-center">
           <div class="balloon5">
 
-            <% if reply.member == current_member || admin_signed_in? %>
-              <%= link_to  job_theme_comment_reply_path(@comment.job, @comment.theme, @comment, reply), method: :delete, remote: true,  data: { confirm: "本当に消しますか？" }, class: "btn btn-danger" do %>
-                <i class="fas fa-trash-alt"></i>
+              <% if reply.member == current_member || admin_signed_in? %>
+                <span id="reply_destroy_<%= reply.id %>">
+                  <%= link_to  job_theme_comment_reply_path(@comment.job, @comment.theme, @comment, reply), method: :delete, remote: true,  data: { confirm: "本当に消しますか？" }, class: "btn btn-danger" do %>
+                    <i class="fas fa-trash-alt"></i>
+                  <% end %>
+                </span>
               <% end %>
-            <% end %>
 
             <span>
               <!--管理者としてログインしている場合の通報ボタンの表示-->
               <% if admin_signed_in? %>
-                <% if reply.reports.count > 0 %>
-                  <button type="button" class="btn btn-danger">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                  </button>
-                <% else %>
-                  <button type="button" class="btn btn-secondary">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                  </button>
-                <% end %>
+                <span id="admin_reply_report_<%= reply.id %>">
+                  <% if reply.reports.count > 0 %>
+                    <button type="button" class="btn btn-danger">
+                      <i class="fa-solid fa-triangle-exclamation"></i>
+                    </button>
+                  <% else %>
+                    <button type="button" class="btn btn-secondary">
+                      <i class="fa-solid fa-triangle-exclamation"></i>
+                    </button>
+                  <% end %>
+                </span>
               <% end %>
 
               <!--ゲストユーザー以外の会員としてログインしている場合の通報（自分以外のコメントを通報できる）ボタンの表示-->
               <% if member_signed_in? && !current_member.guest? && reply.member != current_member %>
-                <% if reply.reported_by?(current_member, reply) %>
-                  <button type="button" class="btn btn-secondary">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                  </button>
-                <% else %>
-                  <%= link_to new_job_theme_comment_report_path(@comment.job, @comment.theme, @comment, reply_id: reply), class: "btn btn-warning" do %>
-                    <i class="fa-solid fa-triangle-exclamation"></i>
+                <span id="member_reply_report_<%= reply.id %>">
+                  <% if reply.reported_by?(current_member, reply) %>
+                    <button type="button" class="btn btn-secondary">
+                      <i class="fa-solid fa-triangle-exclamation"></i>
+                    </button>
+                  <% else %>
+                    <%= link_to new_job_theme_comment_report_path(@comment.job, @comment.theme, @comment, reply_id: reply), class: "btn btn-warning" do %>
+                      <i class="fa-solid fa-triangle-exclamation"></i>
+                    <% end %>
                   <% end %>
-                <% end %>
+                </span>
               <% end %>
             </span>
 
