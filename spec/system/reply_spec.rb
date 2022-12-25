@@ -86,6 +86,13 @@ describe 'comment投稿のテスト' do
           find("#reply_destroy_#{reply.id}").click
           expect(page).to have_current_path job_theme_comment_replies_path(reply.comment.job, reply.comment.theme, reply.comment)
         end
+        it '削除に成功するとサクセスメッセージが表示されるか' do
+          find("#reply_destroy_#{reply.id}").click
+          expect{
+            expect(page.accept_confirm).to eq "本当に消しますか？"
+            expect(page).to have_content '返信コメントを削除しました！'
+          }
+        end
       end
     end
   end

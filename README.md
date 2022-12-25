@@ -56,6 +56,7 @@
 
 ### 開発効率向上
 * bootstrap
+* RSpec
 
 ### テスト仕様書
 https://docs.google.com/spreadsheets/d/12r7phHhGyXB8V1uRow5PISFnr70ukvsh/edit#gid=1494678040

@@ -28,7 +28,7 @@ before_action :block_gusest_member, only: [:new, :create, :destroy]
     reply = Reply.find(params[:id])
     reply.update(is_published: false)
     #is_publishedカラムをfalseに変更することにより返信を非表示にする
-    redirect_to job_theme_comment_replies_path(@comment.job, @comment.theme, @comment), notice: "返信コメントを送信しました！"
+    redirect_to job_theme_comment_replies_path(@comment.job, @comment.theme, @comment), notice: "返信コメントを削除しました！"
   end
 
   private
