@@ -12,11 +12,7 @@ class Comment < ApplicationRecord
   validate :slander_check
 
   def favorited_by?(member)
-    if member.nil?
-      false
-    else
-      favorites.exists?(member_id: member.id)
-    end
+    favorites.exists?(member_id: member.id)
   end
 
   def reported_by?(member, comment)
