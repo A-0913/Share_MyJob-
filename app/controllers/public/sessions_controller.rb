@@ -18,16 +18,6 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
-  def reject_member
-    @member = Member.find_by(email: params[:member][:email])
-    if @member
-      if @member.valid_password?(params[:member][:password]) && (@member.is_deleted?)
-        redirect_to new_member_session_path, notice: "退会済みです。再度ご登録をしてご利用ください。"
-      end
-    end
-  end
-
   def new_guest
     member = Member.guest
     sign_in member   # ユーザーをログインさせる

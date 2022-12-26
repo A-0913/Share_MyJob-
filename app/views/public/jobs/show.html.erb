@@ -22,10 +22,8 @@
   </div>
 
   <div class="row pb-4 justify-content-center">
-    <% unless admin_signed_in? %>
-      <% if !current_member.guest? %>
-        <%= link_to "テーマを追加する", new_job_theme_path(@job), class: "btn btn-success col-sm-4" %>
-      <% end %>
+    <% if !admin_signed_in? && !current_member.guest? %>
+      <%= link_to "テーマを追加する", new_job_theme_path(@job), class: "btn btn-success col-sm-4" %>
     <% end %>
   </div>
 
