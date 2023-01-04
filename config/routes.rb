@@ -59,7 +59,7 @@ Rails.application.routes.draw do
         get :member_comment_replies
       end
     end
-    resources :jobs, only: [:new, :create, :index, :show] do
+    resources :jobs, only: %i(new create index show) do
       resources :themes, only: [:new, :create, :show] do
         resources :comments, only: [:create, :destroy] do
           resource :favorites, only: [:create, :destroy]
