@@ -1,6 +1,6 @@
 class Public::ReportsController < ApplicationController
   before_action :authenticate_member!
-  before_action :block_gusest_member, only: [:new, :create]
+  before_action :block_gusest_member, only: %i(new create)
 
   def new
     @comment = Comment.find(params[:comment_id])

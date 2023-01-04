@@ -20,7 +20,7 @@ class Comment < ApplicationRecord
   end
 
   def slander_check
-    slander_words = ["バカ","きもい","死ね","ブサイク","アホ","殺す","キモい","クズ","消えろ","失せろ","ブス","クソ","ばか"]
+    slander_words = %w(バカ きもい 死ね ブサイク アホ 殺す キモい クズ 消えろ 失せろ ブス クソ ばか)
 
     slander_word = slander_words.find {|w| self.comment.include?(w) }
     if slander_word.present?

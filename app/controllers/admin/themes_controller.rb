@@ -35,5 +35,4 @@ class Admin::ThemesController < Admin::AdminController
       params.require(:theme).permit( :name, :contact, :is_published, :is_checked)
     end
 
-
 end

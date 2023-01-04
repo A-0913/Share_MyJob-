@@ -29,28 +29,28 @@ Rails.application.routes.draw do
   get "/admin/genres/:id" => "admin/genres#dummy"
 
   namespace :admin do
-    resources :members, only: [:update, :edit, :show, :index] do #[別の書き方]resources :members, only: %i(update edit show index)
+    resources :members, only: %i(update edit show index) do
       member do
         get :member_jobs
         get :member_themes
       end
     end
-    resources :genres, only: [:index, :edit, :create, :update]
-    resources :jobs, only: [:index, :show, :edit, :update]
-    resources :themes, only: [:index]
+    resources :genres, only: %i(index edit create update)
+    resources :jobs, only: %i(index show edit update)
+    resources :themes, only: %i(index)
     resources :jobs do
-      resources :themes, only: [:edit, :update] do
+      resources :themes, only: %i(edit update) do
         get :theme_in_job, on: :collection
       end
     end
-    resources :reports, only: [:index, :show, :edit, :update]
+    resources :reports, only: %i(index show edit update)
   end
 
   #【管理者側】テーマ編集画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処
   get "admin/jobs/:job_id/themes/:id" => "admin/themes#dummy"
 
   scope module: :public do
-    resources :members, only: [:update, :edit, :show] do
+    resources :members, only: %i(update edit show) do
       get :confirm, on: :collection
       member do
         get :member_jobs
@@ -59,12 +59,12 @@ Rails.application.routes.draw do
         get :member_comment_replies
       end
     end
-    resources :jobs, only: [:new, :create, :index, :show] do
-      resources :themes, only: [:new, :create, :show] do
-        resources :comments, only: [:create, :destroy] do
-          resource :favorites, only: [:create, :destroy]
-          resources :reports, only: [:new, :create]
-          resources :replies, only: [:index, :new, :create, :destroy]
+    resources :jobs, only: %i(new create index show) do
+      resources :themes, only: %i(new create show) do
+        resources :comments, only: %i(create destroy) do
+          resource :favorites, only: %i(create destroy)
+          resources :reports, only: %i(new create)
+          resources :replies, only: %i(index new create destroy)
         end
       end
     end

@@ -1,6 +1,6 @@
 class Public::ThemesController < ApplicationController
 before_action :authenticate_any!
-before_action :block_gusest_member, only: [:new, :create]
+before_action :block_gusest_member, only: %i(new create)
 
   def show
     @job = Job.find(params[:job_id])
