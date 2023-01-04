@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get "/admin/genres/:id" => "admin/genres#dummy"
 
   namespace :admin do
-    resources :members, only: [:update, :edit, :show, :index] do #[別の書き方]resources :members, only: %i(update edit show index)
+    resources :members, only: %i(update edit show index) do
       member do
         get :member_jobs
         get :member_themes
