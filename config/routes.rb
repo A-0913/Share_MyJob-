@@ -35,7 +35,7 @@ Rails.application.routes.draw do
         get :member_themes
       end
     end
-    resources :genres, only: [:index, :edit, :create, :update]
+    resources :genres, only: %i(index edit create update)
     resources :jobs, only: [:index, :show, :edit, :update]
     resources :themes, only: [:index]
     resources :jobs do
