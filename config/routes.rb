@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   get "admin/jobs/:job_id/themes/:id" => "admin/themes#dummy"
 
   scope module: :public do
-    resources :members, only: [:update, :edit, :show] do
+    resources :members, only: %i(update edit show) do
       get :confirm, on: :collection
       member do
         get :member_jobs
