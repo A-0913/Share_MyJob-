@@ -1,6 +1,6 @@
 class Public::RepliesController < ApplicationController
 before_action :authenticate_any!
-before_action :block_gusest_member, only: [:new, :create, :destroy]
+before_action :block_gusest_member, only: %i(new create destroy)
 
   def index
     @comment = Comment.find(params[:comment_id])
