@@ -63,8 +63,8 @@ Rails.application.routes.draw do
       resources :themes, only: %i(new create show) do
         resources :comments, only: %i(create destroy) do
           resource :favorites, only: %i(create destroy)
-          resources :reports, only: [:new, :create]
-          resources :replies, only: [:index, :new, :create, :destroy]
+          resources :reports, only: %i(new create)
+          resources :replies, only: %i(index new create destroy)
         end
       end
     end
