@@ -37,13 +37,13 @@ Rails.application.routes.draw do
     end
     resources :genres, only: %i(index edit create update)
     resources :jobs, only: %i(index show edit update)
-    resources :themes, only: [:index]
+    resources :themes, only: %i(index)
     resources :jobs do
       resources :themes, only: %i(edit update) do
         get :theme_in_job, on: :collection
       end
     end
-    resources :reports, only: [:index, :show, :edit, :update]
+    resources :reports, only: %i(index show edit update)
   end
 
   #【管理者側】テーマ編集画面で、エラーメッセージが表示されている時にリロードをするとRouting Errorが出てしまう事への対処
