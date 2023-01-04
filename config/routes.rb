@@ -62,7 +62,7 @@ Rails.application.routes.draw do
     resources :jobs, only: %i(new create index show) do
       resources :themes, only: %i(new create show) do
         resources :comments, only: %i(create destroy) do
-          resource :favorites, only: [:create, :destroy]
+          resource :favorites, only: %i(create destroy)
           resources :reports, only: [:new, :create]
           resources :replies, only: [:index, :new, :create, :destroy]
         end
