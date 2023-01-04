@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :nickname, :introduction, :belong])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i(last_name first_name nickname introduction belong))
   end
 
   #管理者もしくは会員のどちらかでログインをしていれば移動できるようにする
