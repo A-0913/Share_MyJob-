@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Reply, "モデルに関するテスト", type: :model do
+RSpec.describe Reply, "replyモデルに関するテスト", type: :model do
   let!(:reply) { build(:reply) }
 
   describe "実際に保存してみる" do
@@ -16,7 +16,7 @@ RSpec.describe Reply, "モデルに関するテスト", type: :model do
       reply.reply = ""
     end
 
-    it "replyが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
+    it "reply(返信内容)が空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってくるか" do
       expect(reply).to be_invalid
       expect(reply.errors[:reply]).to include("を入力してください")
     end
@@ -27,7 +27,7 @@ RSpec.describe Reply, "モデルに関するテスト", type: :model do
       reply.reply = "ばかやろう"
     end
 
-    it "reply内に指定の誹謗中傷ワードが入っていた場合、エラーメッセージが返ってきているか" do
+    it "返信内容に指定の誹謗中傷ワード（※reply.rbのslander_words参照）が入っていた場合、エラーメッセージが返ってくるか" do
       expect(reply).to be_invalid
       expect(reply.errors[:reply].first).to include("内に人を傷つける可能性のある言葉")
     end
