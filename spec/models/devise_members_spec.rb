@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Member, "モデルに関するテスト", type: :model do
+RSpec.describe Member, "memberモデルに関するテスト", type: :model do
   let!(:member) { build(:member) }
 
   describe "実際に保存してみる" do

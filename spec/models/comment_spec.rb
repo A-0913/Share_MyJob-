@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Comment, "モデルに関するテスト", type: :model do
+RSpec.describe Comment, "commentモデルに関するテスト", type: :model do
   let!(:job) { create(:job) }
   let!(:comment) { create(:comment) }
 
