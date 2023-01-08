@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Genre, "モデルに関するテスト", type: :model do
+RSpec.describe Genre, "genreモデルに関するテスト", type: :model do
   let!(:genre) { build(:genre) }
 
   describe "実際に保存してみる" do
