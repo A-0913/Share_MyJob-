@@ -105,7 +105,7 @@ describe 'comment投稿のテスト' do
       fill_in 'admin[password]', with: admin.password
       click_on 'ログイン'
     end
-    describe 'コメント一覧画面(job_theme_path)のテスト' do
+    describe 'コメント一覧画面のテスト' do
       before do
         visit job_theme_comment_replies_path(reply.comment.job, reply.comment.theme, reply.comment)
       end
