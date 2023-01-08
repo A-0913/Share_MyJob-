@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Report, "モデルに関するテスト", type: :model do
+RSpec.describe Report, "reportモデルに関するテスト", type: :model do
   let!(:report) { build(:report) }
 
   describe "実際に保存してみる" do

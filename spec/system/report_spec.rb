@@ -13,7 +13,7 @@ describe 'コメント及び返信コメントに対する通報機能のテス�
     click_on 'ログイン'
   end
 
-  describe 'コメントに対する通報機能のテスト' do
+  describe 'コメント一覧画面に関するテスト' do
     before do
       visit job_theme_path(report.comment.job, report.comment.theme)
     end
@@ -26,7 +26,7 @@ describe 'コメント及び返信コメントに対する通報機能のテス�
       end
     end
   end
-  describe 'コメントに対する通報テスト' do
+  describe 'コメントに対する通報機能テスト' do
     before do
       visit new_job_theme_comment_report_path(report.comment.job, report.comment.theme, report.comment)
     end
@@ -44,7 +44,7 @@ describe 'コメント及び返信コメントに対する通報機能のテス�
         expect(page).to have_link '掲示板へ戻る', href: "/jobs/#{report.comment.job.id}/themes/#{report.comment.theme.id}"
       end
     end
-    context '通報機能に関するテスト' do
+    context '通報処理後に関するテスト' do
       it 'コメント通報後のパスは正しいか' do
         choose "report_reason_法律違反であるプライバシー侵害企業情報漏洩名誉棄損等"
         click_on '通報する'
@@ -58,7 +58,7 @@ describe 'コメント及び返信コメントに対する通報機能のテス�
     end
   end
 
-  describe '返信コメントに対する通報機能のテスト' do
+  describe '返信コメント一覧画面に関するテスト' do
     before do
       visit job_theme_comment_replies_path(report.reply.comment.job, report.reply.comment.theme, report.reply.comment)
     end
@@ -71,7 +71,7 @@ describe 'コメント及び返信コメントに対する通報機能のテス�
       end
     end
   end
-  describe '返信コメントに対する通報テスト' do
+  describe '返信コメントに対する通報機能テスト' do
     before do
       visit "/jobs/#{report.reply.comment.job.id}/themes/#{report.reply.comment.theme.id}/comments/#{report.reply.comment.id}/reports/new.#{report.reply.id}"
     end
@@ -86,7 +86,7 @@ describe 'コメント及び返信コメントに対する通報機能のテス�
         expect(page).to have_button '通報する'
       end
     end
-    context '返信コメントに対する通報機能に関するテスト' do
+    context '返信コメントに対する通報処理後に関するテスト' do
       it '返信コメント通報後のパスは正しいか' do
         choose "report_reason_法律違反であるプライバシー侵害企業情報漏洩名誉棄損等"
         click_on '通報する'
@@ -108,7 +108,7 @@ describe 'コメント及び返信コメントに対する通報機能のテス�
       fill_in 'admin[password]', with: admin.password
       click_on 'ログイン'
     end
-    describe '通報編集画面のテスト' do
+    describe '通報の編集処理に関するテスト' do
       before do
         visit edit_admin_report_path(report)
       end

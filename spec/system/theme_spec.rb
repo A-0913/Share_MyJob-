@@ -10,7 +10,7 @@ describe 'テーマ投稿のテスト' do
     fill_in 'member[password]', with: member.password
     click_on 'ログイン'
   end
-  describe 'テーマ一覧画面(job_themes_path)のテスト' do
+  describe 'テーマ一覧画面のテスト' do
     before do
       visit job_path(job)
     end
@@ -23,7 +23,7 @@ describe 'テーマ投稿のテスト' do
       end
     end
   end
-  describe "テーマ投稿画面のテスト" do
+  describe 'テーマ投稿画面のテスト' do
     before do
       visit new_job_theme_path(job)
     end
@@ -59,7 +59,7 @@ describe 'テーマ投稿のテスト' do
     end
   end
 
-  describe 'テーマ編集のテスト' do
+  describe '管理者側のテーマ編集機能のテスト' do
     let!(:admin) { create(:admin) }
     before do
       visit new_admin_session_path
@@ -86,13 +86,13 @@ describe 'テーマ投稿のテスト' do
         end
       end
       context '更新処理に関するテスト' do
-        it '更新に成功しサクセスメッセージが表示されるか' do
+        it '確認ステータス及び表示ステータスの更新に成功しサクセスメッセージが表示されるか' do
           choose "theme_is_published_true"
           choose "theme_is_checked_true"
           click_button '更新する'
           expect(page).to have_content '更新が成功しました!'
         end
-        it '更新に失敗した趣旨のメッセージが表示されるか' do
+        it '更新に失敗した趣旨のメッセージが表示されるか(テーマ空白の場合)' do
           fill_in 'theme[name]', with: ''
           click_button '更新する'
           expect(page).to have_content '更新が正常に行われませんでした。内容をご確認ください。'

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'comment投稿のテスト' do
+describe 'コメント投稿のテスト' do
   let!(:member) { create(:member) }
   let!(:job) { create(:job) }
   let!(:comment) { create(:comment) }
@@ -28,13 +28,13 @@ describe 'comment投稿のテスト' do
       end
     end
     context '投稿処理に関するテスト' do
-      it '更新に失敗しエラーメッセージが表示されるか（コメント空白）' do
+      it '更新に失敗しエラーメッセージが表示されるか(コメント空白の場合)' do
         fill_in 'comment[comment]', with: ''
         click_button '送信'
         expect(page).to have_content 'を入力してください'
         expect(current_path).to eq("/jobs/#{comment.job.id}/themes/#{comment.theme.id}/comments")
       end
-      it '更新に失敗しエラーメッセージが表示されるか（誹謗中傷対策）' do
+      it '更新に失敗しエラーメッセージが表示されるか(誹謗中傷対策の場合)' do
         fill_in 'comment[comment]', with: 'ばかやろう'
         click_button '送信'
         expect(page).to have_content '内に人を傷つける可能性のある言葉'

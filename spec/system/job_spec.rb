@@ -22,7 +22,7 @@ describe '職業投稿のテスト' do
       end
     end
   end
-  describe "職業投稿画面(new_jobs_path)のテスト" do
+  describe "職業投稿画面のテスト" do
     before do
       visit new_job_path
     end
@@ -77,8 +77,8 @@ describe '職業投稿のテスト' do
         it '管理者側の職業詳細画面のパスが適切であるか' do
           expect(current_path).to eq("/admin/jobs/#{job.id}")
         end
-        it '編集するリンクが表示されるか' do
-          expect(page).to have_link '編集する', href: "/admin/jobs/1/edit"
+        it '編集用のリンクが表示されているか' do
+          expect(page).to have_link '編集する', href: "/admin/jobs/#{job.id}/edit"
         end
       end
     end
@@ -108,18 +108,18 @@ describe '職業投稿のテスト' do
           click_button '更新'
           expect(page).to have_content '更新が成功しました!'
         end
-        it '更新に失敗した趣旨のメッセージが表示されるか（ジャンル空白）' do
+        it '更新に失敗した場合、その趣旨のメッセージが表示されるか(職業ジャンル空白の場合)' do
           find("#job_genre_id").find("option[value='']").select_option
           fill_in 'job[name]', with: Faker::Lorem.characters(number:5)
           click_button '更新'
           expect(page).to have_content '更新が正常に行われませんでした。内容をご確認ください。'
-          expect(current_path).to eq('/admin/jobs/1')
+          expect(current_path).to eq("/admin/jobs/#{job.id}")
         end
-        it '更新に失敗した趣旨のメッセージが表示されるか（職業名空白）' do
+        it '更新に失敗した場合、その趣旨のメッセージが表示されるか(職業名空白の場合)' do
           fill_in 'job[name]', with: ''
           click_button '更新'
           expect(page).to have_content '更新が正常に行われませんでした。内容をご確認ください。'
-          expect(current_path).to eq('/admin/jobs/1')
+          expect(current_path).to eq("/admin/jobs/#{job.id}")
         end
         it '更新後のリダイレクト先は正しいか' do
           choose "job_is_published_true"

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Theme, "モデルに関するテスト", type: :model do
+RSpec.describe Theme, "themeモデルに関するテスト", type: :model do
   let!(:job) { build(:job) }
   let!(:theme) { build(:theme) }
 
@@ -15,7 +15,7 @@ RSpec.describe Theme, "モデルに関するテスト", type: :model do
     before do
       theme.name = ""
     end
-    it "nameが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
+    it "name(テーマ)が空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってくるか" do
       expect(theme).to be_invalid
       expect(theme.errors[:name]).to include("を入力してください")
     end

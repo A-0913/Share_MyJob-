@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe '投稿のテスト' do
+describe 'ジャンル登録のテスト' do
   let!(:admin) { FactoryBot.create(:admin) }
   let!(:genre) { create(:genre, name:'hoge') }
   before do
@@ -9,7 +9,6 @@ describe '投稿のテスト' do
     fill_in 'admin[password]', with: admin.password
     click_on 'ログイン'
   end
-  #let!(:genre) { create(:genre, name:'hoge') }
   describe 'ジャンル一覧画面のテスト' do
     before do
       visit admin_genres_path
@@ -36,7 +35,7 @@ describe '投稿のテスト' do
         click_button '新規登録'
         expect(page).to have_content 'ジャンルを追加しました。'
       end
-      it '更新に失敗しエラーメッセージが表示されるか' do
+      it '更新に失敗した場合、登録失敗のメッセージが表示されるか' do
        fill_in 'genre[name]', with: ''
        click_button '新規登録'
        expect(page).to have_content 'ジャンルを追加できませんでした。'
@@ -79,7 +78,7 @@ describe '投稿のテスト' do
           fill_in 'genre[name]', with: ''
           click_button '変更を更新する'
           expect(page).to have_content '更新できませんでした。入力内容をご確認ください。'
-          expect(current_path).to eq('/admin/genres/1')
+          expect(current_path).to eq("/admin/genres/#{genre.id}")
         end
         it '更新後のリダイレクト先は正しいか' do
           fill_in 'genre[name]', with: Faker::Lorem.characters(number:6)
