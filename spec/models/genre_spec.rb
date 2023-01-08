@@ -15,7 +15,7 @@ RSpec.describe Genre, "genreモデルに関するテスト", type: :model do
     before do
       genre.name = ""
     end
-    it "genreが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
+    it "genre(ジャンル名)が空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
       expect(genre).to be_invalid
       expect(genre.errors[:name]).to include("を入力してください")
     end
