@@ -12,32 +12,32 @@ RSpec.describe Member, "memberモデルに関するテスト", type: :model do
   end
 
   context "空白のバリデーションチェック" do
-    it "last_nameが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
+    it "last_name(苗字)が空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
       member.last_name = ""
       expect(member).to be_invalid
       expect(member.errors[:last_name]).to include("を入力してください")
     end
-    it "first_nameが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
+    it "first_name(名前)が空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
       member.first_name = ""
       expect(member).to be_invalid
       expect(member.errors[:first_name]).to include("を入力してください")
     end
-    it "nicknameが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
+    it "nickname(ニックネーム)が空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
       member.nickname = ""
       expect(member).to be_invalid
       expect(member.errors[:nickname]).to include("を入力してください")
     end
-    it "emailが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
+    it "email(メールアドレス)が空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
       member.email = ""
       expect(member).to be_invalid
       expect(member.errors[:email]).to include("を入力してください")
     end
-    it "passwordが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
+    it "password(パスワード)が空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
       member.password = ""
       expect(member).to be_invalid
       expect(member.errors[:password]).to include("を入力してください")
     end
-    it "belongが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
+    it "belong(属性)が空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
       member.belong = ""
       expect(member).to be_invalid
       expect(member.errors[:belong]).to include("を入力してください")

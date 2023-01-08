@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Job, "モデルに関するテスト", type: :model do
+RSpec.describe Job, "jobモデルに関するテスト", type: :model do
   let!(:job) { build(:job) }
 
   describe "実際に保存してみる" do
