@@ -17,7 +17,7 @@ RSpec.describe Comment, "モデルに関するテスト", type: :model do
       comment.comment = ""
     end
 
-    it "commentが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
+    it "commentが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってくるか" do
       expect(comment).to be_invalid
       expect(comment.errors[:comment]).to include("を入力してください")
     end
@@ -28,7 +28,7 @@ RSpec.describe Comment, "モデルに関するテスト", type: :model do
       comment.comment = "ばかやろう"
     end
 
-    it "comment内に指定の誹謗中傷ワードが入っていた場合、エラーメッセージが返ってきているか" do
+    it "コメント内に指定の誹謗中傷ワード（※comment.rbのslander_words参照）が入っていた場合、エラーメッセージが返ってくるか" do
       expect(comment).to be_invalid
       expect(comment.errors[:comment].first).to include("内に人を傷つける可能性のある言葉")
     end
