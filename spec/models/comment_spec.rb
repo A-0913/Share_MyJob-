@@ -17,7 +17,7 @@ RSpec.describe Comment, "commentモデルに関するテスト", type: :model do
       comment.comment = ""
     end
 
-    it "commentが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってくるか" do
+    it "comment(コメント内容)が空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってくるか" do
       expect(comment).to be_invalid
       expect(comment.errors[:comment]).to include("を入力してください")
     end
