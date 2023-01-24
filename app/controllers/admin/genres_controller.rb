@@ -18,6 +18,7 @@ class Admin::GenresController < Admin::AdminController
 
   def edit
     @genre = Genre.find(params[:id])
+    @jobs = @genre.jobs.where(is_published: true)
   end
 
   def update
