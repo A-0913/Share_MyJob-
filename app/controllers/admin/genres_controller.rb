@@ -28,6 +28,7 @@ class Admin::GenresController < Admin::AdminController
       else
         flash[:notice] = "更新できませんでした。入力内容をご確認ください。"
         @genre = Genre.find(params[:id])
+        @jobs = @genre.jobs.where(is_published: true)
         render :edit
       end
   end
