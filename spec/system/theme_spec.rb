@@ -46,10 +46,10 @@ describe 'テーマ投稿のテスト' do
         expect(page).to have_content 'テーマが申請されました。承認がおりると、テーマ一覧に表示されます。しばらくお待ちください。'
       end
       it '更新に失敗しエラーメッセージが表示されるか' do
-       fill_in 'theme[name]', with: ''
-       click_button 'テーマを追加する'
-       expect(page).to have_content 'を入力してください'
-       expect(current_path).to eq("/jobs/#{job.id}/themes")
+        fill_in 'theme[name]', with: ''
+        click_button 'テーマを追加する'
+        expect(page).to have_content 'を入力してください'
+        expect(current_path).to eq("/jobs/#{job.id}/themes")
       end
       it '投稿後のリダイレクト先は正しいか' do
         fill_in 'theme[name]', with: Faker::Lorem.characters(number:5)
